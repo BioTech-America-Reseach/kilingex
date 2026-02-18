@@ -393,93 +393,92 @@
         }
 
         /* ========== KITUFE KIPYA CHA UDUMA ZINGINE - KISASA NA ANIMATION NZURI ========== */
-        .uduma-section {
-            width: 90%;
-            max-width: 700px;
-            margin: 50px auto 80px auto;
-            text-align: center;
-            position: relative;
-            z-index: 50;
-        }
+.uduma-section {
+    width: 60%;
+    max-width: 550px;
+    margin: 50px auto 80px auto;
+    text-align: center;
+    position: relative;
+    z-index: 50;
+}
 
-        .btn-uduma {
-            display: block;
-            background: linear-gradient(145deg, #d4af37, #b8860b, #8b4513, #c9a03d);
-            background-size: 400% 400%;
-            padding: 30px 25px;
-            border-radius: 100px;
-            text-decoration: none;
-            border: 3px solid rgba(255, 215, 0, 0.8);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: floatUduma 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, moveBgUduma 8s ease infinite;
-        }
+.btn-uduma {
+    display: block;
+    background: linear-gradient(145deg, #d4af37, #b8860b, #8b4513, #c9a03d);
+    background-size: 400% 400%;
+    padding: 30px 25px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 3px solid rgba(255, 215, 0, 0.8);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: floatUduma 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, moveBgUduma 8s ease infinite;
+}
 
-        .btn-uduma::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            transform: rotate(45deg);
-            animation: shineUduma 3s infinite;
-        }
+.btn-uduma::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shineUduma 3s infinite;
+}
 
-        .btn-uduma:hover {
-            transform: scale(1.08) translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px #ffd700, 0 0 100px #ffaa00;
-            border-color: white;
-            animation: none;
-        }
+.btn-uduma:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px #ffd700, 0 0 100px #ffaa00;
+    border-color: white;
+    animation: none;
+}
 
-        .btn-uduma:hover .uduma-text1 {
-            animation: shakeText 0.5s ease-in-out;
-        }
+.btn-uduma:hover .uduma-text1 {
+    animation: shakeText 0.5s ease-in-out;
+}
 
-        .uduma-text1 {
-            display: block;
-            font-size: 2.4rem;
-            font-weight: 900;
-            color: #000000; /* Bold black */
-            text-shadow: none; /* Removed text shadow */
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            line-height: 1.3;
-            position: relative;
-            z-index: 2;
-        }
+.uduma-text1 {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #000000;
+    text-shadow: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 2;
+}
 
-        .uduma-text2 {
-            display: block;
-            font-size: 1.4rem;
-            color: #000000; /* Bold black */
-            font-weight: 700; /* Bold */
-            text-shadow: none;
-            font-style: italic;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-        }
+.uduma-text2 {
+    display: block;
+    font-size: 1.4rem;
+    color: #000000;
+    font-weight: 700;
+    text-shadow: none;
+    font-style: italic;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
 
-        .uduma-icon {
-            font-size: 3rem;
-            display: inline-block;
-            animation: fireGlow 1.8s ease-in-out infinite, bounceSoft 2.2s infinite;
-            margin-right: 10px;
-            filter: drop-shadow(0 0 15px #ff9900);
-        }
-
+.uduma-icon {
+    font-size: 3rem;
+    display: inline-block;
+    animation: fireGlow 1.8s ease-in-out infinite, bounceSoft 2.2s infinite;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 15px #ff9900);
+}
         /* ANIMATION MPYA YA IKONI - MWAKO NA KURUKA */
         @keyframes fireGlow {
             0% { filter: drop-shadow(0 0 2px #ff5500); transform: scale(1); }
@@ -562,7 +561,7 @@
 
 <!-- PAGE RAMLI (iliyo na fomu nyepesi) -->
 <div id="page-ramli" class="container">
-    <h2>UPANDE WA AFYA NA NYOTA</h2>
+    <h2>TAZAMA NURU YAKO YA ASILI HAPA AFYA & TIBA BURE</h2>
     <label>Jina lako kamili:</label>
     <input type="text" id="full-name" placeholder="Mfano: ALLY JUMA">
     
@@ -1863,3 +1862,4 @@
 </script>
 </body>
 </html>
+
