@@ -290,6 +290,7 @@
         <select style="width:30%"><option>+255</option><option>+254</option></select>
         <input type="text" id="app-phone" placeholder="762xxxxxx" maxlength="9">
     </div>
+    <!-- TUMEBADILISHA HAPA: "TEMBELEA CLINIC" ikawa "MIADI" -->
     <button class="btn-magic" onclick="tumaWhatsApp('MIADI')">TUMA MIADI</button>
 </div>
 
@@ -761,6 +762,7 @@ const ZODIAC_DB = {
         ]
     }
 };
+
     const HERUFI_DB = {
     'A': [
         "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo mkubwa wa uongozi; huwa wanawatia watu moyo na kuwaongoza kwa busara, na huwa wa kwanza kuchukua hatua katika hali zote.",
@@ -2721,6 +2723,7 @@ const ZODIAC_DB = {
         }
     ]
 };
+
     let currentData = null;
 
     function switchPage(pageId, btn) {
@@ -2790,7 +2793,7 @@ const ZODIAC_DB = {
         const health = ZODIAC_HEALTH[zIdx];
         const letter = name.charAt(0).toUpperCase();
         const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
-        const careers = CAREERS[zIdx] || CAREERS[1]; // get careers for this zodiac
+        const careers = CAREERS[zIdx] || CAREERS[1]; // Tumerekebisha hii
 
         currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
 
@@ -2800,11 +2803,12 @@ const ZODIAC_DB = {
         const cardsData = [
             {
                 id: 'zodiac', img: zodiac.image, titleBack: "NYOTA YAKO", titleFront: zodiac.name.toUpperCase(),
-                content: `<ul>${zodiac.traits.slice(0,7).map(t=>`<li>${t}</li>`).join('')}</ul><p>Wewe ni mtu mwenye nguvu za kipekee zinazotokana na nyota hii.</p>`
+                content: `<ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul><p>Wewe ni mtu mwenye nguvu za kipekee zinazotokana na nyota hii.</p>`
             },
             {
                 id: 'health', img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600", titleBack: "AFYA NA USTAWI", titleFront: "AFYA YAKO",
-                content: `<p><strong>Hatari za Kiafya:</strong> ${health.risks.slice(0,5).join(', ')}...</p><p><strong>Epuka:</strong> ${health.avoid.slice(0,3).join(', ')}</p><p><strong>Tiba na Mapendekezo:</strong> ${health.actions.slice(0,3).join(', ')}...</p>`
+                // Tumerekebisha hii: Tumebadilisha health.remedy na health.food kuwa health.risks, health.avoid, health.actions
+                content: `<p><strong>Hatari:</strong> ${health.risks.slice(0,5).join('; ')}</p><p><strong>Epuka:</strong> ${health.avoid.slice(0,5).join('; ')}</p><p><strong>Tiba Asili:</strong> ${health.actions.slice(0,5).join('; ')}</p>`
             },
             {
                 id: 'letter', img: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600", titleBack: "HERUFI YA JINA", titleFront: `JINA LAKO (${letter})`,
@@ -2812,6 +2816,7 @@ const ZODIAC_DB = {
             },
             {
                 id: 'career', img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600", titleBack: "KAZI NA RIZIKI", titleFront: "NJIA ZAKO ZA PESA",
+                // Tumerekebisha hii: CAREERS ni object, sio array
                 content: careers.slice(0,3).map(c => `<div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>`).join('')
             },
             {
@@ -2870,7 +2875,7 @@ const ZODIAC_DB = {
             const dawa = document.getElementById('dawa_list').value;
             const loc = document.getElementById('dawa-location').value;
             msg = `*ODA YA DAWA*%0A%0ADawa: ${dawa}%0AMahali: ${loc}`;
-        } else {
+        } else if (type === 'MAONI') {
             const txt = document.getElementById('msg-content').value;
             msg = `*MAONI*%0A%0A${txt}`;
         }
