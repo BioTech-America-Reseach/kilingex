@@ -391,6 +391,153 @@
             margin: 2px 0;
             border-radius: 3px;
         }
+
+        /* ========== KITUFE KIPYA CHA UDUMA ZINGINE - KISASA NA ANIMATION NZURI ========== */
+        .uduma-section {
+            width: 90%;
+            max-width: 700px;
+            margin: 50px auto 80px auto;
+            text-align: center;
+            position: relative;
+            z-index: 50;
+        }
+
+        .btn-uduma {
+            display: block;
+            background: linear-gradient(145deg, #d4af37, #b8860b, #8b4513, #c9a03d);
+            background-size: 400% 400%;
+            padding: 30px 25px;
+            border-radius: 100px;
+            text-decoration: none;
+            border: 3px solid rgba(255, 215, 0, 0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: floatUduma 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, moveBgUduma 8s ease infinite;
+        }
+
+        .btn-uduma::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shineUduma 3s infinite;
+        }
+
+        .btn-uduma:hover {
+            transform: scale(1.08) translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px #ffd700, 0 0 100px #ffaa00;
+            border-color: white;
+            animation: none;
+        }
+
+        .btn-uduma:hover .uduma-text1 {
+            animation: shakeText 0.5s ease-in-out;
+        }
+
+        .uduma-text1 {
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #000000; /* Bold black */
+            text-shadow: none; /* Removed text shadow */
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .uduma-text2 {
+            display: block;
+            font-size: 1.4rem;
+            color: #000000; /* Bold black */
+            font-weight: 700; /* Bold */
+            text-shadow: none;
+            font-style: italic;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .uduma-icon {
+            font-size: 3rem;
+            display: inline-block;
+            animation: fireGlow 1.8s ease-in-out infinite, bounceSoft 2.2s infinite;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 15px #ff9900);
+        }
+
+        /* ANIMATION MPYA YA IKONI - MWAKO NA KURUKA */
+        @keyframes fireGlow {
+            0% { filter: drop-shadow(0 0 2px #ff5500); transform: scale(1); }
+            25% { filter: drop-shadow(0 0 20px #ffaa00) drop-shadow(0 0 30px #ff4400); transform: scale(1.2); }
+            50% { filter: drop-shadow(0 0 8px #ffcc00) drop-shadow(0 0 15px #ff6600); transform: scale(1.1); }
+            75% { filter: drop-shadow(0 0 25px #ff3300) drop-shadow(0 0 40px #ff9900); transform: scale(1.3); }
+            100% { filter: drop-shadow(0 0 2px #ff5500); transform: scale(1); }
+        }
+
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        @keyframes floatUduma {
+            0% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(0.3deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(8px) rotate(-0.3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b; }
+            33% { box-shadow: 0 25px 50px rgba(0,0,0,0.7), 0 0 50px #ffaa00, 0 0 90px #ff8c00; }
+            66% { box-shadow: 0 20px 45px rgba(0,0,0,0.65), 0 0 40px #ffd700, 0 0 75px #d4af37; }
+            100% { box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b; }
+        }
+
+        @keyframes moveBgUduma {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 50% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 50% 50%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes shineUduma {
+            0% { left: -50%; top: -50%; }
+            100% { left: 100%; top: 100%; }
+        }
+
+        @keyframes shakeText {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-5px); }
+            40% { transform: translateX(5px); }
+            60% { transform: translateX(-3px); }
+            80% { transform: translateX(3px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .uduma-text1 { font-size: 1.6rem; }
+            .uduma-text2 { font-size: 1.1rem; }
+            .btn-uduma { padding: 20px 15px; }
+            .uduma-icon { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -409,15 +556,15 @@
 
 <!-- WARNING AREA (itaonekana kwa sekunde 2) -->
 <div id="warning-area" style="display: none;">
-    <div class="warning-title">⚠️ O N Y O  K U B W A ⚠️</div>
-    <div class="warning-text">Dr. William ameona kwenye roho yako ... usiendelee kabla hujajiandaa kiroho. Kitu kibaya kimepita njia yako. Soma kwa makini!</div>
+    <div class="warning-title">⚠️ O N Y O ⚠️</div>
+    <div class="warning-text">Usioneshe mtu mwingine, taarifa zako Binafsi sio SALAMA</div>
 </div>
 
 <!-- PAGE RAMLI (iliyo na fomu nyepesi) -->
 <div id="page-ramli" class="container">
-    <h2>RAMLI YA AFYA NA NYOTA</h2>
+    <h2>UPANDE WA AFYA NA NYOTA</h2>
     <label>Jina lako kamili:</label>
-    <input type="text" id="full-name" placeholder="Mfano: BARAKA RICHARD">
+    <input type="text" id="full-name" placeholder="Mfano: ALLY JUMA">
     
     <label>Jinsia yako:</label>
     <select id="gender">
@@ -437,9 +584,9 @@
             </script>
         </select>
     </div>
-    <p style="font-size:0.8rem; color:#ccc;">(Huna haja ya kuweka mwaka wala namba ya simu hapa)</p>
+    <!-- MUHIMU: NIMEONDOA UJUMBE "Huna haja ya kuweka mwaka wala namba ya simu" -->
 
-    <button class="btn-magic" onclick="anzaRamli()">NIANZIE RAMLI YANGU</button>
+    <button class="btn-magic" onclick="anzaRamli()">GUSA HAPA KUANZA RAMLI</button>
 </div>
 
 <div id="page-appointment" class="container" style="display:none;">
@@ -460,7 +607,7 @@
                 <option value="+254">Kenya (+254)</option>
                 <option value="+256">Uganda (+256)</option>
             </select>
-            <input type="text" id="app-phone" placeholder="Mfano: 712345678" maxlength="9">
+            <input type="text" id="app-phone" placeholder="Mfano: 762286282" maxlength="9">
         </div>
         <div id="app-phone-error" class="error-message"></div>
     </div>
@@ -469,19 +616,61 @@
 </div>
 
 <div id="page-dawa" class="container" style="display:none;">
-    <h2>🌿AGIZA DAWA ASILIA</h2>
+    <h2>🌿AGIZA DAWA POPOTE ULIPO</h2>
     <label>Dawa unayohitaji:</label>
-    <select id="dawa-type">
-        <option value="Dawa ya Nguvu za Kiume">Dawa ya Nguvu za Kiume</option>
-        <option value="Dawa ya Vidonda vya Tumbo">Dawa ya Vidonda vya Tumbo</option>
-        <option value="Dawa ya Mapenzi/Mvuto">Dawa ya Mapenzi/Mvuto</option>
-        <option value="Dawa ya Kusafisha Nyota">Dawa ya Kusafisha Nyota</option>
-        <option value="Dawa ya Ngiri">Dawa ya Ngiri</option>
-        <option value="Dawa ya Minyoo">Dawa ya Minyoo</option>
-        <option value="Dawa ya kutoa sumu">Dawa ya kutoa sumu mwilini</option>
-        <option value="Dawa ya kutoa uchawi">Dawa ya kutoa uchawi mwilini</option>
-        <option value="Dawa zingine">Dawa zingine (taja kwenye maelezo)</option>
-    </select>
+   <select name="dawa_list" id="dawa_list">
+    <option value="">-- Chagua Aina ya Dawa --</option>
+    <option value="Dawa za minyoo">Dawa za minyoo</option>
+    <option value="Dawa za maumivu na homa">Dawa za maumivu na homa</option>
+    <option value="Dawa za antibiotiki">Dawa za antibiotiki</option>
+    <option value="Dawa za malaria">Dawa za malaria</option>
+    <option value="Dawa za fangasi">Dawa za fangasi</option>
+    <option value="Dawa za virusi">Dawa za virusi</option>
+    <option value="Dawa za kusafisha vidonda">Dawa za kusafisha vidonda</option>
+    <option value="Dawa za vidonda vya tumbo">Dawa za vidonda vya tumbo</option>
+    <option value="Dawa za kuhara">Dawa za kuhara</option>
+    <option value="Dawa za kupunguza asidi">Dawa za kupunguza asidi mwilini</option>
+    <option value="Dawa za kulainisha choo">Dawa za kulainisha choo</option>
+    <option value="Dawa za kuzuia kutapika">Dawa za kuzuia kutapika</option>
+    <option value="Dawa za bawasiri">Dawa za bawasiri</option>
+    <option value="Dawa za gesi tumboni">Dawa za gesi tumboni</option>
+    <option value="Dawa za kuongeza hamu ya kula">Dawa za kuongeza hamu ya kula</option>
+    <option value="Dawa za kikohozi na mafua">Dawa za kikohozi na mafua</option>
+    <option value="Dawa za mzio na aleji">Dawa za mzio na aleji</option>
+    <option value="Dawa za pumu">Dawa za pumu</option>
+    <option value="Dawa za kuzibua pua">Dawa za kuzibua pua</option>
+    <option value="Dawa za kulegeza makohozi">Dawa za kulegeza makohozi</option>
+    <option value="Dawa za shinikizo la damu">Dawa za shinikizo la damu</option>
+    <option value="Dawa za kisukari">Dawa za kisukari</option>
+    <option value="Dawa za kupunguza mafuta">Dawa za kupunguza mafuta/kolesto</option>
+    <option value="Dawa za kifafa">Dawa za kifafa</option>
+    <option value="Dawa za moyo">Dawa za moyo</option>
+    <option value="Dawa za kusaidia figo">Dawa za kusaidia figo (Diuretics)</option>
+    <option value="Dawa za kansa">Dawa za kansa (Chemotherapy)</option>
+    <option value="Dawa za uzazi wa mpango">Dawa za uzazi wa mpango</option>
+    <option value="Dawa za fangasi wa kike">Dawa za fangasi wa kike</option>
+    <option value="Dawa za kurekebisha homoni">Dawa za kurekebisha homoni</option>
+    <option value="Dawa za kuongeza rutuba">Dawa za kuongeza rutuba</option>
+    <option value="Dawa za maumivu ya hedhi">Dawa za maumivu ya hedhi</option>
+    <option value="Dawa za matatizo ya macho">Dawa za matatizo ya macho</option>
+    <option value="Dawa za masikio">Dawa za masikio</option>
+    <option value="Dawa za matatizo ya ngozi">Dawa za matatizo ya ngozi</option>
+    <option value="Dawa za maumivu ya mifupa">Dawa za maumivu ya mifupa na viungo</option>
+    <option value="Dawa za meno na fizi">Dawa za meno na fizi</option>
+    <option value="Dawa za ganzi">Dawa za ganzi</option>
+    <option value="Dawa za kuongeza damu">Dawa za kuongeza damu</option>
+    <option value="Dawa za vitamini">Dawa za vitamini na virutubisho</option>
+    <option value="Dawa za kuongeza kinga">Dawa za kuongeza kinga ya mwili</option>
+    <option value="Dawa za kalsiamu">Dawa za kalsiamu na mifupa</option>
+    <option value="Mafuta ya samaki">Mafuta ya samaki (Omega-3)</option>
+    <option value="Dawa za usingizi">Dawa za usingizi na wasiwasi</option>
+    <option value="Dawa za sonona">Dawa za sonona (Antidepressants)</option>
+    <option value="Dawa za kuacha kulevya">Dawa za kuacha kulevya</option>
+    <option value="Dawa za kupunguza uzito">Dawa za kupunguza uzito</option>
+    <option value="Dawa za kutoa sumu mwilini">Dawa za kutoa sumu mwilini</option>
+    <option value="Dawa za baridi yabisi">Dawa za baridi yabisi</option>
+    <option value="Dawa za kuongeza nguvu">Dawa za maji ya kuongeza nguvu (ORS)</option>
+</select>
     <label>Mahali unapoishi (kwa delivery):</label>
     <input type="text" id="dawa-location" placeholder="Mkoa na mtaa...">
     
@@ -506,12 +695,12 @@
     <h2>⚠️ MALALAMIKO / MAONI</h2>
     <label>Ujumbe wako:</label>
     <textarea id="msg-content" rows="5" placeholder="Andika hapa..."></textarea>
-    <button class="btn-magic" onclick="tumaLalamiko()">TUMA KWA DR. WILLIAM</button>
+    <button class="btn-magic" onclick="tumaLalamiko()">TUMA KWENDA OFISI KUU</button>
 </div>
 
 <div id="loading-area" style="display:none; text-align:center; margin-top:20px;">
     <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJ6am96am96am96am96am96am96am96am96am96am96am96/3o7TKMGpxxSAt/giphy.gif" width="100">
-    <p>Dr. William anachambua nyota zako ... subiri kidogo ...</p>
+    <p>Subiria . . . Mfumo unachakata Ukweli wa mambo yako</p>
 </div>
 
 <div id="cards-container">
@@ -525,7 +714,7 @@
 
 <!-- SEHEMU YA KUCHANGIA -->
 <div id="donation-section">
-    <div class="donation-question">Je, ungependa kuchangia huduma hizi? Fedha nyingi zimetumika kuwezesha huduma hizi.</div>
+    <div class="donation-question">Je, ungependa kuchangia huduma hizi? Fedha nyingi zimetumika kuwezesha huduma hizi hivyo unapochangia unatia moyo ili kazi hii kuendelea kufanyika zaidi, kumbuka kutoa ni moyo sio Utajiri!.</div>
     <div class="donation-buttons">
         <button class="donation-btn donation-yes" onclick="onyeshaNambaZaKuchangia(true)">Ndio</button>
         <button class="donation-btn donation-no" onclick="onyeshaNambaZaKuchangia(false)">Hapana</button>
@@ -535,13 +724,13 @@
             <strong>Vodacom (M-Pesa):</strong> *150*00# (Namba: 0762 286 282)
         </div>
         <div class="network-item">
-            <strong>Tigo Pesa:</strong> *150*01# (Namba: 0712 345 678)
+            <strong>Tigo Pesa:</strong> *150*01# (Namba: 0762 286 282)
         </div>
         <div class="network-item">
-            <strong>Airtel Money:</strong> *150*60# (Namba: 0682 345 678)
+            <strong>Airtel Money:</strong> *150*60# (Namba: 0762 286 282)
         </div>
         <div class="network-item">
-            <strong>Halopesa:</strong> *150*88# (Namba: 0742 345 678)
+            <strong>Halopesa:</strong> *150*88# (Namba: 0762 286 282)
         </div>
         <div class="office-name">BARAKA RICHARD (MWASIBU WA OFISI)</div>
     </div>
@@ -549,6 +738,17 @@
 
 <div class="whatsapp-float" onclick="window.open('https://wa.me/255762286282', '_blank')">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
+</div>
+
+<!-- ========== KITUFE KIKUBWA CHA UDUMA ZINGINE - KIKO CHINI KABISA ========== -->
+<div class="uduma-section">
+    <a href="https://biotech-america-research.github.io/banner/" id="link-uduma" class="btn-uduma" target="_blank">
+        <span class="uduma-icon">🔮</span>
+        <span class="uduma-text1">BOFYA HAPA KWA UDUMA ZINGINE</span>
+        <span class="uduma-text2">✨ Bonyeza kupata huduma za ziada za kipekee ✨</span>
+    </a>
+    <!-- ⚠️ WEKA LINK YAKO HAPA CHINI: Badilisha href="#" kuwa link yako halisi -->
+    <!-- MFANO: href="https://www.tovuti-yako.com/ukurasa-wa-pili" -->
 </div>
 
 <script>
@@ -1637,7 +1837,7 @@
             return;
         }
         // Tuma taarifa zote kwa WhatsApp (jina, tarehe, jinsia na matokeo)
-        let message = `*MATOKEO YA RAMLI*%0A%0A`;
+        let message = `*MAJIBU YA RAMLI SAFI*%0A%0A`;
         message += `Jina: ${currentJina}%0A`;
         message += `Tarehe: ${currentS}/${currentM}%0A`;
         message += `Jinsia: ${currentJinsia}%0A`;
