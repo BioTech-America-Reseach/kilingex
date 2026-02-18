@@ -9,6 +9,7 @@
     <!-- Face API -->
     <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
     <style>
+        /* (CSS yako hapa - imeachwa kwa ufupi, lakini weka ile ile uliyokuwa nayo) */
         :root {
             --primary-gold: #d4af37;
             --deep-gold: #b8860b;
@@ -28,7 +29,7 @@
             --rahu: #660066;
             --venus: #ff66b2;
         }
-
+        /* Rudisha CSS yako yote hapa */
         body {
             font-family: 'Garamond', serif;
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
@@ -42,7 +43,6 @@
             align-items: center;
             min-height: 100vh;
         }
-
         header {
             text-align: center;
             padding: 40px 20px;
@@ -51,7 +51,6 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
         }
-
         .dr-title {
             font-size: 2.5rem;
             letter-spacing: 3px;
@@ -59,7 +58,6 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
             margin: 0;
         }
-
         .container {
             width: 90%;
             max-width: 600px;
@@ -71,11 +69,8 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
         h2 { color: var(--primary-gold); text-align: center; }
-
         label { display: block; margin-top: 15px; font-weight: bold; color: var(--primary-gold); }
-
         input, select, textarea {
             width: 100%;
             padding: 12px;
@@ -86,7 +81,6 @@
             color: white;
             box-sizing: border-box;
         }
-
         .btn-magic {
             background: linear-gradient(135deg, var(--primary-gold), var(--deep-gold));
             color: #000;
@@ -100,10 +94,7 @@
             margin-top: 20px;
             transition: 0.3s;
         }
-
         .btn-magic:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--primary-gold); }
-
-        /* MENU BUTTONS */
         .service-menu {
             display: flex;
             flex-wrap: wrap;
@@ -111,7 +102,6 @@
             justify-content: center;
             margin-top: 20px;
         }
-
         .btn-service {
             background: transparent;
             border: 1px solid var(--primary-gold);
@@ -121,10 +111,7 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
-
         .btn-service.active { background: var(--primary-gold); color: black; }
-
-        /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -137,7 +124,6 @@
             cursor: pointer;
             z-index: 1000;
         }
-
         #cards-container { 
             display: none; 
             gap: 20px; 
@@ -159,13 +145,8 @@
             z-index: 10;
             box-shadow: 0 0 30px var(--primary-gold);
         }
-        .card:not(.expanded) {
-            opacity: 0.7;
-        }
-        .card.expanded ~ .card {
-            opacity: 0.3;
-            transform: scale(0.9);
-        }
+        .card:not(.expanded) { opacity: 0.7; }
+        .card.expanded ~ .card { opacity: 0.3; transform: scale(0.9); }
         .card-inner { 
             position: relative; 
             width: 100%; 
@@ -205,8 +186,6 @@
             color: black; 
             transform: rotateY(180deg); 
         }
-
-        /* Job images */
         .job-image {
             width: 50px;
             height: 50px;
@@ -223,8 +202,6 @@
             padding: 10px;
             border-radius: 10px;
         }
-
-        /* Phone section for appointment/dawa */
         .phone-section {
             margin-top: 20px;
             background: rgba(1, 19, 11, 0.3);
@@ -235,24 +212,10 @@
             display: flex;
             gap: 10px;
         }
-        .country-code-select select {
-            width: 40%;
-        }
-        .country-code-select input {
-            width: 60%;
-        }
-        .error-message {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-        .success-message {
-            color: #4CAF50;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* Send button for results */
+        .country-code-select select { width: 40%; }
+        .country-code-select input { width: 60%; }
+        .error-message { color: #ff6b6b; font-size: 0.9rem; margin-top: 5px; }
+        .success-message { color: #4CAF50; font-size: 0.9rem; margin-top: 5px; }
         #send-results-container {
             display: none;
             text-align: center;
@@ -272,11 +235,7 @@
             font-size: 1.2rem;
             transition: 0.3s;
         }
-        .send-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px var(--whatsapp-green);
-        }
-        /* Warning area */
+        .send-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--whatsapp-green); }
         #warning-area {
             position: fixed;
             top: 50%;
@@ -297,19 +256,8 @@
             50% { box-shadow: 0 0 60px rgba(255, 0, 0, 0.8); }
             100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
         }
-        .warning-title {
-            color: var(--warning-red);
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .warning-text {
-            color: white;
-            font-size: 1.2rem;
-            max-width: 400px;
-        }
-
-        /* Donation section */
+        .warning-title { color: var(--warning-red); font-size: 2rem; font-weight: bold; margin-bottom: 15px; }
+        .warning-text { color: white; font-size: 1.2rem; max-width: 400px; }
         #donation-section {
             display: none;
             text-align: center;
@@ -339,19 +287,9 @@
             cursor: pointer;
             font-size: 1.1rem;
         }
-        .donation-yes {
-            background: #4CAF50;
-            color: white;
-        }
-        .donation-no {
-            background: #f44336;
-            color: white;
-        }
-        .donation-details {
-            display: none;
-            margin-top: 20px;
-            text-align: left;
-        }
+        .donation-yes { background: #4CAF50; color: white; }
+        .donation-no { background: #f44336; color: white; }
+        .donation-details { display: none; margin-top: 20px; text-align: left; }
         .network-item {
             background: rgba(0,0,0,0.3);
             padding: 10px;
@@ -359,12 +297,7 @@
             border-radius: 5px;
             border-left: 4px solid var(--primary-gold);
         }
-        .office-name {
-            font-weight: bold;
-            color: var(--primary-gold);
-            margin-top: 15px;
-            text-align: center;
-        }
+        .office-name { font-weight: bold; color: var(--primary-gold); margin-top: 15px; text-align: center; }
         .red-alert {
             background: rgba(255, 0, 0, 0.2);
             border: 1px solid red;
@@ -393,8 +326,6 @@
             margin: 2px 0;
             border-radius: 3px;
         }
-
-        /* ========== KITUFE KIPYA CHA UDUMA ZINGINE - KISASA NA ANIMATION NZURI ========== */
         .uduma-section {
             width: 60%;
             max-width: 550px;
@@ -403,7 +334,6 @@
             position: relative;
             z-index: 50;
         }
-
         .btn-uduma {
             display: block;
             background: linear-gradient(145deg, #d4af37, #b8860b, #8b4513, #c9a03d);
@@ -419,7 +349,6 @@
             overflow: hidden;
             animation: floatUduma 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, moveBgUduma 8s ease infinite;
         }
-
         .btn-uduma::before {
             content: '';
             position: absolute;
@@ -427,27 +356,17 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transform: rotate(45deg);
             animation: shineUduma 3s infinite;
         }
-
         .btn-uduma:hover {
             transform: scale(1.08) translateY(-8px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px #ffd700, 0 0 100px #ffaa00;
             border-color: white;
             animation: none;
         }
-
-        .btn-uduma:hover .uduma-text1 {
-            animation: shakeText 0.5s ease-in-out;
-        }
-
+        .btn-uduma:hover .uduma-text1 { animation: shakeText 0.5s ease-in-out; }
         .uduma-text1 {
             display: block;
             font-size: 2.4rem;
@@ -461,7 +380,6 @@
             position: relative;
             z-index: 2;
         }
-
         .uduma-text2 {
             display: block;
             font-size: 1.4rem;
@@ -473,7 +391,6 @@
             position: relative;
             z-index: 2;
         }
-
         .uduma-icon {
             font-size: 3rem;
             display: inline-block;
@@ -481,8 +398,6 @@
             margin-right: 10px;
             filter: drop-shadow(0 0 15px #ff9900);
         }
-
-        /* ANIMATION MPYA YA IKONI - MWAKO NA KURUKA */
         @keyframes fireGlow {
             0% { filter: drop-shadow(0 0 2px #ff5500); transform: scale(1); }
             25% { filter: drop-shadow(0 0 20px #ffaa00) drop-shadow(0 0 30px #ff4400); transform: scale(1.2); }
@@ -490,13 +405,11 @@
             75% { filter: drop-shadow(0 0 25px #ff3300) drop-shadow(0 0 40px #ff9900); transform: scale(1.3); }
             100% { filter: drop-shadow(0 0 2px #ff5500); transform: scale(1); }
         }
-
         @keyframes bounceSoft {
-            0%, 100% { transform: translateY(0); }
+            0%,100% { transform: translateY(0); }
             40% { transform: translateY(-12px); }
             60% { transform: translateY(-6px); }
         }
-
         @keyframes floatUduma {
             0% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-12px) rotate(0.3deg); }
@@ -504,14 +417,12 @@
             75% { transform: translateY(8px) rotate(-0.3deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
-
         @keyframes glowPulse {
             0% { box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b; }
             33% { box-shadow: 0 25px 50px rgba(0,0,0,0.7), 0 0 50px #ffaa00, 0 0 90px #ff8c00; }
             66% { box-shadow: 0 20px 45px rgba(0,0,0,0.65), 0 0 40px #ffd700, 0 0 75px #d4af37; }
             100% { box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px #ffd700, 0 0 60px #b8860b; }
         }
-
         @keyframes moveBgUduma {
             0% { background-position: 0% 0%; }
             25% { background-position: 50% 50%; }
@@ -519,21 +430,17 @@
             75% { background-position: 50% 50%; }
             100% { background-position: 0% 0%; }
         }
-
         @keyframes shineUduma {
             0% { left: -50%; top: -50%; }
             100% { left: 100%; top: 100%; }
         }
-
         @keyframes shakeText {
-            0%, 100% { transform: translateX(0); }
+            0%,100% { transform: translateX(0); }
             20% { transform: translateX(-5px); }
             40% { transform: translateX(5px); }
             60% { transform: translateX(-3px); }
             80% { transform: translateX(3px); }
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .uduma-text1 { font-size: 1.6rem; }
             .uduma-text2 { font-size: 1.1rem; }
@@ -556,24 +463,22 @@
     <button class="btn-service" onclick="switchPage('malalamiko', this)">Malalamiko</button>
 </div>
 
-<!-- WARNING AREA (itaonekana kwa sekunde 2) -->
+<!-- WARNING AREA -->
 <div id="warning-area" style="display: none;">
     <div class="warning-title">⚠️ O N Y O ⚠️</div>
     <div class="warning-text">Usioneshe mtu mwingine, taarifa zako Binafsi sio SALAMA</div>
 </div>
 
-<!-- PAGE RAMLI (iliyo na fomu nyepesi) -->
+<!-- PAGE RAMLI -->
 <div id="page-ramli" class="container">
     <h2>UPANDE WA AFYA NA NYOTA</h2>
     <label>Jina lako kamili:</label>
     <input type="text" id="full-name" placeholder="Mfano: ALLY JUMA">
-    
     <label>Jinsia yako:</label>
     <select id="gender">
         <option value="Mwanaume">Mwanaume</option>
         <option value="Mwanamke">Mwanamke</option>
     </select>
-
     <label>Tarehe uliozaliwa:</label>
     <div style="display:flex; gap:10px;">
         <select id="birth-day">
@@ -586,36 +491,27 @@
             </script>
         </select>
     </div>
-
     <button class="btn-magic" onclick="anzaRamli()">GUSA HAPA KUANZA RAMLI</button>
 </div>
 
+<!-- PAGE APPOINTMENT -->
 <div id="page-appointment" class="container" style="display:none;">
     <h2>📅 WEKA MIADI</h2>
-    <label>Jina lako:</label>
-    <input type="text" id="app-name">
-    <label>Tarehe unayotaka kuja kliniki:</label>
-    <input type="date" id="app-date">
-    <label>Sababu ya kuja:</label>
-    <textarea id="app-reason" placeholder="Elezea tatizo lako kwa ufupi..."></textarea>
-    
-    <!-- SEHEMU YA NAMBA YA SIMU KWA MIADI -->
+    <label>Jina lako:</label> <input type="text" id="app-name">
+    <label>Tarehe unayotaka kuja kliniki:</label> <input type="date" id="app-date">
+    <label>Sababu ya kuja:</label> <textarea id="app-reason" placeholder="Elezea tatizo lako kwa ufupi..."></textarea>
     <div class="phone-section">
-        <label>Namba yako ya simu (kwa mawasiliano ya haraka):</label>
+        <label>Namba yako ya simu:</label>
         <div class="country-code-select">
-            <select id="app-country-code">
-                <option value="+255">Tanzania (+255)</option>
-                <option value="+254">Kenya (+254)</option>
-                <option value="+256">Uganda (+256)</option>
-            </select>
+            <select id="app-country-code"><option value="+255">Tanzania (+255)</option><option value="+254">Kenya (+254)</option><option value="+256">Uganda (+256)</option></select>
             <input type="text" id="app-phone" placeholder="Mfano: 762286282" maxlength="9">
         </div>
         <div id="app-phone-error" class="error-message"></div>
     </div>
-    
     <button class="btn-magic" onclick="tumaAppointment()">TUMA MIADI KWA WHATSAPP</button>
 </div>
 
+<!-- PAGE DAWA -->
 <div id="page-dawa" class="container" style="display:none;">
     <h2>🌿AGIZA DAWA POPOTE ULIPO</h2>
     <label>Dawa unayohitaji:</label>
@@ -672,26 +568,19 @@
         <option value="Dawa za baridi yabisi">Dawa za baridi yabisi</option>
         <option value="Dawa za kuongeza nguvu">Dawa za maji ya kuongeza nguvu (ORS)</option>
     </select>
-    <label>Mkoa unaoishi (kwa delivery):</label>
-    <input type="text" id="dawa-location" placeholder="Mkoa na mtaa...">
-    
-    <!-- SEHEMU YA NAMBA YA SIMU KWA ODA YA DAWA -->
+    <label>Mkoa unaoishi (kwa delivery):</label> <input type="text" id="dawa-location" placeholder="Mkoa na mtaa...">
     <div class="phone-section">
-        <label>Namba yako ya simu (tukupigie kuhusu utoaji):</label>
+        <label>Namba yako ya simu (tukupigie):</label>
         <div class="country-code-select">
-            <select id="dawa-country-code">
-                <option value="+255">Tanzania (+255)</option>
-                <option value="+254">Kenya (+254)</option>
-                <option value="+256">Uganda (+256)</option>
-            </select>
+            <select id="dawa-country-code"><option value="+255">Tanzania (+255)</option><option value="+254">Kenya (+254)</option><option value="+256">Uganda (+256)</option></select>
             <input type="text" id="dawa-phone" placeholder="Mfano: 712345678" maxlength="9">
         </div>
         <div id="dawa-phone-error" class="error-message"></div>
     </div>
-    
     <button class="btn-magic" onclick="tumaOda()">TUMA ODA KWA WHATSAPP</button>
 </div>
 
+<!-- PAGE MALALAMIKO -->
 <div id="page-malalamiko" class="container" style="display:none;">
     <h2>⚠️ MALALAMIKO / MAONI</h2>
     <label>Ujumbe wako:</label>
@@ -699,21 +588,21 @@
     <button class="btn-magic" onclick="tumaLalamiko()">TUMA KWENDA OFISI KUU</button>
 </div>
 
+<!-- LOADING -->
 <div id="loading-area" style="display:none; text-align:center; margin-top:20px;">
     <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJ6am96am96am96am96am96am96am96am96am96am96am96/3o7TKMGpxxSAt/giphy.gif" width="100">
     <p>Subiria . . . Mfumo unachakata Ukweli wa mambo yako</p>
 </div>
 
-<div id="cards-container">
-    <!-- Cards zitaingizwa na JavaScript -->
-</div>
+<!-- CARDS CONTAINER -->
+<div id="cards-container"></div>
 
-<!-- KITUFE CHA KUTUMA MATOKEO KWA WHATSAPP (kinaonekana baada ya kadi) -->
+<!-- SEND RESULTS -->
 <div id="send-results-container">
     <button class="send-btn" onclick="tumaMatokeoKwaWhatsApp()">📲 Tuma matokeo yako ofisini ili kupata maelezo zaidi</button>
 </div>
 
-<!-- SEHEMU YA KUCHANGIA -->
+<!-- DONATION -->
 <div id="donation-section">
     <div class="donation-question">Je, ungependa kuchangia huduma hizi? Fedha nyingi zimetumika kuwezesha huduma hizi hivyo unapochangia unatia moyo ili kazi hii kuendelea kufanyika zaidi, kumbuka kutoa ni moyo sio Utajiri!.</div>
     <div class="donation-buttons">
@@ -721,27 +610,20 @@
         <button class="donation-btn donation-no" onclick="onyeshaNambaZaKuchangia(false)">Hapana</button>
     </div>
     <div id="donation-details" class="donation-details">
-        <div class="network-item">
-            <strong>Vodacom (M-Pesa):</strong> *150*00# (Namba: 0762 286 282)
-        </div>
-        <div class="network-item">
-            <strong>Tigo Pesa:</strong> *150*01# (Namba: 0762 286 282)
-        </div>
-        <div class="network-item">
-            <strong>Airtel Money:</strong> *150*60# (Namba: 0762 286 282)
-        </div>
-        <div class="network-item">
-            <strong>Halopesa:</strong> *150*88# (Namba: 0762 286 282)
-        </div>
+        <div class="network-item"><strong>Vodacom (M-Pesa):</strong> *150*00# (Namba: 0762 286 282)</div>
+        <div class="network-item"><strong>Tigo Pesa:</strong> *150*01# (Namba: 0762 286 282)</div>
+        <div class="network-item"><strong>Airtel Money:</strong> *150*60# (Namba: 0762 286 282)</div>
+        <div class="network-item"><strong>Halopesa:</strong> *150*88# (Namba: 0762 286 282)</div>
         <div class="office-name">BARAKA RICHARD (MWASIBU WA OFISI)</div>
     </div>
 </div>
 
+<!-- WHATSAPP FLOAT -->
 <div class="whatsapp-float" onclick="window.open('https://wa.me/255762286282', '_blank')">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
 </div>
 
-<!-- ========== KITUFE KIKUBWA CHA UDUMA ZINGINE - KIKO CHINI KABISA ========== -->
+<!-- UDUMA SECTION -->
 <div class="uduma-section">
     <a href="https://biotech-america-research.github.io/banner/" id="link-uduma" class="btn-uduma" target="_blank">
         <span class="uduma-icon">🔮</span>
@@ -751,14 +633,11 @@
 </div>
 
 <script>
-    // -----------------------------------------------------------------
-    // DATABASE KAMILI – HERUFI A-G, ZODIAC, MAGONJWA, TIBA, N.K.
-    // -----------------------------------------------------------------
-
-    // 1. HERUFI_DB (A-G) – Sifa 20 nzima + 15 mbaya kwa kila herufi
+    // ================================================================
+    // DATA ZA HERUFI (A-G) – KAMILI
+    // ================================================================
     const HERUFI_DB = {
         'A': [
-            // SIFA 20 NZURI
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uongozi; huwa wanawatia watu moyo na kuwaongoza kwa busara.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uhodari; hawakimbii changamoto wala hofu, bali hukabiliana nazo kwa ujasiri.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya hekima; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
@@ -779,8 +658,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ukweli; hupenda kusema ukweli na kuepuka uongo na hila.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kusamehe; huwasamehe wengine haraka na kusahau makosa.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya baraka; huwa na bahati njema katika shughuli zao na maisha.",
-
-            // SIFA 15 MBAYA
             "Watu wenye sifa kama zako wanamadhaifu ya kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
             "Watu wenye sifa kama zako wanamadhaifu ya kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
             "Watu wenye sifa kama zako wanamadhaifu ya kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
@@ -798,7 +675,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa amani ya ndani; mara nyingi huwa na wasiwasi na hofu."
         ],
         'B': [
-            // SIFA 20 NZURI
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya upole; huwa na tabia laini na wenye kuvutia watu kwa urahisi.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya usiri; huwa wanaaminiwa na kuhifadhi siri za watu kwa uaminifu mkubwa.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya mvuto; huwa na haiba ya pekee inayowafanya watu wawapende na kuwatumainia.",
@@ -819,8 +695,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kuvutia watu; huwa na tabia inayowafanya wateja na marafiki wawavutie kwa urahisi.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya huruma kwa wanyonge; huwa na moyo wa kuwajali walio hatarini na wenye shida.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kujenga uhusiano; huwa na uwezo wa kujenga mahusiano mazuri na watu wa kila aina.",
-
-            // SIFA 15 MBAYA
             "Watu wenye sifa kama zako wanamadhaifu ya kujihusisha kupita kiasi; mara nyingine wanajihusisha sana na shida za watu hata kujisahau wenyewe.",
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa uthubutu; upole wao wakati mwingine huwafanya washindwe kusema hapana au kutoa msimamo wao.",
             "Watu wenye sifa kama zako wanamadhaifu ya kukaa kimya wanapotakiwa kuzungumza; mara nyingine wananyamaza hali wanapaswa kujitetea.",
@@ -838,7 +712,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kujitenga na jamii; mara nyingine wanajitenga na watu ili kuepuka migogoro na matatizo."
         ],
         'C': [
-            // SIFA 20 NZURI (fupi kwa ajili ya kuokoa nafasi)
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ubunifu; huwa na uwezo wa kugundua mambo mapya na kufikiri kwa njia tofauti na wengine.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ucheshi; huwa na uwezo wa kuwafurahisha watu na kuleta tabasamu popote waendapo.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kipaji cha sanaa; huwa na ubunifu wa hali ya juu katika uchoraji, muziki au uandishi.",
@@ -859,8 +732,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uongozi wa ubunifu; huwa na kipaji cha kuongoza katika nyanja za ubunifu na kisanaa.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kugeuza mawazo kuwa vitendo; huwa na uwezo wa kugeuza mawazo yao kuwa bidhaa au mradi halisi.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya mtazamo mpana; huwa na mawazo ya kimataifa na uelewa mpana wa mambo ya duniani.",
-
-            // SIFA 15 MBAYA (fupi)
             "Watu wenye sifa kama zako wanamadhaifu ya kubadilika-badilika mipango; ubunifu wao wakati mwingine huwafanya washindwe kukaa kwenye mpango mmoja kwa muda mrefu.",
             "Watu wenye sifa kama zako wanamadhaifu ya kutokuwa na utulivu; akili zao za haraka huwafanya wasiweze kukaa kimya au kutulia sehemu moja.",
             "Watu wenye sifa kama zako wanamadhaifu ya kuchoka haraka na mambo; wanapokosa changamoto mpya, huchoka na kuacha kujituma.",
@@ -878,7 +749,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa mshikamano na jamii; maisha yao ya kusafiri na kubadilika huwafanya wasiwe na mahali pa kudumu au jamii thabiti."
         ],
         'D': [
-            // SIFA 20 NZURI (fupi)
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya msimamo; huwa na nguvu za kushikilia imani zao na hawabadiliki kwa urahisi.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya nidhamu; huwa na utaratibu maishani na wengine huwaiga kwa nidhamu yao.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uchapa kazi; huwa na bidii kubwa na hachoki mpaka wamalize walichoanzia.",
@@ -899,8 +769,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya heshima; huwa na heshima kubwa miongoni mwa wenzao na jamii kwa ujumla.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kutatua migogoro; huwa na uwezo wa kutatua migogoro kwa busara na haki.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uadilifu; huwa na nguvu ya kusimamia rasilimali kwa uadilifu na haki.",
-
-            // SIFA 15 MBAYA (fupi)
             "Watu wenye sifa kama zako wanamadhaifu ya ukakamari; msimamo wao mkali mara nyingine huwafanya washindwe kubadilika hata wanapokosea.",
             "Watu wenye sifa kama zako wanamadhaifu ya kutokuwa na kubadilika; huwa hawawezi kuzoea mabadiliko mapya kwa urahisi.",
             "Watu wenye sifa kama zako wanamadhaifu ya ukinai; mara nyingine huwa wakinai na kushindwa kufurahia mambo madogo madogo.",
@@ -918,7 +786,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa amani ya ndani; wanaposhindwa kudhibiti mambo, hupoteza amani yao ya ndani."
         ],
         'E': [
-            // SIFA 20 NZURI (fupi)
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uhuru; wanapenda uhuru wa akili na mwili na hawapendi kuzuiwa na wengine.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kusafiri; asili yao ni kusafiri na kujifunza mambo mapya kila mahali waendapo.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uchambuzi; huwa na uwezo wa kuchambua mambo magumu na kuyafafanua kwa urahisi.",
@@ -939,8 +806,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ualimu; huwa na uwezo wa kuwa mwalimu bora au mhadhiri mahiri katika chuo.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya uvumilivu wa kufundisha; huwa na uvumilivu wa kufundisha wengine hata wenye uelewa mdogo.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kuvutia wanafunzi; huwa wanawavutia wanafunzi na wafuasi kwa urahisi kwa ujuzi wao.",
-
-            // SIFA 15 MBAYA (fupi)
             "Watu wenye sifa kama zako wanamadhaifu ya kutokuwa na utulivu; uhuru wao na upendo wa kusafiri huwafanya wasiweze kutulia sehemu moja kwa muda mrefu.",
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa mshikamano; mara nyingine hushindwa kuwa na mahusiano thabiti kwa sababu ya maisha yao ya kuhama hama.",
             "Watu wenye sifa kama zako wanamadhaifu ya kuchoka haraka na mazingira; wanapozoea mazingira, huchoka na kutafuta mabadiliko mapya.",
@@ -958,7 +823,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa kujitambua; wanapojikita sana katika kujifunza tamaduni za wengine, mara nyingine hujisahau na kupoteza utambulisho wao."
         ],
         'F': [
-            // SIFA 20 NZURI (fupi)
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya huruma kubwa; huwa na uwezo wa kuwaelewa wengine na kuwapa msaada wanapohitaji.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ulezi; huwa na uwezo wa kuwa walezi wazuri wa familia na jamii yao.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya ukarimu; hutoa bila kutarajia kurudishiwa na kuwafurahia wengine.",
@@ -979,8 +843,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kuvutia watu; huwa wanawavutia watu kwa ukarimu wao na tabia yao nzuri.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya huruma kwa walio hatarini; huwa na huruma kubwa kwa wanyonge na walio katika mazingira magumu.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kujenga uhusiano; huwa na uwezo wa kujenga uhusiano mzuri na watu wa kila aina na asili.",
-
-            // SIFA 15 MBAYA (fupi)
             "Watu wenye sifa kama zako wanamadhaifu ya kujisahau katika kusaidia wengine; huruma yao kubwa huwafanya wasahau mahitaji yao wenyewe.",
             "Watu wenye sifa kama zako wanamadhaifu ya kuchukua mizigo mizito; wanakubali kubeba matatizo ya wengine hata yanapowalemea wenyewe.",
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa kujithamini; wanajiona kuwa hawana thamani na wanastahili kuwa chini ya wengine.",
@@ -998,7 +860,6 @@
             "Watu wenye sifa kama zako wanamadhaifu ya kukosa utambulisho wao; wanapojikita sana katika mahitaji ya wengine, hupoteza utambulisho wao wenyewe."
         ],
         'G': [
-            // SIFA 20 NZURI (fupi)
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya hekima ya kale; huwa na busara ya kizamani na ufahamu wa kina wa maisha.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya usiri; huwa ni mahiri wa kuhifadhi siri na kufanya mambo kwa utulivu na busara.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya utafiti; huwa na uwezo wa kutafiti na kuchunguza mambo ya kina kwa urahisi.",
@@ -1019,8 +880,6 @@
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya busara katika maamuzi; hufanya maamuzi sahihi kwa kuzingatia hoja na ushahidi.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kujenga hoja; huwa na uwezo wa kujenga hoja zenye mantiki na ushahidi thabiti.",
             "Watu wa kundi lako wengi ni wenye sifa nzuri ya kuvutia wenye hekima; huwa wanawavutia watu wenye hekima na ujuzi kwa mawazo yao.",
-
-            // SIFA 15 MBAYA (fupi)
             "Watu wenye sifa kama zako wanamadhaifu ya kujitenga na watu; wanapozama katika tafakuri na utafiti wao, hujitenga na jamii.",
             "Watu wenye sifa kama zako wanamadhaifu ya kuwa wakali kwa wasio na uelewa; hawawezi kuvumilia watu wasioelewa mawazo yao ya kina.",
             "Watu wenye sifa kama zako wanamadhaifu ya kujiona bora kiakili; hekima yao huwafanya wajione ni bora kuliko wengine.",
@@ -1039,7 +898,9 @@
         ]
     };
 
-    // 2. ZODIAC_DB (Kiarabu) – Maelezo 10 kwa kila zodiac
+    // ================================================================
+    // ZODIAC_DB
+    // ================================================================
     const ZODIAC_DB = {
         1: { name: "Konde (Aries - Al-Hamal)", traits: [ "Wewe ni shujaa na jasiri, hukimbii vita wala changamoto.", "Una nguvu na uhodari wa kushindana na wapinzani wako.", "Wewe ni mwenye bidii na hamasa ya kufanikisha malengo yako.", "Una kipaji cha uongozi na wewe huwa wa kwanza kuanza mambo.", "Wewe ni mkweli na husema ukweli wazi hata ukiumiza.", "Una roho ya kujitegemea na hupendi kufungwa na wengine.", "Wewe ni mkarimu na huwasaidia wengine kwa ukarimu wako.", "Una hasira kali lakini hupolei haraka pia.", "Wewe ni mwenye nguvu za kiroho na imani thabiti.", "Una bahati ya fedha na mafanikio katika shughuli zako." ] },
         2: { name: "Farasi (Taurus - Al-Thawr)", traits: [ "Wewe ni mvumilivu na thabiti kama mlima usioyumba.", "Una nguvu za kustahimili magumu na changamoto za maisha.", "Wewe ni mkarimu na unapenda starehe na anasa za maisha.", "Una uhodari wa kusimamia mali na rasilimali zako vizuri.", "Wewe ni mwaminifu na hutegemeka kwa ahadi zako.", "Una upendo mkubwa kwa familia na watu wako wa karibu.", "Wewe ni mwerevu katika biashara na shughuli za kifedha.", "Una uvumilivu wa kusubiri matokeo bila kukata tamaa.", "Wewe ni mwenye nguvu za kiroho na imani thabiti.", "Una bahati ya kupata vitu vizuri na anasa za maisha." ] },
@@ -1055,32 +916,38 @@
         12: { name: "Samaki (Pisces - Al-Hut)", traits: [ "Wewe ni mwenye hisia nyeti na unawajali wengine kwa dhati.", "Una uwezo wa kuhisi mazingira na watu unaokutana nao.", "Wewe ni mkarimu na huwasaidia wengine kwa moyo wote.", "Una nguvu za kiroho na unavutiwa na mambo ya dini na imani.", "Wewe ni mwaminifu na hutegemeka kwa watu wako.", "Una uhodari wa sanaa na ubunifu wa hali ya juu.", "Wewe ni mwenye uvumilivu na huvumilia hali ngumu.", "Una kipaji cha kuponya kwa maneno yako na hisia zako.", "Wewe ni mwenye nguvu za kushawishi watu kwa upole wako.", "Una bahati ya kupata upendo na furaha katika maisha." ] }
     };
 
-    // 3. NYOTA_DESC (Magonjwa 20 na lishe 20) – tumia data za mfano kwa nyota zote
+    // ================================================================
+    // NYOTA_DESC (Magonjwa na lishe) – kwa ufupi, tunaweka placeholder
+    // ================================================================
     const NYOTA_DESC = {
-        1: { n: "KONDE (ARIES)", h: [ /* 20 magonjwa */ ], d: [ /* 30 lishe */ ] },
-        2: { n: "FARASI (TAURUS)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        3: { n: "MAPACHA (GEMINI)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        4: { n: "KAA (CANCER)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        5: { n: "SIMBA (LEO)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        6: { n: "MASHUKE (VIRGO)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        7: { n: "MIZANI (LIBRA)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        8: { n: "NGE (SCORPIO)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        9: { n: "MSHALE (SAGITTARIUS)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        10: { n: "MBUUZI (CAPRICORN)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        11: { n: "NDOO (AQUARIUS)", h: [ /* 20 */ ], d: [ /* 30 */ ] },
-        12: { n: "SAMAKI (PISCES)", h: [ /* 20 */ ], d: [ /* 30 */ ] }
+        1: { n: "KONDE (ARIES)", h: [], d: [] },
+        2: { n: "FARASI (TAURUS)", h: [], d: [] },
+        3: { n: "MAPACHA (GEMINI)", h: [], d: [] },
+        4: { n: "KAA (CANCER)", h: [], d: [] },
+        5: { n: "SIMBA (LEO)", h: [], d: [] },
+        6: { n: "MASHUKE (VIRGO)", h: [], d: [] },
+        7: { n: "MIZANI (LIBRA)", h: [], d: [] },
+        8: { n: "NGE (SCORPIO)", h: [], d: [] },
+        9: { n: "MSHALE (SAGITTARIUS)", h: [], d: [] },
+        10: { n: "MBUUZI (CAPRICORN)", h: [], d: [] },
+        11: { n: "NDOO (AQUARIUS)", h: [], d: [] },
+        12: { n: "SAMAKI (PISCES)", h: [], d: [] }
     };
 
-    // 4. AYURVEDA_DB – Tiba 25 za asili (mfano)
+    // ================================================================
+    // AYURVEDA_DB (Tiba asili)
+    // ================================================================
     const AYURVEDA_DB = {
-        "Tangawizi": { name: "Tangawizi", scientific: "Zingiber officinale", uses: [] },
-        "Kitunguu saumu": { name: "Kitunguu saumu", scientific: "Allium sativum", uses: [] },
-        "Asali": { name: "Asali", scientific: "Honey", uses: [] },
-        "Mdalasini": { name: "Mdalasini", scientific: "Cinnamomum", uses: [] },
-        "Manjano": { name: "Manjano", scientific: "Curcuma", uses: [] }
+        "Tangawizi": { name: "Tangawizi", uses: [] },
+        "Kitunguu saumu": { name: "Kitunguu saumu", uses: [] },
+        "Asali": { name: "Asali", uses: [] },
+        "Mdalasini": { name: "Mdalasini", uses: [] },
+        "Manjano": { name: "Manjano", uses: [] }
     };
 
-    // 5. PLANET_OBESITY_DB – Sayari 9 (mfano)
+    // ================================================================
+    // PLANET_OBESITY_DB
+    // ================================================================
     const PLANET_OBESITY_DB = {
         "Jupiter": { name: "Mshtarii (Jupiter)", impact: "Kula kupita kiasi", percentage: "30%", description: "Sayari hii inapanua kila inachogusa.", color: "var(--jupiter)" },
         "Sun": { name: "Jua (Sun)", impact: "Kuumwa tumbo", percentage: "20%", description: "Jua likiwa dhaifu...", color: "var(--sun)" },
@@ -1093,29 +960,32 @@
         "Venus": { name: "Zuhura (Venus)", impact: "Uzee / Ujauzito", percentage: "3%", description: "Zuhura inahusishwa na uzuri...", color: "var(--venus)" }
     };
 
-    // 6. SIFA_DB – Kazi 7 kwa kila herufi (mfano kwa A)
+    // ================================================================
+    // SIFA_DB (Kazi 7) – IMESAHIHISHWA: hatutumii SIFA_DB ndani yake
+    // ================================================================
+    const careersA = [
+        { title: "Jeshi / Ulinzi", desc: "Una uwezo wa kulinda na kuongoza.", image: "https://img.icons8.com/color/48/000000/military.png" },
+        { title: "Uongozi wa serikali", desc: "Sifa zako za ujasiri na uongozi zinakufaa katika siasa.", image: "https://img.icons8.com/color/48/000000/government.png" },
+        { title: "Biashara ya kimataifa", desc: "Akili yako ya haraka na ujasiri vitakufanya ufanikiwe katika biashara kubwa.", image: "https://img.icons8.com/color/48/000000/global-business.png" },
+        { title: "Mkurugenzi wa kampuni", desc: "Uwezo wako wa kusimamia na kuongoza utakufaa kama mkurugenzi.", image: "https://img.icons8.com/color/48/000000/company.png" },
+        { title: "Mkufunzi wa maisha", desc: "Uwezo wako wa kuhamasisha na kusaidia wengine utakufaa kama mkufunzi.", image: "https://img.icons8.com/color/48/000000/personal-trainer.png" },
+        { title: "Mwanasheria", desc: "Uhodari wako wa hoja na ushindi unakufaa katika sheria.", image: "https://img.icons8.com/color/48/000000/lawyer.png" },
+        { title: "Mjasiriamali", desc: "Ujasiri wako na uwezo wa kuona fursa utakufanya mfanyabiashara hodari.", image: "https://img.icons8.com/color/48/000000/entrepreneur.png" }
+    ];
+
     const SIFA_DB = {
-        'A': {
-            traits: HERUFI_DB['A'].slice(0,20),
-            careers: [
-                { title: "Jeshi / Ulinzi", desc: "Una uwezo wa kulinda na kuongoza.", image: "https://img.icons8.com/color/48/000000/military.png" },
-                { title: "Uongozi wa serikali", desc: "Sifa zako za ujasiri na uongozi zinakufaa katika siasa.", image: "https://img.icons8.com/color/48/000000/government.png" },
-                { title: "Biashara ya kimataifa", desc: "Akili yako ya haraka na ujasiri vitakufanya ufanikiwe katika biashara kubwa.", image: "https://img.icons8.com/color/48/000000/global-business.png" },
-                { title: "Mkurugenzi wa kampuni", desc: "Uwezo wako wa kusimamia na kuongoza utakufaa kama mkurugenzi.", image: "https://img.icons8.com/color/48/000000/company.png" },
-                { title: "Mkufunzi wa maisha", desc: "Uwezo wako wa kuhamasisha na kusaidia wengine utakufaa kama mkufunzi.", image: "https://img.icons8.com/color/48/000000/personal-trainer.png" },
-                { title: "Mwanasheria", desc: "Uhodari wako wa hoja na ushindi unakufaa katika sheria.", image: "https://img.icons8.com/color/48/000000/lawyer.png" },
-                { title: "Mjasiriamali", desc: "Ujasiri wako na uwezo wa kuona fursa utakufanya mfanyabiashara hodari.", image: "https://img.icons8.com/color/48/000000/entrepreneur.png" }
-            ]
-        },
-        'B': { traits: HERUFI_DB['B'].slice(0,20), careers: SIFA_DB['A'].careers }, // nakili kwa sasa
-        'C': { traits: HERUFI_DB['C'].slice(0,20), careers: SIFA_DB['A'].careers },
-        'D': { traits: HERUFI_DB['D'].slice(0,20), careers: SIFA_DB['A'].careers },
-        'E': { traits: HERUFI_DB['E'].slice(0,20), careers: SIFA_DB['A'].careers },
-        'F': { traits: HERUFI_DB['F'].slice(0,20), careers: SIFA_DB['A'].careers },
-        'G': { traits: HERUFI_DB['G'].slice(0,20), careers: SIFA_DB['A'].careers }
+        'A': { traits: HERUFI_DB['A'].slice(0,20), careers: careersA },
+        'B': { traits: HERUFI_DB['B'].slice(0,20), careers: careersA },
+        'C': { traits: HERUFI_DB['C'].slice(0,20), careers: careersA },
+        'D': { traits: HERUFI_DB['D'].slice(0,20), careers: careersA },
+        'E': { traits: HERUFI_DB['E'].slice(0,20), careers: careersA },
+        'F': { traits: HERUFI_DB['F'].slice(0,20), careers: careersA },
+        'G': { traits: HERUFI_DB['G'].slice(0,20), careers: careersA }
     };
 
-    // 7. ZODIAC_HEALTH_DB – Magonjwa 17, tiba, juisi, n.k. kwa nyota zote (mfano)
+    // ================================================================
+    // ZODIAC_HEALTH_DB (Magonjwa 17, tiba, n.k.)
+    // ================================================================
     const ZODIAC_HEALTH_DB = {
         1: { // Aries
             diseases: Array.from({ length: 17 }, (_, i) => ({ name: `Ugonjwa ${i+1}`, percent: 50 + i })),
@@ -1133,22 +1003,22 @@
             avoidHabits: ["Kula usiku", "Kukaa kitako", "Kukosa usingizi"],
             drugCodes: ["id-27", "id-29", "id-33"]
         }
-        // ... ongeza nyota 3-12 kwa mtindo huo
     };
+    // Nakili data kwa zodiac nyingine (kwa urahisi)
     for (let i = 3; i <= 12; i++) {
-        ZODIAC_HEALTH_DB[i] = ZODIAC_HEALTH_DB[1]; // nakili kwa sasa
+        ZODIAC_HEALTH_DB[i] = JSON.parse(JSON.stringify(ZODIAC_HEALTH_DB[1]));
     }
 
-    // -----------------------------------------------------------------
+    // ================================================================
     // VIGEZO VYA PROGRAMU
-    // -----------------------------------------------------------------
+    // ================================================================
     let currentResults = null;
     let currentJina = '', currentS = '', currentM = '', currentJinsia = '';
     let currentZodiacIdx = 1;
     let videoStream = null;
     let faceAPILoaded = false;
 
-    // Load face-api models (kwa kutumia CDN)
+    // Load face-api models
     async function loadFaceAPI() {
         if (!faceAPILoaded) {
             await faceapi.nets.tinyFaceDetector.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights');
@@ -1157,9 +1027,9 @@
         }
     }
 
-    // -----------------------------------------------------------------
-    // FUNCTIONS ZA KUBADILISHIA KURASA
-    // -----------------------------------------------------------------
+    // ================================================================
+    // FUNCTIONS ZA KUBADILISHA KURASA
+    // ================================================================
     function switchPage(pageId, btnElement) {
         const pages = ['ramli', 'appointment', 'dawa', 'malalamiko'];
         pages.forEach(p => document.getElementById('page-' + p).style.display = 'none');
@@ -1168,9 +1038,9 @@
         btnElement.classList.add('active');
     }
 
-    // -----------------------------------------------------------------
+    // ================================================================
     // VALIDATION ZA SIMU
-    // -----------------------------------------------------------------
+    // ================================================================
     function validateAppPhone() {
         const code = document.getElementById('app-country-code').value;
         const phone = document.getElementById('app-phone').value.trim();
@@ -1190,9 +1060,9 @@
         return code + phone;
     }
 
-    // -----------------------------------------------------------------
-    // FUNCTIONS ZA KUTUMA WHATSAPP
-    // -----------------------------------------------------------------
+    // ================================================================
+    // WHATSAPP FUNCTIONS
+    // ================================================================
     function tumaAppointment() {
         const jina = document.getElementById('app-name').value;
         const tarehe = document.getElementById('app-date').value;
@@ -1218,9 +1088,9 @@
         window.open(`https://wa.me/255762286282?text=${msg}`, '_blank');
     }
 
-    // -----------------------------------------------------------------
-    // RAMLI – KUANZISHA NA KUCHAKATA
-    // -----------------------------------------------------------------
+    // ================================================================
+    // RAMLI - KUANZISHA
+    // ================================================================
     function anzaRamli() {
         const jina = document.getElementById('full-name').value.trim();
         const s = parseInt(document.getElementById('birth-day').value);
@@ -1280,7 +1150,7 @@
         const zodiacData = ZODIAC_DB[zodiacIdx] || ZODIAC_DB[1];
         const jinaTraits = HERUFI_DB[h1] || HERUFI_DB['A'];
 
-        // Tayarisha sifa za jina (5 kutoka herufi + 5 kutoka zodiac) – kwa ajili ya kadi ya kwanza
+        // Tayarisha sifa za jina (5 kutoka herufi + 5 kutoka zodiac)
         const jinaSifaZote = [];
         for (let i=0; i<5; i++) {
             if (jinaTraits[i]) jinaSifaZote.push("🔹 " + jinaTraits[i]);
@@ -1289,7 +1159,6 @@
             if (zodiacData.traits[i]) jinaSifaZote.push("⭐ " + zodiacData.traits[i]);
         }
 
-        // Tayarisha orodha za tiba 5 kutoka kwenye AYURVEDA_DB (kwa ajili ya kadi ya tano)
         const tibaZote = Object.values(AYURVEDA_DB);
         const tibaChache = tibaZote.slice(0,5).map(t => t.name);
 
@@ -1307,7 +1176,7 @@
         // -----------------------------------------------------------------
         let cardsHtml = '';
 
-        // KADI 1: Jina na zodiac – sifa 20 nzima (kutoka herufi) + 15 mbaya
+        // KADI 1: Jina na zodiac – sifa 20 nzima + 15 mbaya
         const herufiTraits = HERUFI_DB[h1] || HERUFI_DB['A'];
         const sifaNzuri = herufiTraits.slice(0,20);
         const sifaMbaya = herufiTraits.slice(20,35);
@@ -1332,7 +1201,7 @@
             </div>
         `;
 
-        // KADI 2: Sifa zako (15) + magonjwa 12 (kutoka ZODIAC_HEALTH_DB)
+        // KADI 2: Sifa zako (15) + magonjwa 12
         const healthData = ZODIAC_HEALTH_DB[zodiacIdx] || ZODIAC_HEALTH_DB[1];
         const diseases12 = healthData.diseases.slice(0,12);
         let diseasesHtml = diseases12.map(d => `<li style="color: ${d.percent > 70 ? 'red' : (d.percent > 50 ? 'orange' : 'black')};">${d.name} - ${d.percent}%</li>`).join('');
@@ -1354,7 +1223,7 @@
             </div>
         `;
 
-        // KADI 3: Kazi 7 zinazokufaa
+        // KADI 3: Kazi 7
         let kaziHtml = '';
         sifaData.careers.forEach(k => {
             kaziHtml += `<div class="job-item"><img src="${k.image}" class="job-image" alt="${k.title}"><div><strong>${k.title}</strong><br>${k.desc}</div></div>`;
@@ -1374,7 +1243,7 @@
             </div>
         `;
 
-        // KADI 4: Hatari za kiafya (kamera + scan)
+        // KADI 4: Kamera
         cardsHtml += `
             <div class="card" id="camera-card" onclick="geuzaKadi(this)">
                 <div class="card-inner">
@@ -1399,7 +1268,7 @@
             </div>
         `;
 
-        // KADI 5: Tiba asili (10) + juisi 5 + vyakula 3 vya kuepuka + tabia 3 za kuacha + dawa codes
+        // KADI 5: Tiba na dawa
         const health = healthData;
         cardsHtml += `
             <div class="card" onclick="geuzaKadi(this)">
@@ -1430,7 +1299,7 @@
             </div>
         `;
 
-        // KADI 6: Sayari na unene (colorful)
+        // KADI 6: Sayari
         let planetHtml = '';
         Object.values(PLANET_OBESITY_DB).forEach(p => {
             planetHtml += `<div class="planet-colorful" style="background: ${p.color}; color: black; padding: 8px; margin: 5px 0; border-radius: 5px;"><strong>${p.name}</strong> - ${p.impact} (${p.percentage})<br><small>${p.description}</small></div>`;
@@ -1453,9 +1322,9 @@
         document.getElementById('cards-container').innerHTML = cardsHtml;
     }
 
-    // -----------------------------------------------------------------
-    // KAMERA NA SCAN (kadi ya 4)
-    // -----------------------------------------------------------------
+    // ================================================================
+    // KAMERA NA SCAN
+    // ================================================================
     window.geuzaKadi = async function(card) {
         document.querySelectorAll('.card').forEach(c => {
             if (c !== card) {
@@ -1536,9 +1405,6 @@
         }
     });
 
-    // -----------------------------------------------------------------
-    // KAZI ZINGINE (tumaMatokeoKwaWhatsApp, onyeshaNambaZaKuchangia, n.k.)
-    // -----------------------------------------------------------------
     function tumaMatokeoKwaWhatsApp() {
         if (!currentResults) {
             alert('Matokeo bado hayajapatikana. Subiri kidogo.');
