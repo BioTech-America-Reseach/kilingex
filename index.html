@@ -290,7 +290,7 @@
         <select style="width:30%"><option>+255</option><option>+254</option></select>
         <input type="text" id="app-phone" placeholder="762xxxxxx" maxlength="9">
     </div>
-    <button class="btn-magic" onclick="tumaWhatsApp('TEMBELEA CLINIC')">TUMA MIADI</button>
+    <button class="btn-magic" onclick="tumaWhatsApp('MIADI')">TUMA MIADI</button>
 </div>
 
 <!-- PAGE: DAWA -->
@@ -2790,6 +2790,7 @@ const ZODIAC_DB = {
         const health = ZODIAC_HEALTH[zIdx];
         const letter = name.charAt(0).toUpperCase();
         const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
+        const careers = CAREERS[zIdx] || CAREERS[1]; // get careers for this zodiac
 
         currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
 
@@ -2799,11 +2800,11 @@ const ZODIAC_DB = {
         const cardsData = [
             {
                 id: 'zodiac', img: zodiac.image, titleBack: "NYOTA YAKO", titleFront: zodiac.name.toUpperCase(),
-                content: `<ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul><p>Wewe ni mtu mwenye nguvu za kipekee zinazotokana na nyota hii.</p>`
+                content: `<ul>${zodiac.traits.slice(0,7).map(t=>`<li>${t}</li>`).join('')}</ul><p>Wewe ni mtu mwenye nguvu za kipekee zinazotokana na nyota hii.</p>`
             },
             {
                 id: 'health', img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600", titleBack: "AFYA NA USTAWI", titleFront: "AFYA YAKO",
-                content: `<p><strong>Hatari:</strong> ${health.risks.join(', ')}</p><p><strong>Tiba Asili:</strong> ${health.remedy}</p><p><strong>Vyakula:</strong> ${health.food}</p>`
+                content: `<p><strong>Hatari za Kiafya:</strong> ${health.risks.slice(0,5).join(', ')}...</p><p><strong>Epuka:</strong> ${health.avoid.slice(0,3).join(', ')}</p><p><strong>Tiba na Mapendekezo:</strong> ${health.actions.slice(0,3).join(', ')}...</p>`
             },
             {
                 id: 'letter', img: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600", titleBack: "HERUFI YA JINA", titleFront: `JINA LAKO (${letter})`,
@@ -2811,7 +2812,7 @@ const ZODIAC_DB = {
             },
             {
                 id: 'career', img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600", titleBack: "KAZI NA RIZIKI", titleFront: "NJIA ZAKO ZA PESA",
-                content: CAREERS.slice(0,3).map(c => `<div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>`).join('')
+                content: careers.slice(0,3).map(c => `<div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>`).join('')
             },
             {
                 id: 'planets', img: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600", titleBack: "SAYARI ZAKO", titleFront: "SAYARI TAWALA",
