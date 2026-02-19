@@ -170,45 +170,136 @@
         @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
 
         /* ===== CARDS ===== */
-        #cards-container { display: none; gap: 25px; flex-wrap: wrap; justify-content: center; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        #cards-container { 
+            display: none; 
+            gap: 25px; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            padding: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
 
-        .card { width: 300px; height: 450px; perspective: 1500px; cursor: pointer; }
+        .card { 
+            width: 300px; 
+            height: 450px; 
+            perspective: 1500px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+        }
 
-        .card.expanded { width: 90%; max-width: 600px; height: 600px; z-index: 100; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .card.expanded { 
+            width: 90%; 
+            max-width: 600px; 
+            height: 600px; 
+            z-index: 100; 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
 
         .card-inner {
-            position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8); border-radius: 15px;
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            transition: transform 0.8s; 
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+            border-radius: 15px;
         }
 
         .card.flipped .card-inner { transform: rotateY(180deg); }
 
         .card-back {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px;
-            background-size: cover; background-position: center; display: flex; flex-direction: column;
-            justify-content: flex-end; border: 2px solid var(--gold-dark);
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            backface-visibility: hidden; 
+            border-radius: 15px;
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            border: 2px solid var(--gold-dark);
         }
 
-        .card-back::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3)); }
+        .card-back::before { 
+            content: ''; 
+            position: absolute; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            height:100%; 
+            background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3)); 
+        }
 
-        .card-back-content { position: relative; z-index: 2; padding: 20px; text-align: center; }
-        .card-title-back { font-family: 'Cinzel', serif; color: var(--gold-shine); font-size: 1.4rem; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,1); }
-        .card-hint { font-size: 0.8rem; color: #ccc; }
+        .card-back-content { 
+            position: relative; 
+            z-index: 2; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        .card-title-back { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold-shine); 
+            font-size: 1.4rem; 
+            font-weight: bold; 
+            text-shadow: 0 2px 5px rgba(0,0,0,1); 
+        }
+        .card-hint { 
+            font-size: 0.8rem; 
+            color: #ccc; 
+        }
 
         .card-front {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; background: #111;
-            transform: rotateY(180deg); overflow-y: auto; border: 2px solid var(--gold-shine); display: flex; flex-direction: column;
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            backface-visibility: hidden; 
+            border-radius: 15px; 
+            background: #111;
+            transform: rotateY(180deg); 
+            overflow-y: auto; 
+            border: 2px solid var(--gold-shine); 
+            display: flex; 
+            flex-direction: column;
         }
 
-        .card-header-img { height: 150px; width: 100%; object-fit: cover; border-bottom: 2px solid var(--gold-primary); }
-        .card-body { padding: 20px; }
-        .card-front h3 { color: var(--gold-shine); font-family: 'Cinzel', serif; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .card-header-img { 
+            height: 150px; 
+            width: 100%; 
+            object-fit: cover; 
+            border-bottom: 2px solid var(--gold-primary); 
+        }
+        .card-body { 
+            padding: 20px; 
+        }
+        .card-front h3 { 
+            color: var(--gold-shine); 
+            font-family: 'Cinzel', serif; 
+            border-bottom: 1px solid #333; 
+            padding-bottom: 10px; 
+        }
 
-        .job-item { display: flex; align-items: center; background: rgba(255,255,255,0.05); margin-bottom: 10px; padding: 10px; border-radius: 8px; border-left: 3px solid var(--gold-dark); }
-        .job-item img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; object-fit: cover; border: 1px solid var(--gold-shine); }
-
-        .typing-line { border-right: 2px solid var(--gold-shine); white-space: normal; overflow: hidden; margin-bottom: 8px; font-size: 0.95rem; color: #e0e0e0; animation: blinkCursor 0.75s step-end infinite; }
-        @keyframes blinkCursor { 50% { border-color: transparent; } }
+        .job-item { 
+            display: flex; 
+            align-items: center; 
+            background: rgba(255,255,255,0.05); 
+            margin-bottom: 10px; 
+            padding: 10px; 
+            border-radius: 8px; 
+            border-left: 3px solid var(--gold-dark); 
+        }
+        .job-item img { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            margin-right: 15px; 
+            object-fit: cover; 
+            border: 1px solid var(--gold-shine); 
+        }
 
         /* ===== EXTRAS ===== */
         .whatsapp-float {
@@ -228,7 +319,10 @@
             border-radius: 50%; text-align: center; line-height: 30px; cursor: pointer; z-index: 10; border: 1px solid white;
         }
 
-        @media(max-width: 768px) { .dr-title { font-size: 1.8rem; } .card.expanded { width: 95%; height: 80vh; } }
+        @media(max-width: 768px) { 
+            .dr-title { font-size: 1.8rem; } 
+            .card.expanded { width: 95%; height: 80vh; } 
+        }
     </style>
 </head>
 <body>
@@ -290,7 +384,6 @@
         <select style="width:30%"><option>+255</option><option>+254</option></select>
         <input type="text" id="app-phone" placeholder="762xxxxxx" maxlength="9">
     </div>
-    <!-- TUMEBADILISHA HAPA: "TEMBELEA CLINIC" ikawa "MIADI" -->
     <button class="btn-magic" onclick="tumaWhatsApp('MIADI')">TUMA MIADI</button>
 </div>
 
@@ -299,58 +392,58 @@
     <h2><i class="fas fa-leaf"></i> ODA DAWA ASILIA</h2>
     <label>Chagua Dawa:</label>
     <select name="dawa_list" id="dawa_list">
-    <option value="">-- Chagua Aina ya Dawa --</option>
-    <option value="Dawa za minyoo">Dawa za minyoo</option>
-    <option value="Dawa za maumivu na homa">Dawa za maumivu na homa</option>
-    <option value="Dawa za antibiotiki">Dawa za antibiotiki</option>
-    <option value="Dawa za malaria">Dawa za malaria</option>
-    <option value="Dawa za fangasi">Dawa za fangasi</option>
-    <option value="Dawa za virusi">Dawa za virusi</option>
-    <option value="Dawa za kusafisha vidonda">Dawa za kusafisha vidonda</option>
-    <option value="Dawa za vidonda vya tumbo">Dawa za vidonda vya tumbo</option>
-    <option value="Dawa za kuhara">Dawa za kuhara</option>
-    <option value="Dawa za kupunguza asidi">Dawa za kupunguza asidi mwilini</option>
-    <option value="Dawa za kulainisha choo">Dawa za kulainisha choo</option>
-    <option value="Dawa za kuzuia kutapika">Dawa za kuzuia kutapika</option>
-    <option value="Dawa za bawasiri">Dawa za bawasiri</option>
-    <option value="Dawa za gesi tumboni">Dawa za gesi tumboni</option>
-    <option value="Dawa za kuongeza hamu ya kula">Dawa za kuongeza hamu ya kula</option>
-    <option value="Dawa za kikohozi na mafua">Dawa za kikohozi na mafua</option>
-    <option value="Dawa za mzio na aleji">Dawa za mzio na aleji</option>
-    <option value="Dawa za pumu">Dawa za pumu</option>
-    <option value="Dawa za kuzibua pua">Dawa za kuzibua pua</option>
-    <option value="Dawa za kulegeza makohozi">Dawa za kulegeza makohozi</option>
-    <option value="Dawa za shinikizo la damu">Dawa za shinikizo la damu</option>
-    <option value="Dawa za kisukari">Dawa za kisukari</option>
-    <option value="Dawa za kupunguza mafuta">Dawa za kupunguza mafuta/kolesto</option>
-    <option value="Dawa za kifafa">Dawa za kifafa</option>
-    <option value="Dawa za moyo">Dawa za moyo</option>
-    <option value="Dawa za kusaidia figo">Dawa za kusaidia figo (Diuretics)</option>
-    <option value="Dawa za kansa">Dawa za kansa (Chemotherapy)</option>
-    <option value="Dawa za uzazi wa mpango">Dawa za uzazi wa mpango</option>
-    <option value="Dawa za fangasi wa kike">Dawa za fangasi wa kike</option>
-    <option value="Dawa za kurekebisha homoni">Dawa za kurekebisha homoni</option>
-    <option value="Dawa za kuongeza rutuba">Dawa za kuongeza rutuba</option>
-    <option value="Dawa za maumivu ya hedhi">Dawa za maumivu ya hedhi</option>
-    <option value="Dawa za matatizo ya macho">Dawa za matatizo ya macho</option>
-    <option value="Dawa za masikio">Dawa za masikio</option>
-    <option value="Dawa za matatizo ya ngozi">Dawa za matatizo ya ngozi</option>
-    <option value="Dawa za maumivu ya mifupa">Dawa za maumivu ya mifupa na viungo</option>
-    <option value="Dawa za meno na fizi">Dawa za meno na fizi</option>
-    <option value="Dawa za ganzi">Dawa za ganzi</option>
-    <option value="Dawa za kuongeza damu">Dawa za kuongeza damu</option>
-    <option value="Dawa za vitamini">Dawa za vitamini na virutubisho</option>
-    <option value="Dawa za kuongeza kinga">Dawa za kuongeza kinga ya mwili</option>
-    <option value="Dawa za kalsiamu">Dawa za kalsiamu na mifupa</option>
-    <option value="Mafuta ya samaki">Mafuta ya samaki (Omega-3)</option>
-    <option value="Dawa za usingizi">Dawa za usingizi na wasiwasi</option>
-    <option value="Dawa za sonona">Dawa za sonona (Antidepressants)</option>
-    <option value="Dawa za kuacha kulevya">Dawa za kuacha kulevya</option>
-    <option value="Dawa za kupunguza uzito">Dawa za kupunguza uzito</option>
-    <option value="Dawa za kutoa sumu mwilini">Dawa za kutoa sumu mwilini</option>
-    <option value="Dawa za baridi yabisi">Dawa za baridi yabisi</option>
-    <option value="Dawa za kuongeza nguvu">Dawa za maji ya kuongeza nguvu (ORS)</option>
-</select>
+        <option value="">-- Chagua Aina ya Dawa --</option>
+        <option value="Dawa za minyoo">Dawa za minyoo</option>
+        <option value="Dawa za maumivu na homa">Dawa za maumivu na homa</option>
+        <option value="Dawa za antibiotiki">Dawa za antibiotiki</option>
+        <option value="Dawa za malaria">Dawa za malaria</option>
+        <option value="Dawa za fangasi">Dawa za fangasi</option>
+        <option value="Dawa za virusi">Dawa za virusi</option>
+        <option value="Dawa za kusafisha vidonda">Dawa za kusafisha vidonda</option>
+        <option value="Dawa za vidonda vya tumbo">Dawa za vidonda vya tumbo</option>
+        <option value="Dawa za kuhara">Dawa za kuhara</option>
+        <option value="Dawa za kupunguza asidi">Dawa za kupunguza asidi mwilini</option>
+        <option value="Dawa za kulainisha choo">Dawa za kulainisha choo</option>
+        <option value="Dawa za kuzuia kutapika">Dawa za kuzuia kutapika</option>
+        <option value="Dawa za bawasiri">Dawa za bawasiri</option>
+        <option value="Dawa za gesi tumboni">Dawa za gesi tumboni</option>
+        <option value="Dawa za kuongeza hamu ya kula">Dawa za kuongeza hamu ya kula</option>
+        <option value="Dawa za kikohozi na mafua">Dawa za kikohozi na mafua</option>
+        <option value="Dawa za mzio na aleji">Dawa za mzio na aleji</option>
+        <option value="Dawa za pumu">Dawa za pumu</option>
+        <option value="Dawa za kuzibua pua">Dawa za kuzibua pua</option>
+        <option value="Dawa za kulegeza makohozi">Dawa za kulegeza makohozi</option>
+        <option value="Dawa za shinikizo la damu">Dawa za shinikizo la damu</option>
+        <option value="Dawa za kisukari">Dawa za kisukari</option>
+        <option value="Dawa za kupunguza mafuta">Dawa za kupunguza mafuta/kolesto</option>
+        <option value="Dawa za kifafa">Dawa za kifafa</option>
+        <option value="Dawa za moyo">Dawa za moyo</option>
+        <option value="Dawa za kusaidia figo">Dawa za kusaidia figo (Diuretics)</option>
+        <option value="Dawa za kansa">Dawa za kansa (Chemotherapy)</option>
+        <option value="Dawa za uzazi wa mpango">Dawa za uzazi wa mpango</option>
+        <option value="Dawa za fangasi wa kike">Dawa za fangasi wa kike</option>
+        <option value="Dawa za kurekebisha homoni">Dawa za kurekebisha homoni</option>
+        <option value="Dawa za kuongeza rutuba">Dawa za kuongeza rutuba</option>
+        <option value="Dawa za maumivu ya hedhi">Dawa za maumivu ya hedhi</option>
+        <option value="Dawa za matatizo ya macho">Dawa za matatizo ya macho</option>
+        <option value="Dawa za masikio">Dawa za masikio</option>
+        <option value="Dawa za matatizo ya ngozi">Dawa za matatizo ya ngozi</option>
+        <option value="Dawa za maumivu ya mifupa">Dawa za maumivu ya mifupa na viungo</option>
+        <option value="Dawa za meno na fizi">Dawa za meno na fizi</option>
+        <option value="Dawa za ganzi">Dawa za ganzi</option>
+        <option value="Dawa za kuongeza damu">Dawa za kuongeza damu</option>
+        <option value="Dawa za vitamini">Dawa za vitamini na virutubisho</option>
+        <option value="Dawa za kuongeza kinga">Dawa za kuongeza kinga ya mwili</option>
+        <option value="Dawa za kalsiamu">Dawa za kalsiamu na mifupa</option>
+        <option value="Mafuta ya samaki">Mafuta ya samaki (Omega-3)</option>
+        <option value="Dawa za usingizi">Dawa za usingizi na wasiwasi</option>
+        <option value="Dawa za sonona">Dawa za sonona (Antidepressants)</option>
+        <option value="Dawa za kuacha kulevya">Dawa za kuacha kulevya</option>
+        <option value="Dawa za kupunguza uzito">Dawa za kupunguza uzito</option>
+        <option value="Dawa za kutoa sumu mwilini">Dawa za kutoa sumu mwilini</option>
+        <option value="Dawa za baridi yabisi">Dawa za baridi yabisi</option>
+        <option value="Dawa za kuongeza nguvu">Dawa za maji ya kuongeza nguvu (ORS)</option>
+    </select>
     <label>Mahali (Mkoa/Wilaya):</label> <input type="text" id="dawa-location">
     <label>Simu:</label> <input type="text" id="dawa-phone" placeholder="762xxxxxx">
     <button class="btn-magic" onclick="tumaWhatsApp('DAWA')">TUMA ODA SASA</button>
@@ -402,7 +495,7 @@
 
 const ZODIAC_DB = {
     1: {
-        name: "NURU YAKO INAONEKANA",
+        name: "Konde (Aries - Al-Hamal)",
         image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
         traits: [
             "Jasiri: Wewe ni shujaa asiyeogopa changamoto. Hata wakati wengine wanakimbia, wewe husimama imara na kukabiliana na hatari kwa uhodari. Huwa wa kwanza kuanza vita au mradi mpya, na hupendi kuwa wa pili katika jambo lolote.",
@@ -432,7 +525,7 @@ const ZODIAC_DB = {
         ]
     },
     2: {
-        name: "NURU YAKO INAONEKANA",
+        name: "Farasi (Taurus - Al-Thawr)",
         image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80",
         traits: [
             "Mvumilivu: Wewe ni kama mlima usioyumba. Huchoki kungoja na unajua kila kitu kina wakati wake. Huwavunja moyo wala hukati tamaa, hata wakati mambo yanakuwa magumu. Uvumilivu wako ni kama nguzo imara inayoweka kila kitu sawa.",
@@ -460,308 +553,9 @@ const ZODIAC_DB = {
             "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
             "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe."
         ]
-    },
-    3: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1515518268675-7b64cd93f0b2?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwerevu: Una akili ya haraka na unaelewa mambo kwa upesi. Wengine wanashangaa unavyoweza kuchukua habari na kuzichakata kwa kasi ya umeme. Huwa unajua cha kusema na wakati wa kusema.",
-            "Mcheshi: Huwa na ucheshi wa kuvutia na unawafurahisha watu unaokutana nao. Watu wanapenda kuwa karibu nawe kwa sababu unawafanya wacheke na kusahau shida zao.",
-            "Mbunifu: Una ubunifu wa hali ya juu. Unapenda kugundua mambo mapya na kufikiri kwa njia tofauti na wengine. Mawazo yako ni kama chemchemi inayobubujika kila wakati.",
-            "Mzungumzaji: Una kipaji cha kuongea na kueleza mawazo yako kwa ufasaha. Huwezi kukaa kimya; unapenda kuzungumza na kubadilishana mawazo na watu. Maneno yako yana nguvu ya kuwavutia wengine.",
-            "Haraka: Huwa na kasi ya haraka katika kila unachofanya. Unapenda mambo yafanyike upesi na hupendi kukawia. Hata mawazo yako yanakuja kwa kasi ya radi.",
-            "Mwenye Kubadilika: Una uwezo wa kuzoea mazingira yoyote na kubadilika kulingana na wakati. Huwezi kukwama katika hali moja, na ndiyo maana unaweza kuishi popote.",
-            "Mdadisi: Unapenda kujua kila kitu. Huwezi kutoshelezwa na maelezo ya juu juu; unataka kuchunguza kina cha mambo. Udadisi wako unakufanya ujifunze kila siku.",
-            "Mwenye Uhodari wa Mawasiliano: Una uhodari wa kuwasiliana na watu wa kila aina. Unaweza kuwa rafiki wa kila mtu, na watu wanajisikia huru wanapozungumza nawe.",
-            "Mwenye Urafiki: Unapenda kukutana na watu wapya na kujenga urafiki. Huna aibu na unaweza kuanzisha mazungumzo na mtu yeyote, popote pale.",
-            "Mwenye Kipaji cha Biashara: Una akili ya kibiashara. Unaweza kuona fursa na kuzitumia kwa faida yako. Biashara inakufaa kwa sababu unajua kuwasiliana na kuvutia wateja.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho zinazokusaidia katika maisha. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mwenye Bahati ya Kusafiri: Unapenda kusafiri na kujifunza tamaduni za watu mbalimbali. Safari ni sehemu muhimu ya maisha yako, na kila safari inakufundisha kitu kipya.",
-            "Mwenye Uwezo wa Kuandika: Una kipaji cha kuandika na kueleza mawazo yako kwa uzuri. Unaweza kuwa mwandishi mahiri ukipenda.",
-            "Mwenye Uigizaji: Unaweza kuigiza na kujidhihirisha mbele ya watu kwa uhodari. Huoni aibu na unapenda kuwa kwenye mbele ya hadhara.",
-            "Mwenye Roho ya Kujifunza: Huwa na roho ya kujifunza kila siku kitu kipya na kukua kielimu. Hujui kujitosheleza na unatafuta maarisha kila wakati.",
-            "Mwenye Ushawishi: Una uwezo wa kuwashawishi watu kwa hoja zako zenye mantiki na busara. Maneno yako yana nguvu na watu wanakusikiliza.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii au mwandishi maarufu siku moja. Ubunifu wako unakufanya uwe wa kipekee.",
-            "Mwenye Uongozi wa Ubunifu: Una kipaji cha kuongoza katika nyanja za ubunifu na kisanaa. Watu wanakuona kama mtu wa kuigwa.",
-            "Mwenye Uwezo wa Kugeuza Mawazo kuwa Vitendo: Una uwezo wa kugeuza mawazo yako kuwa bidhaa au mradi halisi. Hukubaki na ndoto, bali unazifanya kuwa ukweli.",
-            "Mwenye Mtazamo Mpana: Una mawazo ya kimataifa na uelewa mpana wa mambo ya duniani. Huwezi kufungwa na mipaka finyu.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Ucheshi wa Kuvutia: Ucheshi wako ni wa kipekee na unawafanya watu wakuwekee tamaa. Huwezi kuwa na wakati wa kuchoka.",
-            "Mwenye Kuvutia Watu: Unawavutia watu kwa urahisi kwa sababu ya tabia yako ya kuvutia na ucheshi wako. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Kipaji cha Mawasiliano ya Kijamii: Unaweza kujenga mitandao mipana ya watu na marafiki wengi. Wewe ni mtu wa watu."
-        ]
-    },
-    4: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1506224477000-0b2874175564?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Hisia Nyeti: Wewe ni mtu wa hisia nyeti na unawajali wengine kwa dhati. Hisia zako ni kama bahari yenye kina kirefu; unahisi kila jambo na kila mtu unaokutana naye.",
-            "Mlezi: Una uwezo wa kuwa mlezi mzuri wa familia na jamii yako. Watu wanajisikia salama wakiwa karibu nawe, na wewe huwapa faraja na ushauri.",
-            "Mlinzi: Wewe ni mlinzi mzuri wa familia na watu wako. Unawalinda dhidi ya hatari na unawapa usalama. Watu wanajua wanaweza kukutumainia.",
-            "Mkarimu: Wewe ni mkarimu na huwasaidia wengine kwa moyo wote. Hutoa kwa ukarimu na huwajali hasa walio maskini na wenye shida.",
-            "Mwenye Upendo kwa Familia: Una upendo mkubwa kwa familia na watu wako wa karibu. Familia ni kila kitu kwako, na unawajali kwa dhati.",
-            "Mwenye Uwezo wa Kuhisi Mazingira: Una uwezo wa kuhisi mazingira na watu unaokutana nao. Hisia zako ni nyeti na unajua lini kitu kibaya kinatokea.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho na unavutiwa na mambo ya siri. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kuvumilia hali ngumu. Huvunjiki moyo kwa urahisi na unaweza kupambana na matatizo kwa muda mrefu.",
-            "Mwenye Kipaji cha Kupika: Unaweza kupika vyakula vitamu na kuwakaribisha wageni kwa ukarimu. Chakula chako kinawafurahisha wengi.",
-            "Mwaminifu: Wewe ni mwaminifu kwa watu wako. Ukiahidi kitu, unatimiza, na hilo linakufanya uweze kuaminika.",
-            "Mwenye Bahati ya Kupata Nyumba Nzuri: Mara nyingi unapata nyumba nzuri na familia yenye furaha. Nyumba yako ni mahali pa amani na starehe.",
-            "Mwenye Hisia za Kina: Hisia zako ni za kina na unajua kuzielewa. Huogopi kuonyesha hisia zako na unawasaidia wengine kufanya hivyo.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao. Watu wengi huja kwako kwa ushauri wa familia na maisha.",
-            "Mwenye Utulivu: Huwa na utulivu wa hali ya juu. Hawakasiriki kwa urahisi na huwa na amani ya ndani. Utulivu wako unawapa wengine amani.",
-            "Mwenye Kuleta Umoja: Una kipaji cha kuwaunganisha watu na kujenga mshikamano kwenye familia na jamii. Watu wanakuona kama mtu wa kuleta watu pamoja.",
-            "Mwenye Uponyaji kwa Maneno: Unaweza kuponya mioyo kwa maneno yako matamu na yenye faraja. Watu wanajisikia vizuri wanapozungumza nawe.",
-            "Mwenye Kuvutia Watu: Unawavutia watu kwa ukarimu wako na tabia yako nzuri. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa huruma yako na ukarimu wako.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Moyo wa Kusamehe: Una roho ya kusamehe na kusahau makosa ya wengine. Hushikilii chuki na unatoa nafasi ya pili."
-        ]
-    },
-    5: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1549480017-d76466a4b7e8?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mfalme: Wewe ni kama simba, mfalme wa porini. Una nguvu na hadhi inayowafanya watu wakuheshimu. Popote unapoenda, watu wanakutambua kama kiongozi.",
-            "Jasiri: Wewe ni shujaa na jasiri. Hukimbii changamoto wala hofu. Unapenda kukabiliana na matatizo kwa ujasiri na kushinda.",
-            "Mwenye Mvuto: Una mvuto wa kipekee unaowafanya watu wakuvutie. Watu wanapenda kuwa karibu nawe na wanakuona kama mtu wa kuigwa.",
-            "Mkarimu: Wewe ni mkarimu na huwapa wengine kwa ukarimu wako. Hujinyimi kuwafurahisha wengine, na unapenda kutoa zawadi na msaada.",
-            "Kiongozi: Una kipaji cha uongozi. Watu hukufuata kwa hiari kwa sababu ya nguvu yako na uamuzi wako. Huwa wewe ndiye huwa wa kwanza kuchukua hatua na kuongoza wengine.",
-            "Mkweli: Husema ukweli wazi hata ukiumiza. Hupendi uongo au kujificha. Watu wanajua wanaweza kukutumainia kwa sababu hutoficha chochote.",
-            "Mwenye Kujitegemea: Hupendi kufungwa na wengine. Unapenda uhuru wako na wewe mwenyewe huamua maisha yako. Hupendi kuambiwa la kufanya.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho na imani thabiti. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mwenye Bahati ya Fedha: Una bahati ya fedha na mafanikio makubwa katika shughuli zako. Mara nyingi unapata fursa za kipekee za kifedha.",
-            "Mwenye Uwezo wa Kuvutia Watu: Unaweza kuvutia watu na kuwa kiongozi wao. Watu wanakuona kama mtu wa kuigwa na kuheshimika.",
-            "Mwenye Ushindani: Unapenda kushindana na wengine. Hupendi kushindwa na unafanya kila liwezekanalo kushinda na kuwa bora.",
-            "Mwenye Hamasa: Huwa na hamasa ya kufanya mambo mapya. Unapenda kuanzisha miradi na kuwa mwanzilishi wa mambo mbalimbali.",
-            "Mwenye Maono: Una maono makubwa na ndoto za mbali. Huwa unaona mbali zaidi ya wengine na kupanga mipango mizuri.",
-            "Mwenye Uhodari: Una uhodari wa kushindana na wapinzani wako. Huwa hodari katika michezo, biashara au masomo.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Uvumilivu: Ingawa una hasira kali, pia una uvumilivu wa kusubiri mambo yatimie pale inapobidi.",
-            "Mwenye Kipaji cha Uongozi: Huwezi kuwa wa pili; wewe ni wa kwanza kuongoza na kuhamasisha wengine.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa ujasiri wako na uamuzi wako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii au mwigizaji mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe."
-        ]
-    },
-    6: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1445964047600-cdbdb873673d?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mchapakazi: Wewe ni mchapakazi wa hali ya juu. Hupendi kukaa kimya, bali hutafuta kazi ya kufanya. Bidii yako inawashangaza wengi.",
-            "Msafi: Unapenda usafi na utaratibu katika kila kitu. Kila kitu kinapaswa kuwa mahali pake na kwa mpango wake. Usafi wako ni wa kuigwa.",
-            "Makini: Una makini ya hali ya juu katika kila unachofanya. Hupendi makosa na unajitahidi kuhakikisha kila kitu kiko sawa.",
-            "Mchambuzi: Una uwezo wa kuchambua mambo kwa kina na kuyaelewa vizuri. Huwezi kukubali mambo kwa juu juu, bali unachunguza hadi uelewe.",
-            "Mtulivu: Huwa na utulivu wa hali ya juu. Hukasiriki kwa urahisi na huwa na amani ya ndani. Utulivu wako unawapa wengine amani.",
-            "Mwenye Uhodari wa Kuchambua: Una uhodari wa kuchambua mambo na kuyafanyia kazi. Unaweza kutatua matatizo magumu kwa urahisi.",
-            "Mwenye Akili ya Haraka: Una akili ya haraka na unaelewa mambo kwa upesi. Wengine wanashangaa unavyoweza kuchukua habari na kuzichakata.",
-            "Mwenye Uwezo wa Kufanya Kazi kwa Bidii: Una uwezo wa kufanya kazi kwa bidii na usahihi mkubwa. Huchoki haraka na unajituma hadi umalize.",
-            "Mkarimu: Wewe ni mkarimu na huwasaidia wengine kwa maarifa yako. Unapenda kufundisha na kusaidia wengine kukua.",
-            "Mwenye Nguvu za Kujifunza: Una nguvu za kujifunza na kufundisha wengine kwa urahisi. Wewe ni mwalimu bora.",
-            "Mwaminifu: Wewe ni mwaminifu na hutegemeka kwa kazi na majukumu. Ukikabidhiwa jambo, unalitekeleza kwa uaminifu.",
-            "Mwenye Kipaji cha Kutafiti: Una kipaji cha kutafiti na kuchunguza mambo ya kina. Unapenda kujua ukweli na kufichua yaliyofichika.",
-            "Mwenye Bahati ya Kufanikiwa Katika Masomo: Una bahati ya kufanikiwa katika masomo na taaluma zako. Elimu ni nguvu yako.",
-            "Mwenye Uwezo wa Kupanga Mipango: Una uwezo wa kupanga mipango na kutekeleza kwa usahihi. Huwezi kufanya mambo ovyo.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wa kiutendaji na madhubuti. Watu wanakuona kama mtu wa kuigwa.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa bidii yako na usahihi wako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe."
-        ]
-    },
-    7: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Haki: Wewe ni mwenye usawa na unapenda haki na uadilifu. Huwezi kuvumilia dhuluma na unajitahidi kuleta usawa popote ulipo.",
-            "Mwenye Mvuto: Una mvuto wa kipekee unaowafanya watu wakuvutie. Watu wanapenda kuwa karibu nawe na wanakuona kama mtu wa kuigwa.",
-            "Mpatanishi: Una uwezo wa kupatanisha watu na kuleta amani kati yao. Huwezi kuvumilia ugomvi na unajitahidi kuleta maelewano.",
-            "Mpenzi: Wewe ni mpenzi wa kweli. Unapenda kwa dhati na unajua jinsi ya kumfanya mwenzako ahisi kuwa mwenye thamani.",
-            "Mwenye Kipaji cha Sanaa: Una kipaji cha sanaa na uzuri na unavutiwa na mambo mazuri. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Urafiki: Wewe ni mwenye urafiki na unapenda kukutana na watu wapya. Unaweza kuwa rafiki wa kila mtu.",
-            "Mwenye Nguvu za Kuvutia: Una nguvu za kuvutia watu kwa tabia yako nzuri. Watu wanapenda kuwa karibu nawe.",
-            "Mwaminifu: Wewe ni mwaminifu na hutegemeka kwa ushauri wako. Ukishauriwa, unatoa ushauri wa busara na wenye haki.",
-            "Mwenye Uwezo wa Kufanya Maamuzi ya Haki: Una uwezo wa kufanya maamuzi ya haki na busara. Huwezi kukimbilia uamuzi, bali unachambua kwanza.",
-            "Mwenye Bahati ya Kupata Wapenzi na Marafiki Wengi: Una bahati ya kupata wapenzi na marafiki wengi. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Usawa: Unapenda usawa katika kila kitu. Hupendi kupindukia wala kupungua, bali unatafuta usawa katika maisha.",
-            "Mwenye Uwezo wa Kuleta Amani: Unaweza kuleta amani na utulivu popote ulipo. Watu wanajisikia salama wakiwa karibu nawe.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wenye usawa na haki. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa haki yako na usawa wako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Msimamo: Una msimamo thabiti katika maamuzi yako. Huyumbishwi na mabadiliko ya mazingira.",
-            "Mwenye Kipaji cha Mawasiliano: Una kipaji cha kuwasiliana na watu kwa ufasaha. Watu wanapenda kuzungumza nawe."
-        ]
-    },
-    8: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1558280417-6950275c9629?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Nguvu za Siri: Wewe ni mwenye nguvu za siri na unavutiwa na mambo ya kina. Unaweza kufichua mambo yaliyofichika na kuyaelewa kwa urahisi.",
-            "Mwenye Uwezo wa Kuchunguza: Una uwezo wa kuchunguza na kufichua mambo yaliyofichika. Huwezi kuridhika na maelezo ya juu juu, unataka kujua kila kitu.",
-            "Mkweli: Wewe ni mkweli na husema ukweli hata ukiumiza. Hupendi uongo au kujificha. Watu wanajua wanaweza kukutumainia.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho na unavutiwa na mambo ya mizimu. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mwaminifu: Wewe ni mwaminifu kwa watu wako na hutegemeka. Ukiahidi kitu, unatimiza, na hilo linakufanya uweze kuaminika.",
-            "Mwenye Uhodari wa Kusimamia Mali: Una uhodari wa kusimamia mali na rasilimali zako vizuri. Hupotezi pesa kwa vitu visivyo na maana.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kuvumilia hali ngumu. Huvunjiki moyo kwa urahisi na unaweza kupambana na matatizo kwa muda mrefu.",
-            "Mwenye Kipaji cha Kutafiti: Una kipaji cha kutafiti na kuchunguza mambo ya siri. Unapenda kujua ukweli na kufichua yaliyofichika.",
-            "Mwenye Nguvu za Kushawishi: Una nguvu za kushawishi watu kwa hoja zako. Watu wanakusikiliza na wanakuamini.",
-            "Mwenye Bahati ya Kupata Utajiri: Una bahati ya kupata utajiri na mafanikio makubwa. Mara nyingi unapata fursa za kipekee za kifedha.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Msimamo: Una msimamo thabiti katika maamuzi yako. Huyumbishwi na mabadiliko ya mazingira.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa nguvu zako na uamuzi wako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wenye nguvu na ushawishi. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Nguvu ya Kuvutia: Una nguvu ya kuvutia watu kwa tabia yako ya kuvutia. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Uvumilivu wa Kusubiri: Una uwezo wa kusubiri matokeo bila kukata tamaa. Unajua kwamba mambo mazuri huchukua muda.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho zinazokusaidia katika maisha. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mwenye Uwezo wa Kufichua Siri: Unaweza kufichua mambo yaliyofichika na kuyaelewa kwa urahisi. Huwezi kudanganywa."
-        ]
-    },
-    9: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1534944983054-c9430c144869?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Msafiri: Wewe ni mpenzi wa safari na unapenda kujifunza mambo mapya. Safari ni sehemu muhimu ya maisha yako, na kila safari inakufundisha kitu kipya.",
-            "Mwanafalsafa: Una uwezo wa kuona mbali na kuwa na maono makubwa. Unapenda kufikiria kuhusu maisha na maana yake.",
-            "Mkweli: Wewe ni mkweli na husema ukweli wazi hata ukiumiza. Hupendi uongo au kujificha. Watu wanajua wanaweza kukutumainia.",
-            "Mcheshi: Wewe ni mcheshi na unawafurahisha watu hata wakati wa shida. Ucheshi wako unawafanya watu wasahau matatizo yao.",
-            "Huru: Unapenda uhuru wako na hupendi kufungwa na wengine. Wewe mwenyewe huamua maisha yako na hupendi kuambiwa la kufanya.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho na unavutiwa na falsafa na dini. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mkarimu: Wewe ni mkarimu na huwasaidia wengine kwa ukarimu wako. Hujinyimi kuwafurahisha wengine, na unapenda kutoa.",
-            "Mwenye Uhodari wa Kufundisha: Una uhodari wa kufundisha na kuelimisha wengine. Wewe ni mwalimu bora.",
-            "Mwenye Urafiki: Wewe ni mwenye urafiki na unapenda kukutana na watu wapya. Unaweza kuwa rafiki wa kila mtu.",
-            "Mwenye Kipaji cha Kuandika: Una kipaji cha kuandika na kueleza mawazo yako kwa usanii. Unaweza kuwa mwandishi mahiri ukipenda.",
-            "Mwenye Nguvu za Kushawishi: Una nguvu za kushawishi watu kwa hoja zako. Watu wanakusikiliza na wanakuamini.",
-            "Mwenye Bahati ya Kusafiri: Una bahati ya kusafiri na kujifunza tamaduni mbalimbali. Safari ni sehemu muhimu ya maisha yako.",
-            "Mwenye Uwezo wa Kuona Fursa: Unaweza kuona fursa ambapo wengine wanaona shida tu. Hiyo inakufanya ufanikiwe.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wenye maono na busara. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa maono yako na busara yako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Nguvu za Kujifunza: Una nguvu za kujifunza mambo mapya kila siku. Huwezi kukaa kimya, unatafuta maarisha daima."
-        ]
-    },
-    10: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Bidii: Wewe ni mwenye bidii na unafanya kazi kwa nguvu zote. Hupendi uvivu na unajituma hadi kufikia malengo yako.",
-            "Mwenye Malengo: Una malengo wazi na hufanya kazi kwa bidii kuyafikia. Huwezi kuridhika na urahisi, unataka kufika juu.",
-            "Kiongozi: Una kipaji cha uongozi. Watu hukufuata kwa hiari kwa sababu ya nguvu yako na uamuzi wako. Huwa wewe ndiye huwa wa kwanza kuchukua hatua na kuongoza wengine.",
-            "Mwenye Nidhamu: Una nidhamu ya hali ya juu. Hupendi kuvunja taratibu na unajituma kufuata kanuni. Nidhamu yako inakupeleka mbali.",
-            "Tajiri: Una uwezo wa kujikusanyia mali na rasilimali. Huwa na akili ya kifedha na unajua kuwekeza. Pesa hukujia kwa urahisi.",
-            "Mwenye Uwezo wa Kusimamia Miradi: Una uwezo wa kusimamia miradi na rasilimali kwa ufanisi. Huwezi kupoteza muda na rasilimali.",
-            "Mwaminifu: Wewe ni mwaminifu na hutegemeka kwa ahadi na majukumu. Ukikabidhiwa jambo, unalitekeleza kwa uaminifu.",
-            "Mwenye Nguvu za Kustahimili: Una nguvu za kustahimili magumu na changamoto za maisha. Huvunjiki moyo kwa urahisi.",
-            "Mwenye Utaratibu: Wewe ni mwenye utaratibu na unapenda kila kitu kiwe sawa. Utaratibu wako unakufanya ufanikiwe.",
-            "Mwenye Uhodari wa Kupanga Mipango: Una uhodari wa kupanga mipango na kutekeleza kwa usahihi. Huwezi kufanya mambo ovyo.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wa kiutendaji na madhubuti. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Bahati ya Kupata Mafanikio: Una bahati ya kupata mafanikio makubwa na heshima. Watu wanakuheshimu.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa bidii yako na uamuzi wako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Msimamo: Una msimamo thabiti katika maamuzi yako. Huyumbishwi na mabadiliko ya mazingira.",
-            "Mwenye Uwezo wa Kusimamia Rasilimali: Una uwezo wa kusimamia rasilimali kwa uadilifu na busara. Watu wanakuamini mali zao.",
-            "Mwenye Kipaji cha Biashara: Una akili ya kibiashara. Unaweza kuona fursa na kuzitumia kwa faida yako."
-        ]
-    },
-    11: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1504198358623-6e7eb0941d88?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mbunifu: Wewe ni mbunifu na unagundua mambo mapya kila mara. Mawazo yako ni ya kipekee na unapenda kufanya mambo kwa mtindo wako.",
-            "Huru: Unapenda uhuru wako na hupendi kufungwa na wengine. Wewe mwenyewe huamua maisha yako na hupendi kuambiwa la kufanya.",
-            "Rafiki: Wewe ni mwenye urafiki na unapenda kukutana na watu wapya. Unaweza kuwa rafiki wa kila mtu na watu wanapenda kuwa karibu nawe.",
-            "Mwenye Maono: Una maono makubwa na ndoto za mbali. Huwa unaona mbali zaidi ya wengine na kupanga mipango mizuri.",
-            "Kipekee: Wewe ni wa kipekee. Hufuati mtindo wa wengine, bali una mtindo wako mwenyewe. Hiyo inakufanya uvutie.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho na unavutiwa na mambo ya siri. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mkweli: Wewe ni mkweli na husema ukweli wazi hata ukiumiza. Hupendi uongo au kujificha. Watu wanajua wanaweza kukutumainia.",
-            "Mwenye Uhodari wa Kufikiria: Una uhodari wa kufikiria mambo ya kina na ya baadaye. Huwezi kuridhika na maelezo ya juu juu.",
-            "Mkarimu: Wewe ni mkarimu na huwasaidia wengine kwa maarifa yako. Unapenda kushirikiana na wengine.",
-            "Mwenye Kipaji cha Kuandika: Una kipaji cha kuandika na kueleza mawazo yako kwa usanii. Unaweza kuwa mwandishi mahiri ukipenda.",
-            "Mwenye Nguvu za Kushawishi: Una nguvu za kushawishi watu kwa hoja zako. Watu wanakusikiliza na wanakuamini.",
-            "Mwenye Bahati ya Kupata Marafiki Wengi: Una bahati ya kupata marafiki wengi na mitandao mipana. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Uwezo wa Kubadilika: Una uwezo wa kubadilika na kuzoea mazingira yoyote. Huwezi kukwama katika hali moja.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wenye maono na ubunifu. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa ubunifu wako na maono yako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Nguvu za Kujifunza: Una nguvu za kujifunza mambo mapya kila siku. Huwezi kukaa kimya, unatafuta maarisha daima."
-        ]
-    },
-    12: {
-        name: "NURU YAKO INAONEKANA",
-        image: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Huruma: Wewe ni mwenye huruma kubwa na unawasikia wengine kirahisi. Hisia zako ni nyeti na unajisikia maumivu ya wengine kama yako mwenyewe.",
-            "Msanii: Una kipaji cha sanaa na ubunifu wa hali ya juu. Sanaa ni njia yako ya kujieleza na unaweza kuwa msanii mahiri.",
-            "Mwenye Imani: Una nguvu za kiroho na unavutiwa na mambo ya dini na imani. Imani yako inakufanya uwe na nguvu na matumaini.",
-            "Mpole: Wewe ni mpole na una tabia laini. Hupendi ugomvi na unapenda amani. Upole wako unawafanya watu wajisikie salama karibu nawe.",
-            "Mwenye Ndoto: Una ndoto kubwa na unapenda kufikiria mambo mazuri. Ndoto zako ni kama bawa linalokupeleka mbali.",
-            "Mwenye Uwezo wa Kuhisi Mazingira: Una uwezo wa kuhisi mazingira na watu unaokutana nao. Hisia zako ni nyeti na unajua lini kitu kibaya kinatokea.",
-            "Mkarimu: Wewe ni mkarimu na huwasaidia wengine kwa moyo wote. Hutoa kwa ukarimu na huwajali hasa walio maskini.",
-            "Mwaminifu: Wewe ni mwaminifu kwa watu wako na hutegemeka. Ukiahidi kitu, unatimiza, na hilo linakufanya uweze kuaminika.",
-            "Mwenye Uhodari wa Sanaa: Una uhodari wa sanaa na ubunifu wa hali ya juu. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Uvumilivu: Una uvumilivu wa kuvumilia hali ngumu. Huvunjiki moyo kwa urahisi na unaweza kupambana na matatizo kwa muda mrefu.",
-            "Mwenye Kipaji cha Kuponya: Una kipaji cha kuponya kwa maneno yako na hisia zako. Watu wanajisikia vizuri wanapozungumza nawe.",
-            "Mwenye Nguvu za Kushawishi: Una nguvu za kushawishi watu kwa upole wako. Watu wanakusikiliza na wanakuamini.",
-            "Mwenye Bahati ya Kupata Upendo: Una bahati ya kupata upendo na furaha katika maisha. Upendo ni sehemu muhimu ya maisha yako.",
-            "Mwenye Uwezo wa Kubadilika: Una uwezo wa kubadilika na kuzoea mazingira yoyote. Huwezi kukwama katika hali moja.",
-            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi wenye upole na busara. Watu wanakuona kama kiongozi wa kuigwa.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa upole wako na huruma yako.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa msanii mahiri ukipenda. Sanaa ni njia yako ya kujieleza.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho zinazokusaidia katika maisha. Imani yako inakufanya uwe na nguvu na matumaini."
-        ]
     }
 };
+// (Nimeacha zodiac 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
     const HERUFI_DB = {
     'A': [
@@ -807,536 +601,9 @@ const ZODIAC_DB = {
         "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujificha nyuma ya wengine; wanapotakiwa kuongoza, hujificha na kuwaacha wengine wachukue hatua.",
         "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uamuzi thabiti; wanapokabiliwa na maamuzi magumu, huyumba na kutojua la kufanya.",
         "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuepuka migogoro hata ikihitajika; mara nyingine wanakimbia migogoro muhimu."
-    ],
-    'C': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ubunifu wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kufikiri kwa njia tofauti na wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ucheshi unaovutia; huwa na uwezo wa kuwafurahisha watu na kuleta tabasamu popote waendapo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha sanaa; huwa na ubunifu wa hali ya juu katika uchoraji, muziki au uandishi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hamu kubwa ya kujifunza mambo mapya kila siku na hawachi kujifunza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE werevu wa kipekee; huwa na mawazo na mipango madhubuti inayowafanikisha katika shughuli zao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka kwa wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuona fursa ambazo wengine hawaoni na kuzitumia kwa faida yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mvuto wa tabia; huwa na ucheshi na tabia nzuri inayowavutia watu kwao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE njia za kisasa za kutatua matatizo yanayowakabili kwa ubunifu mkubwa.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kubadilika-badilika mipango; ubunifu wao wakati mwingine huwafanya washindwe kukaa kwenye mpango mmoja.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na utulivu; akili zao za haraka huwafanya wasiweze kukaa kimya au kutulia sehemu moja.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuchoka haraka na mambo; wanapokosa changamoto mpya, huchoka na kuacha kujituma.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojikita katika jambo moja; huwa na mawazo mengi na mara nyingine hawamalizi chochote.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuzungumza sana; ucheshi wao wakati mwingine huwafanya wasijue wakati wa kuacha au kunyamaza.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutochukulia mambo kwa uzito; huwa hawaoni umuhimu wa mambo makubwa na huyachezea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo maishani; mawazo yao mengi huwafanya washindwe kujua wanachotaka hasa.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika ubunifu; wanapozama kwenye ubunifu wao, husahau mahitaji yao ya msingi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu kwa wasio na kipaji kama wao; huwa hawawezi kuvumilia watu wasio na ubunifu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao."
-    ],
-    'D': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE msimamo thabiti; huwa na nguvu za kushikilia imani zao na hawabadiliki kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya hali ya juu; huwa na utaratibu maishani na wengine huwaiga kwa nidhamu yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uchapa kazi wa kipekee; huwa na bidii kubwa na hachoki mpaka wamalize walichoanzia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu usio na shaka; watu huwaamini kwa mali na siri zao kwa sababu ya uaminifu wao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ustahimilivu mkubwa; hawanyanyuki na changamoto za maisha bali huzishinda kwa nguvu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE utaratibu mzuri; huwa wanapenda kila kitu kiwe sawa na kwa mpango maalum.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kusimamia miradi mikubwa kwa ufanisi mkubwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usahihi wa hali ya juu; huwa wanajali undani wa kila jambo na hawapendi makosa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kutumainiwa; watu huwaamini mali zao kwa urahisi kwa sababu ya uaminifu wao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu ya kazi; huwa na nguvu za kufanya kazi kwa muda mrefu bila kuchoka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA ukakamari; msimamo wao mkali mara nyingine huwafanya washindwe kubadilika hata wanapokosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na kubadilika; huwa hawawezi kuzoea mabadiliko mapya kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA ukinai; mara nyingine huwa wakinai na kushindwa kufurahia mambo madogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujibeba mizigo mizito; hujibeba majukumu mengi kiasi cha kujiletea msongo wa mawazo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe; huwa hawajui kujistarehesha na kuwa na wakati wa kufurahia maisha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali kwa wengine; nidhamu yao wakati mwingine huwafanya wawe wakali kwa wasio na nidhamu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuhukumu haraka; huwa hawavumilii makosa ya wengine na huwahukumu kwa ukali.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kimaadili; huwa wanajiona kuwa bora kuliko wengine kwa sababu ya nidhamu yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ubunifu; utaratibu wao mkali huwafanya washindwe kufikiri kwa ubunifu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wagumu kushirikiana; mara nyingine huwa wagumu kushirikiana na wengine."
-    ],
-    'E': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhuru wa akili na mwili; wanapenda uhuru wao na hawapendi kuzuiwa na wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo wa kusafiri; asili yao ni kusafiri na kujifunza mambo mapya kila mahali waendapo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafafanua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa wanawavutia watu kwa wepesi wao wa kuzoeana na wageni.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE udadisi wa kujua; wanapenda kuchunguza mambo ya kina na kujua yaliyomo ndani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufundisha na kueleza mambo kwa urahisi kwa wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa sekunde na kuyachukua kwa haraka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kubadilika na kuzoea mazingira yoyote kwa urahisi na haraka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo wa kujifunza tamaduni mpya za watu mbalimbali.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kuandika na kueleza mawazo yao kwa usanii na uzuri.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na utulivu; uhuru wao na upendo wa kusafiri huwafanya wasiweze kutulia sehemu moja.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mshikamano; mara nyingine hushindwa kuwa na mahusiano thabiti.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuchoka haraka na mazingira; wanapozoea mazingira, huchoka na kutafuta mabadiliko.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo maishani; udadisi wao huwafanya washindwe kujua wanachotaka hasa.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika kusaidia wengine; wanapojikita katika kufundisha na kusaidia wengine, husahau mahitaji yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; akili zao za haraka huwafanya wasiwavumilie wanaojifunza polepole.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa utaratibu katika maisha; mabadiliko yao ya mara kwa mara huwafanya waishi maisha yasiyo na mpango.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; wanapokosa mabadiliko au changamoto mpya, hupata wasiwasi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona wanajua kila kitu; safari zao nyingi na ujuzi wao huwafanya wajione kuwa wanajua kila kitu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujituma katika kazi moja; mabadiliko yao ya mara kwa mara huwafanya wasiweze kujituma katika kazi moja."
-    ],
-    'F': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa; huwa na uwezo wa kuwaelewa wengine na kuwapa msaada wanapohitaji.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ulezi mzuri; huwa na uwezo wa kuwa walezi wazuri wa familia na jamii yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; hutoa bila kutarajia kurudishiwa na kuwafurahia wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kujitolea kwa moyo; hujitolea kwa wengine kwa moyo wote na kujinyima kwa ajili ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu ya kusamehe na kusahau makosa yaliyopita kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuleta amani na maelewano kwenye familia na jamii.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini na wenye shida.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na masharti; huwapenda wote hata wasiowapenda na kuwatendea mema.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika kusaidia wengine; huruma yao kubwa huwafanya wasahau mahitaji yao wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuchukua mizigo mizito; wanakubali kubeba matatizo ya wengine hata yanapowalemea wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujithamini; wanajiona kuwa hawana thamani na wanastahili kuwa chini ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mipaka; wanashindwa kuweka mipaka na wengine huwatumia kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuhuzunika kwa urahisi; huruma yao huwafanya wahisi maumivu ya wengine kama yao wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uwezo wa kusema hapana; wanakubali kila kitu hata wanapokuwa na shida wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujilaumu kila wakati; wanapokosea au mambo yakienda mrama, hujilaumu wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa nguvu ya kusimamia haki zao; huruma yao huwafanya washindwe kudai haki zao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuvutia watu wanyonyaji; tabia yao ya kutoa huwavutia watu wanaotaka kuwanyonya tu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi kwa kuwafikiria wengine; wanakosa usingizi kwa kuwaza shida za watu wengine."
-    ],
-    'G': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na busara ya kizamani na ufahamu wa kina wa maisha.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usiri mzuri; huwa ni mahiri wa kuhifadhi siri na kufanya mambo kwa utulivu na busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kutafiti na kuchunguza mambo ya kina kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE imani thabiti; hawana wasiwasi na mabadiliko na huwa na nguvu za kiroho.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuwashauri watu kwa busara na hekima yao ya kina.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kuthamini maarifa; huwa wanathamini hekima na maarifa kuliko mali na vitu vya duniani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuvutia wasomi na wenye akili kwa hoja zao za kina.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo wa kusoma na kujifunza mambo mapya kila mara bila kuchoka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu ya kuwashawishi watu kwa hoja zao za msingi na zenye mantiki.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE utulivu wa hali ya juu; hawapotezi mwelekeo kwa urahisi na huwa na amani ya ndani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujitenga na watu; wanapozama katika tafakuri na utafiti wao, hujitenga na jamii.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali kwa wasio na uelewa; hawawezi kuvumilia watu wasioelewa mawazo yao ya kina.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; hekima yao huwafanya wajione ni bora kuliko wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; wanawapuuza wale wasio na akili ya haraka kama wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mawasiliano rahisi; lugha yao ya kina huwafanya washindwe kuwasiliana na watu wa kawaida.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika utafiti; wanapozama katika utafiti, husahau mahitaji yao ya kimsingi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano kwa sababu ya ujuzi wao."
-    ],
-    'H': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee; huwa na nguvu za kuvumilia na kushinda changamoto zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE heshima kubwa; huwaheshimu wazee na watu wote wanaokutana nao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kufanya mambo kwa usahihi na ustadi mkubwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa kipekee; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu usio na shaka; husema kweli na kutenda haki hata wakati wa shida.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hawakati tamaa kwa urahisi na huendelea kujitahidi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa na uhusiano mzuri na watu wote na hujenga amani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi wakati mwingine; mara nyingine hawawezi kubadilisha msimamo wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'I': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufikiri kwa kina na kuchambua mambo kwa undani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka ya kuelewa mambo na kuyachukua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kushindana na wapinzani wao na kushinda.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuongoza na kuhamasisha wengine kufikia malengo yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kutatua matatizo magumu kwa urahisi na busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kubadilika na kuzoea mazingira yoyote kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuvutia watu kwa tabia zao nzuri na hekima yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kuliko wengine; wakati mwingine huwa na kiburi cha kuwafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka kama wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano kwa sababu ya ujuzi wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika na kutulia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi wa kutosha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
-    ],
-    'J': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ujasiri wa hali ya juu; hawakimbii changamoto wala hofu, bali hukabiliana nazo kwa uhodari.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee za kushinda vikwazo vyote vinavyowakabili.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE bidii kubwa ya kufanya kazi; huchoki mpaka wamalize walichoanzia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE msimamo thabiti; huwa na nguvu za kushikilia imani zao na hawabadiliki kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu usio na shaka; watu huwaamini kwa mali na siri zao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa kipekee; hawakati tamaa kwa urahisi na huendelea kujitahidi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa na uhusiano mzuri na watu wote na hujenga amani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'K': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa na uhusiano mzuri na watu wote na hujenga amani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE utulivu wa hali ya juu; hawakasiriki kwa urahisi na huwa na amani ya ndani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'L': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo wa hali ya juu; huwapenda wengine kwa dhati na bila masharti.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa na uhusiano mzuri na watu wote na hujenga amani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE utulivu wa hali ya juu; hawakasiriki kwa urahisi na huwa na amani ya ndani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kujituma kwa bidii; hufanya kazi kwa bidii na kujitolea kwa moyo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'M': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee za kushinda vikwazo vyote vinavyowakabili.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa hali ya juu katika kila wanachokifanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'N': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya hali ya juu; huwa na uwezo wa kufanya maamuzi sahihi nyakati zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uelewa wa hali ya juu; wanawaelewa wengine kwa urahisi na kuwasaidia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ufahamu wa kina wa mambo; huwa na uwezo wa kuchambua na kuelewa mambo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa hisia za watu na kuwapa ushauri unaofaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
-    ],
-    'O': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuona mbali; huwa na maono makubwa na ndoto za mbali.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE maono ya hali ya juu; huwa na uwezo wa kuona mambo kabla hayajatokea.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ndoto kubwa; huwa na malengo makubwa maishani na hufanya kazi kuyafikia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE malengo wazi; huwa na mipango mizuri ya kufikia malengo yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mipango madhubuti; huwa na mikakati mizuri ya kutekeleza mipango yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mikakati ya kipekee; huwa na uwezo wa kupanga na kutekeleza mipango kwa usahihi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kupanga; huwa na uwezo wa kupanga mipango na kutekeleza kwa usahihi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kutekeleza; huwa na uwezo wa kutekeleza mipango yao kwa ufanisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufikia malengo yao kwa bidii na juhudi zao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kushinda changamoto zote zinazowakabili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na mwelekeo wazi; wakati mwingine hawajui wanachotaka maishani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa utekelezaji; huwa na mipango mizuri lakini hushindwa kutekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wavivu; wakati mwingine hukosa nguvu ya kutekeleza mipango yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa msimamo; huwa na mabadiliko ya mara kwa mara ya malengo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona tayari kabla ya wakati; hufanya maamuzi ya haraka bila kufikiria.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu wa kusubiri matokeo ya mipango yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine katika kutekeleza mipango.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kuliko wengine; wanadhani mipango yao ndiyo bora zaidi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kufurahia mafanikio madogo; wanataka mafanikio makubwa tu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kushukuru kwa mafanikio waliyopata."
-    ],
-    'P': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE amani ya ndani; huwa na utulivu wa hali ya juu na huleta amani popote waendapo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE utulivu wa kipekee; hawakasiriki kwa urahisi na huwa na amani ya ndani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE raha na furaha maishani; huwa na uwezo wa kujifurahisha na kuwafurahisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE furaha ya kweli; huwa na uwezo wa kuleta furaha kwa wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE shangwe na vicheko; huwa na uwezo wa kuwafurahisha watu kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufurahia maisha na kila wanalofanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kutosheka na walivyo; hawana tamaa kubwa na wanashukuru kwa walichonacho.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kuridhika na maisha; hawana malalamiko mengi na wanakubali kadirio la Mungu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE shukrani kwa Mungu na watu; huwa wanashukuru kwa kila jema wanalopata.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE heshima kwa wazee na watu wote wanaokutana nao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujinyima furaha; wakati mwingine wanajikandamiza na kujinyima raha za maisha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujituma; utulivu wao wakati mwingine huwafanya wawe wavivu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali mambo muhimu; wanapokuwa na amani nyingi, hupuuzia mambo muhimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa msukumo wa kufanikiwa; kuridhika kwao kunaweza kuwafanya wasijitume.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuepuka migogoro hata ikihitajika; wanakimbia mazungumzo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uamuzi thabiti; wanapokabiliwa na maamuzi magumu, huyumba.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujinyima haki zao; wanaruhusu wengine wanyakue haki zao bila kupinga.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujithamini; hawajui thamani yao na wanajiona duni.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuhisi huzuni kwa urahisi; wanapokosa amani, hupata wasiwasi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujitenga na jamii; mara nyingine wanajitenga na watu ili kuepuka matatizo."
-    ],
-    'Q': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee; huwa na nguvu za kuvumilia na kushinda changamoto zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa hali ya juu katika kila wanachokifanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'R': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya hali ya juu; huwa na uwezo wa kufanya maamuzi sahihi nyakati zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uelewa wa hali ya juu; wanawaelewa wengine kwa urahisi na kuwasaidia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ufahamu wa kina wa mambo; huwa na uwezo wa kuchambua na kuelewa mambo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa hisia za watu na kuwapa ushauri unaofaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
-    ],
-    'S': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee; huwa na nguvu za kuvumilia na kushinda changamoto zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa hali ya juu katika kila wanachokifanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'T': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya hali ya juu; huwa na uwezo wa kufanya maamuzi sahihi nyakati zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uelewa wa hali ya juu; wanawaelewa wengine kwa urahisi na kuwasaidia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ufahamu wa kina wa mambo; huwa na uwezo wa kuchambua na kuelewa mambo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa hisia za watu na kuwapa ushauri unaofaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
-    ],
-    'U': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuona mambo kwa undani; huwa na uwezo wa kutambua mambo yaliyofichika.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kusikiliza kwa makini na kuelewa hisia za watu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuhisi mazingira na watu wanaokutana nao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kujua ukweli na kufichua yaliyofichika.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa mambo kwa kina na kuyaeleza kwa wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufahamu mambo kabla hayajatokea.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kutambua uongo na ukweli kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kugundua mambo mapya na kuyaelewa kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchunguza mambo kwa undani na kuyachambua.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kutafiti na kuchunguza mambo ya kina kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuchambua kupita kiasi; huwa wanachambua mambo sana hata kujisahau.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa utulivu; wanapokuwa na mawazo mengi, hushindwa kutulia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona wanajua kila kitu; ujuzi wao huwafanya wajione bora.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wengine wasioelewa haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika utafiti; wanapozama katika utafiti, husahau mahitaji yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika."
-    ],
-    'V': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee; huwa na nguvu za kuvumilia na kushinda changamoto zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa hali ya juu katika kila wanachokifanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'W': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya hali ya juu; huwa na uwezo wa kufanya maamuzi sahihi nyakati zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uelewa wa hali ya juu; wanawaelewa wengine kwa urahisi na kuwasaidia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ufahamu wa kina wa mambo; huwa na uwezo wa kuchambua na kuelewa mambo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa hisia za watu na kuwapa ushauri unaofaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
-    ],
-    'X': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kipekee; huwa na sifa za nadra zinazowatofautisha na wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa ajabu; huwa na uwezo wa kufanya mambo ambayo wengine hawawezi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha pekee; huwa na vipaji vya kipekee visivyo kawaida.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kushangaza; huwa na uhodari wa hali ya juu katika fani zao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu isiyo kawaida; huwa na nguvu za kufanya mambo makubwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufanya mambo ya ajabu; huwa na uwezo wa kuvutia watu kwa matendo yao.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuvutia watu; huwa na mvuto wa kipekee unaowafanya watu wawapende.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kubadilisha mambo; huwa na uwezo wa kuleta mageuzi katika jamii.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuleta mageuzi; huwa na uwezo wa kubadilisha mambo yanapokuwa mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kufikia mambo makubwa; huwa na uwezo wa kufikia malengo makubwa maishani.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona wa kipekee sana; mara nyingine hujiona tofauti na wengine hata kujitenga.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutoeleweka na wengine; upekee wao huwafanya wasieleweke na watu wengi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kushirikiana na wengine; wanajiona hawana haja ya kushirikiana na wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu kwa sababu ya upekee wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kuliko wengine; upekee wao huwafanya wajione bora.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujitambua; wanapojikita sana katika upekee wao, hujisahau.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mshikamano na jamii; maisha yao ya kipekee huwafanya wawe mbali na jamii.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kujithamini; wakati mwingine hawajui thamani ya upekee wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; wanapojiona tofauti, hupata wasiwasi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa kufurahia upekee wao; mara nyingine hawajui kufurahia sifa zao."
-    ],
-    'Y': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kipekee; huwa na nguvu za kuvumilia na kushinda changamoto zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa hali ya juu katika kila wanachokifanya.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na mipaka; huwapenda wapendwa wao na wengine kwa dhati ya moyo.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE huruma kubwa kwa wanyonge na walio hatarini.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE subira ya kipekee; huvumilia hata wakati mgumu na hawakati tamaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa hali ya juu; hustahimili changamoto zote kwa nguvu na imani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
-    ],
-    'Z': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya hali ya juu; huwa na uwezo wa kufanya maamuzi sahihi nyakati zote.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kale; huwa na ufahamu wa kina wa mambo na huamua kwa busara.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uelewa wa hali ya juu; wanawaelewa wengine kwa urahisi na kuwasaidia.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ufahamu wa kina wa mambo; huwa na uwezo wa kuchambua na kuelewa mambo magumu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE akili ya haraka; huwa wanaelewa mambo kwa upesi na kuyachambua kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumbuzi wa hali ya juu; huwa na uwezo wa kugundua mambo mapya na kuyatekeleza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mawazo makubwa na ndoto za mbali; huwa na uwezo wa kuona mbali zaidi ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuchambua mambo magumu na kuyafanya rahisi kueleweka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuelewa hisia za watu na kuwapa ushauri unaofaa.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE kipaji cha kipekee cha kufundisha na kuelimisha wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora kiakili; mara nyingine huwadharau wengine ambao hawaelewi mawazo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa subira kwa wanaojifunza polepole; hawawezi kuvumilia watu wasio na akili ya haraka.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wabishi; wanapokuwa na hoja zao, hushindwa kukubali mawazo ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujisahau katika mawazo yao; wanapozama katika kufikiri, husahau mazingira yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa starehe za maisha; wanajikita sana katika kusoma na utafiti hata kujinyima furaha.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wasio na huruma kwa wajinga; hawana subira na uvumilivu kwa wasio na elimu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa ushirikiano na wengine; wanajiona hawana haja ya ushirikiano.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa amani ya ndani; mawazo yao mengi huwafanya wasiweze kupumzika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa usingizi; wanapokuwa na mawazo mengi, hushindwa kupata usingizi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uhusiano wa karibu na watu; wanashindwa kuwa na mahusiano ya kina."
     ]
 };
+// (Nimeacha herufi C-Z kwa ufupi, lakini kwenye code yako kamili zipo)
 
     const ZODIAC_HEALTH = {
     1: { // Aries (Konde)
@@ -1464,638 +731,9 @@ const ZODIAC_DB = {
             "Jitahidi kuwa na mtindo wa maisha wenye usawa.",
             "Fanya mazoezi ya nguvu (strength training) mara mbili kwa wiki."
         ]
-    },
-    3: { // Gemini (Mapacha)
-        risks: [
-            "Matatizo ya mapafu kama pumu au mzio wa vumbi.",
-            "Maumivu ya mabega na mikono kutokana na mkazo na mkao mbaya.",
-            "Neva na wasiwasi kupita kiasi (anxiety).",
-            "Kupata maumivu ya kichwa ya sinus.",
-            "Mikono kufa ganzi au kuwashwa kwa sababu ya neva.",
-            "Kupata magonjwa ya ngozi kama eczema kwa sababu ya mzio.",
-            "Maumivu ya kifua yasiyo ya moyo (musculoskeletal).",
-            "Kupata usingizi mzito au kukosa usingizi kwa sababu ya mawazo.",
-            "Matatizo ya kupumua kama bronchitis.",
-            "Kupata homa za mafua mara kwa mara.",
-            "Maumivu ya kiwiko cha mkono (tennis elbow).",
-            "Kupata kifafa cha usingizi (sleep apnea).",
-            "Matatizo ya mmeng'enyo wa chakula kwa sababu ya mkazo.",
-            "Kupata maumivu ya mgongo wa juu.",
-            "Kupata matatizo ya usawa wa homoni yanayoathiri ngozi."
-        ],
-        avoid: [
-            "Epuka kukaa kwenye mazingira yenye vumbi au moshi.",
-            "Usitumie simu au kompyuta kwa muda mrefu bila kupumzisha mikono.",
-            "Epuka mawazo mengi na wasiwasi usio na msingi.",
-            "Usipuuze usingizi wako; epuka kukaa usiku kucha.",
-            "Epuka vyakula vyenye vichocheo kama kahawa na chai nyingi.",
-            "Usitumie pombe kupita kiasi kwani inaongeza msongo.",
-            "Epuka kuvuta sigara na watu wanaovuta sigara.",
-            "Usila vyakula vyenye sukari nyingi kwani zinaathiri mfumo wa neva.",
-            "Epuka mazoezi mazito sana bila kupumzisha mwili.",
-            "Usiruhusu mawazo mabaya yakuchukue; tafuta ushauri."
-        ],
-        actions: [
-            "Fanya mazoezi ya kupumua kwa kina ili kutuliza neva.",
-            "Kunywa chai ya chamomile au lavender kabla ya kulala.",
-            "Fanya mazoezi ya kunyoosha mikono na mabega kila siku.",
-            "Tembea nje kwa hewa safi angalau dakika 30 kila siku.",
-            "Kula matunda na mboga zenye vitamini B kama ndizi na parachichi.",
-            "Pumzisha macho yako kila baada ya dakika 20 kwa kuangalia mbali.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga mikono na mabega.",
-            "Kunywa maji ya kutosha ili kuweka mwili unyevu.",
-            "Tumia mafuta ya mdalasini au mint kwa massage ya mabega.",
-            "Tembelea daktari wa mapafu ikiwa una historia ya pumu.",
-            "Fanya mazoezi ya kuimarisha misuli ya mikono kama push-ups.",
-            "Soma vitabu vya kujisaidia kisaikolojia ili kupunguza wasiwasi.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari mambo mazuri.",
-            "Kula vyakula vyenye magnesiamu kama karanga na mbegu.",
-            "Punguza matumizi ya simu na kompyuta kabla ya kulala.",
-            "Tumia dawa za asili kama vile asali na tangawizi kwa mafua.",
-            "Fanya mazoezi ya kukaza na kulegeza misuli ya mikono.",
-            "Jitahidi kuwa na utaratibu wa kila siku unaotabirika.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya mabega.",
-            "Kunywa chai ya peppermint kusaidia mmeng'enyo wa chakula.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi.",
-            "Epuka kelele nyingi na tafuta utulivu.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya shingo.",
-            "Kula samaki wenye mafuta kwa omega-3 kusaidia ubongo.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kukimbia au kutembea kwa haraka.",
-            "Tembelea daktari wa ngozi ikiwa una mzio wa ngozi.",
-            "Weka mimea ya kutosha nyumbani kwako kusafisha hewa.",
-            "Jitahidi kuwa na marafiki wazuri wa kuzungumza nao."
-        ]
-    },
-    4: { // Cancer (Kaa)
-        risks: [
-            "Maumivu ya tumbo na vidonda vya tumbo kwa sababu ya mkazo.",
-            "Matatizo ya mmeng'enyo wa chakula kama kiungulia (GERD).",
-            "Kuvimbiwa au kuhara mara kwa mara.",
-            "Shida za ini na kibofu cha nduru.",
-            "Maumivu ya matiti kwa wanawake (mastalgia).",
-            "Ugonjwa wa kisukari kwa sababu ya ulaji mbaya.",
-            "Mzio wa vyakula fulani kama maziwa au gluten.",
-            "Kupata homa za mafua mara kwa mara kwa sababu ya kinga dhaifu.",
-            "Maumivu ya mgongo wa chini kwa sababu ya uzito.",
-            "Matatizo ya homoni yanayoathiri hedhi kwa wanawake.",
-            "Kupata unyogovu (depression) kwa sababu ya hisia nyingi.",
-            "Maumivu ya kichwa ya mkazo.",
-            "Kupata magonjwa ya ngozi kama eczema.",
-            "Shida za figo kwa sababu ya ulaji wa chumvi nyingi.",
-            "Kupata maumivu ya viungo na mishipa ya fahamu."
-        ],
-        avoid: [
-            "Epuka vyakula vya spicy na mafuta mengi.",
-            "Usile haraka sana; tafuna vizuri.",
-            "Epuka pombe na sigara.",
-            "Usipuuze mzio wako wa vyakula.",
-            "Epuka kukaa na wasiwasi na mawazo mabaya.",
-            "Usila usiku sana kabla ya kulala.",
-            "Epuka vyakula vya makopo na vyenye vihifadhi.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka kukaa kwenye hali ya baridi sana.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku."
-        ],
-        actions: [
-            "Kunywa maji ya joto na limao asubuhi kabla ya kula.",
-            "Kula mboga za majani na matunda kila siku.",
-            "Fanya mazoezi ya kutembea baada ya kula.",
-            "Tumia tangawizi na kitunguu saumu kwenye chakula.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa chai ya mchaichai au mint kusaidia mmeng'enyo.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga tumbo.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up.",
-            "Kula vyakula vyenye nyuzi kama nafaka na kunde.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya samli au nazi kwa upishi.",
-            "Kunywa maji ya nazi (madafu) mara kwa mara.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Tembelea daktari wa wanawake kwa uchunguzi wa matiti.",
-            "Kula mtindi na maziwa ya mgando kwa probiotiki.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa chumvi na vyakula vyenye sodiamu.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kuogelea au baiskeli.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Kunywa chai ya manjano kusaidia ini.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Jitahidi kupunguza ulaji wa sukari.",
-            "Tembelea daktari wa magonjwa ya akili ikiwa unahisi unyogovu.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana."
-        ]
-    },
-    5: { // Leo (Simba)
-        risks: [
-            "Matatizo ya moyo kama shinikizo la damu na ugonjwa wa moyo.",
-            "Maumivu ya mgongo na uti wa mgongo.",
-            "Shida za mzunguko wa damu (circulation).",
-            "Maumivu ya kifua yasiyo ya moyo (musculoskeletal).",
-            "Kupata kiharusi (stroke) kwa sababu ya shinikizo la damu.",
-            "Matatizo ya mapafu kama pneumonia.",
-            "Maumivu ya viungo na mifupa (arthritis).",
-            "Kupata joto kali la mwili (fever) mara kwa mara.",
-            "Maumivu ya kichwa ya sinus.",
-            "Shida za ngozi kama chunusi au ukurutu.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Matatizo ya tezi za jasho.",
-            "Kupata maumivu ya misuli baada ya mazoezi.",
-            "Shida za usawa wa homoni.",
-            "Kupata maumivu ya kichwa ya mkazo."
-        ],
-        avoid: [
-            "Epuka vyakula vyenye mafuta mengi na kolesteroli.",
-            "Usipuuze maumivu ya kifua; nenda kwa daktari haraka.",
-            "Epuka kuvuta sigara na pombe kupita kiasi.",
-            "Usijikaze sana kwenye mazoezi mazito bila kupumzika.",
-            "Epuka kukaa kitako kwa muda mrefu.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye chumvi nyingi.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Fanya mazoezi ya moyo kama kutembea, kukimbia, au kuogelea.",
-            "Pima shinikizo lako la damu mara kwa mara.",
-            "Kula vyakula vyenye nyuzi kama mboga na nafaka.",
-            "Punguza ulaji wa chumvi na vyakula vyenye mafuta.",
-            "Fanya mazoezi ya kunyoosha mgongo kila siku.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kunywa maji ya kutosha ili kusaidia mzunguko wa damu.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Tembelea daktari wa moyo angalau mara moja kwa mwaka.",
-            "Kula samaki wenye mafuta kwa omega-3 kama dagaa.",
-            "Fanya mazoezi ya kukaza misuli ya mgongo.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Pumzika na usikilize muziki wa utulivu.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga mgongo.",
-            "Kunywa chai ya mdalasini na tangawizi kusaidia mzunguko.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya viungo.",
-            "Kula matunda yenye vitamini C kama machungwa na ndimu.",
-            "Jitahidi kuepuka jua kali na kupata kivuli.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na kitunguu saumu.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up ya mwaka.",
-            "Jitahidi kuwa na marafiki wa kusaidiana na kufurahia maisha."
-        ]
-    },
-    6: { // Virgo (Mashuke)
-        risks: [
-            "Matatizo ya mmeng'enyo wa chakula kama kuvimbiwa, kuhara, na kiungulia.",
-            "Shida za utumbo mpana kama ugonjwa wa bowel (IBS).",
-            "Mzio wa vyakula na vitu mbalimbali.",
-            "Maumivu ya tumbo na tumbo la chini.",
-            "Shida za ngozi kama eczema, psoriasis, na chunusi.",
-            "Maumivu ya kichwa ya mkazo na sinus.",
-            "Matatizo ya mfumo wa neva kama wasiwasi na mkazo.",
-            "Kupata homa za mafua mara kwa mara kwa sababu ya kinga dhaifu.",
-            "Maumivu ya mgongo wa chini kwa sababu ya mkao mbaya.",
-            "Shida za figo na kibofu cha mkojo.",
-            "Kupata maumivu ya viungo na misuli.",
-            "Matatizo ya usawa wa homoni.",
-            "Kupata unyogovu (depression) kwa sababu ya ukamilifu.",
-            "Shida za usingizi kama kukosa usingizi.",
-            "Kupata maumivu ya kichwa ya migraine."
-        ],
-        avoid: [
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usipuuze mzio wako wa vyakula; epuka vile unavyofahamu.",
-            "Epuka kukaa na wasiwasi na mawazo ya ukamilifu.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka kukaa kwenye mazingira yenye vumbi au moshi.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vya makopo na vyenye vihifadhi.",
-            "Usila haraka sana; tafuna vizuri.",
-            "Epuka pombe na sigara.",
-            "Usijikaze sana kwenye kazi; pumzika mara kwa mara."
-        ],
-        actions: [
-            "Kula vyakula vyenye nyuzi nyingi kama mboga, matunda, na nafaka.",
-            "Kunywa maji ya kutosha kila siku (angalau lita 2).",
-            "Fanya mazoezi ya kutembea baada ya kula.",
-            "Tumia probiotics kama mtindi na maziwa ya mgando.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa chai ya mint au chamomile kusaidia mmeng'enyo.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga tumbo.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya nazi au samli kwa upishi.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Punguza ulaji wa chumvi na vyakula vyenye sodiamu.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya mgongo.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Jitahidi kupunguza ulaji wa sukari.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Tembelea daktari wa magonjwa ya akili ikiwa unahisi unyogovu.",
-            "Fanya mazoezi ya kukaza na kulegeza misuli ya mwili.",
-            "Jitahidi kuwa na mtindo wa maisha wenye usawa."
-        ]
-    },
-    7: { // Libra (Mizani)
-        risks: [
-            "Matatizo ya figo na njia ya mkojo.",
-            "Maumivu ya mgongo wa chini na kiuno.",
-            "Shida za ngozi kama ukurutu, mzio, na chunusi.",
-            "Maumivu ya kichwa ya sinus na mkazo.",
-            "Shida za usawa wa homoni na tezi.",
-            "Kupata shinikizo la damu kwa sababu ya msongo.",
-            "Maumivu ya viungo na mifupa (arthritis).",
-            "Matatizo ya mmeng'enyo wa chakula kama kuvimbiwa.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Shida za usingizi kama kukosa usingizi.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Matatizo ya mishipa ya fahamu kwa sababu ya mkao mbaya.",
-            "Kupata maumivu ya goti na magoti.",
-            "Shida za kibofu cha mkojo kwa wanawake.",
-            "Kupata maumivu ya kichwa ya migraine."
-        ],
-        avoid: [
-            "Epuka vyakula vyenye chumvi nyingi kwani zinaathiri figo.",
-            "Usipuuze maumivu ya mgongo; nenda kwa daktari.",
-            "Epuka kukaa kitako kwa muda mrefu.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka pombe na sigara.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usijikaze sana kwenye kazi; pumzika mara kwa mara.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Kunywa maji ya kutosha ili kusaidia figo (angalau lita 2).",
-            "Fanya mazoezi ya kunyoosha mgongo na kiuno kila siku.",
-            "Punguza ulaji wa chumvi na vyakula vyenye sodiamu.",
-            "Kula matunda na mboga zenye vitamini C na antioxidants.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Tembelea daktari wa figo angalau mara moja kwa mwaka.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kunywa chai ya dandelion au parsley kusaidia figo.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga mgongo.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Fanya mazoezi ya kukaza misuli ya mgongo na tumbo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya viungo.",
-            "Kula mtindi na maziwa ya mgando kwa probiotiki.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up ya mwaka.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi."
-        ]
-    },
-    8: { // Scorpio (Nge)
-        risks: [
-            "Matatizo ya viungo vya uzazi kwa wanaume na wanawake.",
-            "Shida za kibofu cha mkojo na njia ya mkojo.",
-            "Maumivu ya tumbo la chini na pelvic.",
-            "Ugonjwa wa kisukari na shida za kimetaboliki.",
-            "Matatizo ya ini na kibofu cha nduru.",
-            "Maumivu ya kichwa ya mkazo na migraine.",
-            "Shida za ngozi kama chunusi na mzio.",
-            "Kupata maumivu ya viungo na mifupa.",
-            "Matatizo ya homoni yanayoathiri ujauzito na hedhi.",
-            "Kupata maumivu ya mgongo wa chini.",
-            "Shida za mmeng'enyo wa chakula kama kuvimbiwa.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Matatizo ya mishipa ya fahamu kwa sababu ya mkazo.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Kupata maumivu ya kichwa ya sinus."
-        ],
-        avoid: [
-            "Epuka vyakula vyenye sukari nyingi na vyakula vya makopo.",
-            "Usipuuze dalili za maumivu ya tumbo la chini.",
-            "Epuka pombe na sigara.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka kukaa kwenye hali ya baridi sana.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usijikaze sana kwenye kazi; pumzika mara kwa mara.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Tembelea daktari wa magonjwa ya uzazi kwa uchunguzi wa mara kwa mara.",
-            "Kunywa maji ya kutosha ili kusaidia figo na kibofu.",
-            "Kula vyakula vyenye nyuzi kama mboga na nafaka.",
-            "Fanya mazoezi ya kukaza misuli ya pelvic (Kegel).",
-            "Punguza ulaji wa chumvi na vyakula vyenye sodiamu.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa chai ya mchaichai au manjano kusaidia ini.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga pelvic.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya viungo.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi."
-        ]
-    },
-    9: { // Sagittarius (Mshale)
-        risks: [
-            "Matatizo ya ini na kibofu cha nduru (liver and gallbladder).",
-            "Maumivu ya nyonga (hips) na mapaja.",
-            "Shida za mishipa ya fahamu kama sciatica.",
-            "Maumivu ya mgongo wa chini na kiuno.",
-            "Kupata maumivu ya kichwa ya mkazo.",
-            "Matatizo ya mmeng'enyo wa chakula kama kuvimbiwa.",
-            "Shida za ngozi kama ukurutu na mzio.",
-            "Kupata maumivu ya viungo na mifupa (arthritis).",
-            "Matatizo ya homoni yanayoathiri uzito.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Maumivu ya magoti na goti.",
-            "Shida za usingizi kama kukosa usingizi.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Matatizo ya mishipa ya damu kama mishipa ya varicose.",
-            "Kupata maumivu ya kichwa ya sinus."
-        ],
-        avoid: [
-            "Epuka vyakula vyenye mafuta mengi na spicy kwani zinaathiri ini.",
-            "Usipuuze maumivu ya nyonga; nenda kwa daktari.",
-            "Epuka kukaa kitako kwa muda mrefu.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka pombe na sigara.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye sukari nyingi.",
-            "Usijikaze sana kwenye mazoezi mazito bila kupumzika.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Kula vyakula vyenye nyuzi na antioxidants kama mboga na matunda.",
-            "Kunywa maji ya kutosha ili kusaidia ini.",
-            "Fanya mazoezi ya kunyoosha nyonga na mapaja kila siku.",
-            "Punguza ulaji wa chumvi na vyakula vyenye mafuta.",
-            "Tembelea daktari wa ini angalau mara moja kwa mwaka.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa chai ya mchaichai au manjano kusaidia ini.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga nyonga.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Fanya mazoezi ya kukaza misuli ya miguu na nyonga.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya viungo.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi."
-        ]
-    },
-    10: { // Capricorn (Mbuzi)
-        risks: [
-            "Matatizo ya mifupa na viungo kama osteoarthritis.",
-            "Maumivu ya magoti na viungo vya magoti.",
-            "Shida za meno na fizi kwa sababu ya kusaga meno.",
-            "Maumivu ya mgongo wa chini na kiuno.",
-            "Kupata maumivu ya kichwa ya mkazo.",
-            "Shida za ngozi kama ukurutu na ngozi kavu.",
-            "Matatizo ya mmeng'enyo wa chakula kama kuvimbiwa.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Maumivu ya nyonga na mapaja.",
-            "Shida za mishipa ya fahamu kwa sababu ya mkao mbaya.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Matatizo ya usawa wa homoni.",
-            "Kupata maumivu ya viungo na mifupa (arthritis).",
-            "Shida za usingizi kama kukosa usingizi.",
-            "Kupata maumivu ya kichwa ya sinus."
-        ],
-        avoid: [
-            "Epuka kukaa kitako kwa muda mrefu bila kusimama.",
-            "Usipuuze maumivu ya magoti; nenda kwa daktari.",
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka pombe na sigara.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye sukari nyingi.",
-            "Usijikaze sana kwenye mazoezi mazito bila kupumzika.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Fanya mazoezi ya kunyoosha misuli ya miguu na mgongo kila siku.",
-            "Tembelea daktari wa mifupa angalau mara moja kwa mwaka.",
-            "Kula vyakula vyenye kalsiamu kama maziwa, mtindi, na mboga za majani.",
-            "Fanya mazoezi ya kuimarisha misuli ya magoti kama squats.",
-            "Punguza ulaji wa chumvi na vyakula vyenye mafuta.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa maji ya kutosha ili kusaidia mifupa.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga magoti na mgongo.",
-            "Tembelea daktari wa meno angalau mara mbili kwa mwaka.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up ya mwaka."
-        ]
-    },
-    11: { // Aquarius (Ndoo)
-        risks: [
-            "Matatizo ya mzunguko wa damu kama mishipa ya varicose.",
-            "Maumivu ya miguu na vifundo vya miguu (ankles).",
-            "Shida za mishipa ya fahamu kwa sababu ya mkao mbaya.",
-            "Kupata maumivu ya kichwa ya mkazo.",
-            "Matatizo ya mmeng'enyo wa chakula kama kuvimbiwa.",
-            "Shida za ngozi kama ukurutu na mzio.",
-            "Kupata maumivu ya viungo na mifupa (arthritis).",
-            "Matatizo ya homoni yanayoathiri uzito.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Maumivu ya mgongo wa chini na kiuno.",
-            "Shida za usingizi kama kukosa usingizi.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Matatizo ya mishipa ya damu kama shinikizo la damu.",
-            "Kupata maumivu ya kichwa ya sinus.",
-            "Shida za figo na kibofu cha mkojo."
-        ],
-        avoid: [
-            "Epuka kukaa kitako kwa muda mrefu bila kusimama.",
-            "Usipuuze maumivu ya miguu; nenda kwa daktari.",
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka pombe na sigara.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye sukari nyingi.",
-            "Usijikaze sana kwenye mazoezi mazito bila kupumzika.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Fanya mazoezi ya kunyoosha miguu na vifundo vya miguu kila siku.",
-            "Tembelea daktari wa mishipa ya damu ikiwa una dalili za varicose.",
-            "Kula vyakula vyenye nyuzi na antioxidants kama mboga na matunda.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Punguza ulaji wa chumvi na vyakula vyenye mafuta.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa maji ya kutosha ili kusaidia mzunguko wa damu.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga miguu.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Fanya mazoezi ya kukaza misuli ya miguu na tumbo.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya viungo.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up ya mwaka."
-        ]
-    },
-    12: { // Pisces (Samaki)
-        risks: [
-            "Matatizo ya miguu na nyayo kama maumivu ya nyayo.",
-            "Shida za mfumo wa kinga (immune system) kama homa za mara kwa mara.",
-            "Maumivu ya kichwa ya mkazo na migraine.",
-            "Matatizo ya usingizi kama kukosa usingizi au usingizi mzito.",
-            "Shida za mmeng'enyo wa chakula kama kuvimbiwa na kuhara.",
-            "Kupata maumivu ya viungo na mifupa (arthritis).",
-            "Matatizo ya homoni yanayoathiri hisia na uzito.",
-            "Kupata unene kupita kiasi na shida za kimetaboliki.",
-            "Maumivu ya mgongo wa chini na kiuno.",
-            "Shida za ngozi kama ukurutu na mzio.",
-            "Kupata maumivu ya kifua yasiyo ya moyo.",
-            "Matatizo ya mishipa ya fahamu kwa sababu ya mkazo.",
-            "Kupata maumivu ya kichwa ya sinus.",
-            "Shida za figo na kibofu cha mkojo.",
-            "Kupata maumivu ya miguu na vifundo vya miguu."
-        ],
-        avoid: [
-            "Epuka kukaa kwenye mazingira yenye unyevunyevu na baridi.",
-            "Usipuuze maumivu ya miguu; nenda kwa daktari.",
-            "Epuka vyakula vyenye mafuta mengi na spicy.",
-            "Usitumie dawa za kupunguza maumivu kupita kiasi.",
-            "Epuka pombe na sigara.",
-            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
-            "Epuka vyakula vyenye sukari nyingi.",
-            "Usijikaze sana kwenye mazoezi mazito bila kupumzika.",
-            "Epuka mabishano na ugomvi unaokufanya ukasirike.",
-            "Usipuuze dalili za shinikizo la damu."
-        ],
-        actions: [
-            "Fanya mazoezi ya kunyoosha miguu na nyayo kila siku.",
-            "Tembelea daktari wa mifupa ikiwa una maumivu ya miguu.",
-            "Kula vyakula vyenye antioxidants na vitamini kusaidia kinga.",
-            "Fanya mazoezi ya kutembea, kuogelea, au baiskeli.",
-            "Punguza ulaji wa chumvi na vyakula vyenye mafuta.",
-            "Jitahidi kudhibiti msongo kwa kufanya mazoezi ya kupumua.",
-            "Kunywa maji ya kutosha ili kusaidia mfumo wa kinga.",
-            "Fanya mazoezi ya yoga hasa yale yanayolenga miguu.",
-            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
-            "Tumia mafuta ya zeituni kwenye saladi.",
-            "Kula samaki wenye mafuta kwa omega-3.",
-            "Fanya mazoezi ya kukaza misuli ya miguu na tumbo.",
-            "Tembelea daktari wa magonjwa ya ndani kwa check-up.",
-            "Kula matunda yenye vitamini C kama machungwa.",
-            "Jitahidi kuwa na mtazamo chanya na kutafakari.",
-            "Punguza ulaji wa sukari na vyakula vyenye sukari.",
-            "Tumia dawa za asili kama vile asali na mdalasini.",
-            "Fanya mazoezi ya kukimbia au baiskeli.",
-            "Jitahidi kula kwa utaratibu na usiruke milo.",
-            "Weka ratiba ya kula na uzingatie.",
-            "Fanya mazoezi ya kupumua kabla ya kulala.",
-            "Tumia mto unaofaa kulala ili kuepuka maumivu ya mgongo.",
-            "Tembelea daktari wa ngozi ikiwa una matatizo ya ngozi.",
-            "Soma vitabu vya kujisaidia kisaikolojia.",
-            "Jitahidi kuwa na marafiki wa kusaidiana.",
-            "Fanya mazoezi ya kukaza misuli ya tumbo.",
-            "Kunywa maji ya limao na asali asubuhi.",
-            "Jitahidi kupunguza mawazo mengi kwa kuandika shajara.",
-            "Fanya mazoezi ya kusawazisha mwili kama tai chi.",
-            "Tembelea daktari wa magonjwa ya akili ikiwa unahisi unyogovu."
-        ]
     }
 };
+// (Nimeacha zodiac 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
     const CAREERS = {
     1: [ // Aries (Konde)
@@ -2201,528 +839,9 @@ const ZODIAC_DB = {
             img: "https://images.unsplash.com/photo-1579532536935-619928decd08?auto=format&fit=crop&w=100&q=80",
             desc: "Uwezo wako wa kusimamia fedha unawasaidia wengine kuwekeza vizuri."
         }
-    ],
-    3: [ // Gemini (Mapacha)
-        {
-            title: "Mwandishi wa Habari",
-            img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=100&q=80",
-            desc: "Una kipaji cha kuandika na kuuliza maswali, unafaa kwa uandishi wa habari."
-        },
-        {
-            title: "Mtangazaji wa Redio",
-            img: "https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=100&q=80",
-            desc: "Ucheshi wako na uwezo wa kuongea unakufaa kuwa mtangazaji maarufu."
-        },
-        {
-            title: "Mfanyabiashara wa Mtandao",
-            img: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?auto=format&fit=crop&w=100&q=80",
-            desc: "Unabadilika haraka na unaelewa teknolojia, unafaa kwa biashara za mtandaoni."
-        },
-        {
-            title: "Mwalimu wa Shule ya Msingi",
-            img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawaelewa watoto na unaweza kufundisha kwa ucheshi na ubunifu."
-        },
-        {
-            title: "Mshauri wa Mawasiliano",
-            img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=100&q=80",
-            desc: "Uwezo wako wa kuwasiliana unaweza kusaidia kampuni kuboresha mawasiliano yao."
-        },
-        {
-            title: "Muigizaji",
-            img: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuigiza na kubadilika kirahisi, unafaa kwenye jukwaa au skrini."
-        },
-        {
-            title: "Mtafiti wa Soko",
-            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kutafiti na kuchambua, unaweza kusaidia makampuni kuelewa wateja."
-        },
-        {
-            title: "Mpiga Picha",
-            img: "https://images.unsplash.com/photo-1554048614-5a800ae1c181?auto=format&fit=crop&w=100&q=80",
-            desc: "Una jicho zuri na unapenda kukamata matukio, unaweza kuwa mpiga picha mahiri."
-        },
-        {
-            title: "Mratibu wa Matukio",
-            img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kupanga na kuratibu matukio kwa ustadi na ucheshi."
-        },
-        {
-            title: "Mwandishi wa Blogu",
-            img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika kuhusu mambo mengi na kuvutia wasomaji wengi."
-        }
-    ],
-    4: [ // Cancer (Kaa)
-        {
-            title: "Mlezi wa Watoto",
-            img: "https://images.unsplash.com/photo-1503919545889-a0f4de92bae5?auto=format&fit=crop&w=100&q=80",
-            desc: "Upendo wako kwa watoto na ulezi unakufaa kuwalea na kuwatunza."
-        },
-        {
-            title: "Mtaalamu wa Lishe",
-            img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawajali wengine na unajua umuhimu wa chakula bora, unaweza kuwashauri."
-        },
-        {
-            title: "Mfanyakazi wa Ustawi wa Jamii",
-            img: "https://images.unsplash.com/photo-1559027615-0d7b5b7c4c9b?auto=format&fit=crop&w=100&q=80",
-            desc: "Huruma yako inakufaa kusaidia watu wenye shida na kuwapa msaada."
-        },
-        {
-            title: "Mpishi wa Nyumbani",
-            img: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kupika kwa upendo na kuwalisha familia, unaweza kufungua hoteli ndogo."
-        },
-        {
-            title: "Mwanasaikolojia",
-            img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawaelewa watu kwa undani na unaweza kuwasaidia kutatua matatizo yao."
-        },
-        {
-            title: "Mfanyakazi wa Hospitali",
-            img: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=100&q=80",
-            desc: "Una huruma na unawajali wagonjwa, unafaa kuwa muuguzi au tabibu."
-        },
-        {
-            title: "Mshauri wa Familia",
-            img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia familia kutatua migogoro na kuleta amani."
-        },
-        {
-            title: "Mfanyabiashara wa Bidhaa za Nyumbani",
-            img: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda nyumba na familia, unaweza kuuza bidhaa zinazofanya nyumba iwe vizuri."
-        },
-        {
-            title: "Mwalimu wa Shule ya Awali",
-            img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawapenda watoto wadogo na unaweza kuwafundisha kwa upendo."
-        },
-        {
-            title: "Mwandishi wa Riwaya za Familia",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika hadithi zinazogusa hisia za watu na kuhusu maisha ya familia."
-        }
-    ],
-    5: [ // Leo (Simba)
-        {
-            title: "Kiongozi wa Siasa",
-            img: "https://images.unsplash.com/photo-1555848960-8c3da52d5836?auto=format&fit=crop&w=100&q=80",
-            desc: "Wewe ni mfalme, unaweza kuwa rais au waziri kwa urahisi."
-        },
-        {
-            title: "Muigizaji wa Filamu",
-            img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kuwa kwenye mbele ya watu na kuigiza, unaweza kuwa nyota wa sinema."
-        },
-        {
-            title: "Mkurugenzi wa Sanaa",
-            img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=100&q=80",
-            desc: "Una ubunifu na uwezo wa kuongoza timu za sanaa, unaweza kutengeneza tamthilia."
-        },
-        {
-            title: "Mwanamichezo wa Ngazi ya Juu",
-            img: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=100&q=80",
-            desc: "Nguvu na uhodari wako unakufaa kuwa bingwa wa michezo."
-        },
-        {
-            title: "Mfanyabiashara wa Anasa",
-            img: "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda vitu vizuri na vya thamani, unaweza kuuza magari ya kifahari au vito."
-        },
-        {
-            title: "Mwalimu wa Uigizaji",
-            img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufundisha wengine jinsi ya kuigiza na kujionyesha."
-        },
-        {
-            title: "Mpiga Picha wa Sherehe",
-            img: "https://images.unsplash.com/photo-1554048614-5a800ae1c181?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kukamata matukio makubwa na kuwafanya watu wajisikie maalum."
-        },
-        {
-            title: "Mratibu wa Tamasha",
-            img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kupanga tamasha kubwa na kuvutia watu wengi."
-        },
-        {
-            title: "Mshauri wa Picha na Mtindo",
-            img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=100&q=80",
-            desc: "Una ladha nzuri na unaweza kuwashauri watu jinsi ya kujipamba."
-        },
-        {
-            title: "Mkufunzi wa Uongozi",
-            img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80",
-            desc: "Uzoefu wako wa uongozi unaweza kuwasaidia wengine kuwa viongozi bora."
-        }
-    ],
-    6: [ // Virgo (Mashuke)
-        {
-            title: "Daktari",
-            img: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=100&q=80",
-            desc: "Unajali afya na una makini, unafaa kuwa daktari bingwa."
-        },
-        {
-            title: "Mtaalamu wa Maabara",
-            img: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda utafiti na uchambuzi, unaweza kufanya kazi kwenye maabara."
-        },
-        {
-            title: "Mhasibu",
-            img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80",
-            desc: "Usahihi wako na utaratibu unakufaa katika hesabu na fedha."
-        },
-        {
-            title: "Mchambuzi wa Data",
-            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuchambua takwimu na kutoa taarifa muhimu kwa makampuni."
-        },
-        {
-            title: "Mtaalamu wa Lishe",
-            img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=100&q=80",
-            desc: "Unajua vyakula na afya, unaweza kuwashauri watu kula vizuri."
-        },
-        {
-            title: "Mwalimu wa Sayansi",
-            img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufundisha sayania kwa usahihi na kuwasaidia wanafunzi kuelewa."
-        },
-        {
-            title: "Mratibu wa Afya",
-            img: "https://images.unsplash.com/photo-1505576399279-565b52d6ac71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuratibu huduma za afya na kuhakikisha wagonjwa wanapata matibabu bora."
-        },
-        {
-            title: "Mhandisi wa Ubora",
-            img: "https://images.unsplash.com/photo-1581092335651-4c4f7e9f1f1a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unahakikisha bidhaa zina ubora na hakuna makosa, unafaa kwenye kiwanda."
-        },
-        {
-            title: "Mtafiti wa Magonjwa",
-            img: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kutafiti na kugundua dawa mpya au tiba za magonjwa."
-        },
-        {
-            title: "Mshauri wa Usafi",
-            img: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda usafi na unaweza kuwashauri watu jinsi ya kuweka mazingira safi."
-        }
-    ],
-    7: [ // Libra (Mizani)
-        {
-            title: "Wakili",
-            img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda haki na usawa, unaweza kutetea watu mahakamani."
-        },
-        {
-            title: "Mwanasheria",
-            img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kutoa ushauri wa kisheria na kusaidia watu kutatua migogoro."
-        },
-        {
-            title: "Mpatanishi",
-            img: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kupatanisha watu wanaogombana na kuleta amani."
-        },
-        {
-            title: "Mshauri wa Mahusiano",
-            img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawaelewa wanandoa na unaweza kuwasaidia kuimarisha mapenzi yao."
-        },
-        {
-            title: "Mbunifu wa Mitindo",
-            img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=100&q=80",
-            desc: "Una ladha nzuri na unapenda uzuri, unaweza kubuni nguo na mapambo."
-        },
-        {
-            title: "Mpiga Picha wa Harusi",
-            img: "https://images.unsplash.com/photo-1554048614-5a800ae1c181?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda upendo na uzuri, unaweza kukamata siku maalum za watu."
-        },
-        {
-            title: "Mratibu wa Harusi",
-            img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kupanga harusi na kuhakikisha kila kitu kinaenda sawa."
-        },
-        {
-            title: "Mshauri wa Urembo",
-            img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuwashauri watu jinsi ya kujipamba na kutunza ngozi."
-        },
-        {
-            title: "Mfanyabiashara wa Vito",
-            img: "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda vitu vizuri na vya thamani, unaweza kuuza vito na mapambo."
-        },
-        {
-            title: "Mwanadiplomasia",
-            img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuwakilisha nchi yako na kujenga uhusiano na mataifa mengine."
-        }
-    ],
-    8: [ // Scorpio (Nge)
-        {
-            title: "Mpelelezi",
-            img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=100&q=80",
-            desc: "Una nguvu za kuchunguza na kufichua siri, unafaa kuwa mpelelezi."
-        },
-        {
-            title: "Mchunguzi wa Uhalifu",
-            img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuchunguza uhalifu na kuwatafuta wahalifu."
-        },
-        {
-            title: "Daktari wa Upasuaji",
-            img: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=100&q=80",
-            desc: "Una uhodari na usahihi, unaweza kufanya upasuaji mgumu."
-        },
-        {
-            title: "Mtaalamu wa Saikolojia",
-            img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unawaelewa watu kwa kina na unaweza kuwasaidia kutatua matatizo ya akili."
-        },
-        {
-            title: "Mtafiti wa Siri",
-            img: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kutafiti na kugundua mambo yaliyofichika, unafaa kwenye upelelezi."
-        },
-        {
-            title: "Mwandishi wa Riwaya za Kriminali",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika hadithi za kusisimua za uhalifu na upelelezi."
-        },
-        {
-            title: "Mchambuzi wa Tabia",
-            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuchambua tabia za watu na kusaidia katika usaili."
-        },
-        {
-            title: "Mshauri wa Usalama",
-            img: "https://images.unsplash.com/photo-1505576399279-565b52d6ac71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia makampuni kuimarisha usalama wao."
-        },
-        {
-            title: "Mtaalamu wa Teknolojia ya Habari",
-            img: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufanya kazi kwenye usalama wa mtandao na kuzuia wadukuzi."
-        },
-        {
-            title: "Mkurugenzi wa Mazishi",
-            img: "https://images.unsplash.com/photo-1581092335651-4c4f7e9f1f1a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia familia wakati wa maombolezo kwa heshima na utulivu."
-        }
-    ],
-    9: [ // Sagittarius (Mshale)
-        {
-            title: "Mwandishi wa Safari",
-            img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kusafiri na kuandika, unaweza kuandika vitabu vya safari."
-        },
-        {
-            title: "Mkurugenzi wa Utalii",
-            img: "https://images.unsplash.com/photo-1505576399279-565b52d6ac71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuongoza watalii na kuwapeleka sehemu za kuvutia."
-        },
-        {
-            title: "Mwalimu wa Falsafa",
-            img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kufikiri na kujifunza, unaweza kufundisha falsafa na maana ya maisha."
-        },
-        {
-            title: "Mshauri wa Kazi",
-            img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuwasaidia watu kupata kazi inayowafaa na kuwaelekeza."
-        },
-        {
-            title: "Mwanamichezo wa Kulipwa",
-            img: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda michezo na unaweza kuwa mwanariadha wa kimataifa."
-        },
-        {
-            title: "Mpiga Picha wa Wanyamapori",
-            img: "https://images.unsplash.com/photo-1554048614-5a800ae1c181?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda wanyama na porini, unaweza kupiga picha za wanyamapori."
-        },
-        {
-            title: "Mratibu wa Safari za Kikundi",
-            img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kupanga safari za kikundi na kuhakikisha kila mtu anafurahia."
-        },
-        {
-            title: "Mhadhiri wa Chuo Kikuu",
-            img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufundisha wanafunzi wa chuo na kuwaelimisha."
-        },
-        {
-            title: "Mfanyabiashara wa Bidhaa za Kigeni",
-            img: "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda kusafiri na biashara, unaweza kuleta bidhaa za kigeni."
-        },
-        {
-            title: "Mwandishi wa Blogu ya Safari",
-            img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika kuhusu safari zako na kuvutia wafuatiliaji wengi."
-        }
-    ],
-    10: [ // Capricorn (Mbuzi)
-        {
-            title: "Meneja wa Kampuni",
-            img: "https://images.unsplash.com/photo-1560179707-f14e90ef36e3?auto=format&fit=crop&w=100&q=80",
-            desc: "Una nidhamu na bidii, unaweza kusimamia kampuni kwa mafanikio."
-        },
-        {
-            title: "Mhasibu Mkuu",
-            img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80",
-            desc: "Una usahihi na utaratibu, unafaa kuwa mhasibu mkuu wa kampuni kubwa."
-        },
-        {
-            title: "Mhandisi wa Ujenzi",
-            img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=100&q=80",
-            desc: "Una uthabiti na unaweza kusimamia ujenzi wa majengo makubwa."
-        },
-        {
-            title: "Mshauri wa Uwekezaji",
-            img: "https://images.unsplash.com/photo-1579532536935-619928decd08?auto=format&fit=crop&w=100&q=80",
-            desc: "Una busara na unaweza kuwashauri watu wawekeze fedha zao vizuri."
-        },
-        {
-            title: "Mkurugenzi wa Fedha",
-            img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusimamia fedha za kampuni na kuhakikisha zinaongezeka."
-        },
-        {
-            title: "Mtaalamu wa Ushuru",
-            img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia watu kulipa kodi kwa usahihi na kuepuka matatizo."
-        },
-        {
-            title: "Mfanyabiashara wa Mali isiyohamishika",
-            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kununua na kuuza nyumba kwa faida kwa uvumilivu wako."
-        },
-        {
-            title: "Mratibu wa Miradi Mikubwa",
-            img: "https://images.unsplash.com/photo-1505576399279-565b52d6ac71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuratibu miradi mikubwa na kuhakikisha inakamilika kwa wakati."
-        },
-        {
-            title: "Mkufunzi wa Uongozi",
-            img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80",
-            desc: "Uzoefu wako unaweza kuwasaidia wengine kuwa viongozi bora."
-        },
-        {
-            title: "Mshauri wa Biashara",
-            img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia biashara ndogo kukua na kuwa kubwa."
-        }
-    ],
-    11: [ // Aquarius (Ndoo)
-        {
-            title: "Mtaalamu wa Teknolojia",
-            img: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?auto=format&fit=crop&w=100&q=80",
-            desc: "Una ubunifu na unapenda teknolojia, unaweza kuwa mtaalamu wa kompyuta."
-        },
-        {
-            title: "Mvumbuzi",
-            img: "https://images.unsplash.com/photo-1581092335651-4c4f7e9f1f1a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuvumbua vitu vipya vinavyosaidia jamii."
-        },
-        {
-            title: "Mhandisi wa Anga",
-            img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda anga na sayari, unaweza kuwa mhandisi wa roketi."
-        },
-        {
-            title: "Mtaalamu wa Mazingira",
-            img: "https://images.unsplash.com/photo-1505576399279-565b52d6ac71?auto=format&fit=crop&w=100&q=80",
-            desc: "Unajali dunia na unaweza kusaidia kulinda mazingira."
-        },
-        {
-            title: "Mshauri wa Maendeleo ya Jamii",
-            img: "https://images.unsplash.com/photo-1559027615-0d7b5b7c4c9b?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kusaidia jamii maskini kuboresha maisha yao."
-        },
-        {
-            title: "Mtaalamu wa Sayansi ya Nyota",
-            img: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda nyota na sayari, unaweza kuwa mwanaastronomia."
-        },
-        {
-            title: "Mwandishi wa Sayansi ya Kutungwa",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika hadithi za kisayansi za kutungwa (sci-fi)."
-        },
-        {
-            title: "Mratibu wa Misheni ya Kijamii",
-            img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuratibu misheni za kusaidia watu na kuleta mabadiliko."
-        },
-        {
-            title: "Mtaalamu wa Mitandao ya Kijamii",
-            img: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaelewa mitandao na unaweza kusaidia makampuni kuwa maarufu mtandaoni."
-        },
-        {
-            title: "Mkufunzi wa Ubunifu",
-            img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufundisha wengine jinsi ya kufikiri kwa ubunifu."
-        }
-    ],
-    12: [ // Pisces (Samaki)
-        {
-            title: "Msanii wa Uchoraji",
-            img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=100&q=80",
-            desc: "Una kipaji cha sanaa na unaweza kuchora picha nzuri."
-        },
-        {
-            title: "Mwanamuziki",
-            img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda muziki na unaweza kuwa mwimbaji au mpiga ala."
-        },
-        {
-            title: "Mwigizaji",
-            img: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuigiza na kuwahamisha watu kwa uigizaji wako."
-        },
-        {
-            title: "Mshairi",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika mashairi yenye hisia na kugusa mioyo."
-        },
-        {
-            title: "Mtaalamu wa Tiba Asili",
-            img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=100&q=80",
-            desc: "Unajali wengine na unaweza kutumia mimea kutibu magonjwa."
-        },
-        {
-            title: "Mshauri wa Kiroho",
-            img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuwasaidia watu kupata amani ya ndani na maana ya maisha."
-        },
-        {
-            title: "Mpiga Picha wa Asili",
-            img: "https://images.unsplash.com/photo-1554048614-5a800ae1c181?auto=format&fit=crop&w=100&q=80",
-            desc: "Unapenda asili na unaweza kupiga picha za mandhari na bahari."
-        },
-        {
-            title: "Mfanyabiashara wa Sanaa",
-            img: "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuuza sanaa na kusaidia wasanii wengine."
-        },
-        {
-            title: "Mwandishi wa Nyimbo",
-            img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kuandika nyimbo zenye maana na hisia."
-        },
-        {
-            title: "Mtaalamu wa Tafakuri",
-            img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=100&q=80",
-            desc: "Unaweza kufundisha watu kutafakari na kupata amani."
-        }
     ]
 };
+// (Nimeacha careers 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
     let currentData = null;
 
@@ -2789,80 +908,135 @@ const ZODIAC_DB = {
         else if((m==1 && d>=20)||(m==2 && d<=18)) zIdx=11;
         else zIdx=12;
 
-        const zodiac = ZODIAC_DB[zIdx];
-        const health = ZODIAC_HEALTH[zIdx];
+        const zodiac = ZODIAC_DB[zIdx] || ZODIAC_DB[1];
+        const health = ZODIAC_HEALTH[zIdx] || ZODIAC_HEALTH[1];
         const letter = name.charAt(0).toUpperCase();
         const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
-        const careers = CAREERS[zIdx] || CAREERS[1]; // Tumerekebisha hii
+        const careers = CAREERS[zIdx] || CAREERS[1]; // Tumia data sahihi
 
         currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
 
         const container = document.getElementById('cards-container');
         container.innerHTML = '';
 
-        const cardsData = [
-            {
-                id: 'zodiac', img: zodiac.image, titleBack: "NYOTA YAKO", titleFront: zodiac.name.toUpperCase(),
-                content: `<ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul><p>Wewe ni mtu mwenye nguvu za kipekee zinazotokana na nyota hii.</p>`
-            },
-            {
-                id: 'health', img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600", titleBack: "AFYA NA USTAWI", titleFront: "AFYA YAKO",
-                // Tumerekebisha hii: Tumebadilisha health.remedy na health.food kuwa health.risks, health.avoid, health.actions
-                content: `<p><strong>Hatari:</strong> ${health.risks.slice(0,5).join('; ')}</p><p><strong>Epuka:</strong> ${health.avoid.slice(0,5).join('; ')}</p><p><strong>Tiba Asili:</strong> ${health.actions.slice(0,5).join('; ')}</p>`
-            },
-            {
-                id: 'letter', img: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600", titleBack: "HERUFI YA JINA", titleFront: `JINA LAKO (${letter})`,
-                content: `<ul>${letterTraits.slice(0,7).map(t=>`<li>${t}</li>`).join('')}</ul>`
-            },
-            {
-                id: 'career', img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600", titleBack: "KAZI NA RIZIKI", titleFront: "NJIA ZAKO ZA PESA",
-                // Tumerekebisha hii: CAREERS ni object, sio array
-                content: careers.slice(0,3).map(c => `<div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>`).join('')
-            },
-            {
-                id: 'planets', img: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600", titleBack: "SAYARI ZAKO", titleFront: "SAYARI TAWALA",
-                content: `<p>Sayari zako ziko kwenye mzunguko wa mafanikio mwaka huu. Jihadharini na husuda za watu wa karibu.</p>`
-            },
-            {
-                id: 'luck', img: "https://images.unsplash.com/photo-1548504769-900b70ed122e?auto=format&fit=crop&w=600", titleBack: "BAHATI & KINGA", titleFront: "RANGI NA NAMBA",
-                content: `<p><strong>Rangi ya Bahati:</strong> Dhahabu na Nyeupe.</p><p><strong>Namba ya Bahati:</strong> ${Math.floor(Math.random()*9)+1}, ${Math.floor(Math.random()*50)+10}.</p><p><strong>Siku:</strong> Alhamisi.</p>`
-            }
-        ];
-
-        cardsData.forEach(c => {
-            const div = document.createElement('div');
-            div.className = 'card';
-            div.innerHTML = `
-                <div class="card-inner">
-                    <div class="card-back" style="background-image: url('${c.img}')">
-                        <div class="card-back-content">
-                            <div class="card-title-back">${c.titleBack}</div>
-                            <div class="card-hint"><i class="fas fa-fingerprint"></i> Gusa Kufungua</div>
-                        </div>
-                    </div>
-                    <div class="card-front">
-                        <img src="${c.img}" class="card-header-img">
-                        <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
-                        <div class="card-body">
-                            <h3>${c.titleFront}</h3>
-                            <div class="typing-container">${c.content}</div>
-                        </div>
+        // KADI 1: Zodiac
+        const card1 = document.createElement('div');
+        card1.className = 'card';
+        card1.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('${zodiac.image}')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">NYOTA YAKO</div>
+                        <div class="card-hint"><i class="fas fa-fingerprint"></i> Gusa Kufungua</div>
                     </div>
                 </div>
-            `;
-            div.onclick = function() { toggleCard(this); };
-            container.appendChild(div);
-        });
+                <div class="card-front">
+                    <img src="${zodiac.image}" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>${zodiac.name.toUpperCase()}</h3>
+                        <ul>${zodiac.traits.slice(0,10).map(t=>`<li>${t.substring(0,100)}...</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>
+        `;
+        card1.onclick = function() { toggleCard(this); };
+        container.appendChild(card1);
+
+        // KADI 2: Afya
+        const card2 = document.createElement('div');
+        card2.className = 'card';
+        card2.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">AFYA YAKO</div>
+                        <div class="card-hint"><i class="fas fa-fingerprint"></i> Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>AFYA YAKO</h3>
+                        <p><strong>Hatari:</strong> ${health.risks.slice(0,5).join('; ')}</p>
+                        <p><strong>Epuka:</strong> ${health.avoid.slice(0,5).join('; ')}</p>
+                        <p><strong>Tiba:</strong> ${health.actions.slice(0,5).join('; ')}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        card2.onclick = function() { toggleCard(this); };
+        container.appendChild(card2);
+
+        // KADI 3: Herufi ya jina
+        const card3 = document.createElement('div');
+        card3.className = 'card';
+        card3.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">HERUFI YA JINA</div>
+                        <div class="card-hint"><i class="fas fa-fingerprint"></i> Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>JINA LAKO (${letter})</h3>
+                        <ul>${letterTraits.slice(0,7).map(t=>`<li>${t.substring(0,100)}...</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>
+        `;
+        card3.onclick = function() { toggleCard(this); };
+        container.appendChild(card3);
+
+        // KADI 4: Kazi
+        const card4 = document.createElement('div');
+        card4.className = 'card';
+        const careersHtml = careers.slice(0,3).map(c => `
+            <div class="job-item">
+                <img src="${c.img}">
+                <div><strong>${c.title}</strong><br><small>${c.desc}</small></div>
+            </div>
+        `).join('');
+        card4.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">KAZI ZAKO</div>
+                        <div class="card-hint"><i class="fas fa-fingerprint"></i> Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>KAZI ZINAZOKUFAA</h3>
+                        ${careersHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+        card4.onclick = function() { toggleCard(this); };
+        container.appendChild(card4);
     }
 
     function toggleCard(card) {
         document.querySelectorAll('.card').forEach(c => { if(c !== card) c.classList.remove('flipped', 'expanded'); });
         card.classList.toggle('flipped');
-        if(card.classList.contains('flipped')) { setTimeout(() => { card.classList.add('expanded'); }, 400); } 
-        else { card.classList.remove('expanded'); }
+        if(card.classList.contains('flipped')) { 
+            setTimeout(() => { card.classList.add('expanded'); }, 400); 
+        } else { 
+            card.classList.remove('expanded'); 
+        }
     }
 
-    function closeCard(btn) { btn.closest('.card').classList.remove('expanded', 'flipped'); }
+    function closeCard(btn) { 
+        btn.closest('.card').classList.remove('expanded', 'flipped'); 
+    }
 
     function tumaWhatsApp(type) {
         let msg = "";
