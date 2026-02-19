@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="sw">
 <head>
@@ -43,7 +44,139 @@
             overflow-x: hidden;
         }
 
-        /* ===== 1. INTRO ANIMATION ===== */
+        /* ===== CODE ACCESS OVERLAY ===== */
+        #code-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .code-box {
+            background: var(--panel-black);
+            border: 2px solid var(--gold-dark);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-shine), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .code-box h2 {
+            color: var(--gold-shine);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 10px;
+        }
+
+        .code-box p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .code-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold-dark);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px rgba(212,175,55,0.3);
+        }
+
+        .btn-code {
+            background: linear-gradient(135deg, #8B6914, #D4AF37);
+            border: none;
+            color: #000;
+            font-weight: bold;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .btn-code:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--gold-dark);
+        }
+
+        .whatsapp-code-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-code-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            min-height: 20px;
+        }
+
+        /* ===== MAIN CONTENT (initially hidden) ===== */
+        #main-content {
+            display: none;
+        }
+
+        /* ===== INTRO ANIMATION ===== */
         #intro-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 9999; display: none;
@@ -327,6 +460,23 @@
 </head>
 <body>
 
+<!-- CODE ACCESS OVERLAY -->
+<div id="code-overlay">
+    <div class="code-box">
+        <h2><i class="fas fa-lock"></i> INGIZA CODE YA KUFUNGUA</h2>
+        <p>Kilinge hiki kimefungwa kwa siri. Weka code uliyopewa na Dr. William.</p>
+        <input type="text" id="access-code" class="code-input" placeholder="#" maxlength="4" autocomplete="off">
+        <button class="btn-code" onclick="verifyCode()">FUNGUA KILINGE</button>
+        <div class="error-message" id="code-error"></div>
+        <button class="whatsapp-code-btn" onclick="requestCodeViaWhatsApp()">
+            <i class="fab fa-whatsapp"></i> OMBA CODE KUPITIA WHATSAPP
+        </button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT (initially hidden) -->
+<div id="main-content">
+
 <!-- INTRO ANIMATION OVERLAY -->
 <div id="intro-overlay">
     <div class="mystic-circle"></div>
@@ -483,16 +633,40 @@
     
 </div>
 
-<!-- WHATSAPP FLOAT -->
+</div> <!-- closing main-content -->
+
+<!-- WHATSAPP FLOAT (visible even before login) -->
 <div class="whatsapp-float" onclick="window.open('https://wa.me/255762286282', '_blank')">
     <i class="fab fa-whatsapp"></i>
 </div>
 
 <script>
    // ================================================================
-// ZODIAC_DB KAMILI – SIFA 24 KWA KILA ZODIAK + PICHA
-// ================================================================
+   // VALID CODES
+   const validCodes = ['W001', 'W002', 'W003'];
 
+   function verifyCode() {
+        const codeInput = document.getElementById('access-code').value.trim().toUpperCase();
+        const errorDiv = document.getElementById('code-error');
+        if (validCodes.includes(codeInput)) {
+            // Correct code: hide overlay, show main content
+            document.getElementById('code-overlay').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        } else {
+            errorDiv.innerText = '❌ Code si sahihi. Jaribu tena au omba code kupitia WhatsApp.';
+        }
+   }
+
+   function requestCodeViaWhatsApp() {
+        const msg = "Ninaomba code ya kuingia kwenye Kilinge cha Dr. William.";
+        window.open(`https://wa.me/255762286282?text=${encodeURIComponent(msg)}`, '_blank');
+   }
+
+   // ================================================================
+   // EXISTING CODE (with minor modifications to ensure main content is hidden initially)
+   // ================================================================
+
+// ZODIAC_DB, HERUFI_DB, ZODIAC_HEALTH, CAREERS (same as before, shortened for brevity, but in real code all data present)
 const ZODIAC_DB = {
     1: {
         name: "Konde (Aries - Al-Hamal)",
@@ -555,9 +729,8 @@ const ZODIAC_DB = {
         ]
     }
 };
-// (Nimeacha zodiac 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
-    const HERUFI_DB = {
+const HERUFI_DB = {
     'A': [
         "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo mkubwa wa uongozi; huwa wanawatia watu moyo na kuwaongoza kwa busara, na huwa wa kwanza kuchukua hatua katika hali zote.",
         "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kushinda changamoto; hawakimbii matatizo wala hofu, bali hukabiliana nayo kwa ujasiri na kuibuka washindi.",
@@ -603,9 +776,8 @@ const ZODIAC_DB = {
         "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuepuka migogoro hata ikihitajika; mara nyingine wanakimbia migogoro muhimu."
     ]
 };
-// (Nimeacha herufi C-Z kwa ufupi, lakini kwenye code yako kamili zipo)
 
-    const ZODIAC_HEALTH = {
+const ZODIAC_HEALTH = {
     1: { // Aries (Konde)
         risks: [
             "Maumivu ya kichwa ya mara kwa mara yanayosababishwa na mkazo na msongo wa mawazo.",
@@ -733,9 +905,8 @@ const ZODIAC_DB = {
         ]
     }
 };
-// (Nimeacha zodiac 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
-    const CAREERS = {
+const CAREERS = {
     1: [ // Aries (Konde)
         {
             title: "Kiongozi wa Jeshi",
@@ -841,7 +1012,6 @@ const ZODIAC_DB = {
         }
     ]
 };
-// (Nimeacha careers 3-12 kwa ufupi, lakini kwenye code yako kamili zipo)
 
     let currentData = null;
 
@@ -912,7 +1082,7 @@ const ZODIAC_DB = {
         const health = ZODIAC_HEALTH[zIdx] || ZODIAC_HEALTH[1];
         const letter = name.charAt(0).toUpperCase();
         const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
-        const careers = CAREERS[zIdx] || CAREERS[1]; // Tumia data sahihi
+        const careers = CAREERS[zIdx] || CAREERS[1];
 
         currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
 
@@ -1064,4 +1234,4 @@ const ZODIAC_DB = {
 </script>
 </body>
 </html>
-
+```
