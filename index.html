@@ -1231,9 +1231,100 @@ const CAREERS = {
         window.open(`https://wa.me/255762286282?text=${msg}`, '_blank');
     }
 </script>
+    <div class="services-container">
+    <h2 class="section-title">HUDUMA ZETU</h2>
+    
+    <div class="services-grid">
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1514415008039-087cc87e6c0c?q=80&w=400&fit=crop" alt="Huduma 1">
+            <span>Kuvunja Mizimu</span>
+        </a>
+
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?q=80&w=400&fit=crop" alt="Huduma 2">
+            <span>Tiba Asilia</span>
+        </a>
+
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?q=80&w=400&fit=crop" alt="Huduma 3">
+            <span>Ushauri wa Kiroho</span>
+        </a>
+
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400&fit=crop" alt="Huduma 4">
+            <span>Visomo Maalum</span>
+        </a>
+
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1515598344952-097560877960?q=80&w=400&fit=crop" alt="Huduma 5">
+            <span>Mafuta ya Baraka</span>
+        </a>
+
+        <a href="LINK_YAKO_HAPA" class="service-box">
+            <img src="https://images.unsplash.com/photo-1532187875605-2fe358511423?q=80&w=400&fit=crop" alt="Huduma 6">
+            <span>Vitabu Zaidi</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    .services-container {
+        margin-top: 100px; /* Hapa ndipo panaporuka zile nafasi 4 unazotaka */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .section-title {
+        color: #D4AF37;
+        font-family: serif;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Inajipanga yenyewe 3x3 au 2x2 kulingana na simu */
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .service-box {
+        position: relative;
+        height: 200px;
+        border-radius: 15px;
+        overflow: hidden;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        transition: transform 0.3s;
+    }
+
+    .service-box:hover {
+        transform: scale(1.05); /* Kinakuja mbele mteja akigusa */
+    }
+
+    .service-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(50%); /* Inafanya picha iwe na giza ili maandishi yaonekane */
+    }
+
+    .service-box span {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        right: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,1);
+    }
+</style>
 </body>
 </html>
 ```
+
 
 
 
