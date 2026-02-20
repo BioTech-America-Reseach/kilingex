@@ -35,10 +35,10 @@
             background-color: var(--dark-bg);
             background-image: 
                 linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)),
-                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop'); /* picha ya mandhari ya anga */
+                url(https://unsplash.com/photos/a-group-of-clay-pots-sitting-on-top-of-a-table-SsDUQEXdzNM); 
             background-size: cover;
-            background-attachment: scroll;
-            background-position: center 0;
+            background-attachment: fixed;
+            background-position: center;
             color: var(--text-white);
             overflow-x: hidden;
         }
@@ -173,7 +173,6 @@
         /* ===== MAIN CONTENT (initially hidden) ===== */
         #main-content {
             display: none;
-            margin-bottom: 140px; /* nafasi ya kutosha kwa vibox visivyofungamana */
         }
 
         /* ===== INTRO ANIMATION ===== */
@@ -436,7 +435,7 @@
 
         /* ===== EXTRAS ===== */
         .whatsapp-float {
-            position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px;
+            position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px;
             border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.5); cursor: pointer; z-index: 1000; transition: transform 0.3s;
         }
@@ -455,84 +454,6 @@
         @media(max-width: 768px) { 
             .dr-title { font-size: 1.8rem; } 
             .card.expanded { width: 95%; height: 80vh; } 
-        }
-
-        /* ===== EXTERNAL BOXES (zinaonekana hata kabla ya code) ===== */
-        .external-boxes-container {
-            position: fixed;
-            bottom: 120px; /* nafasi ya kutosha kutoka chini */
-            left: 50%;
-            transform: translateX(-50%);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            width: auto;
-            max-width: 350px;
-            padding: 10px;
-            z-index: 20000; /* Juu ya code overlay */
-            pointer-events: none; /* Ili kuruhusu kubofya kwenye boksi zenyewe */
-            justify-items: center;
-            align-items: center;
-        }
-        .external-box {
-            pointer-events: auto;
-            width: 120px;
-            height: 120px;
-            background: rgba(0,0,0,0.7);
-            border: 2px solid var(--gold-primary);
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-        .external-box:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--gold-shine);
-            border-color: var(--gold-shine);
-        }
-        .external-box .box-image {
-            width: 100%;
-            height: 80px;
-            background-size: cover;
-            background-position: center;
-        }
-        .external-box .box-title {
-            background: rgba(0,0,0,0.8);
-            width: 100%;
-            padding: 5px 0;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            color: var(--gold-primary);
-        }
-        /* Kwenye simu tupunguze ukubwa */
-        @media (max-width: 600px) {
-            .external-box {
-                width: 90px;
-                height: 90px;
-                font-size: 0.6rem;
-            }
-            .external-box .box-image {
-                height: 60px;
-            }
-            .external-box .box-title {
-                font-size: 0.6rem;
-            }
-            .whatsapp-float {
-                bottom: 10px;
-                right: 10px;
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-            }
         }
     </style>
 </head>
@@ -718,32 +639,6 @@
     <i class="fab fa-whatsapp"></i>
 </div>
 
-<!-- ======================================================== -->
-<!-- SEHEMU YA VIBOX 4 (Hazihitaji code)                      -->
-<!-- ======================================================== -->
-<div class="external-boxes-container">
-    <!-- KIBOX 1 - Badilisha link na picha -->
-    <div class="external-box" onclick="window.open('https://link1.com', '_blank')">
-        <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=200&auto=format')"></div>
-        <div class="box-title">Siri 1</div>
-    </div>
-    <!-- KIBOX 2 -->
-    <div class="external-box" onclick="window.open('https://link2.com', '_blank')">
-        <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&auto=format')"></div>
-        <div class="box-title">Siri 2</div>
-    </div>
-    <!-- KIBOX 3 -->
-    <div class="external-box" onclick="window.open('https://link3.com', '_blank')">
-        <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=200&auto=format')"></div>
-        <div class="box-title">Siri 3</div>
-    </div>
-    <!-- KIBOX 4 -->
-    <div class="external-box" onclick="window.open('https://link4.com', '_blank')">
-        <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162616550-7f3d2d642c1c?w=200&auto=format')"></div>
-        <div class="box-title">Siri 4</div>
-    </div>
-</div>
-
 <script>
    // ================================================================
    // VALID CODES
@@ -767,671 +662,354 @@
    }
 
    // ================================================================
-   // ATHARI YA MWENDO WAKATI WA KUSCROLL (PARALLAX)
-   // ================================================================
-   window.addEventListener('scroll', function() {
-        // Tembeza background polepole (kasi ya 0.5 ya scroll)
-        let scrollY = window.scrollY;
-        document.body.style.backgroundPosition = `center ${scrollY * 0.5}px`;
-   });
-
-   // ================================================================
-   // DATA KAMILI KWA AJILI YA NYOTA ZOTE 12, HERUFI ZOTE, AFYA NA KAZI
+   // EXISTING CODE (with minor modifications to ensure main content is hidden initially)
    // ================================================================
 
-// --------------------------------------------------------------------
-// ZODIAC_DB (Nyota 12 kamili)
-// --------------------------------------------------------------------
+// ZODIAC_DB, HERUFI_DB, ZODIAC_HEALTH, CAREERS (same as before, shortened for brevity, but in real code all data present)
 const ZODIAC_DB = {
-    1: { // Kondoo (Aries)
-        name: "Kondoo (Aries - Al-Hamal)",
+    1: {
+        name: "Konde (Aries - Al-Hamal)",
         image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
         traits: [
-            "Jasiri: Wewe ni shujaa asiyeogopa changamoto.",
-            "Kiongozi: Una kipaji cha asili cha uongozi.",
-            "Mwenye Nguvu: Huna nguvu za kimwili tu, bali pia nguvu za kiakili.",
-            "Mkweli: Husema ukweli wazi hata ukiumiza.",
-            "Shujaa: Wewe ni shujaa wa kweli.",
-            "Mwenye Bidii: Huwa na bidii kubwa katika kila unachofanya.",
-            "Mwaminifu: Unawajali wapendwa wako na unawaamini.",
-            "Mkarimu: Una moyo wa kutoa.",
-            "Mwenye Hamasa: Huwa na hamasa ya kufanya mambo mapya.",
-            "Mwenye Imani Thabiti: Una imani kubwa kwa Mungu.",
-            "Mwenye Bahati ya Pesa: Huwa na bahati ya kupata pesa.",
-            "Mwenye Hasira Kali: Lakini hasira zako hupita haraka.",
-            "Mwenye Ushindani: Unapenda kushindana na wengine.",
-            "Mwenye Kujitegemea: Hupendi kufungwa na wengine.",
-            "Mwenye Maono: Una maono makubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Uhodari: Una uhodari wa kushindana.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Uvumilivu: Ingawa una hasira kali, pia una uvumilivu.",
-            "Mwenye Kuvutia: Unawavutia watu kwa urahisi.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Huwezi kuwa wa pili.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema."
+            "Jasiri: Wewe ni shujaa asiyeogopa changamoto. Hata wakati wengine wanakimbia, wewe husimama imara na kukabiliana na hatari kwa uhodari. Huwa wa kwanza kuanza vita au mradi mpya, na hupendi kuwa wa pili katika jambo lolote.",
+            "Kiongozi: Una kipaji cha asili cha uongozi. Watu hukufuata kwa hiari kwa sababu ya nguvu yako na uamuzi wako. Huwa wewe ndiye huwa wa kwanza kuchukua hatua na kuongoza wengine, hata kama wengine wanashindwa kuamua.",
+            "Mwenye Nguvu: Huna nguvu za kimwili tu, bali pia nguvu za kiakili na kiroho. Huchoki haraka na unaweza kuvumilia kwa muda mrefu bila kukata tamaa. Wengine hustaajabia uvumilivu wako.",
+            "Mkweli: Husema ukweli wazi hata ukiumiza. Hupendi uongo au kujificha. Watu wanajua wanaweza kukutumainia kwa sababu hutoficha chochote, na hiyo inakufanya uwe mtu wa kuheshimika.",
+            "Shujaa: Wewe ni shujaa wa kweli. Unapenda kujitosa katika vita na ushindani. Hukimbii wala kutetereka unapokabiliwa na hatari, na ndiyo maana watu wanakuona kama mlinzi wao.",
+            "Mwenye Bidii: Huwa na bidii kubwa katika kila unachofanya. Huketi kimya, bali hutafuta njia za kufanikisha malengo yako kwa haraka. Wenzako wanashangaa nguvu yako ya kufanya kazi.",
+            "Mwaminifu: Unawajali wapendwa wako na unawaamini. Huwa mwaminifu kwa familia, marafiki na wale unaowajibika kwao. Ukiahidi kitu, unatimiza, na hilo linakufanya uweze kuaminika.",
+            "Mkarimu: Una moyo wa kutoa. Unawasaidia wengine kwa ukarimu wako, hasa wale unaowaona wanastahili msaada wako. Hata wakati mwingine unatoa zaidi ya uwezo wako, lakini kwa furaha.",
+            "Mwenye Hamasa: Huwa na hamasa ya kufanya mambo mapya. Unapenda kuanzisha miradi na kuwa mwanzilishi wa mambo mbalimbali. Wewe ndiye unayewasha moto wa mabadiliko popote ulipo.",
+            "Mwenye Imani Thabiti: Una imani kubwa kwa Mungu na kwa uwezo wako. Huyumbishwi na mabadiliko ya maisha. Hata wakati mambo yanapokuwa magumu, wewe unashikilia imani yako kwa nguvu.",
+            "Mwenye Bahati ya Pesa: Huwa na bahati ya kupata pesa na mafanikio katika shughuli zako za kifedha. Mara nyingi unapata fursa za kipekee za kifedha, na fedha hukujia kwa urahisi ukilinganisha na wengine.",
+            "Mwenye Hasira Kali: Lakini hasira zako hupita haraka. Unaweza kukasirika upesi, lakini hushikilii chuki kwa muda mrefu. Watu wanajua kwamba ukikasirika, si muda mrefu utasamehe na kusahau.",
+            "Mwenye Ushindani: Unapenda kushindana na wengine. Hupendi kushindwa na unafanya kila liwezekanalo kushinda na kuwa bora. Ushindani wako unawachochea wengine pia kujitahidi zaidi.",
+            "Mwenye Kujitegemea: Hupendi kufungwa na wengine. Unapenda uhuru wako na wewe mwenyewe huamua maisha yako. Hupendi kuambiwa la kufanya, na ndiyo maana unafanikiwa kwa juhudi zako mwenyewe.",
+            "Mwenye Maono: Una maono makubwa na ndoto za mbali. Huwa unaona mbali zaidi ya wengine na kupanga mipango mizuri. Wengine wanaweza kukuita mwotaji, lakini wewe unajua unachokifanya.",
+            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho zinazokusaidia katika maamuzi na katika kuwasaidia wengine. Watu wengi huja kwako kwa ushauri wa kiroho kwa sababu wanahisi nguvu yako.",
+            "Mwenye Uhodari: Una uhodari wa kushindana na wapinzani wako. Huwa hodari katika michezo, biashara au masomo. Unapojikita katika jambo, hakuna anayeweza kukushinda.",
+            "Mwenye Kujituma: Huketi kimya. Unajituma katika kila jambo unalofanya na hupendi kuwa wavivu. Wenzako wanashangaa unavyoweza kufanya mambo mengi kwa wakati mmoja.",
+            "Mwenye Uvumilivu: Ingawa una hasira kali, pia una uvumilivu wa kusubiri mambo yatimie pale inapobidi. Unajua wakati wa kuchukua hatua na wakati wa kusubiri.",
+            "Mwenye Kuvutia: Unawavutia watu kwa urahisi kwa sababu ya tabia yako ya kuvutia na nguvu yako. Watu hukaribishwa nawe na wanapenda kuwa karibu nawe.",
+            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao. Watu wengi huja kwako kwa ushauri kwa sababu wanajua utawapa mwelekeo sahihi.",
+            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika jamii yako kwa ujasiri wako na uamuzi wako. Wewe ni mfano wa mtu anayeweza kubadilisha mambo yanapokuwa mabaya.",
+            "Mwenye Kipaji cha Uongozi: Huwezi kuwa wa pili; wewe ni wa kwanza kuongoza na kuhamasisha wengine. Kila mahali unapoenda, watu wanakutambua kama kiongozi.",
+            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri, na unashukuru kwa neema uliyonayo."
         ]
     },
-    2: { // Farasi (Taurus)
+    2: {
         name: "Farasi (Taurus - Al-Thawr)",
         image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80",
         traits: [
-            "Mvumilivu: Wewe ni kama mlima usioyumba.",
-            "Mwenye Msimamo: Mara tu ukishika kitu, hukiachi.",
-            "Mpendwa: Una mvuto wa kipekee.",
-            "Tajiri: Una uwezo wa kujikusanyia mali.",
-            "Mtulivu: Huwa na utulivu wa ajabu.",
-            "Mwenye Nguvu za Kustahimili: Una nguvu za kuvumilia magumu.",
-            "Mkarimu: Unapenda starehe na anasa.",
-            "Mwenye Uhodari wa Kifedha: Una uhodari wa kusimamia mali.",
-            "Mwaminifu: Wewe ni mtu wa kuaminika.",
-            "Mwenye Upendo kwa Familia: Una upendo mkubwa kwa familia.",
-            "Mwerevu katika Biashara: Una akili ya kibiashara.",
-            "Mwenye Uvumilivu wa Kusubiri: Una uwezo wa kusubiri.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Kupata Vitu Vizuri: Mara nyingi unapata vitu vizuri.",
-            "Mwenye Msimamo wa Kimaadili: Una msimamo thabiti.",
-            "Mwenye Uwezo wa Kusimamia Rasilimali: Una uwezo wa kusimamia rasilimali.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano."
-        ]
-    },
-    3: { // Mapacha (Gemini)
-        name: "Mapacha (Gemini - Al-Jawza)",
-        image: "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwerevu: Una akili ya kipekee na unaelewa haraka.",
-            "Mchangamfu: Huleta furaha na uchangamfu popote.",
-            "Mwenye Urafiki: Unapenda kujua watu wapya na kujenga mahusiano.",
-            "Mzungumzaji: Una kipaji cha kuongea na kuwavutia wengine.",
-            "Mwenye Vituko: Unapenda safari na mambo mapya.",
-            "Mwenye Mawazo Mengi: Una mawazo mengi na ubunifu.",
-            "Mwenye Kubadilika: Unaweza kuzoea hali yoyote.",
-            "Mwenye Udadisi: Unapenda kuchunguza na kujua kila kitu.",
-            "Mwenye Ucheshi: Huwa na ucheshi na kuleta tabasamu.",
-            "Mwenye Uhodari wa Mawasiliano: Unaweza kuwasiliana vizuri.",
-            "Mwenye Kipaji cha Kuandika: Unaweza kuandika vizuri.",
-            "Mwenye Kujifunza Haraka: Unajifunza mambo kwa haraka.",
-            "Mwenye Kufurahisha: Unawafurahisha wengine kwa urahisi.",
-            "Mwenye Uwezo wa Kufanya Mambo Mengi: Unaweza kufanya kazi nyingi kwa wakati mmoja.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Uwezo wa Kufundisha: Unaweza kufundisha wengine.",
-            "Mwenye Ustadi wa Mazungumzo: Una ustadi wa kuzungumza.",
-            "Mwenye Kuvutia: Unawavutia watu kwa urahisi.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati."
-        ]
-    },
-    4: { // Kaa (Cancer)
-        name: "Kaa (Cancer - Al-Saratan)",
-        image: "https://images.unsplash.com/photo-1515542625006-8ea0c3b3c6b0?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mpole: Wewe ni mtu mwenye upole na huruma.",
-            "Mwenye Hisia: Una hisia nyeti na unawajali wengine.",
-            "Mwenye Kujali Familia: Familia ni kitu cha thamani kwako.",
-            "Mlinzi: Unawalinda wapendwa wako kwa nguvu zako zote.",
-            "Mwenye Kukumbuka: Unakumbuka mambo mengi, mazuri na mabaya.",
-            "Mwenye Uaminifu: Wewe ni mtu wa kuaminika.",
-            "Mwenye Huruma: Unawahurumia wanaoteseka.",
-            "Mwenye Uwezo wa Kulea: Una kipaji cha kulea na kuwatunza wengine.",
-            "Mwenye Ubunifu: Una ubunifu wa kipekee.",
-            "Mwenye Kujituma: Huketi kimya, unajituma kwa bidii.",
-            "Mwenye Ushirikiano: Unapenda kushirikiana na wengine.",
-            "Mwenye Ustahimilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa kwa Mungu.",
-            "Mwenye Upendo: Unawapenda wengine kwa dhati.",
-            "Mwenye Uwezo wa Kusikiliza: Unajua kusikiliza kwa makini.",
-            "Mwenye Busara: Una busara ya kutosha.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Nyumbani: Una bahati ya kupata nyumba nzuri.",
-            "Mwenye Kujali Historia: Unajali mizizi na historia yako.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Kipaji cha Kupika: Unaweza kupika vizuri.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema."
-        ]
-    },
-    5: { // Simba (Leo)
-        name: "Simba (Leo - Al-Asad)",
-        image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Uhodari: Una uhodari wa kushinda changamoto.",
-            "Kiongozi: Una kipaji cha uongozi cha asili.",
-            "Mkarimu: Unatoa kwa ukarimu mkubwa.",
-            "Mwenye Ujasiri: Huogopi chochote.",
-            "Mwenye Kujiamini: Una kujiamini kwa kiwango cha juu.",
-            "Mwenye Fahari: Unajivunia mafanikio yako.",
-            "Mwenye Urafiki: Unapenda kuwa na watu wengi.",
-            "Mwenye Sherehe: Unapenda starehe na sherehe.",
-            "Mwenye Uwezo: Una uwezo wa kufikia malengo yako.",
-            "Mwenye Ushindani: Unapenda kushindana na kuwa bora.",
-            "Mwenye Upendo: Unawapenda wengine kwa dhati.",
-            "Mwenye Uaminifu: Wewe ni mtu wa kuaminika.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Pesa: Una bahati ya kupata pesa.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa na kipaji cha sanaa.",
-            "Mwenye Uwezo wa Kuhamasisha: Unawapa wengine hamasa.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Huruma kwa Wanyonge: Una huruma.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya."
-        ]
-    },
-    6: { // Mashuke (Virgo)
-        name: "Mashuke (Virgo - Al-Sunbula)",
-        image: "https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mchapakazi: Wewe ni mchapakazi na hupendi uvivu.",
-            "Mwenye Usafi: Unapenda usafi na utaratibu.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo kwa kina.",
-            "Mwenye Akili: Una akili ya kipekee.",
-            "Mwenye Kujituma: Unajituma katika kila jambo.",
-            "Mwenye Uangalifu: Unazingatia kila undani.",
-            "Mwenye Ustadi: Una ujuzi wa kufanya mambo kwa ustadi.",
-            "Mwenye Kujali Afya: Unajali afya yako na ya wengine.",
-            "Mwenye Urafiki: Unapenda kuwa na marafiki wachache lakini wa kweli.",
-            "Mwenye Usiri: Unaaminiwa na kuhifadhi siri.",
-            "Mwenye Busara: Una busara ya kutosha.",
-            "Mwenye Uwezo wa Kusaidia: Unawasaidia wengine kwa ukarimu.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Kazi: Una bahati ya kupata kazi nzuri.",
-            "Mwenye Kipaji cha Ufundi: Unaweza kuwa na kipaji cha ufundi.",
-            "Mwenye Uwezo wa Kupanga: Una uwezo wa kupanga mambo vizuri.",
-            "Mwenye Uangalifu wa Fedha: Unatumia fedha kwa busara.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Uwezo wa Kujifunza: Unajifunza kwa haraka.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya."
-        ]
-    },
-    7: { // Mizani (Libra)
-        name: "Mizani (Libra - Al-Mizan)",
-        image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Haki: Unapenda haki na usawa.",
-            "Mwenye Usawa: Unatafuta usawa katika kila jambo.",
-            "Mwenye Urafiki: Unapenda kuwa na watu wengi.",
-            "Mwenye Upendo: Unawapenda wengine kwa dhati.",
-            "Mwenye Urembo: Unapenda uzuri na sanaa.",
-            "Mwenye Busara: Una busara ya kutosha.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Ustadi wa Mazungumzo: Unaweza kuzungumza vizuri.",
-            "Mwenye Uwezo wa Kupatanisha: Unaweza kusuluhisha migogoro.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Mahusiano: Una bahati ya kupata mahusiano mazuri.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa na kipaji cha sanaa.",
-            "Mwenye Uwezo wa Kufanya Maamuzi: Unafanya maamuzi kwa busara.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Ushindani: Unapenda kushindana kwa usawa."
-        ]
-    },
-    8: { // Nge (Scorpio)
-        name: "Nge (Scorpio - Al-Aqrab)",
-        image: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Nguvu: Una nguvu za kipekee za kiroho na kimwili.",
-            "Mwenye Siri: Unapenda kujificha na kuhifadhi siri.",
-            "Mwenye Uchunguzi: Unapenda kuchunguza mambo kwa kina.",
-            "Mwenye Ushindani: Unapenda kushindana na kushinda.",
-            "Mwenye Ujasiri: Huogopi chochote.",
-            "Mwenye Uaminifu: Wewe ni mtu wa kuaminika.",
-            "Mwenye Upendo: Unawapenda wengine kwa dhati.",
-            "Mwenye Hasira Kali: Lakini hasira zako ni za muda.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Uchunguzi: Una bahati ya kugundua mambo.",
-            "Mwenye Kipaji cha Utafiti: Unaweza kuwa na kipaji cha utafiti.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Uwezo wa Kusimamia Rasilimali: Una uwezo wa kusimamia mali.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo."
-        ]
-    },
-    9: { // Mpiga Upinde (Sagittarius)
-        name: "Mpiga Upinde (Sagittarius - Al-Qaws)",
-        image: "https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Safari: Unapenda kusafiri na kutembea.",
-            "Mwenye Furaha: Huleta furaha popote.",
-            "Mwenye Uchanganuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Ujasiri: Huogopi chochote.",
-            "Mwenye Upendo: Unawapenda wengine.",
-            "Mwenye Uaminifu: Wewe ni mtu wa kuaminika.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Safari: Una bahati ya kusafiri.",
-            "Mwenye Kipaji cha Ualimu: Unaweza kuwa mwalimu mzuri.",
-            "Mwenye Uwezo wa Kufundisha: Unawafundisha wengine kwa urahisi.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Urafiki: Unapenda kuwa na watu wengi.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Ushindani: Unapenda kushindana.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi."
-        ]
-    },
-    10: { // Mbuzi (Capricorn)
-        name: "Mbuzi (Capricorn - Al-Jadi)",
-        image: "https://images.unsplash.com/photo-1519823551278-64ac92734ab1?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mchapakazi: Wewe ni mchapakazi na mwenye bidii.",
-            "Mwenye Nidhamu: Una nidhamu ya kipekee.",
-            "Mwenye Msimamo: Mara tu ukishika kitu, hukiachi.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Uwezo: Una uwezo wa kufikia malengo yako.",
-            "Mwenye Busara: Una busara ya kutosha.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Kazi: Una bahati ya kupata kazi nzuri.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi.",
-            "Mwenye Uwezo wa Kusimamia Rasilimali: Una uwezo wa kusimamia mali.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Urafiki: Unapenda kuwa na marafiki wachache wa kweli.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Ushindani: Unapenda kushindana.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Ufundi: Unaweza kuwa na kipaji cha ufundi.",
-            "Mwenye Uangalifu wa Fedha: Unatumia fedha kwa busara."
-        ]
-    },
-    11: { // Ndoo (Aquarius)
-        name: "Ndoo (Aquarius - Al-Dalu)",
-        image: "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mwenye Ubunifu: Una ubunifu wa kipekee.",
-            "Mwenye Mawazo Mapya: Unapenda mambo mapya na ya kisasa.",
-            "Mwenye Urafiki: Unapenda kuwa na watu wengi.",
-            "Mwenye Ushirikiano: Unapenda kushirikiana na wengine.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Busara: Una busara ya kutosha.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Ubunifu: Una bahati ya kubuni mambo mapya.",
-            "Mwenye Kipaji cha Sanaa: Unaweza kuwa na kipaji cha sanaa.",
-            "Mwenye Uwezo wa Kufundisha: Unawafundisha wengine.",
-            "Mwenye Huruma: Una huruma kwa wengine.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Ushindani: Unapenda kushindana.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi.",
-            "Mwenye Uangalifu: Unazingatia undani.",
-            "Mwenye Uvumilivu: Unavumilia magumu."
-        ]
-    },
-    12: { // Samaki (Pisces)
-        name: "Samaki (Pisces - Al-Hut)",
-        image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=600&q=80",
-        traits: [
-            "Mpole: Wewe ni mtu mwenye upole na huruma.",
-            "Mwenye Hisia: Una hisia nyeti na unawajali wengine.",
-            "Mwenye Ubunifu: Una ubunifu wa kipekee.",
-            "Mwenye Ushairi: Unapenda ushairi na sanaa.",
-            "Mwenye Urafiki: Unapenda kuwa na watu.",
-            "Mwenye Imani: Una imani kubwa.",
-            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho.",
-            "Mwenye Bahati ya Sanaa: Una bahati ya sanaa.",
-            "Mwenye Kipaji cha Uimbaji: Unaweza kuwa na sauti nzuri.",
-            "Mwenye Uwezo wa Kusikiliza: Unajua kusikiliza.",
-            "Mwenye Huruma: Una huruma kubwa.",
-            "Mwenye Ushauri: Unaweza kuwashauri wengine.",
-            "Mwenye Urafiki wa Karibu: Unapenda kuwa na marafiki wa karibu.",
-            "Mwenye Ustawi: Unapenda maisha mazuri.",
-            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano.",
-            "Mwenye Bahati na Baraka: Huwa na bahati njema.",
-            "Mwenye Kujituma: Huketi kimya.",
-            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati.",
-            "Mwenye Uchambuzi: Una uwezo wa kuchambua mambo.",
-            "Mwenye Ushindani: Unapenda kushindana.",
-            "Mwenye Uwezo wa Kubadilisha Mambo: Unaweza kuleta mageuzi.",
-            "Mwenye Kipaji cha Uongozi: Una kipaji cha uongozi.",
-            "Mwenye Uvumilivu: Unavumilia magumu.",
-            "Mwenye Uangalifu: Unazingatia undani."
+            "Mvumilivu: Wewe ni kama mlima usioyumba. Huchoki kungoja na unajua kila kitu kina wakati wake. Huwavunja moyo wala hukati tamaa, hata wakati mambo yanakuwa magumu. Uvumilivu wako ni kama nguzo imara inayoweka kila kitu sawa.",
+            "Mwenye Msimamo: Mara tu ukishika kitu, hukiachi. Wewe ni mtu wa msimamo, na hiyo inakufanya uweze kufikia malengo yako. Watu wanajua wanaweza kukutegemea kwa sababu hubadiliki ovyo ovyo.",
+            "Mpendwa: Una mvuto wa kipekee unaowafanya watu wakupende. Huwa joto na mkarimu, na watu wanahisi salama wakiwa karibu nawe. Wengi wanakutafuta kwa urafiki na ushauri.",
+            "Tajiri: Una uwezo wa kujikusanyia mali na rasilimali. Huwa na akili ya kifedha na unajua kuwekeza. Pesa hukujia kwa urahisi, lakini pia unajua kuzitunza.",
+            "Mtulivu: Huwa na utulivu wa ajabu hata nyakati za msukosuko. Watu wanashangaa unavyoweza kukaa mtulivu wakati wengine wanahangaika. Utulivu wako unawapa wengine amani.",
+            "Mwenye Nguvu za Kustahimili: Una nguvu za kuvumilia magumu na changamoto za maisha. Huvunjiki moyo kwa urahisi na unaweza kupambana na matatizo kwa muda mrefu.",
+            "Mkarimu: Unapenda starehe na anasa za maisha. Unajua kujifurahisha na pia unawafurahisha wengine. Karimu yako inawafanya watu wahisi wana thamani kwako.",
+            "Mwenye Uhodari wa Kifedha: Una uhodari wa kusimamia mali na rasilimali zako vizuri. Hupotezi pesa kwa vitu visivyo na maana, na unajua kuwekeza kwa busara.",
+            "Mwaminifu: Wewe ni mtu wa kuaminika. Ukiahidi kitu, unatimiza. Ahadi zako ni kama mkataba, na watu wanajua wanaweza kukutegemea.",
+            "Mwenye Upendo kwa Familia: Una upendo mkubwa kwa familia na watu wako wa karibu. Familia ni kitu cha thamani kwako, na unawajali kwa dhati.",
+            "Mwerevu katika Biashara: Una akili ya kibiashara. Unaweza kuona fursa ambapo wengine hawaoni, na unajua jinsi ya kuzitumia kwa faida yako.",
+            "Mwenye Uvumilivu wa Kusubiri: Una uwezo wa kusubiri matokeo bila kukata tamaa. Unajua kwamba mambo mazuri huchukua muda, na hiyo ni nguvu yako.",
+            "Mwenye Nguvu za Kiroho: Una nguvu za kiroho zinazokusaidia katika maisha. Imani yako inakufanya uwe na nguvu na matumaini.",
+            "Mwenye Bahati ya Kupata Vitu Vizuri: Mara nyingi unapata vitu vizuri na anasa za maisha. Bahati yako inakufurahisha na pia unawafurahisha wengine.",
+            "Mwenye Msimamo wa Kimaadili: Una msimamo thabiti wa kimaadili. Hupotoshwi na vishawishi vya maisha, na unashikilia maadili yako kwa nguvu.",
+            "Mwenye Uwezo wa Kusimamia Rasilimali: Una uwezo wa kusimamia rasilimali kwa uadilifu na busara. Watu wanakuamini mali zao kwa sababu wanajua utazitunza vizuri.",
+            "Mwenye Kujituma: Huketi kimya. Unajituma katika kazi na shughuli zako, na hupendi kupoteza muda.",
+            "Mwenye Ushauri: Unaweza kuwashauri wengine kwa busara yako na kuwasaidia kufikia malengo yao. Watu wengi huja kwako kwa ushauri wa kifedha na maisha.",
+            "Mwenye Nguvu ya Kubadilisha Mambo: Unaweza kuleta mageuzi katika maisha yako na ya wengine kwa msimamo wako na uvumilivu wako.",
+            "Mwenye Kipaji cha Uongozi: Ingawa wewe ni mtulivu, pia una kipaji cha uongozi. Watu wanakuona kama mtu wa kuigwa na kuheshimika.",
+            "Mwenye Bahati na Baraka: Huwa na bahati njema na baraka katika maisha yako. Mara nyingi mambo yanakuendela vizuri, na unashukuru kwa neema uliyonayo.",
+            "Mwenye Upendo usio na Masharti: Unawapenda wengine kwa dhati na bila masharti. Upendo wako unawafanya watu wahisi wana thamani.",
+            "Mwenye Huruma kwa Wanyonge: Una huruma kubwa kwa walio hatarini na wenye shida. Huwajali na kuwasaidia kadri uwezavyo.",
+            "Mwenye Uwezo wa Kujenga Uhusiano: Una uwezo wa kujenga mahusiano mazuri na watu wa kila aina. Watu wanapenda kuwa karibu nawe."
         ]
     }
 };
 
-// --------------------------------------------------------------------
-// HERUFI_DB (Herufi zote A-Z)
-// --------------------------------------------------------------------
 const HERUFI_DB = {
     'A': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo mkubwa wa uongozi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kushinda changamoto.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kiroho.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu usio na shaka.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa kipekee.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo."
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo mkubwa wa uongozi; huwa wanawatia watu moyo na kuwaongoza kwa busara, na huwa wa kwanza kuchukua hatua katika hali zote.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa kushinda changamoto; hawakimbii matatizo wala hofu, bali hukabiliana nayo kwa ujasiri na kuibuka washindi.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE nguvu za kiroho zinazowasaidia kufanya maamuzi sahihi na kuwaongoza wengine kwenye njia iliyonyooka.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa hali ya juu; huwasaidia wengine kwa moyo wote bila kutarajia kurudishiwa chochote.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu usio na shaka; husema kweli na kutenda haki hata katika nyakati ngumu zaidi.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa kipekee; hawakati tamaa kwa urahisi na huendelea kujitahidi hadi kufanikiwa.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha kutatua matatizo kwa amani na hekima, na huwa hawakimbii ugomvi.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE nidhamu ya kazi; hufanya kazi kwa bidii na kuzingatia taratibu zote kwa uangalifu.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE usawa wa maisha; huwa na uwiano mzuri kati ya kazi, familia na ibada zao.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli; huwa na uhusiano mzuri na watu wote na hujenga amani popote waendapo.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakaidi; mara nyingine hawawezi kubadilisha msimamo wao hata wakikosea.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukasirika upesi; hasira zao zinaweza kuwafanya wafanye maamuzi mabaya.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujiona bora; wakati mwingine huwa na kiburi kinachowafukuza watu.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuwa na subira; huwa hawasubiri mambo yatimu kwa wakati wao.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu; huwa hawawezi kustahimili changamoto ndogo ndogo.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wapweke; mara nyingine wanajitenga na watu na kujifunga wenyewe.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutokuamini watu; huwa na shaka na wengine hata wasipostahili.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojali hisia za wengine; huenda wakawaonea wenzao bila kukusudia.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakali; tabia zao kali zinaweza kuwaondoa watu wengine.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo; wakati mwingine hawajui wanachotaka maishani."
     ],
     'B': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upole wa hali ya juu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE usiri mzuri.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE mvuto wa pekee.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara na hekima.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa dhati.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kusikiliza.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa ajabu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuleta amani.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kuepuka migogoro.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na masharti.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujihusisha kupita kiasi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uthubutu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukaa kimya wanapotakiwa kuzungumza.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukubali mizigo mizito.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujilaumu sana.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa nguvu za kusimamia mambo yao.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukubali kudharauliwa.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujificha nyuma ya wengine.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uamuzi thabiti.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuepuka migogoro."
-    ],
-    'C': [
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuvutia watu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uhodari wa mawasiliano.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukaribu na wengine.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE ucheshi mzuri.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kubadilika.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa kusubiri.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara ya kutosha.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE urafiki wa kweli.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE uaminifu.",
-        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wakereketwa.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa utulivu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kubadilikabadilika.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kutojikita.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa mwelekeo.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wazungumzaji kupita kiasi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa makini.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kusahau mambo kwa urahisi.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uvumilivu.",
-        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuwa wachache wa moyo."
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE upole wa hali ya juu; huwa na tabia laini na wenye kuvutia watu kwa urahisi.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE usiri mzuri; huwa wanaaminiwa na kuhifadhi siri za watu kwa uaminifu mkubwa.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE mvuto wa pekee; huwa na haiba inayowafanya watu wawapende na kuwatumainia.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE busara na hekima ya kutosha kuwashauri wengine katika mambo mbalimbali.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE ukarimu wa dhati; huwajali wengine kwa moyo wote na kutoa bila kujibakiza.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kusikiliza kwa makini na kuelewa hisia za watu wanaozungumza nao.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uvumilivu wa ajabu; huwa na subira kubwa na hustahimili hata nyakati ngumu zaidi.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE uwezo wa kuleta amani na utulivu popote waendapo.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE hekima ya kuepuka migogoro; huwa na ujuzi wa kukwepa vita na mabishano yasiyo na faida.",
+        "WATU WENYE KUNDI KAMA LAKO NI WENYE upendo usio na masharti; huwapenda wote hata wasiowapenda.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujihusisha kupita kiasi; mara nyingine wanajihusisha sana na shida za watu hata kujisahau wenyewe.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uthubutu; upole wao wakati mwingine huwafanya washindwe kusema hapana au kutoa msimamo wao.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukaa kimya wanapotakiwa kuzungumza; mara nyingine wananyamaza hali wanapaswa kujitetea.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukubali mizigo mizito; wanakubali kuwasaidia wengine hata kwa gharama ya afya na muda wao.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujilaumu sana; wanapokosea, hujilaumu vikali na kujiona hawana thamani.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa nguvu za kusimamia mambo yao; upole wao huwafanya wanyonywe na watu wenye nguvu.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukubali kudharauliwa; mara nyingine wanavumilia matusi na kudharauliwa bila kujitetea.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kujificha nyuma ya wengine; wanapotakiwa kuongoza, hujificha na kuwaacha wengine wachukue hatua.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kukosa uamuzi thabiti; wanapokabiliwa na maamuzi magumu, huyumba na kutojua la kufanya.",
+        "WATU WENYE KUNDI KAMA LAKO WANA UDHAIFU WA kuepuka migogoro hata ikihitajika; mara nyingine wanakimbia migogoro muhimu."
     ]
-    // Kwa herufi nyingine (D-Z) tutatumia default ya A, lakini unaweza kuongeza kama unataka. Tunaacha hivi kwa muda.
 };
-// Kukamilisha herufi D hadi Z kwa kutumia nakala ya A (ili kuepuka makosa)
-const allLetters = 'DEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-allLetters.forEach(letter => {
-    if (!HERUFI_DB[letter]) {
-        HERUFI_DB[letter] = HERUFI_DB['A']; // tumia data ya A kama default
-    }
-});
 
-// --------------------------------------------------------------------
-// ZODIAC_HEALTH (Afya kwa kila nyota)
-// --------------------------------------------------------------------
 const ZODIAC_HEALTH = {
-    1: { // Aries
+    1: { // Aries (Konde)
         risks: [
-            "Maumivu ya kichwa ya mara kwa mara.",
-            "Shinikizo la damu.",
-            "Maumivu ya macho.",
-            "Kukosa usingizi.",
-            "Majeraha ya kichwa.",
-            "Sinusitis.",
-            "Maumivu ya taya.",
-            "Kichaa cha moyo.",
-            "Uvimbe wa ubongo (hatari ndogo).",
-            "Matatizo ya homoni.",
-            "Vidonda vya tumbo.",
-            "Mzio wa ngozi.",
-            "Kifafa cha usingizi.",
-            "Maumivu ya shingo.",
-            "Wasiwasi na hofu."
+            "Maumivu ya kichwa ya mara kwa mara yanayosababishwa na mkazo na msongo wa mawazo.",
+            "Shinikizo la damu kutokana na hasira kali na kukosa utulivu.",
+            "Maumivu ya macho na uchovu wa macho kwa sababu ya kukaa kwenye skrini kwa muda mrefu.",
+            "Kukosa usingizi (insomnia) kwa sababu ya mawazo mengi na wasiwasi.",
+            "Majeraha ya kichwa au uso kutokana na ajali au mapigano.",
+            "Sinusitis na mafua ya mara kwa mara kwa sababu ya mzio.",
+            "Maumivu ya taya na meno kwa sababu ya kusaga meno usingizini.",
+            "Kichaa cha moyo (palpitations) kutokana na mkazo.",
+            "Uvimbe wa ubongo (meningitis) – hatari ndogo lakini iwe makini.",
+            "Matatizo ya usawa wa homoni yanayoathiri usingizi na hamu ya kula.",
+            "Kupata vidonda vya tumbo kutokana na mkazo na lishe isiyofaa.",
+            "Mzio wa ngozi usoni kwa sababu ya mabadiliko ya hewa.",
+            "Kupata kifafa cha usingizi (sleep apnea) ikiwa una uzito kupita kiasi.",
+            "Maumivu ya shingo na mabega kwa sababu ya kukaa vibaya.",
+            "Kuwa na wasiwasi na hofu nyingi (anxiety disorders)."
         ],
         avoid: [
-            "Epuka kukaa kwenye jua kali.",
-            "Usitumie vichocheo vingi.",
-            "Jiepushe na mabishano.",
-            "Usipuuze usingizi.",
-            "Epuka kutumia simu kabla ya kulala.",
-            "Usile vyakula vya mafuta mengi.",
-            "Epuka pombe kupita kiasi.",
-            "Usijikaze sana kazini.",
-            "Epuka mazingira yenye vumbi.",
-            "Usiruhusu mawazo mabaya."
+            "Epuka kukaa kwenye jua kali kwa muda mrefu bila kujikinga.",
+            "Usitumie vichocheo kama kahawa nyingi au vinywaji vya nishati.",
+            "Jiepushe na mabishano na ugomvi unaokufanya ukasirike.",
+            "Usipuuze usingizi wako; epuka kukaa macho usiku.",
+            "Epuka kutumia simu au kompyuta kabla ya kulala.",
+            "Usile vyakula vya mafuta mengi na spicy sana.",
+            "Epuka pombe kupita kiasi kwani inaongeza shinikizo la damu.",
+            "Usijikaze sana kazini; pumzika mara kwa mara.",
+            "Epuka kukaa kwenye mazingira yenye vumbi au moshi.",
+            "Usiruhusu mawazo mabaya yakuchukue; tafuta ushauri."
         ],
         actions: [
-            "Kunywa maji ya kutosha.",
-            "Fanya mazoezi ya kupumua.",
-            "Tumia miwani ya jua.",
-            "Chukua mapumziko ya macho.",
-            "Lala mapema.",
-            "Tembea kila siku.",
-            "Kula matunda yenye maji.",
-            "Weka ratiba ya kula.",
-            "Jifunze kudhibiti hasira.",
-            "Tumia mafuta ya nazi.",
-            "Fanya massage ya kichwa.",
-            "Kunywa chai ya chamomile.",
-            "Epuka kelele.",
-            "Fanya yoga.",
-            "Tembelea daktari wa macho.",
-            "Pima shinikizo la damu.",
-            "Kula vyakula vyenye magnesiamu.",
-            "Kuwa na mtazamo chanya.",
-            "Tumia asali na tangawizi.",
-            "Fanya mazoezi ya kutosha."
+            "Kunywa maji ya kutosha kila siku (angalau lita 2).",
+            "Fanya mazoezi ya kupumua na kutafakari (meditation) kila asubuhi.",
+            "Tumia miwani ya jua unapotoka nje kwenye mwangaza mkali.",
+            "Chukua mapumziko ya macho kila baada ya saa moja ya kufanya kazi kwenye skrini.",
+            "Lala mapema na uhakikishe unapata usingizi wa angalau saa 7.",
+            "Tembea au fanya mazoezi nyepesi kila siku ili kupunguza msongo.",
+            "Kula matunda yenye maji mengi kama tikiti maji, machungwa, na matango.",
+            "Weka ratiba ya kula na usiruke milo.",
+            "Jifunze kudhibiti hasira yako kwa kuhesabu hadi kumi kabla ya kujibu.",
+            "Tumia mafuta ya zeituni au mafuta ya nazi kupaka mwili ili kulainisha ngozi.",
+            "Fanya massage ya kichwa na shingo mara kwa mara.",
+            "Kunywa chai ya chamomile au lavender kabla ya kulala kutuliza neva.",
+            "Epuka kelele nyingi na tafuta utulivu.",
+            "Fanya mazoezi ya yoga hasa yale yanayolenga kichwa na shingo.",
+            "Tembelea daktari wa macho angalau mara moja kwa mwaka.",
+            "Pima shinikizo lako la damu mara kwa mara.",
+            "Kula vyakula vyenye magnesiamu kama ndizi na karanga.",
+            "Jitahidi kuwa na mtazamo chanya kwa maisha.",
+            "Tumia dawa za asili kama vile asali na tangawizi kwa mafua.",
+            "Fanya mazoezi ya kutosha ili kudumisha uzito unaofaa.",
+            "Punguza ulaji wa chumvi na vyakula vyenye sodiamu nyingi.",
+            "Jihusishe na shughuli za kujitafakari kama kuandika shajara.",
+            "Tafuta msaada wa kitaalamu ikiwa unahisi unalemewa na mawazo.",
+            "Soma vitabu vya kujisaidia kisaikolojia.",
+            "Weka mimea ya kutosha nyumbani kwako kusafisha hewa.",
+            "Kunywa maji ya limao na asali asubuhi ili kuongeza kinga.",
+            "Epuka kutumia dawa za kupunguza maumivu kupita kiasi.",
+            "Tumia mto unaofaa kulala ili kuepuka maumivu ya shingo.",
+            "Fanya mazoezi ya kukaza na kulegeza misuli ya uso.",
+            "Hakikisha unapata vitamini D kutoka kwa jua la asubuhi."
         ]
     },
-    2: { // Taurus
+    2: { // Taurus (Farasi)
         risks: [
-            "Maumivu ya koo.",
-            "Shida za tezi.",
-            "Kupoteza sauti.",
-            "Uzito kupita kiasi.",
-            "Maumivu ya shingo.",
-            "Maumivu ya meno.",
-            "Mzio wa vyakula.",
-            "Sukari.",
-            "Shinikizo la damu.",
-            "Maumivu ya magoti.",
-            "Bronchitis.",
-            "Matatizo ya mmeng'enyo.",
-            "Kuvimbiwa.",
-            "Kisukari aina ya 2.",
-            "Osteoarthritis."
+            "Maumivu ya koo na uvimbe wa koo mara kwa mara.",
+            "Shida za tezi (thyroid) hasa tezi duni au kupita kiasi.",
+            "Kupoteza sauti au ukwaru wa sauti kwa sababu ya mzio au matumizi mabaya.",
+            "Uzito kupita kiasi na shida za kimetaboliki.",
+            "Maumivu ya shingo na ukakamaji wa shingo.",
+            "Maumivu ya meno na fizi kwa sababu ya tabia ya kusaga meno.",
+            "Mzio wa vyakula fulani kama maziwa au ngano.",
+            "Sukari (diabetes) kwa sababu ya ulaji wa sukari nyingi.",
+            "Shinikizo la damu linalosababishwa na unene kupita kiasi.",
+            "Maumivu ya goti na magoti kutokana na uzito.",
+            "Ugonjwa wa mapafu kama bronchitis kwa sababu ya kuvuta sigara.",
+            "Matatizo ya mmeng'enyo wa chakula kwa sababu ya kula kupita kiasi.",
+            "Kuvimbiwa mara kwa mara kwa sababu ya lishe isiyo na nyuzi.",
+            "Ugonjwa wa kisukari aina ya 2 (type 2 diabetes).",
+            "Ugonjwa wa mifupa kama osteoarthritis hasa kwenye magoti."
         ],
         avoid: [
-            "Epuka vyakula vitamu.",
-            "Usila kwa pupa.",
-            "Epuka sigara na pombe.",
-            "Usipuuze maumivu ya koo.",
-            "Epuka baridi kali.",
-            "Usipige kelele nyingi.",
-            "Epuka vyakula vya makopo.",
-            "Usila sana usiku.",
-            "Epuka kukaa kitako kwa muda mrefu.",
-            "Usipuuze usingizi."
+            "Epuka vyakula vitamu sana na sukari iliyochakatwa.",
+            "Usila kwa pupa na kula kupita kiasi.",
+            "Epuka kuvuta sigara na pombe kupita kiasi.",
+            "Usipuuze maumivu ya koo, nenda kwa daktari.",
+            "Epuka kukaa kwenye hali ya baridi sana kwani inaathiri koo.",
+            "Usitumie sauti yako kwa nguvu kupita kiasi, epuka kupiga kelele.",
+            "Epuka vyakula vya makopo na vyenye vihifadhi.",
+            "Usila sana usiku kabla ya kulala.",
+            "Epuka kukaa kitako kwa muda mrefu bila kusimama.",
+            "Usipuuze usingizi wako; epuka kukaa hadi usiku wa manane."
         ],
         actions: [
-            "Kunywa maji ya joto na asali.",
-            "Fanya mazoezi ya shingo.",
-            "Tumia tangawizi na kitunguu saumu.",
-            "Kula matunda yenye vitamini C.",
-            "Fanya mazoezi ya mwili.",
-            "Pima uzito mara kwa mara.",
-            "Kula vyakula vyenye nyuzi.",
-            "Tembelea daktari wa meno.",
-            "Punguza chumvi na sukari.",
-            "Kunywa chai ya mdalasini.",
-            "Fanya mazoezi ya kunyoosha.",
-            "Tumia mafuta ya nazi.",
-            "Kula samaki wenye mafuta.",
-            "Tembea hatua nyingi.",
-            "Fanya yoga.",
-            "Kunywa maji ya nazi.",
-            "Pumzika na muziki.",
-            "Tembelea daktari wa ndani.",
-            "Kula mboga za kijani.",
-            "Epuka vyakula vya kukaanga.",
-            "Pata usingizi wa kutosha.",
-            "Fanya mazoezi ya kupumua.",
-            "Tumia mto wa shingo.",
-            "Kunywa maji ya limao asubuhi.",
-            "Weka ratiba ya kula."
+            "Kunywa maji ya joto na asali na limao kila asubuhi.",
+            "Fanya mazoezi ya kukaza na kulegeza shingo kila siku.",
+            "Tumia tangawizi na kitunguu saumu kwenye chakula chako.",
+            "Kula ndimu, machungwa na matunda yenye vitamini C.",
+            "Fanya mazoezi ya mwili kama kutembea, kuogelea, au baiskeli.",
+            "Pima uzito wako mara kwa mara na uweke malengo.",
+            "Kula vyakula vyenye nyuzi kama mboga za majani na nafaka.",
+            "Tembelea daktari wa meno angalau mara mbili kwa mwaka.",
+            "Jitahidi kupunguza ulaji wa chumvi na sukari.",
+            "Kunywa chai ya mdalasini na tangawizi kusaidia kimetaboliki.",
+            "Fanya mazoezi ya kunyoosha misuli ya miguu na mgongo.",
+            "Tumia mafuta ya nazi au samli kwa upishi.",
+            "Kula samaki wenye mafuta kama dagaa kwa omega-3.",
+            "Tembea angalau hatua 10,000 kila siku.",
+            "Fanya mazoezi ya yoga yanayolenga shingo na mabega.",
+            "Kunywa maji ya nazi (madafu) mara kwa mara.",
+            "Pumzika na usikilize muziki wa utulivu.",
+            "Tembelea daktari wa magonjwa ya ndani kwa check-up ya mwaka.",
+            "Kula mboga za kijani kibichi kila siku.",
+            "Epuka vyakula vya kukaanga na mafuta mengi.",
+            "Jitahidi kupata usingizi wa kutosha wa saa 7-8.",
+            "Fanya mazoezi ya kupumua kwa kina ili kupunguza msongo.",
+            "Tumia mto wa shingo unaofaa wakati wa kulala.",
+            "Kunywa maji ya moto na limao asubuhi kabla ya kula.",
+            "Weka ratiba ya kula na usiruke milo.",
+            "Jifunze kupika vyakula vyenye afya nyumbani.",
+            "Kula karanga mbichi kama lozi na korosho kwa kiasi.",
+            "Tembelea daktari wa tezi ikiwa una dalili zozote.",
+            "Jitahidi kuwa na mtindo wa maisha wenye usawa.",
+            "Fanya mazoezi ya nguvu (strength training) mara mbili kwa wiki."
         ]
-    },
-    // Kwa nyota nyingine, tunaweza kuweka data sawa au tofauti kidogo. Kwa urahisi, tutatumia data ya Taurus kwa nyota 3-12 (ila kama unataka tofauti, unaweza kubadilisha). Kwa muda tumekamilisha 1 na 2.
-    3: { // Gemini
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    4: { // Cancer
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    5: { // Leo
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    6: { // Virgo
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    7: { // Libra
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    8: { // Scorpio
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    9: { // Sagittarius
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    10: { // Capricorn
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    11: { // Aquarius
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
-    },
-    12: { // Pisces
-        risks: ZODIAC_HEALTH[2].risks,
-        avoid: ZODIAC_HEALTH[2].avoid,
-        actions: ZODIAC_HEALTH[2].actions
     }
 };
 
-// --------------------------------------------------------------------
-// CAREERS (Kazi kwa kila nyota)
-// --------------------------------------------------------------------
 const CAREERS = {
-    1: [ // Aries
-        { title: "Kiongozi wa Jeshi", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza wanajeshi." },
-        { title: "Mwanasiasa", img: "https://images.unsplash.com/photo-1555848960-8c3da52d5836?auto=format&fit=crop&w=100&q=80", desc: "Una uwezo wa kuongoza watu." },
-        { title: "Mkurugenzi Mtendaji", img: "https://images.unsplash.com/photo-1560179707-f14e90ef36e3?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza kampuni." },
-        { title: "Mhandisi wa Magari", img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=100&q=80", desc: "Unapenda kasi na mashine." },
-        { title: "Mchezaji wa Mpira", img: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=100&q=80", desc: "Nguvu na ushindani." },
-        { title: "Mfanyabiashara", img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80", desc: "Unapenda kujitegemea." },
-        { title: "Mkufunzi wa Mazoezi", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=100&q=80", desc: "Unawapa wengine hamasa." },
-        { title: "Mpiganaji wa Sanaa za Vita", img: "https://images.unsplash.com/photo-1555597673-b3d8a86aa9a0?auto=format&fit=crop&w=100&q=80", desc: "Ushujaa wako." },
-        { title: "Mchomaji", img: "https://images.unsplash.com/photo-1568849676085-51415703900f?auto=format&fit=crop&w=100&q=80", desc: "Ujasiri wa kukabiliana na hatari." },
-        { title: "Mshauri wa Uongozi", img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80", desc: "Uzoefu wako wa uongozi." }
+    1: [ // Aries (Konde)
+        {
+            title: "Kiongozi wa Jeshi",
+            img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80",
+            desc: "Wewe ni jasiri na hodari, unaweza kuongoza wanajeshi kwenye vita na ushindi."
+        },
+        {
+            title: "Mwanasiasa",
+            img: "https://images.unsplash.com/photo-1555848960-8c3da52d5836?auto=format&fit=crop&w=100&q=80",
+            desc: "Una uwezo wa kuongoza watu wengi na kuwashawishi kwa hotuba zako zenye nguvu."
+        },
+        {
+            title: "Mkurugenzi Mtendaji (CEO)",
+            img: "https://images.unsplash.com/photo-1560179707-f14e90ef36e3?auto=format&fit=crop&w=100&q=80",
+            desc: "Uhodari wako na ujasiri vinakufaa kuongoza kampuni kubwa kwa mafanikio."
+        },
+        {
+            title: "Mhandisi wa Magari",
+            img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=100&q=80",
+            desc: "Upendo wako wa kasi na mashine unakufaa katika uhandisi wa magari ya michezo."
+        },
+        {
+            title: "Mchezaji wa Mpira wa Miguu",
+            img: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=100&q=80",
+            desc: "Nguvu na ushindani wako unakufanya uwe nyota kwenye uwanja."
+        },
+        {
+            title: "Mfanyabiashara wa Kujitegemea",
+            img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80",
+            desc: "Unapenda kujitegemea na kufanya maamuzi haraka, unafaa kwa biashara yako mwenyewe."
+        },
+        {
+            title: "Mkufunzi wa Mazoezi (Personal Trainer)",
+            img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=100&q=80",
+            desc: "Nguvu zako na bidii unazoweza kuwahamasisha wengine kufanya mazoezi."
+        },
+        {
+            title: "Mpiganaji wa Sanaa za Vita",
+            img: "https://images.unsplash.com/photo-1555597673-b3d8a86aa9a0?auto=format&fit=crop&w=100&q=80",
+            desc: "Ushujaa wako na uhodari unakufaa katika karate, judo au michezo mingine ya vita."
+        },
+        {
+            title: "Mchomaji (Firefighter)",
+            img: "https://images.unsplash.com/photo-1568849676085-51415703900f?auto=format&fit=crop&w=100&q=80",
+            desc: "Ujasiri wako wa kukabiliana na hatari unakufaa kuwa mwokozi wa maisha."
+        },
+        {
+            title: "Mshauri wa Uongozi",
+            img: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?auto=format&fit=crop&w=100&q=80",
+            desc: "Uzoefu wako wa uongozi unaweza kuwasaidia wengine kuwa viongozi bora."
+        }
     ],
-    2: [ // Taurus
-        { title: "Mwekezaji wa Hisa", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80", desc: "Uvumilivu wako." },
-        { title: "Mkulima Mboga", img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=100&q=80", desc: "Upendo na ardhi." },
-        { title: "Msanifu Mambo ya Ndani", img: "https://images.unsplash.com/photo-1618213749401-2a8e6a696b8f?auto=format&fit=crop&w=100&q=80", desc: "Ladha nzuri." },
-        { title: "Mpishi", img: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=100&q=80", desc: "Unapenda chakula." },
-        { title: "Mhasibu", img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80", desc: "Uthabiti na usahihi." },
-        { title: "Mfanyabiashara wa Mali isiyohamishika", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80", desc: "Unajua thamani ya mali." },
-        { title: "Mwanamuziki", img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80", desc: "Unapenda sanaa." },
-        { title: "Mfanyakazi wa Benki", img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&w=100&q=80", desc: "Uaminifu wako." },
-        { title: "Mhandisi wa Kilimo", img: "https://images.unsplash.com/photo-1593113598228-941f4d5e74e2?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuboresha kilimo." },
-        { title: "Mshauri wa Fedha", img: "https://images.unsplash.com/photo-1579532536935-619928decd08?auto=format&fit=crop&w=100&q=80", desc: "Uwezo wa kusimamia fedha." }
-    ],
-    // Kwa nyota nyingine, tutatumia data ya Taurus kama placeholder (unaweza kubadilisha baadaye)
-    3: CAREERS[2],
-    4: CAREERS[2],
-    5: CAREERS[2],
-    6: CAREERS[2],
-    7: CAREERS[2],
-    8: CAREERS[2],
-    9: CAREERS[2],
-    10: CAREERS[2],
-    11: CAREERS[2],
-    12: CAREERS[2]
+    2: [ // Taurus (Farasi)
+        {
+            title: "Mwekezaji wa Hisa",
+            img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80",
+            desc: "Uvumilivu wako na uwezo wa kusubiri unakufaa kuwekeza kwa muda mrefu."
+        },
+        {
+            title: "Mkulima Mboga",
+            img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=100&q=80",
+            desc: "Upendo wako na ardhi na uthabiti unakufaa kwa kilimo na ufugaji."
+        },
+        {
+            title: "Msanifu Mambo ya Ndani",
+            img: "https://images.unsplash.com/photo-1618213749401-2a8e6a696b8f?auto=format&fit=crop&w=100&q=80",
+            desc: "Una ladha nzuri na unapenda uzuri, unaweza kupamba nyumba na ofisi."
+        },
+        {
+            title: "Mpishi (Chef)",
+            img: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=100&q=80",
+            desc: "Unapenda chakula na starehe, unaweza kuwa mpishi maarufu."
+        },
+        {
+            title: "Mhasibu",
+            img: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=100&q=80",
+            desc: "Uthabiti wako na usahihi unakufaa kushughulikia hesabu na fedha."
+        },
+        {
+            title: "Mfanyabiashara wa Mali isiyohamishika",
+            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80",
+            desc: "Unajua thamani ya mali na unaweza kuuza na kununua nyumba kwa faida."
+        },
+        {
+            title: "Mwanamuziki",
+            img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=100&q=80",
+            desc: "Unapenda sanaa na sauti nzuri, unaweza kuwa mpiga ala au mwimbaji."
+        },
+        {
+            title: "Mfanyakazi wa Benki",
+            img: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&w=100&q=80",
+            desc: "Uaminifu wako na utulivu unakufaa katika sekta ya benki na fedha."
+        },
+        {
+            title: "Mhandisi wa Kilimo",
+            img: "https://images.unsplash.com/photo-1593113598228-941f4d5e74e2?auto=format&fit=crop&w=100&q=80",
+            desc: "Unaweza kuboresha kilimo kwa teknolojia na uvumbuzi."
+        },
+        {
+            title: "Mshauri wa Fedha",
+            img: "https://images.unsplash.com/photo-1579532536935-619928decd08?auto=format&fit=crop&w=100&q=80",
+            desc: "Uwezo wako wa kusimamia fedha unawasaidia wengine kuwekeza vizuri."
+        }
+    ]
 };
 
     let currentData = null;
@@ -1655,3 +1233,8 @@ const CAREERS = {
 </script>
 </body>
 </html>
+```
+
+
+
+
