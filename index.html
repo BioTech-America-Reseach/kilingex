@@ -53,19 +53,40 @@
                 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
-            background-position: center;
+            background-position: center 0;
             color: var(--text-white);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            transition: background-position 0.1s ease-out;
         }
 
-        /* ===== KITUFE CHA KUSAKINISHA APP (JUU KABISA) ===== */
+        /* Parallax na zoom */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            background-attachment: scroll;
+            background-position: center 0;
+            z-index: -1;
+            animation: slowZoom 30s infinite alternate ease-in-out;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* ===== KITUFE CHA KUSAKINISHA (KINAONEKANA DAIMA) ===== */
         .install-container {
             display: flex;
             justify-content: center;
             padding: 15px 10px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             border-bottom: 2px solid var(--gold-primary);
             position: sticky;
             top: 0;
@@ -77,27 +98,37 @@
             background: linear-gradient(135deg, #D4AF37, #AA6C39);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            gap: 15px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
             transition: transform 0.3s, box-shadow 0.3s;
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
         }
         
         #install-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--gold-shine);
+            transform: scale(1.08);
+            box-shadow: 0 0 40px var(--gold-shine);
         }
         
         #install-button i {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
+        }
+
+        /* ===== SHAKE ANIMATION ===== */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.5s ease-in-out;
         }
 
         /* ===== CODE ACCESS OVERLAY ===== */
@@ -853,18 +884,18 @@
                 height: 200px;
             }
             #install-button {
-                padding: 10px 20px;
-                font-size: 1rem;
+                padding: 12px 25px;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- KITUFE CHA KUSAKINISHA APP (JUU KABISA) -->
-<div class="install-container">
+<!-- KITUFE CHA KUSAKINISHA APP (KINAONEKANA DAIMA) -->
+<div class="install-container" id="install-container">
     <button id="install-button">
-        <i class="fas fa-download"></i> Sakinisha App
+        <i class="fas fa-download"></i> PAKUA/Sakinisha App (BURE)
     </button>
 </div>
 
@@ -1110,39 +1141,46 @@
     }
 </script>
 
-<!-- PWA INSTALL BUTTON SCRIPT -->
+<!-- PWA INSTALL BUTTON SCRIPT (INAONEKANA DAIMA) -->
 <script>
     let deferredPrompt;
+    const installContainer = document.getElementById('install-container');
     const installButton = document.getElementById('install-button');
 
+    // Kitufe kinaonekana daima (tayari kimewekwa CSS)
+
     window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
-        // Stash the event so it can be triggered later
         deferredPrompt = e;
-        // Show the install button
-        installButton.style.display = 'flex';
+        // Hakikisha kitufe kinaonekana (kiko tayari)
     });
 
     installButton.addEventListener('click', async () => {
         if (!deferredPrompt) {
+            alert("Ili kusakinisha App, tumia Chrome au Safari kwenye simu. Bofya menyu na uchague 'Install app' au 'Add to Home screen'.");
             return;
         }
-        // Show the install prompt
         deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        // We've used the prompt, and can't use it again, throw it away
+        console.log(`User response: ${outcome}`);
         deferredPrompt = null;
-        // Hide the install button
-        installButton.style.display = 'none';
+        // Baada ya kujaribu, tunaweza kubadilisha ujumbe
+        if (outcome === 'accepted') {
+            installButton.innerHTML = '<i class="fas fa-check"></i> IMEKWISHA SAKINISHA';
+        }
     });
 
     window.addEventListener('appinstalled', () => {
-        console.log('PWA was installed');
-        // Hide the install button
-        installButton.style.display = 'none';
+        console.log('PWA installed');
+        installButton.innerHTML = '<i class="fas fa-check"></i> IMEKWISHA SAKINISHA';
+    });
+</script>
+
+<!-- Parallax scroll effect -->
+<script>
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        document.body.style.backgroundPosition = `center ${scrolled * 0.3}px`;
     });
 </script>
 
@@ -1151,13 +1189,18 @@
    const validCodes = ['W001', 'W002', 'W003'];
 
    function verifyCode() {
-        const codeInput = document.getElementById('access-code').value.trim().toUpperCase();
+        const codeInput = document.getElementById('access-code');
         const errorDiv = document.getElementById('code-error');
-        if (validCodes.includes(codeInput)) {
+        const code = codeInput.value.trim().toUpperCase();
+        
+        if (validCodes.includes(code)) {
             document.getElementById('code-overlay').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
         } else {
             errorDiv.innerText = '❌ Code si sahihi. Jaribu tena au omba code kupitia WhatsApp.';
+            // Shake the input
+            codeInput.classList.add('shake');
+            setTimeout(() => codeInput.classList.remove('shake'), 500);
         }
    }
 
