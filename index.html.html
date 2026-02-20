@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PWA MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- For iOS - Add to Home Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dr. William">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Kilinge cha Dr. William</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-shine: #FFD700;
+            --gold-dark: #AA6C39;
+            --dark-bg: #050505;
+            --panel-black: rgba(10, 10, 10, 0.85);
+            --text-white: #F5F5F5;
+            --text-gold: #F4E4BC;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center 0;
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-position 0.1s ease-out;
+        }
+
+        /* Parallax background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: inherit;
+            background-attachment: scroll;
+            background-position: center 0;
+            z-index: -1;
+            animation: slowZoom 30s infinite alternate ease-in-out;
+        }
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* ===== KITUFE CHA KUSAKINISHA ===== */
+        .install-container {
+            display: flex;
+            justify-content: center;
+            padding: 15px 10px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 2px solid var(--gold-primary);
+            position: sticky;
+            top: 0;
+            z-index: 10001;
+            backdrop-filter: blur(5px);
+        }
+        
+        #install-button {
+            background: linear-gradient(135deg, #D4AF37, #AA6C39);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 25px rgba(212,175,55,0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+        #install-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px var(--gold-shine);
+        }
+        #install-button i { font-size: 1.6rem; }
+
+        /* ===== SHAKE ANIMATION ===== */
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            10%,30%,50%,70%,90% { transform: translateX(-5px); }
+            20%,40%,60%,80% { transform: translateX(5px); }
+        }
+        .shake { animation: shake 0.5s ease-in-out; }
+
+        /* ===== CODE OVERLAY ===== */
+        #code-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .code-box {
+            background: var(--panel-black);
+            border: 2px solid var(--gold-dark);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(212,175,55,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .code-box::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-shine), transparent);
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .code-box h2 {
+            color: var(--gold-shine);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .code-box p {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .code-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold-dark);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .code-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px rgba(212,175,55,0.3);
+        }
+        .btn-code {
+            background: linear-gradient(135deg, #8B6914, #D4AF37);
+            border: none; color: #000; font-weight: bold; padding: 15px; width: 100%;
+            border-radius: 8px; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+            font-family: 'Cinzel', serif; letter-spacing: 2px; margin-bottom: 20px;
+        }
+        .btn-code:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--gold-dark);
+        }
+        .whatsapp-code-btn {
+            background: #25D366; color: white; border: none; padding: 12px; width: 100%;
+            border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .whatsapp-code-btn:hover {
+            background: #128C7E; transform: scale(1.02);
+        }
+        .error-message {
+            color: #ff6b6b; margin-top: 10px; font-size: 0.9rem; min-height: 20px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        #main-content { display: none; position: relative; z-index: 1; }
+
+        /* ===== INTRO ANIMATION ===== */
+        #intro-overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: #000; z-index: 9999; display: none;
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+        .mystic-circle {
+            width:150px; height:150px;
+            border:2px solid transparent; border-top:2px solid var(--gold-primary); border-bottom:2px solid var(--gold-primary);
+            border-radius:50%; animation:spin 2s linear infinite; position:relative;
+            box-shadow:0 0 20px var(--gold-dark);
+        }
+        .mystic-circle::before {
+            content:''; position:absolute; top:10px; left:10px; right:10px; bottom:10px;
+            border:2px solid transparent; border-left:2px solid var(--gold-shine); border-right:2px solid var(--gold-shine);
+            border-radius:50%; animation:spinReverse 3s linear infinite;
+        }
+        .intro-text {
+            margin-top:30px; font-family:'Cinzel',serif; font-size:1.5rem; color:var(--gold-shine);
+            letter-spacing:3px; animation:pulseText 2s infinite; text-align:center;
+        }
+        @keyframes spin { 0%{transform:rotate(0);}100%{transform:rotate(360deg);} }
+        @keyframes spinReverse { 0%{transform:rotate(360deg);}100%{transform:rotate(0);} }
+        @keyframes pulseText { 0%,100%{opacity:0.5;}50%{opacity:1;text-shadow:0 0 10px var(--gold-primary);} }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align:center; padding:40px 20px;
+            border-bottom:1px solid rgba(212,175,55,0.3);
+            background:linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+        .dr-title {
+            font-family:'Cinzel',serif; font-size:2.8rem;
+            background:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip:text; color:transparent; margin:0;
+            text-shadow:0 0 20px rgba(0,0,0,0.8); font-weight:900; letter-spacing:2px;
+        }
+        .subtitle {
+            font-family:'Playfair Display',serif; color:var(--text-gold); font-style:italic;
+            letter-spacing:1px; margin-top:5px;
+        }
+
+        /* ===== SERVICE MENU ===== */
+        .service-menu {
+            display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin:30px auto; padding:0 15px;
+        }
+        .btn-service {
+            background:rgba(0,0,0,0.5); border:1px solid var(--gold-dark); color:var(--text-gold);
+            padding:12px 25px; border-radius:50px; cursor:pointer; font-family:'Cinzel',serif; font-weight:bold;
+            transition:all 0.4s ease; text-transform:uppercase; letter-spacing:1px; backdrop-filter:blur(5px);
+        }
+        .btn-service:hover, .btn-service.active {
+            background:var(--gold-primary); color:#000; box-shadow:0 0 15px var(--gold-dark); transform:translateY(-3px);
+        }
+
+        /* ===== CONTAINERS ===== */
+        .container {
+            width:95%; max-width:650px; margin:20px auto 60px; background:var(--panel-black);
+            padding:40px; border-radius:10px; border:1px solid var(--gold-dark);
+            box-shadow:0 20px 50px rgba(0,0,0,0.7); position:relative; overflow:hidden;
+        }
+        .container::before {
+            content:''; position:absolute; top:0; left:0; width:100%; height:3px;
+            background:linear-gradient(90deg, transparent, var(--gold-shine), transparent);
+        }
+        h2 {
+            color:var(--gold-shine); text-align:center; font-family:'Cinzel',serif;
+            border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px; margin-bottom:25px;
+        }
+        label {
+            display:block; margin-top:20px; color:var(--gold-primary); font-weight:600;
+            font-size:0.9rem; text-transform:uppercase; letter-spacing:1px;
+        }
+        input, select, textarea {
+            width:100%; padding:15px; margin-top:10px; border-radius:5px; border:1px solid #333;
+            background:rgba(255,255,255,0.05); color:#fff; font-family:'Poppins',sans-serif; font-size:1rem; transition:0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline:none; border-color:var(--gold-primary); background:rgba(0,0,0,0.8);
+            box-shadow:0 0 10px rgba(212,175,55,0.2);
+        }
+        .btn-magic {
+            background:linear-gradient(135deg, #8B6914, #D4AF37, #8B6914); background-size:200% auto;
+            color:#fff; padding:18px; border:none; border-radius:5px; font-weight:900; font-family:'Cinzel',serif;
+            text-transform:uppercase; letter-spacing:2px; cursor:pointer; width:100%; margin-top:30px;
+            transition:0.5s; box-shadow:0 5px 15px rgba(0,0,0,0.5);
+        }
+        .btn-magic:hover {
+            background-position:right center; box-shadow:0 0 25px var(--gold-dark); transform:scale(1.02);
+        }
+
+        /* ===== NEXT PAGE BUTTON ===== */
+        .btn-next-page {
+            background:linear-gradient(45deg, #800000, #b30000);
+            border:2px solid var(--gold-shine); color:white; padding:20px; display:block; text-align:center;
+            text-decoration:none; font-family:'Cinzel',serif; font-size:1.2rem; font-weight:bold;
+            border-radius:8px; margin-top:20px; animation:pulseBtn 2s infinite; position:relative; overflow:hidden;
+        }
+        .btn-next-page::after {
+            content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+            background:linear-gradient(transparent, rgba(255,255,255,0.3), transparent);
+            transform:rotate(45deg); animation:shine 3s infinite;
+        }
+        .btn-next-page:hover {
+            background:linear-gradient(45deg, #b30000, #ff0000);
+            box-shadow:0 0 30px rgba(255,0,0,0.6); transform:scale(1.05);
+        }
+        @keyframes pulseBtn {
+            0%{box-shadow:0 0 0 0 rgba(255,215,0,0.4);}
+            70%{box-shadow:0 0 0 15px rgba(255,215,0,0);}
+            100%{box-shadow:0 0 0 0 rgba(255,215,0,0);}
+        }
+        @keyframes shine { 0%{left:-100%;}100%{left:100%;} }
+
+        /* ===== CARDS ===== */
+        #cards-container {
+            display:none; gap:25px; flex-wrap:wrap; justify-content:center; padding:20px; max-width:1200px; margin:0 auto;
+        }
+        .card {
+            width:300px; height:450px; perspective:1500px; cursor:pointer; transition:all 0.3s;
+        }
+        .card.expanded {
+            width:90%; max-width:600px; height:80vh; z-index:1000; position:fixed; top:50%; left:50%;
+            transform:translate(-50%, -50%);
+        }
+        .card-inner {
+            position:relative; width:100%; height:100%; transition:transform 0.8s; transform-style:preserve-3d;
+            box-shadow:0 10px 30px rgba(0,0,0,0.8); border-radius:15px;
+        }
+        .card.flipped .card-inner { transform:rotateY(180deg); }
+        .card-back {
+            position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:15px;
+            background-size:cover; background-position:center; display:flex; flex-direction:column;
+            justify-content:flex-end; border:2px solid var(--gold-dark);
+        }
+        .card-back::before {
+            content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+            background:linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3));
+        }
+        .card-back-content {
+            position:relative; z-index:2; padding:20px; text-align:center;
+        }
+        .card-title-back {
+            font-family:'Cinzel',serif; color:var(--gold-shine); font-size:1.4rem; font-weight:bold;
+            text-shadow:0 2px 5px rgba(0,0,0,1);
+        }
+        .card-hint { font-size:0.8rem; color:#ccc; }
+        .card-front {
+            position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:15px;
+            background:#111; transform:rotateY(180deg); overflow-y:auto; border:2px solid var(--gold-shine);
+            display:flex; flex-direction:column;
+        }
+        .card-header-img {
+            height:150px; width:100%; object-fit:cover; border-bottom:2px solid var(--gold-primary);
+        }
+        .card-body { padding:20px; }
+        .card-front h3 {
+            color:var(--gold-shine); font-family:'Cinzel',serif; border-bottom:1px solid #333;
+            padding-bottom:10px; margin-top:0;
+        }
+        .job-item {
+            display:flex; align-items:center; background:rgba(255,255,255,0.05); margin-bottom:10px;
+            padding:10px; border-radius:8px; border-left:3px solid var(--gold-dark);
+        }
+        .job-item img {
+            width:50px; height:50px; border-radius:50%; margin-right:15px; object-fit:cover;
+            border:1px solid var(--gold-shine);
+        }
+        .close-card {
+            position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.7); color:white;
+            width:30px; height:30px; border-radius:50%; text-align:center; line-height:30px;
+            cursor:pointer; z-index:10; border:1px solid white; font-weight:bold;
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position:fixed; bottom:20px; right:20px; background:#25D366; color:white; width:60px; height:60px;
+            border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:30px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.5); cursor:pointer; z-index:1000; transition:transform 0.3s;
+        }
+        .whatsapp-float:hover { transform:scale(1.1); }
+        .send-btn {
+            background:linear-gradient(45deg, #11998e, #38ef7d); color:white; padding:15px; border:none;
+            border-radius:50px; font-weight:bold; width:100%; font-size:1.1rem; cursor:pointer;
+            box-shadow:0 0 20px rgba(56,239,125,0.3);
+        }
+
+        /* ===== HUDUMA ===== */
+        .services-container {
+            margin-top:100px; margin-bottom:50px; padding:20px; text-align:center; position:relative; z-index:1;
+        }
+        .section-title {
+            color:#D4AF37; font-family:'Cinzel',serif; font-size:2rem; margin-bottom:40px;
+            letter-spacing:2px; text-shadow:0 0 10px rgba(212,175,55,0.5);
+        }
+        .services-grid {
+            display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:25px;
+            max-width:1000px; margin:0 auto;
+        }
+        .service-box {
+            position:relative; height:250px; border-radius:15px; overflow:hidden; text-decoration:none;
+            box-shadow:0 10px 20px rgba(0,0,0,0.7); transition:transform 0.4s, box-shadow 0.4s;
+            border:1px solid var(--gold-dark); display:block;
+        }
+        .service-box:hover {
+            transform:translateY(-10px) scale(1.02); box-shadow:0 20px 30px rgba(212,175,55,0.3);
+            border-color:var(--gold-shine);
+        }
+        .service-box img {
+            width:100%; height:100%; object-fit:cover; filter:brightness(50%);
+            transition:filter 0.4s, transform 0.4s;
+        }
+        .service-box:hover img {
+            filter:brightness(70%); transform:scale(1.05);
+        }
+        .service-box span {
+            position:absolute; bottom:0; left:0; right:0; color:white; font-weight:bold; font-size:1.2rem;
+            text-shadow:2px 2px 8px black; background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding:20px 5px 10px; text-align:center;
+        }
+
+        /* ===== VIBOX 4 ===== */
+        .external-boxes-container {
+            margin-top:50px; margin-bottom:30px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
+            padding:20px; background:rgba(0,0,0,0.3); border-top:2px solid var(--gold-primary);
+            border-bottom:2px solid var(--gold-primary);
+        }
+        .external-box {
+            width:120px; height:120px; background:rgba(0,0,0,0.8); border:2px solid var(--gold-primary);
+            border-radius:15px; overflow:hidden; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s;
+            display:flex; flex-direction:column; align-items:center; justify-content:center; color:white;
+            font-size:0.9rem; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.5);
+        }
+        .external-box:hover {
+            transform:scale(1.05) translateY(-5px); box-shadow:0 0 30px var(--gold-shine);
+            border-color:var(--gold-shine);
+        }
+        .external-box .box-image {
+            width:100%; height:70px; background-size:cover; background-position:center;
+            border-bottom:1px solid var(--gold-dark);
+        }
+        .external-box .box-title {
+            background:rgba(0,0,0,0.8); width:100%; padding:8px 0; font-family:'Cinzel',serif;
+            font-size:0.9rem; color:var(--gold-primary); font-weight:bold;
+        }
+
+        @media (max-width:768px) {
+            .dr-title { font-size:1.8rem; }
+            .card.expanded { width:95%; height:80vh; }
+            .external-box { width:90px; height:90px; }
+            .external-box .box-image { height:50px; }
+            .whatsapp-float { width:50px; height:50px; font-size:25px; bottom:10px; right:10px; }
+            .services-grid { grid-template-columns:repeat(2,1fr); }
+            .service-box { height:200px; }
+            #install-button { padding:12px 25px; font-size:1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- KITUFE CHA KUSAKINISHA -->
+<div class="install-container">
+    <button id="install-button">
+        <i class="fas fa-download"></i> Sakinisha App ✦ BURE
+    </button>
+</div>
+
+<!-- CODE OVERLAY -->
+<div id="code-overlay">
+    <div class="code-box">
+        <h2><i class="fas fa-lock"></i> KILINGE CHA DR WILLIAM KIMEFUNGWA</h2>
+        <p><strong>JINSI YA KUCHANGIA:</strong> Tuma Tsh.5,000 kwenda M-Pesa <strong>0762286282</strong> (BARAKA RICHARD) kisha ubofye kitufe hapa chini kuomba code.</p>
+        <input type="text" id="access-code" class="code-input" placeholder="INGIZA CODE HAPA" maxlength="4" autocomplete="off">
+        <button class="btn-code" onclick="verifyCode()">FUNGUA KILINGE</button>
+        <div class="error-message" id="code-error"></div>
+        <button class="whatsapp-code-btn" onclick="requestCodeViaWhatsApp()">
+            <i class="fab fa-whatsapp"></i> 👉 NIMELIPIA - NIPE CODE
+        </button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+    <div id="intro-overlay">
+        <div class="mystic-circle"></div>
+        <div class="intro-text" id="intro-text-content">KILINGE KINAFUNGUKA...</div>
+    </div>
+
+    <header>
+        <h1 class="dr-title">DR. WILLIAM</h1>
+        <p class="subtitle">Kilinge cha Tiba na Ramli za Kifalme</p>
+    </header>
+
+    <div class="service-menu">
+        <button class="btn-service active" onclick="switchPage('ramli', this)"><i class="fas fa-star"></i> Ramli</button>
+        <button class="btn-service" onclick="switchPage('appointment', this)"><i class="fas fa-calendar-check"></i> Miadi</button>
+        <button class="btn-service" onclick="switchPage('dawa', this)"><i class="fas fa-flask"></i> Dawa</button>
+        <button class="btn-service" onclick="switchPage('malalamiko', this)"><i class="fas fa-comment-dots"></i> Maoni</button>
+    </div>
+
+    <!-- PAGE: RAMLI -->
+    <div id="page-ramli" class="container">
+        <h2><i class="fas fa-sun"></i> UFUNGUO WA NYOTA YAKO</h2>
+        <label>Jina lako Kamili:</label> <input type="text" id="full-name" placeholder="Mfano: JUMA HASSAN">
+        <label>Jinsia:</label>
+        <select id="gender">
+            <option value="Mwanaume">Mwanaume</option>
+            <option value="Mwanamke">Mwanamke</option>
+        </select>
+        <label>Tarehe ya Kuzaliwa:</label>
+        <div style="display:flex; gap:10px;">
+            <select id="birth-day"><script>for(let i=1;i<=31;i++) document.write(`<option value="${i}">${i}</option>`);</script></select>
+            <select id="birth-month">
+                <option value="1">Januari</option><option value="2">Februari</option><option value="3">Machi</option>
+                <option value="4">Aprili</option><option value="5">Mei</option><option value="6">Juni</option>
+                <option value="7">Julai</option><option value="8">Agosti</option><option value="9">Septemba</option>
+                <option value="10">Oktoba</option><option value="11">Novemba</option><option value="12">Desemba</option>
+            </select>
+        </div>
+        <button class="btn-magic" onclick="anzaRamli()">PANUA NYOTA YAKO</button>
+    </div>
+
+    <!-- PAGE: MIADI -->
+    <div id="page-appointment" class="container" style="display:none;">
+        <h2><i class="fas fa-handshake"></i> PANGA SIKU YA KUFIKA</h2>
+        <label>Jina:</label> <input type="text" id="app-name">
+        <label>Tarehe:</label> <input type="date" id="app-date">
+        <label>Sababu:</label> <textarea id="app-reason" placeholder="Elezea shida yako..." rows="3"></textarea>
+        <label>Simu:</label>
+        <div style="display:flex; gap:10px;">
+            <select style="width:30%"><option>+255</option><option>+254</option></select>
+            <input type="text" id="app-phone" placeholder="762xxxxxx" maxlength="9">
+        </div>
+        <button class="btn-magic" onclick="tumaWhatsApp('MIADI')">TUMA MIADI</button>
+    </div>
+
+    <!-- PAGE: DAWA -->
+    <div id="page-dawa" class="container" style="display:none;">
+        <h2><i class="fas fa-leaf"></i> ODA DAWA ASILIA</h2>
+        <label>Chagua Dawa:</label>
+        <select name="dawa_list" id="dawa_list">
+            <option value="">-- Chagua Aina ya Dawa --</option>
+            <option value="Dawa za minyoo">Dawa za minyoo</option>
+            <option value="Dawa za maumivu na homa">Dawa za maumivu na homa</option>
+            <option value="Dawa za antibiotiki">Dawa za antibiotiki</option>
+            <option value="Dawa za malaria">Dawa za malaria</option>
+            <option value="Dawa za fangasi">Dawa za fangasi</option>
+            <option value="Dawa za virusi">Dawa za virusi</option>
+            <option value="Dawa za kusafisha vidonda">Dawa za kusafisha vidonda</option>
+            <option value="Dawa za vidonda vya tumbo">Dawa za vidonda vya tumbo</option>
+            <option value="Dawa za kuhara">Dawa za kuhara</option>
+            <option value="Dawa za kupunguza asidi">Dawa za kupunguza asidi mwilini</option>
+            <option value="Dawa za kulainisha choo">Dawa za kulainisha choo</option>
+            <option value="Dawa za kuzuia kutapika">Dawa za kuzuia kutapika</option>
+            <option value="Dawa za bawasiri">Dawa za bawasiri</option>
+            <option value="Dawa za gesi tumboni">Dawa za gesi tumboni</option>
+            <option value="Dawa za kuongeza hamu ya kula">Dawa za kuongeza hamu ya kula</option>
+            <option value="Dawa za kikohozi na mafua">Dawa za kikohozi na mafua</option>
+            <option value="Dawa za mzio na aleji">Dawa za mzio na aleji</option>
+            <option value="Dawa za pumu">Dawa za pumu</option>
+            <option value="Dawa za kuzibua pua">Dawa za kuzibua pua</option>
+            <option value="Dawa za kulegeza makohozi">Dawa za kulegeza makohozi</option>
+            <option value="Dawa za shinikizo la damu">Dawa za shinikizo la damu</option>
+            <option value="Dawa za kisukari">Dawa za kisukari</option>
+            <option value="Dawa za kupunguza mafuta">Dawa za kupunguza mafuta/kolesto</option>
+            <option value="Dawa za kifafa">Dawa za kifafa</option>
+            <option value="Dawa za moyo">Dawa za moyo</option>
+            <option value="Dawa za kusaidia figo">Dawa za kusaidia figo (Diuretics)</option>
+            <option value="Dawa za kansa">Dawa za kansa (Chemotherapy)</option>
+            <option value="Dawa za uzazi wa mpango">Dawa za uzazi wa mpango</option>
+            <option value="Dawa za fangasi wa kike">Dawa za fangasi wa kike</option>
+            <option value="Dawa za kurekebisha homoni">Dawa za kurekebisha homoni</option>
+            <option value="Dawa za kuongeza rutuba">Dawa za kuongeza rutuba</option>
+            <option value="Dawa za maumivu ya hedhi">Dawa za maumivu ya hedhi</option>
+            <option value="Dawa za matatizo ya macho">Dawa za matatizo ya macho</option>
+            <option value="Dawa za masikio">Dawa za masikio</option>
+            <option value="Dawa za matatizo ya ngozi">Dawa za matatizo ya ngozi</option>
+            <option value="Dawa za maumivu ya mifupa">Dawa za maumivu ya mifupa na viungo</option>
+            <option value="Dawa za meno na fizi">Dawa za meno na fizi</option>
+            <option value="Dawa za ganzi">Dawa za ganzi</option>
+            <option value="Dawa za kuongeza damu">Dawa za kuongeza damu</option>
+            <option value="Dawa za vitamini">Dawa za vitamini na virutubisho</option>
+            <option value="Dawa za kuongeza kinga">Dawa za kuongeza kinga ya mwili</option>
+            <option value="Dawa za kalsiamu">Dawa za kalsiamu na mifupa</option>
+            <option value="Mafuta ya samaki">Mafuta ya samaki (Omega-3)</option>
+            <option value="Dawa za usingizi">Dawa za usingizi na wasiwasi</option>
+            <option value="Dawa za sonona">Dawa za sonona (Antidepressants)</option>
+            <option value="Dawa za kuacha kulevya">Dawa za kuacha kulevya</option>
+            <option value="Dawa za kupunguza uzito">Dawa za kupunguza uzito</option>
+            <option value="Dawa za kutoa sumu mwilini">Dawa za kutoa sumu mwilini</option>
+            <option value="Dawa za baridi yabisi">Dawa za baridi yabisi</option>
+            <option value="Dawa za kuongeza nguvu">Dawa za maji ya kuongeza nguvu (ORS)</option>
+        </select>
+        <label>Mahali (Mkoa/Wilaya):</label> <input type="text" id="dawa-location">
+        <label>Simu:</label> <input type="text" id="dawa-phone" placeholder="762xxxxxx">
+        <button class="btn-magic" onclick="tumaWhatsApp('DAWA')">TUMA ODA SASA</button>
+    </div>
+
+    <!-- PAGE: MALALAMIKO -->
+    <div id="page-malalamiko" class="container" style="display:none;">
+        <h2><i class="fas fa-envelope-open-text"></i> ELEZEA MALALAMIKO YAKO</h2>
+        <textarea id="msg-content" rows="5" placeholder="Tuandikie hapa..."></textarea>
+        <button class="btn-magic" onclick="tumaWhatsApp('MAONI')">TUMA UJUMBE</button>
+    </div>
+
+    <!-- CARDS CONTAINER -->
+    <div id="cards-container"></div>
+
+    <!-- SEND RESULTS -->
+    <div id="send-results-container" class="container" style="display:none; text-align:center;">
+        <button class="send-btn" onclick="tumaMatokeoWhatsApp()">
+            <i class="fab fa-whatsapp"></i> MSHIRIKISHE DAKTARI MAJIBU YAKO
+        </button>
+    </div>
+
+    <!-- NEXT PAGE -->
+    <div id="next-page-container" class="container" style="display:none; text-align:center; border-color: var(--accent-red);">
+        <h2 style="color: #ff4444;"><i class="fas fa-door-open"></i> MUENDELEZO</h2>
+        <p style="color: #ccc;">Kuna siri zaidi kuhusu nyota yako...</p>
+        <a href="https://biotech-america-reseach.github.io/orcle/" class="btn-next-page">
+            FUNGUA UKURASA UNAOFUATA <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- HUDUMA -->
+    <div class="services-container">
+        <h2 class="section-title">HUDUMA ZETU</h2>
+        <div class="services-grid">
+            <a href="LINK_YAKO_HAPA_1" class="service-box"><img src="https://images.unsplash.com/photo-1514415008039-087cc87e6c0c?q=80&w=400&fit=crop" alt="Huduma 1"><span>MATENGENEZO YANAENDELEA</span></a>
+            <a href="LINK_YAKO_HAPA_2" class="service-box"><img src="https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?q=80&w=400&fit=crop" alt="Huduma 2"><span>Tiba Asilia</span></a>
+            <a href="LINK_YAKO_HAPA_3" class="service-box"><img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?q=80&w=400&fit=crop" alt="Huduma 3"><span>Ushauri wa Kiroho</span></a>
+            <a href="LINK_YAKO_HAPA_4" class="service-box"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400&fit=crop" alt="Huduma 4"><span>Visomo Maalum</span></a>
+            <a href="LINK_YAKO_HAPA_5" class="service-box"><img src="https://images.unsplash.com/photo-1515598344952-097560877960?q=80&w=400&fit=crop" alt="Huduma 5"><span>Mafuta ya Baraka</span></a>
+            <a href="LINK_YAKO_HAPA_6" class="service-box"><img src="https://images.unsplash.com/photo-1532187875605-2fe358511423?q=80&w=400&fit=crop" alt="Huduma 6"><span>Vitabu Zaidi</span></a>
+        </div>
+    </div>
+
+    <!-- VIBOX 4 -->
+    <div class="external-boxes-container">
+        <div class="external-box" onclick="window.open('https://link1.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=200&auto=format')"></div><div class="box-title">DW1</div></div>
+        <div class="external-box" onclick="window.open('https://link2.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&auto=format')"></div><div class="box-title">DW2</div></div>
+        <div class="external-box" onclick="window.open('https://link3.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=200&auto=format')"></div><div class="box-title">DW3</div></div>
+        <div class="external-box" onclick="window.open('https://link4.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162616550-7f3d2d642c1c?w=200&auto=format')"></div><div class="box-title">DW4</div></div>
+    </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float" onclick="window.open('https://wa.me/255762286282', '_blank')">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<!-- SERVICE WORKER -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed', err));
+        });
+    }
+</script>
+
+<!-- INSTALL SCRIPT -->
+<script>
+    const installBtn = document.getElementById('install-button');
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+    });
+
+    installBtn.addEventListener('click', () => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            alert('Kwa iPhone: Bofya ikoni ya "Share" chini, kisha chagua "Add to Home Screen".');
+        } else if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    installBtn.innerHTML = '<i class="fas fa-check"></i> IMEKWISHA SAKINISHA';
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            alert('Ili kusakinisha, tumia Chrome au Safari kwenye simu. Au tafuta chaguo la "Install app" kwenye menyu.');
+        }
+    });
+
+    window.addEventListener('appinstalled', () => {
+        installBtn.innerHTML = '<i class="fas fa-check"></i> IMEKWISHA SAKINISHA';
+    });
+</script>
+
+<!-- PARALLAX -->
+<script>
+    window.addEventListener('scroll', () => {
+        document.body.style.backgroundPosition = `center ${window.pageYOffset * 0.3}px`;
+    });
+</script>
+
+<!-- MAIN SCRIPT -->
+<script>
+    const validCodes = ['W001', 'W002', 'W003'];
+
+    function verifyCode() {
+        const codeInput = document.getElementById('access-code');
+        const errorDiv = document.getElementById('code-error');
+        const code = codeInput.value.trim().toUpperCase();
+        if (validCodes.includes(code)) {
+            document.getElementById('code-overlay').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        } else {
+            errorDiv.innerText = '❌ Code si sahihi. Jaribu tena au omba code kupitia WhatsApp.';
+            codeInput.classList.add('shake');
+            setTimeout(() => codeInput.classList.remove('shake'), 500);
+        }
+    }
+
+    function requestCodeViaWhatsApp() {
+        window.open(`https://wa.me/255762286282?text=${encodeURIComponent("Ninaomba code ya kuingia kwenye Kilinge cha Dr. William.")}`, '_blank');
+    }
+
+    const ZODIAC_DB = {
+        1: { name: "Kondoo (Aries)", image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80", traits: ["Jasiri", "Kiongozi", "Mwenye nguvu", "Mkweli", "Shujaa"] },
+        2: { name: "Farasi (Taurus)", image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80", traits: ["Mvumilivu", "Mwenye msimamo", "Mpendwa", "Tajiri", "Mtulivu"] }
+    };
+    const HERUFI_DB = { 'A': ["Una uwezo mkubwa wa uongozi."], 'B': ["Una upole wa hali ya juu."] };
+    const ZODIAC_HEALTH = {
+        1: { risks: ["Maumivu ya kichwa"], avoid: ["Epuka jua kali"], actions: ["Kunywa maji"] },
+        2: { risks: ["Maumivu ya koo"], avoid: ["Epuka vyakula vitamu"], actions: ["Kunywa maji ya joto"] }
+    };
+    const CAREERS = {
+        1: [{ title: "Kiongozi wa Jeshi", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza." }],
+        2: [{ title: "Mwekezaji wa Hisa", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80", desc: "Uvumilivu wako." }]
+    };
+
+    let currentData = null;
+
+    function switchPage(pageId, btn) {
+        document.querySelectorAll('.container').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.btn-service').forEach(b => b.classList.remove('active'));
+        document.getElementById('page-' + pageId).style.display = 'block';
+        if(btn) btn.classList.add('active');
+        if(pageId !== 'ramli') {
+            document.getElementById('cards-container').style.display = 'none';
+            document.getElementById('next-page-container').style.display = 'none';
+        }
+    }
+
+    function anzaRamli() {
+        const name = document.getElementById('full-name').value;
+        if(name.length < 3) { alert("Tafadhali andika jina kamili."); return; }
+        document.getElementById('intro-overlay').style.display = 'flex';
+        setTimeout(() => finishIntro(name), 2000);
+    }
+
+    function finishIntro(name) {
+        document.getElementById('intro-overlay').style.display = 'none';
+        chakataData(name);
+        document.getElementById('page-ramli').style.display = 'none';
+        document.getElementById('cards-container').style.display = 'flex';
+        document.getElementById('send-results-container').style.display = 'block';
+        document.getElementById('next-page-container').style.display = 'block';
+    }
+
+    function chakataData(name) {
+        const d = parseInt(document.getElementById('birth-day').value);
+        const m = parseInt(document.getElementById('birth-month').value);
+        let zIdx = 1; 
+        if((m==3 && d>=21)||(m==4 && d<=19)) zIdx=1;
+        else if((m==4 && d>=20)||(m==5 && d<=20)) zIdx=2;
+        else zIdx=1;
+
+        const zodiac = ZODIAC_DB[zIdx] || ZODIAC_DB[1];
+        const health = ZODIAC_HEALTH[zIdx] || ZODIAC_HEALTH[1];
+        const letter = name.charAt(0).toUpperCase();
+        const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
+        const careers = CAREERS[zIdx] || CAREERS[1];
+
+        currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
+        const container = document.getElementById('cards-container');
+        container.innerHTML = '';
+
+        // Card 1
+        const card1 = document.createElement('div'); card1.className = 'card';
+        card1.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('${zodiac.image}')"><div class="card-back-content"><div class="card-title-back">NYOTA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="${zodiac.image}" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>${zodiac.name.toUpperCase()}</h3><ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+        card1.onclick = function() { toggleCard(this); }; container.appendChild(card1);
+
+        // Card 2
+        const card2 = document.createElement('div'); card2.className = 'card';
+        card2.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">AFYA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>AFYA YAKO</h3><p><strong>Hatari:</strong> ${health.risks.join('; ')}</p><p><strong>Epuka:</strong> ${health.avoid.join('; ')}</p><p><strong>Tiba:</strong> ${health.actions.join('; ')}</p></div></div></div>`;
+        card2.onclick = function() { toggleCard(this); }; container.appendChild(card2);
+
+        // Card 3
+        const card3 = document.createElement('div'); card3.className = 'card';
+        card3.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">HERUFI YA JINA</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>JINA LAKO (${letter})</h3><ul>${letterTraits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+        card3.onclick = function() { toggleCard(this); }; container.appendChild(card3);
+
+        // Card 4
+        const card4 = document.createElement('div'); card4.className = 'card';
+        const careersHtml = careers.slice(0,3).map(c => `
+            <div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>
+        `).join('');
+        card4.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">KAZI ZAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>KAZI ZINAZOKUFAA</h3>${careersHtml}</div></div></div>`;
+        card4.onclick = function() { toggleCard(this); }; container.appendChild(card4);
+    }
+
+    function toggleCard(card) {
+        document.querySelectorAll('.card').forEach(c => { if(c !== card) c.classList.remove('flipped', 'expanded'); });
+        card.classList.toggle('flipped');
+        if(card.classList.contains('flipped')) { setTimeout(() => card.classList.add('expanded'), 400); } 
+        else { card.classList.remove('expanded'); }
+    }
+    function closeCard(btn) { btn.closest('.card').classList.remove('expanded', 'flipped'); }
+    
+    function tumaWhatsApp(type) {
+        let msg = "";
+        if(type === 'MIADI') {
+            const name = document.getElementById('app-name').value;
+            const date = document.getElementById('app-date').value;
+            const reason = document.getElementById('app-reason').value;
+            msg = `*MIADI YA DR. WILLIAM*%0A%0AJina: ${name}%0ATarehe: ${date}%0ASababu: ${reason}`;
+        } else if (type === 'DAWA') {
+            const dawa = document.getElementById('dawa_list').value;
+            const loc = document.getElementById('dawa-location').value;
+            msg = `*ODA YA DAWA*%0A%0ADawa: ${dawa}%0AMahali: ${loc}`;
+        } else if (type === 'MAONI') {
+            const txt = document.getElementById('msg-content').value;
+            msg = `*MAONI*%0A%0A${txt}`;
+        }
+        window.open(`https://wa.me/255762286282?text=${msg}`, '_blank');
+    }
+    
+    function tumaMatokeoWhatsApp() {
+        if(!currentData) return;
+        const msg = `*MATOKEO YA RAMLI (DR. WILLIAM)*%0A%0AJina: ${currentData.name}%0ANyota: ${currentData.zodiac}%0ATarehe: ${currentData.date}%0A%0ANimeona matokeo yangu, nahitaji ufafanuzi zaidi.`;
+        window.open(`https://wa.me/255762286282?text=${msg}`, '_blank');
+    }
+</script>
+</body>
+</html>
