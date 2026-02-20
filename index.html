@@ -26,12 +26,14 @@
             --accent-red: #800000;
         }
 
-        * { box-sizing: border-box; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: var(--dark-bg);
             background-image: 
                 linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)),
@@ -40,6 +42,8 @@
             background-attachment: fixed;
             background-position: center;
             color: var(--text-white);
+            min-height: 100vh;
+            position: relative;
             overflow-x: hidden;
         }
 
@@ -93,6 +97,7 @@
             color: var(--gold-shine);
             font-family: 'Cinzel', serif;
             margin-bottom: 10px;
+            font-size: 1.5rem;
         }
 
         .code-box p {
@@ -173,100 +178,221 @@
         /* ===== MAIN CONTENT (initially hidden) ===== */
         #main-content {
             display: none;
-            margin-bottom: 200px;
+            padding-bottom: 150px; /* Nafasi kwa ajili ya vibox vya chini */
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== INTRO ANIMATION ===== */
         #intro-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 9999; display: none;
-            flex-direction: column; justify-content: center; align-items: center;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: #000; 
+            z-index: 9999; 
+            display: none;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
         }
 
         .mystic-circle {
-            width: 150px; height: 150px;
-            border: 2px solid transparent; border-top: 2px solid var(--gold-primary); border-bottom: 2px solid var(--gold-primary);
-            border-radius: 50%; animation: spin 2s linear infinite; position: relative;
+            width: 150px; 
+            height: 150px;
+            border: 2px solid transparent; 
+            border-top: 2px solid var(--gold-primary); 
+            border-bottom: 2px solid var(--gold-primary);
+            border-radius: 50%; 
+            animation: spin 2s linear infinite; 
+            position: relative;
             box-shadow: 0 0 20px var(--gold-dark);
         }
         
         .mystic-circle::before {
-            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 2px solid transparent; border-left: 2px solid var(--gold-shine); border-right: 2px solid var(--gold-shine);
-            border-radius: 50%; animation: spinReverse 3s linear infinite;
+            content: ''; 
+            position: absolute; 
+            top: 10px; 
+            left: 10px; 
+            right: 10px; 
+            bottom: 10px;
+            border: 2px solid transparent; 
+            border-left: 2px solid var(--gold-shine); 
+            border-right: 2px solid var(--gold-shine);
+            border-radius: 50%; 
+            animation: spinReverse 3s linear infinite;
         }
 
         .intro-text {
-            margin-top: 30px; font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-shine);
-            letter-spacing: 3px; animation: pulseText 2s infinite; text-align: center;
+            margin-top: 30px; 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.5rem; 
+            color: var(--gold-shine);
+            letter-spacing: 3px; 
+            animation: pulseText 2s infinite; 
+            text-align: center;
         }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes spinReverse { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
-        @keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; text-shadow: 0 0 10px var(--gold-primary); } }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        @keyframes spinReverse { 
+            0% { transform: rotate(360deg); } 
+            100% { transform: rotate(0deg); } 
+        }
+        @keyframes pulseText { 
+            0%, 100% { opacity: 0.5; } 
+            50% { opacity: 1; text-shadow: 0 0 10px var(--gold-primary); } 
+        }
 
         /* ===== HEADER ===== */
         header {
-            text-align: center; padding: 40px 20px;
+            text-align: center; 
+            padding: 40px 20px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
         }
 
         .dr-title {
-            font-family: 'Cinzel', serif; font-size: 2.8rem;
+            font-family: 'Cinzel', serif; 
+            font-size: 2.8rem;
             background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text; color: transparent; margin: 0;
-            text-shadow: 0 0 20px rgba(0,0,0,0.8); font-weight: 900; letter-spacing: 2px;
+            -webkit-background-clip: text; 
+            color: transparent; 
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8); 
+            font-weight: 900; 
+            letter-spacing: 2px;
         }
 
-        .subtitle { font-family: 'Playfair Display', serif; color: var(--text-gold); font-style: italic; letter-spacing: 1px; margin-top: 5px; }
+        .subtitle { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--text-gold); 
+            font-style: italic; 
+            letter-spacing: 1px; 
+            margin-top: 5px; 
+        }
 
         /* ===== NAVIGATION ===== */
-        .service-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 30px auto; padding: 0 15px; }
+        .service-menu { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+            margin: 30px auto; 
+            padding: 0 15px; 
+        }
 
         .btn-service {
-            background: rgba(0,0,0,0.5); border: 1px solid var(--gold-dark); color: var(--text-gold);
-            padding: 12px 25px; border-radius: 50px; cursor: pointer; font-family: 'Cinzel', serif; font-weight: bold;
-            transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.5); 
+            border: 1px solid var(--gold-dark); 
+            color: var(--text-gold);
+            padding: 12px 25px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-family: 'Cinzel', serif; 
+            font-weight: bold;
+            transition: all 0.4s ease; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            backdrop-filter: blur(5px);
         }
 
         .btn-service:hover, .btn-service.active {
-            background: var(--gold-primary); color: #000; box-shadow: 0 0 15px var(--gold-dark); transform: translateY(-3px);
+            background: var(--gold-primary); 
+            color: #000; 
+            box-shadow: 0 0 15px var(--gold-dark); 
+            transform: translateY(-3px);
         }
 
         /* ===== CONTAINERS ===== */
         .container {
-            width: 95%; max-width: 650px; margin: 20px auto 60px; background: var(--panel-black);
-            padding: 40px; border-radius: 10px; border: 1px solid var(--gold-dark);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7); position: relative; overflow: hidden;
+            width: 95%; 
+            max-width: 650px; 
+            margin: 20px auto 60px; 
+            background: var(--panel-black);
+            padding: 40px; 
+            border-radius: 10px; 
+            border: 1px solid var(--gold-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7); 
+            position: relative; 
+            overflow: hidden;
         }
 
         .container::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 3px;
             background: linear-gradient(90deg, transparent, var(--gold-shine), transparent);
         }
 
-        h2 { color: var(--gold-shine); text-align: center; font-family: 'Cinzel', serif; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 25px; }
+        h2 { 
+            color: var(--gold-shine); 
+            text-align: center; 
+            font-family: 'Cinzel', serif; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding-bottom: 15px; 
+            margin-bottom: 25px; 
+        }
 
-        label { display: block; margin-top: 20px; color: var(--gold-primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        label { 
+            display: block; 
+            margin-top: 20px; 
+            color: var(--gold-primary); 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
 
         input, select, textarea {
-            width: 100%; padding: 15px; margin-top: 10px; border-radius: 5px; border: 1px solid #333;
-            background: rgba(255,255,255,0.05); color: #fff; font-family: 'Poppins', sans-serif; font-size: 1rem; transition: 0.3s;
+            width: 100%; 
+            padding: 15px; 
+            margin-top: 10px; 
+            border-radius: 5px; 
+            border: 1px solid #333;
+            background: rgba(255,255,255,0.05); 
+            color: #fff; 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 1rem; 
+            transition: 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
-            outline: none; border-color: var(--gold-primary); background: rgba(0,0,0,0.8); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            outline: none; 
+            border-color: var(--gold-primary); 
+            background: rgba(0,0,0,0.8); 
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
 
         .btn-magic {
-            background: linear-gradient(135deg, #8B6914, #D4AF37, #8B6914); background-size: 200% auto;
-            color: #fff; padding: 18px; border: none; border-radius: 5px; font-weight: 900; font-family: 'Cinzel', serif;
-            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; width: 100%; margin-top: 30px;
-            transition: 0.5s; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #8B6914, #D4AF37, #8B6914); 
+            background-size: 200% auto;
+            color: #fff; 
+            padding: 18px; 
+            border: none; 
+            border-radius: 5px; 
+            font-weight: 900; 
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            width: 100%; 
+            margin-top: 30px;
+            transition: 0.5s; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .btn-magic:hover { background-position: right center; box-shadow: 0 0 25px var(--gold-dark); transform: scale(1.02); }
+        .btn-magic:hover { 
+            background-position: right center; 
+            box-shadow: 0 0 25px var(--gold-dark); 
+            transform: scale(1.02); 
+        }
 
         /* ===== NEXT PAGE BUTTON STYLE ===== */
         .btn-next-page {
@@ -288,9 +414,15 @@
         }
 
         .btn-next-page::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            content: ''; 
+            position: absolute; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%;
             background: linear-gradient(transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg); animation: shine 3s infinite;
+            transform: rotate(45deg); 
+            animation: shine 3s infinite;
         }
 
         .btn-next-page:hover {
@@ -299,8 +431,15 @@
             transform: scale(1.05);
         }
 
-        @keyframes pulseBtn { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); } }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes pulseBtn { 
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); } 
+            70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); } 
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); } 
+        }
+        @keyframes shine { 
+            0% { left: -100%; } 
+            100% { left: 100%; } 
+        }
 
         /* ===== CARDS ===== */
         #cards-container { 
@@ -434,57 +573,85 @@
             border: 1px solid var(--gold-shine); 
         }
 
-        /* ===== EXTRAS ===== */
+        /* ===== WHATSAPP FLOAT ===== */
         .whatsapp-float {
-            position: fixed; bottom: 10px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5); cursor: pointer; z-index: 1000; transition: transform 0.3s;
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: #25D366; 
+            color: white; 
+            width: 60px; 
+            height: 60px;
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
+            cursor: pointer; 
+            z-index: 100000; /* Juu zaidi ya kila kitu */
+            transition: transform 0.3s;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { 
+            transform: scale(1.1); 
+        }
 
         .send-btn {
-            background: linear-gradient(45deg, #11998e, #38ef7d); color: white; padding: 15px; border: none; border-radius: 50px;
-            font-weight: bold; width: 100%; font-size: 1.1rem; cursor: pointer; box-shadow: 0 0 20px rgba(56, 239, 125, 0.3);
+            background: linear-gradient(45deg, #11998e, #38ef7d); 
+            color: white; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 50px;
+            font-weight: bold; 
+            width: 100%; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            box-shadow: 0 0 20px rgba(56, 239, 125, 0.3);
         }
 
         .close-card {
-            position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; width: 30px; height: 30px;
-            border-radius: 50%; text-align: center; line-height: 30px; cursor: pointer; z-index: 10; border: 1px solid white;
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: rgba(0,0,0,0.7); 
+            color: white; 
+            width: 30px; 
+            height: 30px;
+            border-radius: 50%; 
+            text-align: center; 
+            line-height: 30px; 
+            cursor: pointer; 
+            z-index: 10; 
+            border: 1px solid white;
         }
 
-        @media(max-width: 768px) { 
-            .dr-title { font-size: 1.8rem; } 
-            .card.expanded { width: 95%; height: 80vh; } 
-        }
-
-        /* ===== EXTERNAL BOXES (sasa chini kabisa) ===== */
+        /* ===== EXTERNAL BOXES (SASA CHINI KABISA) ===== */
         .external-boxes-container {
             position: fixed;
-            bottom: 0px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: auto;
-            max-width: 350px;
-            padding: 5px;
-            z-index: 20000;
-            pointer-events: none;
-            justify-items: center;
-            align-items: center;
-        }
-        .external-box {
+            bottom: 0; /* Chini kabisa */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            border-top: 2px solid var(--gold-primary);
+            z-index: 100000; /* Juu kabisa */
             pointer-events: auto;
-            width: 120px;
-            height: 120px;
-            background: rgba(0,0,0,0.7);
+            flex-wrap: wrap;
+        }
+
+        .external-box {
+            width: 100px;
+            height: 100px;
+            background: rgba(0,0,0,0.8);
             border: 2px solid var(--gold-primary);
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(5px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -494,17 +661,21 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
+
         .external-box:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--gold-shine);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 30px var(--gold-shine);
             border-color: var(--gold-shine);
         }
+
         .external-box .box-image {
             width: 100%;
-            height: 80px;
+            height: 60px;
             background-size: cover;
             background-position: center;
+            border-bottom: 1px solid var(--gold-dark);
         }
+
         .external-box .box-title {
             background: rgba(0,0,0,0.8);
             width: 100%;
@@ -512,41 +683,17 @@
             font-family: 'Cinzel', serif;
             font-size: 0.8rem;
             color: var(--gold-primary);
-        }
-        @media (max-width: 600px) {
-            .external-boxes-container {
-                bottom: 0px;
-                gap: 5px;
-            }
-            .external-box {
-                width: 70px;
-                height: 70px;
-                font-size: 0.6rem;
-            }
-            .external-box .box-image {
-                height: 45px;
-            }
-            .external-box .box-title {
-                font-size: 0.6rem;
-                padding: 2px 0;
-            }
-            .whatsapp-float {
-                bottom: 0px;
-                right: 10px;
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-            }
+            font-weight: bold;
         }
 
-        /* ===== SEHEMU YA HUDUMA (chini kabisa) ===== */
+        /* ===== SEHEMU YA HUDUMA ===== */
         .services-container {
-            margin-top: 150px;
-            margin-bottom: 100px;
+            margin-top: 100px;
+            margin-bottom: 120px; /* Nafasi kwa ajili ya vibox */
             padding: 20px;
             text-align: center;
             position: relative;
-            z-index: 500;
+            z-index: 1;
         }
 
         .section-title {
@@ -575,6 +722,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.7);
             transition: transform 0.4s, box-shadow 0.4s;
             border: 1px solid var(--gold-dark);
+            display: block;
         }
 
         .service-box:hover {
@@ -598,31 +746,59 @@
 
         .service-box span {
             position: absolute;
-            bottom: 20px;
-            left: 10px;
-            right: 10px;
+            bottom: 0;
+            left: 0;
+            right: 0;
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
             text-shadow: 2px 2px 8px black;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 15px 5px 5px;
-            border-radius: 0 0 15px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px 5px 10px;
+            text-align: center;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) { 
+            .dr-title { 
+                font-size: 1.8rem; 
+            } 
+            .card.expanded { 
+                width: 95%; 
+                height: 80vh; 
+            }
+            .external-box {
+                width: 70px;
+                height: 70px;
+            }
+            .external-box .box-image {
+                height: 40px;
+            }
+            .external-box .box-title {
+                font-size: 0.6rem;
+            }
+            .whatsapp-float {
+                bottom: 80px; /* Juu kidogo ya vibox */
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .external-boxes-container {
+                gap: 8px;
+                padding: 5px;
+            }
+            .external-box {
+                width: 60px;
+                height: 60px;
+            }
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             .service-box {
                 height: 200px;
-            }
-            .service-box span {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
             }
         }
     </style>
@@ -633,12 +809,12 @@
 <div id="code-overlay">
     <div class="code-box">
         <h2><i class="fas fa-lock"></i> INGIZA CODE YA KUFUNGUA</h2>
-        <p>Kilinge hiki kimefungwa ili uweze kuingia. Changia Tsh.5,000 kwenda namba 0762286282 (BARAKA RICHARD) Utapewa code za kujaza hapa.</p>
-        <input type="text" id="access-code" class="code-input" placeholder="#" maxlength="4" autocomplete="off">
+        <p>Kilinge hiki kimefungwa. Changia Tsh.5,000 kwenda namba 0762286282 (BARAKA RICHARD) Utapewa code.</p>
+        <input type="text" id="access-code" class="code-input" placeholder="WEKA CODE" maxlength="4" autocomplete="off">
         <button class="btn-code" onclick="verifyCode()">FUNGUA KILINGE</button>
         <div class="error-message" id="code-error"></div>
         <button class="whatsapp-code-btn" onclick="requestCodeViaWhatsApp()">
-            <i class="fab fa-whatsapp"></i> KAMA UMEKWISHA LIPIA BOFYA HAPA OMBA CODE KUPITIA WHATSAPP
+            <i class="fab fa-whatsapp"></i> OMBA CODE KUPITIA WHATSAPP
         </button>
     </div>
 </div>
@@ -666,7 +842,7 @@
 
 <!-- PAGE: RAMLI -->
 <div id="page-ramli" class="container">
-    <h2><i class="fas fa-sun"></i> UFUNGUO WA NYOTA YAKO JAZA FOMU HII</h2>
+    <h2><i class="fas fa-sun"></i> UFUNGUO WA NYOTA YAKO</h2>
     <label>Jina lako Kamili:</label>
     <input type="text" id="full-name" placeholder="Mfano: JUMA HASSAN">
     
@@ -689,12 +865,12 @@
         </select>
     </div>
 
-    <button class="btn-magic" onclick="anzaRamli()">UKIMALIZA CLICK HAPA</button>
+    <button class="btn-magic" onclick="anzaRamli()">PANGA NYOTA</button>
 </div>
 
 <!-- PAGE: MIADI -->
 <div id="page-appointment" class="container" style="display:none;">
-    <h2><i class="fas fa-handshake"></i> PANGA SIKU YA KUFIKA CLINIC</h2>
+    <h2><i class="fas fa-handshake"></i> PANGA SIKU YA KUFIKA</h2>
     <label>Jina:</label> <input type="text" id="app-name">
     <label>Tarehe:</label> <input type="date" id="app-date">
     <label>Sababu:</label> <textarea id="app-reason" placeholder="Elezea shida yako..." rows="3"></textarea>
@@ -770,60 +946,55 @@
 
 <!-- PAGE: MALALAMIKO -->
 <div id="page-malalamiko" class="container" style="display:none;">
-    <h2><i class="fas fa-envelope-open-text"></i> ELEZEA MALALAMIKO/MAONI YAKO</h2>
+    <h2><i class="fas fa-envelope-open-text"></i> ELEZEA MALALAMIKO YAKO</h2>
     <textarea id="msg-content" rows="5" placeholder="Tuandikie hapa..."></textarea>
     <button class="btn-magic" onclick="tumaWhatsApp('MAONI')">TUMA UJUMBE</button>
 </div>
 
 <!-- CARDS CONTAINER (MATOKEO) -->
-<div id="cards-container">
-    <!-- Kadi zitaingizwa na JavaScript hapa -->
-</div>
+<div id="cards-container"></div>
 
-<!-- MATOKEO NA NEXT PAGE (Imefichwa mwanzo) -->
+<!-- MATOKEO NA NEXT PAGE -->
 <div id="send-results-container" class="container" style="display:none; text-align:center;">
     <button class="send-btn" onclick="tumaMatokeoWhatsApp()">
         <i class="fab fa-whatsapp"></i> MSHIRIKISHE DAKTARI MAJIBU YAKO
     </button>
 </div>
 
-<!-- ======================================================== -->
-<!-- SEHEMU YA 'NEXT PAGE' (HAPA NDIPO UTAWEKA LINK YAKO) -->
-<!-- ======================================================== -->
+<!-- NEXT PAGE BUTTON -->
 <div id="next-page-container" class="container" style="display:none; text-align:center; border-color: var(--accent-red);">
     <h2 style="color: #ff4444;"><i class="fas fa-door-open"></i> MUENDELEZO</h2>
-    <p style="color: #ccc;">Kuna siri zaidi kuhusu nyota yako zimefichwa...</p>
+    <p style="color: #ccc;">Kuna siri zaidi kuhusu nyota yako...</p>
     <a href="https://biotech-america-reseach.github.io/orcle/" class="btn-next-page">
         FUNGUA UKURASA UNAOFUATA <i class="fas fa-arrow-right"></i>
     </a>
 </div>
 
-<!-- ============= SEHEMU YA HUDUMA (chini kabisa) ============= -->
+<!-- SEHEMU YA HUDUMA -->
 <div class="services-container">
     <h2 class="section-title">HUDUMA ZETU</h2>
     <div class="services-grid">
-        <!-- Badilisha link na picha kwenye kila service-box -->
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_1" class="service-box">
             <img src="https://images.unsplash.com/photo-1514415008039-087cc87e6c0c?q=80&w=400&fit=crop" alt="Huduma 1">
             <span>Kuvunja Mizimu</span>
         </a>
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_2" class="service-box">
             <img src="https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?q=80&w=400&fit=crop" alt="Huduma 2">
             <span>Tiba Asilia</span>
         </a>
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_3" class="service-box">
             <img src="https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?q=80&w=400&fit=crop" alt="Huduma 3">
             <span>Ushauri wa Kiroho</span>
         </a>
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_4" class="service-box">
             <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400&fit=crop" alt="Huduma 4">
             <span>Visomo Maalum</span>
         </a>
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_5" class="service-box">
             <img src="https://images.unsplash.com/photo-1515598344952-097560877960?q=80&w=400&fit=crop" alt="Huduma 5">
             <span>Mafuta ya Baraka</span>
         </a>
-        <a href="LINK_YAKO_HAPA" class="service-box">
+        <a href="LINK_YAKO_HAPA_6" class="service-box">
             <img src="https://images.unsplash.com/photo-1532187875605-2fe358511423?q=80&w=400&fit=crop" alt="Huduma 6">
             <span>Vitabu Zaidi</span>
         </a>
@@ -832,40 +1003,37 @@
 
 </div> <!-- closing main-content -->
 
-<!-- WHATSAPP FLOAT (visible even before login) -->
+<!-- WHATSAPP FLOAT BUTTON -->
 <div class="whatsapp-float" onclick="window.open('https://wa.me/255762286282', '_blank')">
     <i class="fab fa-whatsapp"></i>
 </div>
 
-<!-- ======================================================== -->
-<!-- SEHEMU YA VIBOX 4 (Hazihitaji code, ziko chini kabisa)  -->
-<!-- ======================================================== -->
+<!-- EXTERNAL BOXES 4 (SASA ZIKO CHINI KABISA) -->
 <div class="external-boxes-container">
-    <!-- KIBOX 1 - Badilisha link na picha -->
+    <!-- BOX 1 -->
     <div class="external-box" onclick="window.open('https://link1.com', '_blank')">
         <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=200&auto=format')"></div>
-        <div class="box-title">Siri 1</div>
+        <div class="box-title">SIRI 1</div>
     </div>
-    <!-- KIBOX 2 -->
+    <!-- BOX 2 -->
     <div class="external-box" onclick="window.open('https://link2.com', '_blank')">
         <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&auto=format')"></div>
-        <div class="box-title">Siri 2</div>
+        <div class="box-title">SIRI 2</div>
     </div>
-    <!-- KIBOX 3 -->
+    <!-- BOX 3 -->
     <div class="external-box" onclick="window.open('https://link3.com', '_blank')">
         <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=200&auto=format')"></div>
-        <div class="box-title">Siri 3</div>
+        <div class="box-title">SIRI 3</div>
     </div>
-    <!-- KIBOX 4 -->
+    <!-- BOX 4 -->
     <div class="external-box" onclick="window.open('https://link4.com', '_blank')">
         <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162616550-7f3d2d642c1c?w=200&auto=format')"></div>
-        <div class="box-title">Siri 4</div>
+        <div class="box-title">SIRI 4</div>
     </div>
 </div>
 
 <script>
-   // ================================================================
-   // VALID CODES
+   // Valid codes
    const validCodes = ['W001', 'W002', 'W003'];
 
    function verifyCode() {
@@ -884,20 +1052,19 @@
         window.open(`https://wa.me/255762286282?text=${encodeURIComponent(msg)}`, '_blank');
    }
 
-   // ================================================================
-   // DATA KAMILI (Nyota 2 tu kwa mfano, lakini inatosha kufanya kazi)
+   // Ramli data (simplified)
    const ZODIAC_DB = {
-        1: { name: "Kondoo (Aries)", image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80", traits: ["Jasiri", "Kiongozi", "Mwenye nguvu", "Mkweli", "Shujaa", "Mwenye bidii", "Mwaminifu", "Mkarimu", "Mwenye hamasa", "Mwenye imani"] },
-        2: { name: "Farasi (Taurus)", image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80", traits: ["Mvumilivu", "Mwenye msimamo", "Mpendwa", "Tajiri", "Mtulivu", "Mwenye nguvu za kustahimili", "Mkarimu", "Mwenye uhodari wa kifedha", "Mwaminifu", "Mwenye upendo kwa familia"] }
+        1: { name: "Kondoo (Aries)", image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80", traits: ["Jasiri", "Kiongozi", "Mwenye nguvu", "Mkweli", "Shujaa"] },
+        2: { name: "Farasi (Taurus)", image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80", traits: ["Mvumilivu", "Mwenye msimamo", "Mpendwa", "Tajiri", "Mtulivu"] }
     };
-    const HERUFI_DB = { 'A': ["Una uwezo mkubwa wa uongozi.", "Una uhodari wa kushinda changamoto."], 'B': ["Una upole wa hali ya juu.", "Una usiri mzuri."] };
+    const HERUFI_DB = { 'A': ["Una uwezo mkubwa wa uongozi."], 'B': ["Una upole wa hali ya juu."] };
     const ZODIAC_HEALTH = {
-        1: { risks: ["Maumivu ya kichwa", "Shinikizo la damu"], avoid: ["Epuka jua kali", "Epuka mabishano"], actions: ["Kunywa maji", "Fanya mazoezi"] },
-        2: { risks: ["Maumivu ya koo", "Shida za tezi"], avoid: ["Epuka vyakula vitamu", "Epuka baridi"], actions: ["Kunywa maji ya joto", "Tumia tangawizi"] }
+        1: { risks: ["Maumivu ya kichwa"], avoid: ["Epuka jua kali"], actions: ["Kunywa maji"] },
+        2: { risks: ["Maumivu ya koo"], avoid: ["Epuka vyakula vitamu"], actions: ["Kunywa maji ya joto"] }
     };
     const CAREERS = {
-        1: [{ title: "Kiongozi wa Jeshi", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza wanajeshi." }],
-        2: [{ title: "Mwekezaji wa Hisa", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80", desc: "Uvumilivu wako unakufaa." }]
+        1: [{ title: "Kiongozi wa Jeshi", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza." }],
+        2: [{ title: "Mwekezaji wa Hisa", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80", desc: "Uvumilivu wako." }]
     };
 
     let currentData = null;
@@ -916,8 +1083,7 @@
     function anzaRamli() {
         const name = document.getElementById('full-name').value;
         if(name.length < 3) { alert("Tafadhali andika jina kamili."); return; }
-        const overlay = document.getElementById('intro-overlay');
-        overlay.style.display = 'flex';
+        document.getElementById('intro-overlay').style.display = 'flex';
         setTimeout(() => finishIntro(name), 2000);
     }
 
@@ -948,22 +1114,22 @@
         const container = document.getElementById('cards-container');
         container.innerHTML = '';
 
-        // Kadi 1
+        // Card 1
         const card1 = document.createElement('div'); card1.className = 'card';
-        card1.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('${zodiac.image}')"><div class="card-back-content"><div class="card-title-back">NYOTA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="${zodiac.image}" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>${zodiac.name.toUpperCase()}</h3><ul>${zodiac.traits.slice(0,5).map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+        card1.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('${zodiac.image}')"><div class="card-back-content"><div class="card-title-back">NYOTA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="${zodiac.image}" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>${zodiac.name.toUpperCase()}</h3><ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
         card1.onclick = function() { toggleCard(this); }; container.appendChild(card1);
 
-        // Kadi 2
+        // Card 2
         const card2 = document.createElement('div'); card2.className = 'card';
         card2.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">AFYA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>AFYA YAKO</h3><p><strong>Hatari:</strong> ${health.risks.join('; ')}</p><p><strong>Epuka:</strong> ${health.avoid.join('; ')}</p><p><strong>Tiba:</strong> ${health.actions.join('; ')}</p></div></div></div>`;
         card2.onclick = function() { toggleCard(this); }; container.appendChild(card2);
 
-        // Kadi 3
+        // Card 3
         const card3 = document.createElement('div'); card3.className = 'card';
         card3.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">HERUFI YA JINA</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>JINA LAKO (${letter})</h3><ul>${letterTraits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
         card3.onclick = function() { toggleCard(this); }; container.appendChild(card3);
 
-        // Kadi 4
+        // Card 4
         const card4 = document.createElement('div'); card4.className = 'card';
         card4.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">KAZI ZAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>KAZI ZINAZOKUFAA</h3><div class="job-item"><img src="${careers[0].img}"><div><strong>${careers[0].title}</strong><br><small>${careers[0].desc}</small></div></div></div></div></div>`;
         card4.onclick = function() { toggleCard(this); }; container.appendChild(card4);
@@ -976,6 +1142,7 @@
         else { card.classList.remove('expanded'); }
     }
     function closeCard(btn) { btn.closest('.card').classList.remove('expanded', 'flipped'); }
+    
     function tumaWhatsApp(type) {
         let msg = "";
         if(type === 'MIADI') {
@@ -993,6 +1160,7 @@
         }
         window.open(`https://wa.me/255762286282?text=${msg}`, '_blank');
     }
+    
     function tumaMatokeoWhatsApp() {
         if(!currentData) return;
         const msg = `*MATOKEO YA RAMLI (DR. WILLIAM)*%0A%0AJina: ${currentData.name}%0ANyota: ${currentData.zodiac}%0ATarehe: ${currentData.date}%0A%0ANimeona matokeo yangu, nahitaji ufafanuzi zaidi.`;
@@ -1001,4 +1169,3 @@
 </script>
 </body>
 </html>
-
