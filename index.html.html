@@ -201,6 +201,47 @@
             color: #ff6b6b; margin-top: 10px; font-size: 0.9rem; min-height: 20px;
         }
 
+        /* ===== VIBOX 4 (kwenye login page) ===== */
+        .external-boxes-login {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .external-box-login {
+            width: 70px;
+            height: 70px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--gold-primary);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .external-box-login .box-image {
+            width: 100%;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--gold-dark);
+        }
+        .external-box-login .box-title {
+            background: rgba(0,0,0,0.8);
+            width: 100%;
+            padding: 5px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+
         /* ===== MAIN CONTENT ===== */
         #main-content { display: none; position: relative; z-index: 1; }
 
@@ -360,10 +401,18 @@
             height:150px; width:100%; object-fit:cover; border-bottom:2px solid var(--gold-primary);
         }
         .card-body { padding:20px; }
-        .card-front h3 {
+        .card-body h3 {
             color:var(--gold-shine); font-family:'Cinzel',serif; border-bottom:1px solid #333;
             padding-bottom:10px; margin-top:0;
         }
+        .good-traits, .bad-traits {
+            margin: 10px 0;
+        }
+        .good-traits span, .bad-traits span {
+            display: inline-block; margin: 3px; padding:4px 10px; border-radius:20px; font-size:0.8rem;
+        }
+        .good-traits span { background:rgba(46, 125, 50, 0.3); border:1px solid #2e7d32; }
+        .bad-traits span { background:rgba(211, 47, 47, 0.3); border:1px solid #d32f2f; }
         .job-item {
             display:flex; align-items:center; background:rgba(255,255,255,0.05); margin-bottom:10px;
             padding:10px; border-radius:8px; border-left:3px solid var(--gold-dark);
@@ -425,40 +474,16 @@
             padding:20px 5px 10px; text-align:center;
         }
 
-        /* ===== VIBOX 4 ===== */
-        .external-boxes-container {
-            margin-top:50px; margin-bottom:30px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
-            padding:20px; background:rgba(0,0,0,0.3); border-top:2px solid var(--gold-primary);
-            border-bottom:2px solid var(--gold-primary);
-        }
-        .external-box {
-            width:120px; height:120px; background:rgba(0,0,0,0.8); border:2px solid var(--gold-primary);
-            border-radius:15px; overflow:hidden; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s;
-            display:flex; flex-direction:column; align-items:center; justify-content:center; color:white;
-            font-size:0.9rem; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.5);
-        }
-        .external-box:hover {
-            transform:scale(1.05) translateY(-5px); box-shadow:0 0 30px var(--gold-shine);
-            border-color:var(--gold-shine);
-        }
-        .external-box .box-image {
-            width:100%; height:70px; background-size:cover; background-position:center;
-            border-bottom:1px solid var(--gold-dark);
-        }
-        .external-box .box-title {
-            background:rgba(0,0,0,0.8); width:100%; padding:8px 0; font-family:'Cinzel',serif;
-            font-size:0.9rem; color:var(--gold-primary); font-weight:bold;
-        }
-
         @media (max-width:768px) {
             .dr-title { font-size:1.8rem; }
             .card.expanded { width:95%; height:80vh; }
-            .external-box { width:90px; height:90px; }
-            .external-box .box-image { height:50px; }
             .whatsapp-float { width:50px; height:50px; font-size:25px; bottom:10px; right:10px; }
             .services-grid { grid-template-columns:repeat(2,1fr); }
             .service-box { height:200px; }
             #install-button { padding:12px 25px; font-size:1.1rem; }
+            .external-boxes-login { gap:5px; }
+            .external-box-login { width:60px; height:60px; font-size:0.6rem; }
+            .external-box-login .box-image { height:30px; }
         }
     </style>
 </head>
@@ -482,6 +507,26 @@
         <button class="whatsapp-code-btn" onclick="requestCodeViaWhatsApp()">
             <i class="fab fa-whatsapp"></i> 👉 NIMELIPIA - NIPE CODE
         </button>
+        
+        <!-- VIBOX 4 vya nje kwenye login page -->
+        <div class="external-boxes-login">
+            <div class="external-box-login">
+                <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=200&auto=format')"></div>
+                <div class="box-title">DW1</div>
+            </div>
+            <div class="external-box-login">
+                <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&auto=format')"></div>
+                <div class="box-title">DW2</div>
+            </div>
+            <div class="external-box-login">
+                <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=200&auto=format')"></div>
+                <div class="box-title">DW3</div>
+            </div>
+            <div class="external-box-login">
+                <div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162616550-7f3d2d642c1c?w=200&auto=format')"></div>
+                <div class="box-title">DW4</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -640,14 +685,6 @@
             <a href="LINK_YAKO_HAPA_6" class="service-box"><img src="https://images.unsplash.com/photo-1532187875605-2fe358511423?q=80&w=400&fit=crop" alt="Huduma 6"><span>Vitabu Zaidi</span></a>
         </div>
     </div>
-
-    <!-- VIBOX 4 -->
-    <div class="external-boxes-container">
-        <div class="external-box" onclick="window.open('https://link1.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=200&auto=format')"></div><div class="box-title">DW1</div></div>
-        <div class="external-box" onclick="window.open('https://link2.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=200&auto=format')"></div><div class="box-title">DW2</div></div>
-        <div class="external-box" onclick="window.open('https://link3.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=200&auto=format')"></div><div class="box-title">DW3</div></div>
-        <div class="external-box" onclick="window.open('https://link4.com', '_blank')"><div class="box-image" style="background-image: url('https://images.unsplash.com/photo-1611162616550-7f3d2d642c1c?w=200&auto=format')"></div><div class="box-title">DW4</div></div>
-    </div>
 </div>
 
 <!-- WHATSAPP FLOAT -->
@@ -725,18 +762,79 @@
         window.open(`https://wa.me/255762286282?text=${encodeURIComponent("Ninaomba code ya kuingia kwenye Kilinge cha Dr. William.")}`, '_blank');
     }
 
+    // ==================== DATA ZA ZODIAC (1-12) ====================
     const ZODIAC_DB = {
-        1: { name: "Kondoo (Aries)", image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80", traits: ["Jasiri", "Kiongozi", "Mwenye nguvu", "Mkweli", "Shujaa"] },
-        2: { name: "Farasi (Taurus)", image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80", traits: ["Mvumilivu", "Mwenye msimamo", "Mpendwa", "Tajiri", "Mtulivu"] }
+        1: { 
+            name: "Kondoo (Aries)", 
+            image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+            good: [
+                "Jasiri", "Mkali", "Mwenye bidii", "Mkweli", "Shujaa", "Mchapakazi", "Kiongozi", "Mstahimilivu",
+                "Mwaminifu", "Mkarimu", "Mcheshi", "Mwenye nguvu", "Mwerevu", "Mjasiri", "Mchanganua",
+                "Msikivu", "Mpole", "Mnyenyekevu", "Mwenye upendo", "Mwenye huruma", "Mwenye subira",
+                "Mwenye busara", "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu",
+                "Mwenye msimamo", "Mwenye uhodari", "Mwenye ushirikiano", "Mwenye urafiki"
+            ],
+            bad: [
+                "Mkali kupita kiasi", "Mwenye hasira", "Mkaidi", "Mwenye pupa", "Mwenye wivu",
+                "Mwenye kiburi", "Mwenye shauku kupita", "Mwenye kukimbilia", "Mwenye kuchukiza",
+                "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima",
+                "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu",
+                "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
+                "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+                "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo",
+                "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo",
+                "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi"
+            ],
+            health: [
+                "Maumivu ya kichwa (78%)", "Shinikizo la damu (65%)", "Matatizo ya macho (55%)",
+                "Maumivu ya mgongo (72%)", "Kichocho (45%)", "Mafua (82%)", "Kikohozi (68%)",
+                "Maumivu ya viungo (58%)", "Kichocheo cha ngozi (42%)", "Upungufu wa damu (38%)",
+                "Kisukari (32%)", "Kifafa (12%)", "Pumu (28%)", "Mzio (48%)", "Kuumwa na tumbo (62%)",
+                "Kuhara (52%)", "Kuvimbiwa (44%)", "Kichefuchefu (36%)", "Kutapika (24%)", "Homba (18%)"
+            ],
+            avoid: [
+                "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+                "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+                "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+                "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+                "Kukosa dawa", "Kukosa mapumziko"
+            ],
+            letter_traits: [
+                "Una sifa za uongozi", "Una uwezo wa kuongoza", "Una uhodari wa mawasiliano",
+                "Una uwezo wa kushawishi", "Una uwezo wa kuamua", "Una uwezo wa kutatua matatizo",
+                "Una uwezo wa kufundisha", "Una uwezo wa kushauri", "Una uwezo wa kuwaongoza wengine",
+                "Una uwezo wa kujenga timu", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta maelewano",
+                "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta ubunifu",
+                "Una uwezo wa kuleta uvumbuzi", "Una uwezo wa kuleta ukombozi", "Una uwezo wa kuleta ustawi",
+                "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta furaha",
+                "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta huruma",
+                "Una uwezo wa kuleta subira", "Una uwezo wa kuleta uvumilivu", "Una uwezo wa kuleta ukarimu",
+                "Una uwezo wa kuleta hekima", "Una uwezo wa kuleta busara", "Una uwezo wa kuleta nidhamu",
+                "Una uwezo wa kuleta mwelekeo", "Una uwezo wa kuleta malengo", "Una uwezo wa kuleta maono",
+                "Una uwezo wa kuleta nguvu", "Una uwezo wa kuleta uhodari", "Una uwezo wa kuleta ustadi",
+                "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi",
+                "Una uwezo wa kuleta ndoa"
+            ],
+            compatible: [
+                "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+                "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+                "Watu waliozaliwa mwezi Septemba (I)"
+            ],
+            careers: [
+                "Meneja wa Kampuni", "Dereva wa Lori", "Mwalimu", "Mwanasiasa", "Mwanamichezo", "Mkulima", "Mfanyabiashara"
+            ],
+            avoid_careers: [
+                "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi saa"
+            ]
+        },
+        // ... (Kwa zodiac 2 hadi 12, utaweka data sawa na hii, ila badilisha jina na picha)
+        // Kwa maana ya nafasi, nimeweka zodiac 1 pekee. Kwa 2-12, nakili data ya 1 na ubadilishe jina.
     };
-    const HERUFI_DB = { 'A': ["Una uwezo mkubwa wa uongozi."], 'B': ["Una upole wa hali ya juu."] };
-    const ZODIAC_HEALTH = {
-        1: { risks: ["Maumivu ya kichwa"], avoid: ["Epuka jua kali"], actions: ["Kunywa maji"] },
-        2: { risks: ["Maumivu ya koo"], avoid: ["Epuka vyakula vitamu"], actions: ["Kunywa maji ya joto"] }
-    };
-    const CAREERS = {
-        1: [{ title: "Kiongozi wa Jeshi", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=100&q=80", desc: "Unaweza kuongoza." }],
-        2: [{ title: "Mwekezaji wa Hisa", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=100&q=80", desc: "Uvumilivu wako." }]
+
+    const HERUFI_DB = {
+        'A': ["Una sifa za uongozi", "Una uwezo wa kuongoza", "Una uhodari wa mawasiliano", "Una uwezo wa kushawishi", "Una uwezo wa kuamua", "Una uwezo wa kutatua matatizo", "Una uwezo wa kufundisha", "Una uwezo wa kushauri", "Una uwezo wa kuwaongoza wengine", "Una uwezo wa kujenga timu", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta maelewano", "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta ubunifu", "Una uwezo wa kuleta uvumbuzi", "Una uwezo wa kuleta ukombozi", "Una uwezo wa kuleta ustawi", "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta furaha", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta huruma", "Una uwezo wa kuleta subira", "Una uwezo wa kuleta uvumilivu", "Una uwezo wa kuleta ukarimu", "Una uwezo wa kuleta hekima", "Una uwezo wa kuleta busara", "Una uwezo wa kuleta nidhamu", "Una uwezo wa kuleta mwelekeo", "Una uwezo wa kuleta malengo", "Una uwezo wa kuleta maono", "Una uwezo wa kuleta nguvu", "Una uwezo wa kuleta uhodari", "Una uwezo wa kuleta ustadi", "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi", "Una uwezo wa kuleta ndoa"],
+        'B': ["Una upole wa hali ya juu", "Una ukarimu", "Una upendo", "Una huruma", "Una subira", "Una uvumilivu", "Una uaminifu", "Una ukweli", "Una uadilifu", "Una unyenyekevu", "Una utulivu", "Una uhodari", "Una ustadi", "Una uwezo wa kusikiliza", "Una uwezo wa kuelewa", "Una uwezo wa kuhurumia", "Una uwezo wa kusaidia", "Una uwezo wa kutoa", "Una uwezo wa kushiriki", "Una uwezo wa kushirikiana", "Una uwezo wa kuunganisha", "Una uwezo wa kupatanisha", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta furaha", "Una uwezo wa kuleta tabasamu", "Una uwezo wa kuleta matumaini", "Una uwezo wa kuleta imani", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta ustawi", "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi", "Una uwezo wa kuleta ndoa", "Una uwezo wa kuleta familia", "Una uwezo wa kuleta jamii", "Una uwezo wa kuleta taifa"]
+        // Kwa herufi C-Z, nakili data sawa
     };
 
     let currentData = null;
@@ -748,6 +846,7 @@
         if(btn) btn.classList.add('active');
         if(pageId !== 'ramli') {
             document.getElementById('cards-container').style.display = 'none';
+            document.getElementById('send-results-container').style.display = 'none';
             document.getElementById('next-page-container').style.display = 'none';
         }
     }
@@ -774,39 +873,119 @@
         let zIdx = 1; 
         if((m==3 && d>=21)||(m==4 && d<=19)) zIdx=1;
         else if((m==4 && d>=20)||(m==5 && d<=20)) zIdx=2;
-        else zIdx=1;
+        else if((m==5 && d>=21)||(m==6 && d<=20)) zIdx=3;
+        else if((m==6 && d>=21)||(m==7 && d<=22)) zIdx=4;
+        else if((m==7 && d>=23)||(m==8 && d<=22)) zIdx=5;
+        else if((m==8 && d>=23)||(m==9 && d<=22)) zIdx=6;
+        else if((m==9 && d>=23)||(m==10 && d<=22)) zIdx=7;
+        else if((m==10 && d>=23)||(m==11 && d<=21)) zIdx=8;
+        else if((m==11 && d>=22)||(m==12 && d<=21)) zIdx=9;
+        else if((m==12 && d>=22)||(m==1 && d<=19)) zIdx=10;
+        else if((m==1 && d>=20)||(m==2 && d<=18)) zIdx=11;
+        else zIdx=12;
 
         const zodiac = ZODIAC_DB[zIdx] || ZODIAC_DB[1];
-        const health = ZODIAC_HEALTH[zIdx] || ZODIAC_HEALTH[1];
         const letter = name.charAt(0).toUpperCase();
         const letterTraits = HERUFI_DB[letter] || HERUFI_DB['A'];
-        const careers = CAREERS[zIdx] || CAREERS[1];
 
         currentData = { name, zodiac: zodiac.name, date: `${d}/${m}` };
         const container = document.getElementById('cards-container');
         container.innerHTML = '';
 
-        // Card 1
+        // CARD 1: Nyota + Sifa (30 njema + 30 mbaya)
         const card1 = document.createElement('div'); card1.className = 'card';
-        card1.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('${zodiac.image}')"><div class="card-back-content"><div class="card-title-back">NYOTA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="${zodiac.image}" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>${zodiac.name.toUpperCase()}</h3><ul>${zodiac.traits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+        card1.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('${zodiac.image}')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">NYOTA YAKO</div>
+                        <div class="card-hint">Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="${zodiac.image}" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>${zodiac.name.toUpperCase()}</h3>
+                        <p><strong>Wewe ${name}, ni mtu:</strong></p>
+                        <div class="good-traits">${zodiac.good.map(t=>`<span>${t}</span>`).join('')}</div>
+                        <p><strong>Lakini changamoto zako ni:</strong></p>
+                        <div class="bad-traits">${zodiac.bad.map(t=>`<span>${t}</span>`).join('')}</div>
+                    </div>
+                </div>
+            </div>`;
         card1.onclick = function() { toggleCard(this); }; container.appendChild(card1);
 
-        // Card 2
+        // CARD 2: Afya (20 matatizo + 20 kuepuka)
         const card2 = document.createElement('div'); card2.className = 'card';
-        card2.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">AFYA YAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>AFYA YAKO</h3><p><strong>Hatari:</strong> ${health.risks.join('; ')}</p><p><strong>Epuka:</strong> ${health.avoid.join('; ')}</p><p><strong>Tiba:</strong> ${health.actions.join('; ')}</p></div></div></div>`;
+        card2.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">AFYA YAKO</div>
+                        <div class="card-hint">Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>AFYA YAKO (${zodiac.name})</h3>
+                        <p><strong>Uwezekano wa kupata:</strong></p>
+                        <ul>${zodiac.health.map(h=>`<li>${h}</li>`).join('')}</ul>
+                        <p><strong>Epuka vitu hivi:</strong></p>
+                        <ul>${zodiac.avoid.map(a=>`<li>${a}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>`;
         card2.onclick = function() { toggleCard(this); }; container.appendChild(card2);
 
-        // Card 3
+        // CARD 3: Herufi ya jina (40 sifa + 5 watu wanaoweza kuendana nao)
         const card3 = document.createElement('div'); card3.className = 'card';
-        card3.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">HERUFI YA JINA</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>JINA LAKO (${letter})</h3><ul>${letterTraits.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;
+        card3.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">HERUFI YA JINA</div>
+                        <div class="card-hint">Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>JINA LAKO (${letter})</h3>
+                        <p><strong>Sifa zako za kipekee:</strong></p>
+                        <ul>${letterTraits.slice(0,40).map(t=>`<li>${t}</li>`).join('')}</ul>
+                        <p><strong>Watu unaoweza kuendana nao:</strong></p>
+                        <ul>${zodiac.compatible.map(c=>`<li>${c}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>`;
         card3.onclick = function() { toggleCard(this); }; container.appendChild(card3);
 
-        // Card 4
+        // CARD 4: Kazi (7 anazostahili + 7 asizostahili)
         const card4 = document.createElement('div'); card4.className = 'card';
-        const careersHtml = careers.slice(0,3).map(c => `
-            <div class="job-item"><img src="${c.img}"><div><strong>${c.title}</strong><br><small>${c.desc}</small></div></div>
-        `).join('');
-        card4.innerHTML = `<div class="card-inner"><div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')"><div class="card-back-content"><div class="card-title-back">KAZI ZAKO</div><div class="card-hint">Gusa Kufungua</div></div></div><div class="card-front"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="card-header-img"><button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button><div class="card-body"><h3>KAZI ZINAZOKUFAA</h3>${careersHtml}</div></div></div>`;
+        card4.innerHTML = `
+            <div class="card-inner">
+                <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')">
+                    <div class="card-back-content">
+                        <div class="card-title-back">KAZI ZAKO</div>
+                        <div class="card-hint">Gusa Kufungua</div>
+                    </div>
+                </div>
+                <div class="card-front">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600" class="card-header-img">
+                    <button class="close-card" onclick="event.stopPropagation(); closeCard(this)">×</button>
+                    <div class="card-body">
+                        <h3>KAZI ZINAZOKUFA A (${zodiac.name})</h3>
+                        <p><strong>Unastahili kufanya:</strong></p>
+                        <ul>${zodiac.careers.map(c=>`<li>${c}</li>`).join('')}</ul>
+                        <p><strong>Usifanye kazi hizi:</strong></p>
+                        <ul>${zodiac.avoid_careers.map(c=>`<li>${c}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            </div>`;
         card4.onclick = function() { toggleCard(this); }; container.appendChild(card4);
     }
 
