@@ -763,78 +763,593 @@
     }
 
     // ==================== DATA ZA ZODIAC (1-12) ====================
-    const ZODIAC_DB = {
-        1: { 
-            name: "Kondoo (Aries)", 
-            image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
-            good: [
-                "Jasiri", "Mkali", "Mwenye bidii", "Mkweli", "Shujaa", "Mchapakazi", "Kiongozi", "Mstahimilivu",
-                "Mwaminifu", "Mkarimu", "Mcheshi", "Mwenye nguvu", "Mwerevu", "Mjasiri", "Mchanganua",
-                "Msikivu", "Mpole", "Mnyenyekevu", "Mwenye upendo", "Mwenye huruma", "Mwenye subira",
-                "Mwenye busara", "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu",
-                "Mwenye msimamo", "Mwenye uhodari", "Mwenye ushirikiano", "Mwenye urafiki"
-            ],
-            bad: [
-                "Mkali kupita kiasi", "Mwenye hasira", "Mkaidi", "Mwenye pupa", "Mwenye wivu",
-                "Mwenye kiburi", "Mwenye shauku kupita", "Mwenye kukimbilia", "Mwenye kuchukiza",
-                "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima",
-                "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu",
-                "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
-                "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
-                "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo",
-                "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo",
-                "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi"
-            ],
-            health: [
-                "Maumivu ya kichwa (78%)", "Shinikizo la damu (65%)", "Matatizo ya macho (55%)",
-                "Maumivu ya mgongo (72%)", "Kichocho (45%)", "Mafua (82%)", "Kikohozi (68%)",
-                "Maumivu ya viungo (58%)", "Kichocheo cha ngozi (42%)", "Upungufu wa damu (38%)",
-                "Kisukari (32%)", "Kifafa (12%)", "Pumu (28%)", "Mzio (48%)", "Kuumwa na tumbo (62%)",
-                "Kuhara (52%)", "Kuvimbiwa (44%)", "Kichefuchefu (36%)", "Kutapika (24%)", "Homba (18%)"
-            ],
-            avoid: [
-                "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
-                "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
-                "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
-                "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
-                "Kukosa dawa", "Kukosa mapumziko"
-            ],
-            letter_traits: [
-                "Una sifa za uongozi", "Una uwezo wa kuongoza", "Una uhodari wa mawasiliano",
-                "Una uwezo wa kushawishi", "Una uwezo wa kuamua", "Una uwezo wa kutatua matatizo",
-                "Una uwezo wa kufundisha", "Una uwezo wa kushauri", "Una uwezo wa kuwaongoza wengine",
-                "Una uwezo wa kujenga timu", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta maelewano",
-                "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta ubunifu",
-                "Una uwezo wa kuleta uvumbuzi", "Una uwezo wa kuleta ukombozi", "Una uwezo wa kuleta ustawi",
-                "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta furaha",
-                "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta huruma",
-                "Una uwezo wa kuleta subira", "Una uwezo wa kuleta uvumilivu", "Una uwezo wa kuleta ukarimu",
-                "Una uwezo wa kuleta hekima", "Una uwezo wa kuleta busara", "Una uwezo wa kuleta nidhamu",
-                "Una uwezo wa kuleta mwelekeo", "Una uwezo wa kuleta malengo", "Una uwezo wa kuleta maono",
-                "Una uwezo wa kuleta nguvu", "Una uwezo wa kuleta uhodari", "Una uwezo wa kuleta ustadi",
-                "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi",
-                "Una uwezo wa kuleta ndoa"
-            ],
-            compatible: [
-                "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
-                "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
-                "Watu waliozaliwa mwezi Septemba (I)"
-            ],
-            careers: [
-                "Meneja wa Kampuni", "Dereva wa Lori", "Mwalimu", "Mwanasiasa", "Mwanamichezo", "Mkulima", "Mfanyabiashara"
-            ],
-            avoid_careers: [
-                "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi saa"
-            ]
-        },
-        // ... (Kwa zodiac 2 hadi 12, utaweka data sawa na hii, ila badilisha jina na picha)
-        // Kwa maana ya nafasi, nimeweka zodiac 1 pekee. Kwa 2-12, nakili data ya 1 na ubadilishe jina.
-    };
+const ZODIAC_DB = {
+    1: { 
+        name: "Kondoo (Aries)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Jasiri", "Mkali", "Mwenye bidii", "Mkweli", "Shujaa", "Mchapakazi", "Kiongozi", "Mstahimilivu",
+            "Mwaminifu", "Mkarimu", "Mcheshi", "Mwenye nguvu", "Mwerevu", "Mjasiri", "Mchanganua",
+            "Msikivu", "Mpole", "Mnyenyekevu", "Mwenye upendo", "Mwenye huruma", "Mwenye subira",
+            "Mwenye busara", "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu",
+            "Mwenye msimamo", "Mwenye uhodari", "Mwenye ushirikiano", "Mwenye urafiki"
+        ],
+        bad: [
+            "Mkali kupita kiasi", "Mwenye hasira", "Mkaidi", "Mwenye pupa", "Mwenye wivu",
+            "Mwenye kiburi", "Mwenye shauku kupita", "Mwenye kukimbilia", "Mwenye kuchukiza",
+            "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima",
+            "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu",
+            "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
+            "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+            "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo",
+            "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo",
+            "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi"
+        ],
+        health: [
+            "Maumivu ya kichwa (78%)", "Shinikizo la damu (65%)", "Matatizo ya macho (55%)",
+            "Maumivu ya mgongo (72%)", "Kichocho (45%)", "Mafua (82%)", "Kikohozi (68%)",
+            "Maumivu ya viungo (58%)", "Kichocheo cha ngozi (42%)", "Upungufu wa damu (38%)",
+            "Kisukari (32%)", "Kifafa (12%)", "Pumu (28%)", "Mzio (48%)", "Kuumwa na tumbo (62%)",
+            "Kuhara (52%)", "Kuvimbiwa (44%)", "Kichefuchefu (36%)", "Kutapika (24%)", "Homba (18%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Meneja wa Kampuni", "Dereva wa Lori", "Mwalimu", "Mwanasiasa", "Mwanamichezo", "Mkulima", "Mfanyabiashara"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi saa"
+        ]
+    },
+    2: { 
+        name: "Farasi (Taurus)", 
+        image: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mvumilivu", "Mwenye msimamo", "Mpendwa", "Tajiri", "Mtulivu", "Mwenye nguvu", "Mkarimu", "Mwenye busara",
+            "Mwaminifu", "Mchapakazi", "Mstahimilivu", "Mwenye upendo", "Mwenye huruma", "Mnyenyekevu",
+            "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo",
+            "Mwenye uhodari", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye subira", "Mwenye amani",
+            "Mwenye utulivu", "Mwenye uvumilivu", "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa",
+            "Mwenye nidhamu"
+        ],
+        bad: [
+            "Mkaidi", "Mwenye wivu", "Mwenye kiburi", "Mwenye pupa", "Mwenye hasira", "Mwenye kukosa subira",
+            "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano",
+            "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
+            "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima", "Mwenye kukosa busara",
+            "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono",
+            "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa"
+        ],
+        health: [
+            "Maumivu ya koo (72%)", "Shinikizo la damu (55%)", "Matatizo ya meno (65%)",
+            "Maumivu ya mgongo (58%)", "Kichocho (32%)", "Mafua (68%)", "Kikohozi (54%)",
+            "Maumivu ya viungo (48%)", "Kichocheo cha ngozi (36%)", "Upungufu wa damu (42%)",
+            "Kisukari (38%)", "Kifafa (8%)", "Pumu (22%)", "Mzio (52%)", "Kuumwa na tumbo (44%)",
+            "Kuhara (38%)", "Kuvimbiwa (62%)", "Kichefuchefu (28%)", "Kutapika (16%)", "Homba (12%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mkulima", "Mfanyabiashara", "Mchoraji", "Mbunifu", "Mshauri", "Mwekezaji", "Mwalimu"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Mwanasiasa", "Dereva", "Mwanamichezo", "Mpishi", "Fundi", "Mwandishi"
+        ]
+    },
+    3: { 
+        name: "Mapacha (Gemini)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwerevu", "Mcheshi", "Mwenye mawasiliano", "Mchangamfu", "Mwenye busara", "Mwenye kipaji", "Mwenye uvumbuzi", 
+            "Mwenye ubunifu", "Mwenye msimamo", "Mwenye uhodari", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye subira", 
+            "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu", "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", 
+            "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo", "Mwenye maono", "Mwenye uwezo", "Mwenye nguvu", 
+            "Mwenye uhodari", "Mwenye ustadi", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye mapenzi"
+        ],
+        bad: [
+            "Mkali", "Mwenye hasira", "Mkaidi", "Mwenye wivu", "Mwenye kiburi", "Mwenye pupa", "Mwenye kukosa subira", 
+            "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", 
+            "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu", 
+            "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima", "Mwenye kukosa busara", 
+            "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono", 
+            "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi", 
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi"
+        ],
+        health: [
+            "Maumivu ya kichwa (70%)", "Shinikizo la damu (60%)", "Matatizo ya macho (50%)",
+            "Maumivu ya mabega (55%)", "Kichocho (30%)", "Mafua (75%)", "Kikohozi (60%)",
+            "Maumivu ya viungo (45%)", "Kichocheo cha ngozi (35%)", "Upungufu wa damu (30%)",
+            "Kisukari (25%)", "Kifafa (5%)", "Pumu (20%)", "Mzio (45%)", "Kuumwa na tumbo (50%)",
+            "Kuhara (40%)", "Kuvimbiwa (35%)", "Kichefuchefu (30%)", "Kutapika (15%)", "Homba (10%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Mwandishi", "Mwalimu", "Mwanahabari", "Mwanasheria", "Mfanyabiashara", "Mshauri", "Mwigizaji"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mkulima", "Dereva", "Fundi", "Mpishi", "Mshonaji"
+        ]
+    },
+    4: { 
+        name: "Kaa (Cancer)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mpole", "Mwenye upendo", "Mwenye huruma", "Mwenye subira", "Mnyenyekevu", "Mkarimu", "Mwenye uelewa",
+            "Mwenye nidhamu", "Mwaminifu", "Mchapakazi", "Mstahimilivu", "Mwenye busara", "Mwenye hekima",
+            "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo", "Mwenye uhodari",
+            "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu",
+            "Mwenye ukarimu", "Mwenye heshima", "Mwenye mwelekeo", "Mwenye malengo", "Mwenye maono",
+            "Mwenye uwezo", "Mwenye nguvu"
+        ],
+        bad: [
+            "Mwenye wivu", "Mwenye wasiwasi", "Mwenye kukosa usalama", "Mwenye hisia kupita kiasi",
+            "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani",
+            "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+            "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo",
+            "Mwenye kukosa maono", "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari",
+            "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi",
+            "Mwenye kukosa ndoa", "Mwenye kukosa familia"
+        ],
+        health: [
+            "Maumivu ya tumbo (80%)", "Matatizo ya mmeng'enyo (70%)", "Kidonda cha tumbo (60%)",
+            "Maumivu ya kichwa (55%)", "Mafua (65%)", "Kikohozi (50%)", "Maumivu ya mgongo (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (25%)", "Kifafa (5%)",
+            "Pumu (15%)", "Mzio (30%)", "Kuhara (45%)", "Kuvimbiwa (55%)", "Kichefuchefu (40%)",
+            "Kutapika (25%)", "Homba (15%)", "Shinikizo la damu (35%)", "Matatizo ya macho (30%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mkulima", "Mpishi", "Mshonaji", "Mwalimu", "Mshauri", "Mhudumu", "Mfanyabiashara"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Mwanasiasa", "Dereva", "Mwanamichezo", "Mwandishi", "Fundi", "Mchoraji"
+        ]
+    },
+    5: { 
+        name: "Simba (Leo)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Jasiri", "Kiongozi", "Mkarimu", "Mwenye heshima", "Mwenye nguvu", "Mwenye upendo", "Mwenye huruma",
+            "Mchapakazi", "Mwaminifu", "Mstahimilivu", "Mwenye busara", "Mwenye hekima", "Mwenye kipaji",
+            "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo", "Mwenye uhodari", "Mwenye ushirikiano",
+            "Mwenye urafiki", "Mwenye subira", "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu",
+            "Mwenye ukarimu", "Mwenye uelewa", "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo",
+            "Mwenye maono", "Mwenye uwezo"
+        ],
+        bad: [
+            "Mkali", "Mwenye hasira", "Mkaidi", "Mwenye kiburi", "Mwenye pupa", "Mwenye wivu",
+            "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani",
+            "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+            "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo",
+            "Mwenye kukosa maono", "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari",
+            "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi"
+        ],
+        health: [
+            "Moyo (75%)", "Shinikizo la damu (70%)", "Maumivu ya mgongo (65%)",
+            "Maumivu ya kichwa (60%)", "Mafua (55%)", "Kikohozi (50%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (35%)", "Kuumwa na tumbo (40%)", "Kuhara (30%)", "Kuvimbiwa (35%)",
+            "Kichefuchefu (25%)", "Kutapika (15%)", "Homba (10%)", "Matatizo ya meno (45%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Meneja", "Mwanasiasa", "Mwalimu", "Mwanamichezo", "Mwigizaji", "Mfanyabiashara", "Kiongozi"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    },
+    6: { 
+        name: "Mashuke (Virgo)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mchapakazi", "Mwenye busara", "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo", "Mwenye maono",
+            "Mwenye uwezo", "Mwenye nguvu", "Mwenye uhodari", "Mwenye ustadi", "Mwenye ushirikiano",
+            "Mwenye urafiki", "Mwenye subira", "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu",
+            "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", "Mwaminifu", "Mstahimilivu", "Mwenye upendo",
+            "Mwenye huruma", "Mnyenyekevu", "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi",
+            "Mwenye ubunifu", "Mwenye msimamo", "Mwenye uhodari"
+        ],
+        bad: [
+            "Mkosoaji", "Mwenye kukosa subira", "Mwenye wasiwasi", "Mwenye kukosa huruma", "Mwenye kukosa heshima",
+            "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo",
+            "Mwenye kukosa amani", "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu",
+            "Mwenye kukosa hekima", "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo",
+            "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo", "Mwenye kukosa nguvu",
+            "Mwenye kukosa uhodari", "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki",
+            "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa", "Mwenye kukosa familia", "Mwenye kukosa jamii",
+            "Mwenye kukosa taifa"
+        ],
+        health: [
+            "Matumbo (70%)", "Shinikizo la damu (55%)", "Maumivu ya kichwa (60%)",
+            "Maumivu ya mgongo (50%)", "Kichocho (25%)", "Mafua (60%)", "Kikohozi (55%)",
+            "Maumivu ya viungo (40%)", "Kichocheo cha ngozi (35%)", "Upungufu wa damu (30%)",
+            "Kisukari (25%)", "Kifafa (5%)", "Pumu (15%)", "Mzio (40%)", "Kuumwa na tumbo (45%)",
+            "Kuhara (35%)", "Kuvimbiwa (50%)", "Kichefuchefu (30%)", "Kutapika (15%)", "Homba (10%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi"
+        ],
+        avoid_careers: [
+            "Meneja", "Mwanasiasa", "Dereva", "Mwanamichezo", "Mkulima", "Mfanyabiashara", "Mwalimu"
+        ]
+    },
+    7: { 
+        name: "Mizani (Libra)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwenye usawa", "Mwenye amani", "Mwenye upendo", "Mwenye huruma", "Mwenye subira", "Mwenye uvumilivu",
+            "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", "Mwenye nidhamu", "Mwenye mwelekeo",
+            "Mwenye malengo", "Mwenye maono", "Mwenye uwezo", "Mwenye nguvu", "Mwenye uhodari",
+            "Mwenye ustadi", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye busara", "Mwenye hekima",
+            "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo", "Mwaminifu",
+            "Mchapakazi", "Mstahimilivu", "Mnyenyekevu", "Mpole"
+        ],
+        bad: [
+            "Mwenye kusita", "Mwenye kukosa uamuzi", "Mwenye kukosa subira", "Mwenye kukosa huruma",
+            "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu",
+            "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu",
+            "Mwenye kukosa ukarimu", "Mwenye kukosa hekima", "Mwenye kukosa busara", "Mwenye kukosa nidhamu",
+            "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo",
+            "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano",
+            "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa", "Mwenye kukosa familia",
+            "Mwenye kukosa jamii", "Mwenye kukosa taifa"
+        ],
+        health: [
+            "Figo (65%)", "Shinikizo la damu (60%)", "Maumivu ya kichwa (55%)",
+            "Maumivu ya mgongo (50%)", "Mafua (60%)", "Kikohozi (50%)", "Matatizo ya macho (40%)",
+            "Kichocheo cha ngozi (35%)", "Upungufu wa damu (30%)", "Kisukari (25%)", "Kifafa (5%)",
+            "Pumu (15%)", "Mzio (35%)", "Kuumwa na tumbo (40%)", "Kuhara (30%)", "Kuvimbiwa (40%)",
+            "Kichefuchefu (25%)", "Kutapika (15%)", "Homba (10%)", "Matatizo ya meno (35%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Mwanasheria", "Mwanadiplomasia", "Mshauri", "Mwalimu", "Mfanyabiashara", "Msanii", "Mwigizaji"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    },
+    8: { 
+        name: "Nge (Scorpio)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwenye nguvu", "Mwenye usiri", "Mwenye uhodari", "Mwenye ustadi", "Mwenye ushirikiano",
+            "Mwenye urafiki", "Mwenye subira", "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu",
+            "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", "Mwenye nidhamu", "Mwenye mwelekeo",
+            "Mwenye malengo", "Mwenye maono", "Mwenye uwezo", "Mwenye busara", "Mwenye hekima",
+            "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo", "Mwaminifu",
+            "Mchapakazi", "Mstahimilivu", "Mnyenyekevu", "Mpole", "Mwenye upendo"
+        ],
+        bad: [
+            "Mwenye wivu", "Mwenye hasira", "Mkaidi", "Mwenye kiburi", "Mwenye pupa", "Mwenye kukosa subira",
+            "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano",
+            "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
+            "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima", "Mwenye kukosa busara",
+            "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono",
+            "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa"
+        ],
+        health: [
+            "Viungo vya uzazi (80%)", "Shinikizo la damu (65%)", "Maumivu ya kichwa (60%)",
+            "Maumivu ya mgongo (55%)", "Mafua (60%)", "Kikohozi (50%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (35%)", "Kuumwa na tumbo (45%)", "Kuhara (35%)", "Kuvimbiwa (40%)",
+            "Kichefuchefu (30%)", "Kutapika (20%)", "Homba (15%)", "Matatizo ya meno (40%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mpelelezi", "Mwanasaikolojia", "Mwanasheria", "Mfanyabiashara", "Mshauri", "Mwalimu", "Mwandishi"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mkulima", "Dereva", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    },
+    9: { 
+        name: "Mshale (Sagittarius)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwenye kusafiri", "Mwenye furaha", "Mwenye upendo", "Mwenye huruma", "Mwenye subira",
+            "Mwenye uvumilivu", "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", "Mwenye nidhamu",
+            "Mwenye mwelekeo", "Mwenye malengo", "Mwenye maono", "Mwenye uwezo", "Mwenye nguvu",
+            "Mwenye uhodari", "Mwenye ustadi", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye busara",
+            "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo",
+            "Mwaminifu", "Mchapakazi", "Mstahimilivu", "Mnyenyekevu", "Mpole"
+        ],
+        bad: [
+            "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani",
+            "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+            "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo",
+            "Mwenye kukosa maono", "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari",
+            "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi",
+            "Mwenye kukosa ndoa", "Mwenye kukosa familia", "Mwenye kukosa jamii", "Mwenye kukosa taifa",
+            "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo"
+        ],
+        health: [
+            "Mapaja (70%)", "Shinikizo la damu (60%)", "Maumivu ya kichwa (55%)",
+            "Maumivu ya mgongo (50%)", "Mafua (65%)", "Kikohozi (55%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (35%)", "Kuumwa na tumbo (40%)", "Kuhara (35%)", "Kuvimbiwa (40%)",
+            "Kichefuchefu (30%)", "Kutapika (20%)", "Homba (15%)", "Matatizo ya meno (35%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Mwalimu", "Mwanasheria", "Mfanyabiashara", "Mshauri", "Mwandishi", "Mwanahabari", "Msafiri"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mkulima", "Dereva", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    },
+    10: { 
+        name: "Mbuzi (Capricorn)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mchapakazi", "Mwenye msimamo", "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo",
+            "Mwenye maono", "Mwenye uwezo", "Mwenye nguvu", "Mwenye uhodari", "Mwenye ustadi",
+            "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye subira", "Mwenye amani", "Mwenye utulivu",
+            "Mwenye uvumilivu", "Mwenye ukarimu", "Mwenye heshima", "Mwenye uelewa", "Mwenye busara",
+            "Mwenye hekima", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwaminifu",
+            "Mstahimilivu", "Mnyenyekevu", "Mpole", "Mwenye upendo", "Mwenye huruma"
+        ],
+        bad: [
+            "Mkali", "Mwenye hasira", "Mkaidi", "Mwenye kiburi", "Mwenye pupa", "Mwenye wivu",
+            "Mwenye kukosa subira", "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani",
+            "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima",
+            "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo",
+            "Mwenye kukosa maono", "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari",
+            "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi"
+        ],
+        health: [
+            "Mifupa (75%)", "Shinikizo la damu (65%)", "Maumivu ya kichwa (60%)",
+            "Maumivu ya mgongo (70%)", "Mafua (55%)", "Kikohozi (50%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (35%)", "Kuumwa na tumbo (40%)", "Kuhara (30%)", "Kuvimbiwa (45%)",
+            "Kichefuchefu (25%)", "Kutapika (15%)", "Homba (10%)", "Matatizo ya meno (40%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mfanyabiashara", "Mhasibu", "Meneja", "Mwalimu", "Mhandisi", "Mwanasheria", "Mshauri"
+        ],
+        avoid_careers: [
+            "Mwanamichezo", "Mwigizaji", "Msanii", "Mwandishi", "Mchoraji", "Mpishi", "Mshonaji"
+        ]
+    },
+    11: { 
+        name: "Nyumba (Aquarius)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwenye ubunifu", "Mwenye kipaji", "Mwenye uvumbuzi", "Mwenye busara", "Mwenye hekima",
+            "Mwenye uhodari", "Mwenye ustadi", "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye subira",
+            "Mwenye amani", "Mwenye utulivu", "Mwenye uvumilivu", "Mwenye ukarimu", "Mwenye heshima",
+            "Mwenye uelewa", "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo", "Mwenye maono",
+            "Mwenye uwezo", "Mwenye nguvu", "Mwaminifu", "Mchapakazi", "Mstahimilivu", "Mnyenyekevu",
+            "Mpole", "Mwenye upendo", "Mwenye huruma", "Mwenye msimamo"
+        ],
+        bad: [
+            "Mkaidi", "Mwenye kiburi", "Mwenye pupa", "Mwenye wivu", "Mwenye hasira", "Mwenye kukosa subira",
+            "Mwenye kukosa huruma", "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa ushirikiano",
+            "Mwenye kukosa uaminifu", "Mwenye kukosa upendo", "Mwenye kukosa amani", "Mwenye kukosa utulivu",
+            "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu", "Mwenye kukosa hekima", "Mwenye kukosa busara",
+            "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono",
+            "Mwenye kukosa uwezo", "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi",
+            "Mwenye kukosa ushirikiano", "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa"
+        ],
+        health: [
+            "Mzunguko wa damu (65%)", "Shinikizo la damu (60%)", "Maumivu ya kichwa (55%)",
+            "Maumivu ya mgongo (50%)", "Mafua (60%)", "Kikohozi (50%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (35%)", "Kuumwa na tumbo (40%)", "Kuhara (30%)", "Kuvimbiwa (40%)",
+            "Kichefuchefu (25%)", "Kutapika (15%)", "Homba (10%)", "Matatizo ya meno (35%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Januari (A)", "Watu waliozaliwa mwezi Machi (C)",
+            "Watu waliozaliwa mwezi Mei (E)", "Watu waliozaliwa mwezi Julai (G)",
+            "Watu waliozaliwa mwezi Septemba (I)"
+        ],
+        careers: [
+            "Msanii", "Mchoraji", "Mwandishi", "Mwanasayansi", "Mfanyabiashara", "Mshauri", "Mwalimu"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mkulima", "Dereva", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    },
+    12: { 
+        name: "Samaki (Pisces)", 
+        image: "https://images.unsplash.com/photo-1533036696707-887498c25389?auto=format&fit=crop&w=600&q=80",
+        good: [
+            "Mwenye huruma", "Mwenye upendo", "Mwenye subira", "Mwenye uvumilivu", "Mwenye ukarimu",
+            "Mwenye heshima", "Mwenye uelewa", "Mwenye nidhamu", "Mwenye mwelekeo", "Mwenye malengo",
+            "Mwenye maono", "Mwenye uwezo", "Mwenye nguvu", "Mwenye uhodari", "Mwenye ustadi",
+            "Mwenye ushirikiano", "Mwenye urafiki", "Mwenye busara", "Mwenye hekima", "Mwenye kipaji",
+            "Mwenye uvumbuzi", "Mwenye ubunifu", "Mwenye msimamo", "Mwaminifu", "Mchapakazi",
+            "Mstahimilivu", "Mnyenyekevu", "Mpole", "Mwenye amani", "Mwenye utulivu"
+        ],
+        bad: [
+            "Mwenye kukosa mwelekeo", "Mwenye kukosa malengo", "Mwenye kukosa maono", "Mwenye kukosa uwezo",
+            "Mwenye kukosa nguvu", "Mwenye kukosa uhodari", "Mwenye kukosa ustadi", "Mwenye kukosa ushirikiano",
+            "Mwenye kukosa urafiki", "Mwenye kukosa mapenzi", "Mwenye kukosa ndoa", "Mwenye kukosa familia",
+            "Mwenye kukosa jamii", "Mwenye kukosa taifa", "Mwenye kukosa subira", "Mwenye kukosa huruma",
+            "Mwenye kukosa heshima", "Mwenye kukosa uelewa", "Mwenye kukosa uaminifu", "Mwenye kukosa upendo",
+            "Mwenye kukosa amani", "Mwenye kukosa utulivu", "Mwenye kukosa uvumilivu", "Mwenye kukosa ukarimu",
+            "Mwenye kukosa hekima", "Mwenye kukosa busara", "Mwenye kukosa nidhamu", "Mwenye kukosa mwelekeo",
+            "Mwenye kukosa malengo", "Mwenye kukosa maono"
+        ],
+        health: [
+            "Miguu (70%)", "Shinikizo la damu (55%)", "Maumivu ya kichwa (60%)",
+            "Maumivu ya mgongo (50%)", "Mafua (65%)", "Kikohozi (55%)", "Matatizo ya macho (45%)",
+            "Kichocheo cha ngozi (40%)", "Upungufu wa damu (35%)", "Kisukari (30%)", "Kifafa (5%)",
+            "Pumu (20%)", "Mzio (40%)", "Kuumwa na tumbo (45%)", "Kuhara (35%)", "Kuvimbiwa (40%)",
+            "Kichefuchefu (30%)", "Kutapika (20%)", "Homba (15%)", "Matatizo ya meno (35%)"
+        ],
+        avoid: [
+            "Pombe", "Sigara", "Vyakula vitamu", "Mafuta mengi", "Chumvi nyingi",
+            "Kukaa jua kali", "Kukaa usiku", "Kukosa usingizi", "Kukosa maji", "Kukosa mazoezi",
+            "Kula kupita kiasi", "Kunywa kahawa nyingi", "Vyakula vya makopo", "Vinywaji baridi",
+            "Vyakula vya haraka", "Kukaa kitandani", "Kukosa chakula", "Kukosa lishe bora",
+            "Kukosa dawa", "Kukosa mapumziko"
+        ],
+        compatible: [
+            "Watu waliozaliwa mwezi Februari (B)", "Watu waliozaliwa mwezi Aprili (D)",
+            "Watu waliozaliwa mwezi Juni (F)", "Watu waliozaliwa mwezi Agosti (H)",
+            "Watu waliozaliwa mwezi Oktoba (J)"
+        ],
+        careers: [
+            "Mchoraji", "Mwandishi", "Mwanamuziki", "Mshauri", "Mwalimu", "Mhudumu", "Mfanyabiashara"
+        ],
+        avoid_careers: [
+            "Mhasibu", "Karani", "Mkulima", "Dereva", "Mpishi", "Mshonaji", "Fundi"
+        ]
+    }
+};
 
     const HERUFI_DB = {
         'A': ["Una sifa za uongozi", "Una uwezo wa kuongoza", "Una uhodari wa mawasiliano", "Una uwezo wa kushawishi", "Una uwezo wa kuamua", "Una uwezo wa kutatua matatizo", "Una uwezo wa kufundisha", "Una uwezo wa kushauri", "Una uwezo wa kuwaongoza wengine", "Una uwezo wa kujenga timu", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta maelewano", "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta ubunifu", "Una uwezo wa kuleta uvumbuzi", "Una uwezo wa kuleta ukombozi", "Una uwezo wa kuleta ustawi", "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta furaha", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta huruma", "Una uwezo wa kuleta subira", "Una uwezo wa kuleta uvumilivu", "Una uwezo wa kuleta ukarimu", "Una uwezo wa kuleta hekima", "Una uwezo wa kuleta busara", "Una uwezo wa kuleta nidhamu", "Una uwezo wa kuleta mwelekeo", "Una uwezo wa kuleta malengo", "Una uwezo wa kuleta maono", "Una uwezo wa kuleta nguvu", "Una uwezo wa kuleta uhodari", "Una uwezo wa kuleta ustadi", "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi", "Una uwezo wa kuleta ndoa"],
-        'B': ["Una upole wa hali ya juu", "Una ukarimu", "Una upendo", "Una huruma", "Una subira", "Una uvumilivu", "Una uaminifu", "Una ukweli", "Una uadilifu", "Una unyenyekevu", "Una utulivu", "Una uhodari", "Una ustadi", "Una uwezo wa kusikiliza", "Una uwezo wa kuelewa", "Una uwezo wa kuhurumia", "Una uwezo wa kusaidia", "Una uwezo wa kutoa", "Una uwezo wa kushiriki", "Una uwezo wa kushirikiana", "Una uwezo wa kuunganisha", "Una uwezo wa kupatanisha", "Una uwezo wa kuleta amani", "Una uwezo wa kuleta upendo", "Una uwezo wa kuleta furaha", "Una uwezo wa kuleta tabasamu", "Una uwezo wa kuleta matumaini", "Una uwezo wa kuleta imani", "Una uwezo wa kuleta mabadiliko", "Una uwezo wa kuleta maendeleo", "Una uwezo wa kuleta ustawi", "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuleta ushindi", "Una uwezo wa kuleta ushirikiano", "Una uwezo wa kuleta urafiki", "Una uwezo wa kuleta mapenzi", "Una uwezo wa kuleta ndoa", "Una uwezo wa kuleta familia", "Una uwezo wa kuleta jamii", "Una uwezo wa kuleta taifa"]
-        // Kwa herufi C-Z, nakili data sawa
+        'B': ["Una sifa za unyenyekevu", "Una uwezo wa kutunza siri", "Una uhodari wa ushirikiano", "Una uwezo wa kupenda amani", "Una uwezo wa kuwa na subira", "Una uwezo wa kuhisi hisia za wengine", "Una uwezo wa kulea mahusiano", "Una uwezo wa kuleta utulivu", "Una uwezo wa kuwa mwaminifu", "Una uwezo wa kufanya kazi nyuma ya pazia", "Una uwezo wa kujali hisia", "Una uwezo wa kuwa mpatanishi", "Una uwezo wa kujenga urafiki wa dhati", "Una uwezo wa kuwa mpole", "Una uwezo wa kuleta uwiano", "Una uwezo wa kuvumilia mapito", "Una uwezo wa kuwa na aibu yenye heshima", "Una uwezo wa kutafakari kabla ya kutenda", "Una uwezo wa kuleta faraja", "Una uwezo wa kuwa na akiba ya maneno", "Una uwezo wa kujali familia", "Una uwezo wa kuwa msikilizaji mzuri", "Una uwezo wa kuleta umoja", "Una uwezo wa kuwa na adabu", "Una uwezo wa kuweka mambo sawa", "Una uwezo wa kuwa mshirika imara", "Una uwezo wa kuleta neema", "Una uwezo wa kuwa na heshima", "Una uwezo wa kusaidia wanyonge", "Una uwezo wa kuwa na imani thabiti", "Una uwezo wa kuleta baraka za siri", "Una uwezo wa kuwa na nidhamu ya ndani", "Una uwezo wa kuleta uadilifu", "Una uwezo wa kuwa mlinzi wa amani", "Una uwezo wa kuleta upole wa roho", "Una uwezo wa kuwa na uvumilivu wa ndoa", "Una uwezo wa kujenga mazingira tulivu", "Una uwezo wa kuleta mapenzi ya dhati", "Una uwezo wa kuwa msaidizi bora", "Una uwezo wa kuleta ustawi wa nyumbani"],
+        'C': ["Una sifa za ubunifu mkubwa", "Una uwezo wa kuelezea hisia", "Una uhodari wa sanaa", "Una uwezo wa kuleta msisimko", "Una uwezo wa kuwa mcheshi", "Una uwezo wa kuhamasisha wengine", "Una uwezo wa kuwa mchangamfu", "Una uwezo wa kuvutia watu", "Una uwezo wa kuwa mbunifu wa mitindo", "Una uwezo wa kuleta matumaini", "Una uwezo wa kuwasiliana kwa ufasaha", "Una uwezo wa kuwa na mawazo mapana", "Una uwezo wa kuleta furaha katika vikundi", "Una uwezo wa kuwa na kipaji cha sauti", "Una uwezo wa kuleta mwanga", "Una uwezo wa kuwa na ujasiri wa kijamii", "Una uwezo wa kuleta mabadiliko kupitia maneno", "Una uwezo wa kuwa mkarimu", "Una uwezo wa kuleta burudani", "Una uwezo wa kuwa na akili nyepesi", "Una uwezo wa kuleta ubora", "Una uwezo wa kuwa na ndoto kubwa", "Una uwezo wa kuleta uvumbuzi wa kisanaa", "Una uwezo wa kuwa na marafiki wengi", "Una uwezo wa kuleta hamasa ya maisha", "Una uwezo wa kuwa mshauri wa vijana", "Una uwezo wa kuleta ucheshi wa busara", "Una uwezo wa kuwa na mng'ao wa uso", "Una uwezo wa kuleta ustadi wa mikono", "Una uwezo wa kuwa na upekee wa kusema", "Una uwezo wa kuleta ushindi wa kijamii", "Una uwezo wa kuwa na roho ya upendo", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na nidhamu ya sanaa", "Una uwezo wa kuleta maono ya mbali", "Una uwezo wa kuwa na mvuto wa kipekee", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa mwandishi mzuri", "Una uwezo wa kuleta mabadiliko ya furaha", "Una uwezo wa kuleta ndoa zenye amani"],
+        'D': ["Una sifa za uthabiti", "Una uwezo wa kusimamia misingi", "Una uhodari wa vitendo", "Una uwezo wa kujenga", "Una uwezo wa kuwa na msimamo", "Una uwezo wa kuleta usalama", "Una uwezo wa kufanya kazi kwa mfumo", "Una uwezo wa kuwa mkweli", "Una uwezo wa kuleta nidhamu ya kipekee", "Una uwezo wa kuwa na bidii", "Una uwezo wa kuleta matokeo halisi", "Una uwezo wa kuwa mlinzi", "Una uwezo wa kuleta utulivu wa mali", "Una uwezo wa kuwa na maamuzi magumu", "Una uwezo wa kuleta ufanisi", "Una uwezo wa kuwa mkweli wa nafsi", "Una uwezo wa kuleta mwelekeo wa haki", "Una uwezo wa kuwa na uvumilivu wa kazi", "Una uwezo wa kuleta msingi imara wa biashara", "Una uwezo wa kuwa na nidhamu ya pesa", "Una uwezo wa kuleta uaminifu wa kudumu", "Una uwezo wa kuwa msimamizi bora", "Una uwezo wa kuleta maendeleo ya vitendo", "Una uwezo wa kuwa na akili ya ujenzi", "Una uwezo wa kuleta umoja wa familia", "Una uwezo wa kuwa na heshima ya kazi", "Una uwezo wa kuleta ukombozi wa kiuchumi", "Una uwezo wa kuwa na subira ya kimaisha", "Una uwezo wa kuleta ujasiri wa kusimama", "Una uwezo wa kuwa na malengo ya muda mrefu", "Una uwezo wa kuleta ustawi wa jamii", "Una uwezo wa kuwa na roho ya uaminifu", "Una uwezo wa kuleta ushindi wa uvumilivu", "Una uwezo wa kuwa na msimamo wa kiroho", "Una uwezo wa kuleta uadilifu wa ndoa", "Una uwezo wa kuwa mshauri wa misingi", "Una uwezo wa kuleta maono ya kimaendeleo", "Una uwezo wa kuwa na uhakika wa jambo", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuleta ufanisi wa ndoto"],
+        'E': ["Una sifa za uhuru", "Una uwezo wa kubadilika haraka", "Una uhodari wa kutafuta maarifa", "Una uwezo wa kuleta hamasa", "Una uwezo wa kuwa na akili nyepesi", "Una uwezo wa kuwasiliana kwa urahisi", "Una uwezo wa kufurahia maisha", "Una uwezo wa kuleta msisimko", "Una uwezo wa kusafiri na kugundua", "Una uwezo wa kuleta nishati mpya", "Una uwezo wa kuwa na mtazamo chanya", "Una uwezo wa kuleta ufumbuzi wa haraka", "Una uwezo wa kuwa mwanafunzi wa kudumu", "Una uwezo wa kuleta ukombozi wa fikra", "Una uwezo wa kuwa na ujasiri wa kujaribu", "Una uwezo wa kuleta mabadiliko ya kijamii", "Una uwezo wa kuwa msemaji mahiri", "Una uwezo wa kuleta urafiki wa haraka", "Una uwezo wa kuwa na roho ya ujasiri", "Una uwezo wa kuleta maono ya baadaye", "Una uwezo wa kuwa na uwezo wa kujieleza", "Una uwezo wa kuleta ufanisi wa teknolojia", "Una uwezo wa kuwa mwalimu wa mabadiliko", "Una uwezo wa kuleta amani kupitia akili", "Una uwezo wa kuwa na mvuto wa kifikra", "Una uwezo wa kuleta michezo na furaha", "Una uwezo wa kuwa na uwezo wa kusikiliza", "Una uwezo wa kuleta uvumbuzi wa kisasa", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta wepesi wa mambo", "Una uwezo wa kuwa na roho ya upendo huru", "Una uwezo wa kuleta matumaini mapya", "Una uwezo wa kuwa na upekee wa kimaisha", "Una uwezo wa kuleta ushindi wa kiakili", "Una uwezo wa kuwa mshauri wa haraka", "Una uwezo wa kuleta ustawi wa kifikra", "Una uwezo wa kuwa na nidhamu ya uhuru", "Una uwezo wa kuleta maelewano ya kisasa", "Una uwezo wa kuwa na mng'ao wa elimu", "Una uwezo wa kuleta ufanisi wa haraka"],
+        'F': ["Una sifa za upendo wa dhati", "Una uwezo wa kulea wengine", "Una uhodari wa kuleta uwiano", "Una uwezo wa kuwa na huruma", "Una uwezo wa kuleta amani nyumbani", "Una uwezo wa kujitoa kwa ajili ya wengine", "Una uwezo wa kuwa na uadilifu", "Una uwezo wa kutoa ushauri wa busara", "Una uwezo wa kuleta faraja", "Una uwezo wa kuwa rafiki wa kweli", "Una uwezo wa kuleta umoja wa familia", "Una uwezo wa kuwa mlinzi wa maadili", "Una uwezo wa kuleta uaminifu katika ndoa", "Una uwezo wa kuwa na heshima kwa wakubwa", "Una uwezo wa kuleta baraka za upendo", "Una uwezo wa kuwa msimamizi wa kijamii", "Una uwezo wa kuleta amani ya roho", "Una uwezo wa kuwa na subira ya kulea", "Una uwezo wa kuleta ukarimu wa dhati", "Una uwezo wa kuwa na roho ya unyenyekevu", "Una uwezo wa kuleta haki na usawa", "Una uwezo wa kuwa mpatanishi wa dhati", "Una uwezo wa kuleta ustawi wa ndugu", "Una uwezo wa kuwa na akili ya ulinzi", "Una uwezo wa kuleta furaha kwa watoto", "Una uwezo wa kuwa mwalimu wa maadili", "Una uwezo wa kuleta ukombozi wa kihisia", "Una uwezo wa kuwa na nidhamu ya upendo", "Una uwezo wa kuleta uwiano wa kimaisha", "Una uwezo wa kuwa na imani ya dhati", "Una uwezo wa kuleta neema katika kazi", "Una uwezo wa kuwa mshauri wa mapenzi", "Una uwezo wa kuleta usalama wa moyo", "Una uwezo wa kuwa na ujasiri wa kulinda", "Una uwezo wa kuleta ufanisi wa kijamii", "Una uwezo wa kuwa na mng'ao wa ukarimu", "Una uwezo wa kuleta maono ya amani", "Una uwezo wa kuwa mhimili wa wengine", "Una uwezo wa kuleta ustawi wa kudumu", "Una uwezo wa kuleta uaminifu wa kiroho"],
+        'G': ["Una sifa za uchambuzi wa kina", "Una uwezo wa kuelewa mambo ya kiroho", "Una uhodari wa utafiti", "Una uwezo wa kutafuta ukweli", "Una uwezo wa kuwa na hekima", "Una uwezo wa kujitenga na kufikiri", "Una uwezo wa kuleta uelewa wa siri", "Una uwezo wa kuwa na nidhamu ya akili", "Una uwezo wa kuelewa mifumo migumu", "Una uwezo wa kuleta umakini", "Una uwezo wa kuwa na elimu ya ndani", "Una uwezo wa kuleta utulivu wa kifikra", "Una uwezo wa kuwa mkweli wa siri", "Una uwezo wa kuleta mwangaza wa giza", "Una uwezo wa kuwa na akili ya upasuaji", "Una uwezo wa kuleta hekima ya kale", "Una uwezo wa kuwa mchunguzi wa mambo", "Una uwezo wa kuleta ukombozi wa elimu", "Una uwezo wa kuwa na msimamo wa kiroho", "Una uwezo wa kuleta uvumbuzi wa kisayansi", "Una uwezo wa kuwa na subira ya utafiti", "Una uwezo wa kuleta maono ya kipekee", "Una uwezo wa kuwa mshauri wa siri", "Una uwezo wa kuleta ufanisi wa kifikra", "Una uwezo wa kuwa na nidhamu ya utulivu", "Una uwezo wa kuleta usalama wa akili", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta upekee wa kiroho", "Una uwezo wa kuwa na roho ya upelelezi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa na ujasiri wa kuuliza", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa na uwezo wa kuona", "Una uwezo wa kuleta uwiano wa kimaarifa", "Una uwezo wa kuwa mlinzi wa maarifa", "Una uwezo wa kuleta ushindi wa ukweli", "Una uwezo wa kuwa na uvumilivu wa kiroho", "Una uwezo wa kuleta maono ya ukweli"],
+        'H': ["Una sifa za utajiri na mafanikio", "Una uwezo wa kusimamia fedha", "Una uhodari wa kibiashara", "Una uwezo wa kuleta mamlaka", "Una uwezo wa kufanya maamuzi makubwa", "Una uwezo wa kuwa na nguvu ya ndani", "Una uwezo wa kuleta ustawi wa mali", "Una uwezo wa kuongoza miradi mikubwa", "Una uwezo wa kuleta ufanisi wa kifedha", "Una uwezo wa kuwa na maono ya mbali", "Una uwezo wa kuleta nidhamu ya biashara", "Una uwezo wa kuwa na ujasiri wa kuwekeza", "Una uwezo wa kuleta ushindi wa kibiashara", "Una uwezo wa kuwa kiongozi mwenye nguvu", "Una uwezo wa kuleta mabadiliko ya kiuchumi", "Una uwezo wa kuwa na akili ya kimkakati", "Una uwezo wa kuleta ukombozi wa kipato", "Una uwezo wa kuwa na msimamo wa kimalengo", "Una uwezo wa kuleta ustawi wa wafanyakazi", "Una uwezo wa kuwa na uaminifu wa kifedha", "Una uwezo wa kuleta ufanisi wa kiutendaji", "Una uwezo wa kuwa mshauri wa uwekezaji", "Una uwezo wa kuleta ujasiri wa kusimamia", "Una uwezo wa kuwa na nidhamu ya mafanikio", "Una uwezo wa kuleta mng'ao wa mamlaka", "Una uwezo wa kuwa msimamizi wa rasilimali", "Una uwezo wa kuleta baraka za mali", "Una uwezo wa kuwa na roho ya uongozi", "Una uwezo wa kuleta usawa wa kipato", "Una uwezo wa kuwa na uwezo wa kuamua", "Una uwezo wa kuleta ukombozi wa kimaendeleo", "Una uwezo wa kuwa na msimamo usioyumba", "Una uwezo wa kuleta ustawi wa familia kupitia kazi", "Una uwezo wa kuwa na nidhamu ya wakati", "Una uwezo wa kuleta maono ya utajiri", "Una uwezo wa kuwa mhimili wa uchumi", "Una uwezo wa kuleta baraka za ushindi", "Una uwezo wa kuwa na uwezo wa kuleta amani", "Una uwezo wa kuleta usawa wa kimaendeleo", "Una uwezo wa kuleta ufanisi wa ndoa kupitia mali"],
+        'I': ["Una sifa za hisia kali", "Una uwezo wa kuona utu wa watu", "Una uhodari wa kibinadamu", "Una uwezo wa kutoa huduma kwa upendo", "Una uwezo wa kuwa na ndoto kubwa", "Una uwezo wa kuleta ukarimu usio na mwisho", "Una uwezo wa kuwaza mambo mapana", "Una uwezo wa kuleta upole na amani", "Una uwezo wa kuhamasisha kupitia hisia", "Una uwezo wa kuwa mvumilivu", "Una uwezo wa kuleta msukumo wa kiroho", "Una uwezo wa kuwa na huruma ya dhati", "Una uwezo wa kuleta ukombozi wa kihisia", "Una uwezo wa kuwa mshauri wa nafsi", "Una uwezo wa kuleta mwanga wa matumaini", "Una uwezo wa kuwa na uadilifu wa moyo", "Una uwezo wa kuleta ushirikiano wa kiroho", "Una uwezo wa kuwa na imani thabiti", "Una uwezo wa kuleta neema ya upendo", "Una uwezo wa kuwa mlinzi wa wanyonge", "Una uwezo wa kuleta amani ya ndani", "Una uwezo wa kuwa na busara ya kiroho", "Una uwezo wa kuleta ufanisi wa huduma", "Una uwezo wa kuwa na nidhamu ya upendo", "Una uwezo wa kuleta ustawi wa kijamii", "Una uwezo wa kuwa mwalimu wa amani", "Una uwezo wa kuleta hekima ya dhati", "Una uwezo wa kuwa na roho ya ukarimu", "Una uwezo wa kuleta uwiano wa moyo", "Una uwezo wa kuwa mkweli wa hisia", "Una uwezo wa kuleta furaha kwa waliohuzunika", "Una uwezo wa kuwa na ujasiri wa kupenda", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na nidhamu ya kimaadili", "Una uwezo wa kuleta maono ya amani", "Una uwezo wa kuwa mhimili wa faraja", "Una uwezo wa kuleta ustawi wa kiroho", "Una uwezo wa kuwa na mng'ao wa neema", "Una uwezo wa kuleta usawa wa kibinadamu", "Una uwezo wa kuleta baraka za ushindi"],
+        'J': ["Una sifa za uaminifu na haki", "Una uwezo wa kusimamia ukweli", "Una uhodari wa sheria", "Una uwezo wa kuleta usawa", "Una uwezo wa kuwa mshauri mwaminifu", "Una uwezo wa kuamua bila upendeleo", "Una uwezo wa kuleta utulivu katika migogoro", "Una uwezo wa kuwa na mwelekeo wa haki", "Una uwezo wa kuleta usalama wa kijamii", "Una uwezo wa kuwa mlinzi wa wanyonge", "Una uwezo wa kuleta nidhamu ya kisheria", "Una uwezo wa kuwa na msimamo wa uadilifu", "Una uwezo wa kuleta ukombozi wa kisheria", "Una uwezo wa kuwa na akili ya uchambuzi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa msimamizi wa haki", "Una uwezo wa kuleta amani kupitia sheria", "Una uwezo wa kuwa na ujasiri wa kusema ukweli", "Una uwezo wa kuleta uwiano wa kijamii", "Una uwezo wa kuwa mwalimu wa maadili", "Una uwezo wa kuleta ufanisi wa utawala", "Una uwezo wa kuwa na nidhamu ya kiapo", "Una uwezo wa kuleta ustawi wa kisheria", "Una uwezo wa kuwa mshauri mkuu wa haki", "Una uwezo wa kuleta maono ya usawa", "Una uwezo wa kuwa na roho ya uadilifu", "Una uwezo wa kuleta ushindi wa haki", "Una uwezo wa kuwa mhimili wa ukweli", "Una uwezo wa kuleta ukombozi wa kijamii", "Una uwezo wa kuwa na nidhamu ya dhati", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kuwa na ujasiri wa kusimamia", "Una uwezo wa kuleta ustawi wa kitaifa", "Una uwezo wa kuwa na akili ya uamuzi", "Una uwezo wa kuleta neema ya uongozi", "Una uwezo wa kuwa na mng'ao wa haki", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuwa mlinzi wa amani", "Una uwezo wa kuleta baraka za uaminifu", "Una uwezo wa kuleta ushindi wa kijamii"],
+        'K': ["Una sifa za angavu (intuition)", "Una uwezo wa kuona mambo kabla hayajatokea", "Una uhodari wa kiroho", "Una uwezo wa kuleta nuru", "Una uwezo wa kuwa mwalimu wa maisha", "Una uwezo wa kuhamasisha wengi", "Una uwezo wa kuleta mabadiliko ya kifikra", "Una uwezo wa kuwa mpatanishi", "Una uwezo wa kuleta siri za mafanikio", "Una uwezo wa kuwaza mambo makuu", "Una uwezo wa kuleta ufunuo", "Una uwezo wa kuwa na ushawishi mkubwa", "Una uwezo wa kuleta upatanisho wa kidini", "Una uwezo wa kuwa na akili ya kipekee", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa na nidhamu ya kiroho", "Una uwezo wa kuleta amani ya dhati", "Una uwezo wa kuwa na ujasiri wa kiimani", "Una uwezo wa kuleta ustawi wa akili", "Una uwezo wa kuwa mshauri wa maono", "Una uwezo wa kuleta uwiano wa kimaisha", "Una uwezo wa kuwa na roho ya utulivu", "Una uwezo wa kuleta ufanisi wa huduma", "Una uwezo wa kuwa mlinzi wa maadili", "Una uwezo wa kuleta hekima ya juu", "Una uwezo wa kuwa na mng'ao wa neema", "Una uwezo wa kuleta ushindi wa kiroho", "Una uwezo wa kuwa mhimili wa nuru", "Una uwezo wa kuleta baraka za maono", "Una uwezo wa kuwa na upekee wa kutoa", "Una uwezo wa kuleta usawa wa kiroho", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta ukombozi wa kijamii", "Una uwezo wa kuwa na nidhamu ya dhati", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kuwa mshindi wa vita vya kiakili", "Una uwezo wa kuleta ustawi wa kudumu", "Una uwezo wa kuwa na uwezo wa ajabu wa ndani", "Una uwezo wa kuleta mapinduzi ya kifikra", "Una uwezo wa kuleta ndoa zenye baraka"],
+        'L': ["Una sifa za ushirikiano", "Una uwezo wa kuleta watu pamoja", "Una uhodari wa mahusiano", "Una uwezo wa kuleta upendo wa dhati", "Una uwezo wa kuwa mnyenyekevu", "Una uwezo wa kusikiliza wengine", "Una uwezo wa kuleta furaha katika vikundi", "Una uwezo wa kuwa mpatanishi mzuri", "Una uwezo wa kujenga amani mahali pa kazi", "Una uwezo wa kuwa mkarimu kwa wote", "Una uwezo wa kuleta uwiano wa kijamii", "Una uwezo wa kuwa mshirika wa kuaminika", "Una uwezo wa kuleta uelewa wa dhati", "Una uwezo wa kuwa na busara ya kijamii", "Una uwezo wa kuleta ufanisi wa kiofisi", "Una uwezo wa kuwa mwalimu wa adabu", "Una uwezo wa kuleta ukombozi wa kijamii", "Una uwezo wa kuwa na nidhamu ya upendo", "Una uwezo wa kuleta amani ya roho", "Una uwezo wa kuwa na subira ya kulea", "Una uwezo wa kuleta ukarimu wa hali ya juu", "Una uwezo wa kuwa mlinzi wa siri za wengine", "Una uwezo wa kuleta ushindi wa amani", "Una uwezo wa kuwa na mng'ao wa ukarimu", "Una uwezo wa kuleta maono ya umoja", "Una uwezo wa kuwa mhimili wa mapenzi", "Una uwezo wa kuleta baraka za ushirikiano", "Una uwezo wa kuwa na ujasiri wa kupenda", "Una uwezo wa kuleta usawa wa kimaisha", "Una uwezo wa kuwa mpatanishi wa dhati", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na nidhamu ya kimaadili", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kuwa mshirika imara wa ndoa", "Una uwezo wa kuleta ustawi wa ndugu", "Una uwezo wa kuwa na roho ya ukarimu", "Una uwezo wa kuleta neema katika kazi", "Una uwezo wa kuwa na mwelekeo wa amani", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuleta furaha ya kudumu"],
+        'M': ["Una sifa za uvumilivu wa hali ya juu", "Una uwezo wa kufanya kazi kwa siri", "Una uhodari wa kupanga mikakati", "Una uwezo wa kuleta utulivu", "Una uwezo wa kuwa na nidhamu ya hali ya juu", "Una uwezo wa kufikia malengo magumu", "Una uwezo wa kuleta mabadiliko ya kimya kimya", "Una uwezo wa kuwa mhimili wa familia", "Una uwezo wa kuleta matokeo makubwa", "Una uwezo wa kuwa na hekima ya kale", "Una uwezo wa kuleta misingi imara ya kazi", "Una uwezo wa kuwa na akili ya ujenzi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa mlinzi wa rasilimali", "Una uwezo wa kuleta ufanisi wa kimalengo", "Una uwezo wa kuwa na roho ya uadilifu", "Una uwezo wa kuleta ukombozi wa kiuchumi", "Una uwezo wa kuwa na nidhamu ya dhati", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kuwa na ujasiri wa kusimamia", "Una uwezo wa kuleta ustawi wa kimaendeleo", "Una uwezo wa kuwa na msimamo usioyumba", "Una uwezo wa kuleta ufanisi wa kijamii", "Una uwezo wa kuwa mshauri wa misingi", "Una uwezo wa kuleta maono ya kimaendeleo", "Una uwezo wa kuwa na uhakika wa jambo", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuleta ufanisi wa ndoto", "Una uwezo wa kuwa mlinzi wa amani", "Una uwezo wa kuleta baraka za uaminifu", "Una uwezo wa kuwa msimamizi wa muda", "Una uwezo wa kuleta ushindi wa uvumilivu", "Una uwezo wa kuwa na roho ya usiri", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa msaidizi bora", "Una uwezo wa kuleta usawa wa kibinadamu", "Una uwezo wa kuleta baraka za ushindi", "Una uwezo wa kuleta ndoa imara"],
+        'N': ["Una sifa za upekuzi", "Una uwezo wa kugundua siri", "Una uhodari wa kutafuta ukweli", "Una uwezo wa kuwa na maono", "Una uwezo wa kufikiri kwa kina", "Una uwezo wa kuleta ufumbuzi wa matatizo", "Una uwezo wa kuwa mkweli daima", "Una uwezo wa kuelewa nafsi za watu", "Una uwezo wa kuleta hekima ya ndani", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta mwangaza wa ukweli", "Una uwezo wa kuwa na ujasiri wa kuuliza", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa na uwezo wa kuona mbali", "Una uwezo wa kuleta uwiano wa kimaarifa", "Una uwezo wa kuwa mlinzi wa maarifa", "Una uwezo wa kuleta ushindi wa ukweli", "Una uwezo wa kuwa na uvumilivu wa kiroho", "Una uwezo wa kuleta maono ya ukweli", "Una uwezo wa kuwa na akili ya upasuaji", "Una uwezo wa kuleta hekima ya siri", "Una uwezo wa kuwa mchunguzi wa mambo", "Una uwezo wa kuleta mabadiliko ya kifikra", "Una uwezo wa kuwa mwalimu wa ukweli", "Una uwezo wa kuleta upekee wa kiroho", "Una uwezo wa kuwa na roho ya upelelezi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa na ujasiri wa kusema ukweli", "Una uwezo wa kuleta amani kupitia maarifa", "Una uwezo wa kuwa mshauri wa siri", "Una uwezo wa kuleta ufanisi wa kifikra", "Una uwezo wa kuwa na nidhamu ya utulivu", "Una uwezo wa kuleta usalama wa akili", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta baraka za ugunduzi", "Una uwezo wa kuwa mhimili wa ukweli", "Una uwezo wa kuleta ukombozi wa kimaisha", "Una uwezo wa kuleta ushindi wa maono"],
+        'O': ["Una sifa za utulivu na amani", "Una uwezo wa kuleta maelewano", "Una uhodari wa kulea familia", "Una uwezo wa kuwa na subira", "Una uwezo wa kusamehe", "Una uwezo wa kuleta furaha nyumbani", "Una uwezo wa kuwa mkweli kwa hisia", "Una uwezo wa kuleta mshikamano", "Una uwezo wa kuwa na ukarimu", "Una uwezo wa kuleta faraja kwa waliohuzunika", "Una uwezo wa kuwa na roho ya upatanishi", "Una uwezo wa kuleta uaminifu katika ndoa", "Una uwezo wa kuwa mlinzi wa maadili", "Una uwezo wa kuleta baraka za upendo", "Una uwezo wa kuwa msimamizi wa kijamii", "Una uwezo wa kuleta amani ya roho", "Una uwezo wa kuwa na subira ya kulea", "Una uwezo wa kuleta ukarimu wa dhati", "Una uwezo wa kuwa na roho ya unyenyekevu", "Una uwezo wa kuleta haki na usawa", "Una uwezo wa kuwa mpatanishi wa dhati", "Una uwezo wa kuleta ustawi wa ndugu", "Una uwezo wa kuwa na akili ya ulinzi", "Una uwezo wa kuleta furaha kwa watoto", "Una uwezo wa kuwa mwalimu wa maadili", "Una uwezo wa kuleta ukombozi wa kihisia", "Una uwezo wa kuwa na nidhamu ya upendo", "Una uwezo wa kuleta uwiano wa kimaisha", "Una uwezo wa kuwa na imani ya dhati", "Una uwezo wa kuleta neema katika kazi", "Una uwezo wa kuwa mshauri wa mapenzi", "Una uwezo wa kuleta usalama wa moyo", "Una uwezo wa kuwa na ujasiri wa kulinda", "Una uwezo wa kuleta ufanisi wa kijamii", "Una uwezo wa kuwa na mng'ao wa ukarimu", "Una uwezo wa kuleta maono ya amani", "Una uwezo wa kuwa mhimili wa wengine", "Una uwezo wa kuleta ustawi wa kudumu", "Una uwezo wa kuleta uaminifu wa kiroho", "Una uwezo wa kuleta ushindi wa upendo"],
+        'P': ["Una sifa za utulivu na busara", "Una uwezo wa kufikiri kabla ya kutenda", "Una uhodari wa kutoa ushauri", "Una uwezo wa kuleta amani ya akili", "Una uwezo wa kuwa na siri nyingi", "Una uwezo wa kusoma alama za nyakati", "Una uwezo wa kuwa na msimamo usioyumba", "Una uwezo wa kuleta uelewa wa kiroho", "Una uwezo wa kuwa na hekima ya siri", "Una uwezo wa kuleta usawa", "Una uwezo wa kuwa na nidhamu ya hali ya juu", "Una uwezo wa kuleta utaratibu mahali pa fujo", "Una uwezo wa kuwa mchunguzi wa mambo", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na akili ya upasuaji", "Una uwezo wa kuleta mwangaza wa giza", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta hekima ya kale", "Una uwezo wa kuwa na uwezo wa kuona mbali", "Una uwezo wa kuleta uwiano wa kimaarifa", "Una uwezo wa kuwa mlinzi wa maarifa", "Una uwezo wa kuleta ushindi wa ukweli", "Una uwezo wa kuwa na uvumilivu wa kiroho", "Una uwezo wa kuleta maono ya ukweli", "Una uwezo wa kuwa na nidhamu ya utulivu", "Una uwezo wa kuleta usalama wa akili", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta baraka za ugunduzi", "Una uwezo wa kuwa mhimili wa ukweli", "Una uwezo wa kuleta ukombozi wa kimaisha", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa msaidizi bora", "Una uwezo wa kuleta usawa wa kibinadamu", "Una uwezo wa kuleta baraka za ushindi", "Una uwezo wa kuwa na ujasiri wa siri", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa mlinzi wa amani", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuleta ufanisi wa ndoto"],
+        'Q': ["Una sifa za upekee", "Una uwezo wa kufanya mambo kwa namna tofauti", "Una uhodari wa kugundua mapya", "Una uwezo wa kuwa na sauti yenye mamlaka", "Una uwezo wa kuleta ubunifu usio wa kawaida", "Una uwezo wa kuwa kiongozi wa kipekee", "Una uwezo wa kuleta ufahamu mpya", "Una uwezo wa kuwaza mambo makuu ya siri", "Una uwezo wa kuwa na akili ya kipekee", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuleta uvumbuzi wa kimaisha", "Una uwezo wa kuwa na ujasiri wa kujaribu", "Una uwezo wa kuleta mabadiliko ya kijamii", "Una uwezo wa kuwa msemaji mahiri", "Una uwezo wa kuleta urafiki wa haraka", "Una uwezo wa kuwa na roho ya ujasiri", "Una uwezo wa kuleta maono ya baadaye", "Una uwezo wa kuwa na uwezo wa kujieleza", "Una uwezo wa kuleta ufanisi wa teknolojia", "Una uwezo wa kuwa mwalimu wa mabadiliko", "Una uwezo wa kuleta amani kupitia akili", "Una uwezo wa kuwa na mvuto wa kifikra", "Una uwezo wa kuleta michezo na furaha", "Una uwezo wa kuwa na uwezo wa kusikiliza", "Una uwezo wa kuleta uvumbuzi wa kisasa", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta wepesi wa mambo", "Una uwezo wa kuwa na roho ya upendo huru", "Una uwezo wa kuleta matumaini mapya", "Una uwezo wa kuwa na upekee wa kimaisha", "Una uwezo wa kuleta ushindi wa kiakili", "Una uwezo wa kuwa mshauri wa haraka", "Una uwezo wa kuleta ustawi wa kifikra", "Una uwezo wa kuwa na nidhamu ya uhuru", "Una uwezo wa kuleta maelewano ya kisasa", "Una uwezo wa kuwa na mng'ao wa elimu", "Una uwezo wa kuleta ufanisi wa haraka", "Una uwezo wa kuleta usawa wa kiakili", "Una uwezo wa kuwa mshindi wa kipekee", "Una uwezo wa kuleta baraka za ajabu"],
+        'R': ["Una sifa za uhodari wa kazi", "Una uwezo wa kupambana na changamoto", "Una uhodari wa kusema ukweli", "Una uwezo wa kuleta mabadiliko ya haraka", "Una uwezo wa kuwa na nguvu ya ushawishi", "Una uwezo wa kujituma", "Una uwezo wa kuleta matokeo ya haraka", "Una uwezo wa kuwa mshindi daima", "Una uwezo wa kuelekeza wengine kwa vitendo", "Una uwezo wa kuwa na bidii isiyoisha", "Una uwezo wa kuwa mkweli wa siri", "Una uwezo wa kuleta mwangaza wa giza", "Una uwezo wa kuwa na akili ya upasuaji", "Una uwezo wa kuleta hekima ya kale", "Una uwezo wa kuwa mchunguzi wa mambo", "Una uwezo wa kuleta ukombozi wa elimu", "Una uwezo wa kuwa na msimamo wa kiroho", "Una uwezo wa kuleta uvumbuzi wa kisayansi", "Una uwezo wa kuwa na subira ya utafiti", "Una uwezo wa kuleta maono ya kipekee", "Una uwezo wa kuwa mshauri wa siri", "Una uwezo wa kuleta ufanisi wa kifikra", "Una uwezo wa kuwa na nidhamu ya utulivu", "Una uwezo wa kuleta usalama wa akili", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta upekee wa kiroho", "Una uwezo wa kuwa na roho ya upelelezi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa na ujasiri wa kuuliza", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa na uwezo wa kuona", "Una uwezo wa kuleta uwiano wa kimaarifa", "Una uwezo wa kuwa mlinzi wa maarifa", "Una uwezo wa kuleta ushindi wa ukweli", "Una uwezo wa kuwa na uvumilivu wa kiroho", "Una uwezo wa kuleta maono ya ukweli", "Una uwezo wa kuleta baraka za kazi", "Una uwezo wa kuleta ufanisi wa ndoa"],
+        'S': ["Una sifa za mvuto wa pekee", "Una uwezo wa kushawishi kwa urahisi", "Una uhodari wa kijamii", "Una uwezo wa kuleta msisimko", "Una uwezo wa kuwa maarufu", "Una uwezo wa kujenga mahusiano imara", "Una uwezo wa kuleta amani na upendo", "Una uwezo wa kuwa na akili ya haraka", "Una uwezo wa kuleta mabadiliko ya kijamii", "Una uwezo wa kuwa kiongozi mwenye mvuto", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na ujasiri wa kujaribu", "Una uwezo wa kuleta mabadiliko ya kijamii", "Una uwezo wa kuwa msemaji mahiri", "Una uwezo wa kuleta urafiki wa haraka", "Una uwezo wa kuwa na roho ya ujasiri", "Una uwezo wa kuleta maono ya baadaye", "Una uwezo wa kuwa na uwezo wa kujieleza", "Una uwezo wa kuleta ufanisi wa teknolojia", "Una uwezo wa kuwa mwalimu wa mabadiliko", "Una uwezo wa kuleta amani kupitia akili", "Una uwezo wa kuwa na mvuto wa kifikra", "Una uwezo wa kuleta michezo na furaha", "Una uwezo wa kuwa na uwezo wa kusikiliza", "Una uwezo wa kuleta uvumbuzi wa kisasa", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta wepesi wa mambo", "Una uwezo wa kuwa na roho ya upendo huru", "Una uwezo wa kuleta matumaini mapya", "Una uwezo wa kuwa na upekee wa kimaisha", "Una uwezo wa kuleta ushindi wa kiakili", "Una uwezo wa kuwa mshauri wa haraka", "Una uwezo wa kuleta ustawi wa kifikra", "Una uwezo wa kuwa na nidhamu ya uhuru", "Una uwezo wa kuleta maelewano ya kisasa", "Una uwezo wa kuwa na mng'ao wa elimu", "Una uwezo wa kuleta ufanisi wa haraka", "Una uwezo wa kuleta usawa wa kiakili", "Una uwezo wa kuwa mshindi wa kipekee", "Una uwezo wa kuleta baraka za ajabu"],
+        'T': ["Una sifa za utulivu na nidhamu", "Una uwezo wa kufundisha kwa ustadi", "Una uhodari wa kuleta mwelekeo", "Una uwezo wa kusimamia miradi", "Una uwezo wa kuwa na uvumilivu mkubwa", "Una uwezo wa kuleta ufanisi wa muda mrefu", "Una uwezo wa kuwa na maono ya dhati", "Una uwezo wa kuleta nidhamu ya kimaisha", "Una uwezo wa kuwa mshauri mkuu", "Una uwezo wa kuleta utaratibu", "Una uwezo wa kuwa na akili ya ujenzi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa mlinzi wa rasilimali", "Una uwezo wa kuleta ufanisi wa kimalengo", "Una uwezo wa kuwa na roho ya uadilifu", "Una uwezo wa kuleta ukombozi wa kiuchumi", "Una uwezo wa kuwa na nidhamu ya dhati", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kuwa na ujasiri wa kusimamia", "Una uwezo wa kuleta ustawi wa kimaendeleo", "Una uwezo wa kuwa na msimamo usioyumba", "Una uwezo wa kuleta ufanisi wa kijamii", "Una uwezo wa kuwa mshauri wa misingi", "Una uwezo wa kuleta maono ya kimaendeleo", "Una uwezo wa kuwa na uhakika wa jambo", "Una uwezo wa kuleta usawa wa vitendo", "Una uwezo wa kuleta ufanisi wa ndoto", "Una uwezo wa kuwa mlinzi wa amani", "Una uwezo wa kuleta baraka za uaminifu", "Una uwezo wa kuwa msimamizi wa muda", "Una uwezo wa kuleta ushindi wa uvumilivu", "Una uwezo wa kuwa na roho ya usiri", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa msaidizi bora", "Una uwezo wa kuleta usawa wa kibinadamu", "Una uwezo wa kuleta baraka za ushindi", "Una uwezo wa kuleta nidhamu ya ndoa", "Una uwezo wa kuleta utulivu wa kiroho"],
+        'U': ["Una sifa za ukarimu na upendo", "Una uwezo wa kujali kila mtu", "Una uhodari wa kutoa faraja", "Una uwezo wa kuleta furaha kwa wengine", "Una uwezo wa kuwa na ndoto za amani", "Una uwezo wa kutoa msaada wa hali na mali", "Una uwezo wa kuleta ushirikiano wa dhati", "Una uwezo wa kuwa mkweli kwa nafsi yako", "Una uwezo wa kuleta mabadiliko ya kibinadamu", "Una uwezo wa kuwa rafiki wa wote", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na ujasiri wa kupenda", "Una uwezo wa kuleta ukombozi wa kihisia", "Una uwezo wa kuwa mshauri wa nafsi", "Una uwezo wa kuleta mwanga wa matumaini", "Una uwezo wa kuwa na uadilifu wa moyo", "Una uwezo wa kuleta ushirikiano wa kiroho", "Una uwezo wa kuwa na imani thabiti", "Una uwezo wa kuleta neema ya upendo", "Una uwezo wa kuwa mlinzi wa wanyonge", "Una uwezo wa kuleta amani ya ndani", "Una uwezo wa kuwa na busara ya kiroho", "Una uwezo wa kuleta ufanisi wa huduma", "Una uwezo wa kuwa na nidhamu ya upendo", "Una uwezo wa kuleta ustawi wa kijamii", "Una uwezo wa kuwa mwalimu wa amani", "Una uwezo wa kuleta hekima ya dhati", "Una uwezo wa kuwa na roho ya ukarimu", "Una uwezo wa kuleta uwiano wa moyo", "Una uwezo wa kuwa mkweli wa hisia", "Una uwezo wa kuleta furaha kwa waliohuzunika", "Una uwezo wa kuwa na ujasiri wa dhati", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na nidhamu ya kimaadili", "Una uwezo wa kuleta maono ya amani", "Una uwezo wa kuwa mhimili wa faraja", "Una uwezo wa kuleta ustawi wa kiroho", "Una uwezo wa kuwa na mng'ao wa neema", "Una uwezo wa kuleta usawa wa kibinadamu", "Una uwezo wa kuleta baraka za ushindi"],
+        'V': ["Una sifa za ujasiri na uhodari", "Una uwezo wa kushinda majaribu", "Una uhodari wa kuleta ushindi", "Una uwezo wa kuwa kiongozi wa kijeshi au kibiashara", "Una uwezo wa kuleta msimamo imara", "Una uwezo wa kuwa na nguvu ya kipekee", "Una uwezo wa kuleta nidhamu ya chuma", "Una uwezo wa kuwa na ujasiri wa kusema hapana", "Una uwezo wa kuleta ulinzi na usalama", "Una uwezo wa kuwa mshindi wa vita", "Una uwezo wa kuleta mabadiliko ya haraka", "Una uwezo wa kuwa na nguvu ya ushawishi", "Una uwezo wa kujituma", "Una uwezo wa kuleta matokeo ya haraka", "Una uwezo wa kuwa mshindi daima", "Una uwezo wa kuelekeza wengine kwa vitendo", "Una uwezo wa kuwa na bidii isiyoisha", "Una uwezo wa kuwa mkweli wa siri", "Una uwezo wa kuleta mwangaza wa giza", "Una uwezo wa kuwa na akili ya upasuaji", "Una uwezo wa kuleta hekima ya kale", "Una uwezo wa kuwa mchunguzi wa mambo", "Una uwezo wa kuleta ukombozi wa elimu", "Una uwezo wa kuwa na msimamo wa kiroho", "Una uwezo wa kuleta uvumbuzi wa kisayansi", "Una uwezo wa kuwa na subira ya utafiti", "Una uwezo wa kuleta maono ya kipekee", "Una uwezo wa kuwa mshauri wa siri", "Una uwezo wa kuleta ufanisi wa kifikra", "Una uwezo wa kuwa na nidhamu ya utulivu", "Una uwezo wa kuleta usalama wa akili", "Una uwezo wa kuwa mwalimu wa hekima", "Una uwezo wa kuleta upekee wa kiroho", "Una uwezo wa kuwa na roho ya upelelezi", "Una uwezo wa kuleta uaminifu wa dhati", "Una uwezo wa kuwa na ujasiri wa kuuliza", "Una uwezo wa kuleta ukombozi wa nafsi", "Una uwezo wa kuwa na mng'ao wa busara", "Una uwezo wa kuleta ustawi wa kiakili", "Una uwezo wa kuwa na uwezo wa kuona"],
+        'W': ["Una sifa za ubunifu na maono", "Una uwezo wa kuona fursa mapema", "Una uhodari wa kufanya mambo mapya", "Una uwezo wa kuleta uvumbuzi wa kisaka", "Una uwezo wa kuwa mkweli kwa malengo yako", "Una uwezo wa kuleta msisimko wa kimaendeleo", "Una uwezo wa kuwa na akili pana", "Una uwezo wa kuleta ustawi kupitia teknolojia", "Una uwezo wa kuwa na maono ya mbali sana", "Una uwezo wa kuleta mafanikio makubwa", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na ujasiri wa kujaribu", "Una uwezo wa kuleta mabadiliko ya kijamii", "Una uwezo wa kuwa msemaji mahiri", "Una uwezo wa kuleta urafiki wa haraka", "Una uwezo wa kuwa na roho ya ujasiri", "Una uwezo wa kuleta maono ya baadaye", "Una uwezo wa kuwa na uwezo wa kujieleza", "Una uwezo wa kuleta ufanisi wa teknolojia", "Una uwezo wa kuwa mwalimu wa mabadiliko", "Una uwezo wa kuleta amani kupitia akili", "Una uwezo wa kuwa na mvuto wa kifikra", "Una uwezo wa kuleta michezo na furaha", "Una uwezo wa kuwa na uwezo wa kusikiliza", "Una uwezo wa kuleta uvumbuzi wa kisasa", "Una uwezo wa kuwa na akili ya utafiti", "Una uwezo wa kuleta wepesi wa mambo", "Una uwezo wa kuwa na roho ya upendo huru", "Una uwezo wa kuleta matumaini mapya", "Una uwezo wa kuwa na upekee wa kimaisha", "Una uwezo wa kuleta ushindi wa kiakili", "Una uwezo wa kuwa mshauri wa haraka", "Una uwezo wa kuleta ustawi wa kifikra", "Una uwezo wa kuwa na nidhamu ya uhuru", "Una uwezo wa kuleta maelewano ya kisasa", "Una uwezo wa kuwa na mng'ao wa elimu", "Una uwezo wa kuleta ufanisi wa haraka", "Una uwezo wa kuleta usawa wa kiakili", "Una uwezo wa kuwa mshindi wa kipekee", "Una uwezo wa kuleta baraka za ajabu"],
+        'X': ["Una sifa za upekee wa kiroho", "Una uwezo wa kuwasiliana na ulimwengu wa siri", "Una uhodari wa sanaa ya hali ya juu", "Una uwezo wa kuleta amani ya ndani", "Una uwezo wa kuwa kioo cha wengine", "Una uwezo wa kuelewa mambo magumu kwa urahisi", "Una uwezo wa kuleta usawa wa kimaisha", "Una uwezo wa kuwa na akili yenye upe"],
+        'Y': ["Una sifa za uhuru wa kiakili", "Una uwezo wa kufanya maamuzi binafsi", "Una uhodari wa kutafuta uhuru", "Una uwezo wa kuleta mabadiliko ya kibinafsi", "Una uwezo wa kuwa na maono ya dhati ya kesho", "Una uwezo wa kuleta ustawi wa vijana", "Una uwezo wa kuwa kiongozi wa kizazi kipya", "Una uwezo wa kuleta ubunifu wa hali ya juu", "Una uwezo wa kuwa na akili huru", "Una uwezo wa kuleta mapinduzi ya kifikra", "Una uwezo wa kuona fursa pale wengine wanapoona giza", "Una uwezo wa kuwa mkweli kwa kanuni zako", "Una uwezo wa kuleta ukombozi wa kifikra", "Una uwezo wa kuwa na angavu (intuition) ya kipekee", "Una uwezo wa kuleta mwangaza wa kipekee", "Una uwezo wa kuwa mshauri wa mambo ya kesho", "Una uwezo wa kuleta ujasiri wa kijamii", "Una uwezo wa kuwa na akili yenye uchambuzi wa hali ya juu", "Una uwezo wa kuleta uwiano kati ya mwili na roho", "Una uwezo wa kuwa mwanafalsafa wa kisasa", "Una uwezo wa kuleta matokeo kwa njia ya kipekee", "Una uwezo wa kuwa na nidhamu ya kujiendeleza", "Una uwezo wa kuleta amani kupitia uelewa mpana", "Una uwezo wa kuwa mtafutaji wa ukweli usioyumba", "Una uwezo wa kuleta msisimko katika kujifunza", "Una uwezo wa kuwa na kipaji cha kiroho cha ndani", "Una uwezo wa kuleta ustawi kupitia kujitegemea", "Una uwezo wa kuwa kioo cha mabadiliko chanya", "Una uwezo wa kuleta uvumilivu katika safari ya mafanikio", "Una uwezo wa kuwa na roho ya ujasiri na kuthubutu", "Una uwezo wa kuleta ufafanuzi wa mambo magumu", "Una uwezo wa kuwa mhimili wa fikra mpya", "Una uwezo wa kuleta baraka kupitia juhudi binafsi", "Una uwezo wa kuwa na upekee wa kusema na kutenda", "Una uwezo wa kuleta usawa wa kijinsia na kifikra", "Una uwezo wa kuwa na maamuzi yanayoleta tija", "Una uwezo wa kuleta ufanisi katika miradi ya kijamii", "Una uwezo wa kuwa na mng'ao wa hekima ya asili", "Una uwezo wa kuleta uaminifu wa dhati kwa nafsi", "Una uwezo wa kuleta ushindi wa kiakili na kiroho"],
+        'Z': ["Una sifa za mwisho wa mambo na mwanzo mpya", "Una uwezo wa kukamilisha kazi zilizoshindikana", "Una uhodari wa kuleta ukombozi wa mwisho", "Una uwezo wa kuwa na hekima ya kilele", "Una uwezo wa kuleta ustawi wa kudumu", "Una uwezo wa kuwa kiongozi wa mwisho mwenye nguvu", "Una uwezo wa kuleta malengo ya juu kabisa", "Una uwezo wa kuwa na akili ya kilele", "Una uwezo wa kuleta amani ya kudumu", "Una uwezo wa kukamilisha maono ya wengi", "Una uwezo wa kuona picha nzima ya maisha", "Una uwezo wa kuwa na busara ya kiwango cha juu", "Una uwezo wa kuleta utulivu wakati wa dhoruba", "Una uwezo wa kuwa mpatanishi wa mwisho", "Una uwezo wa kuleta ufanisi wa kibiashara na kifedha", "Una uwezo wa kuwa na ujasiri wa kusimamia haki", "Una uwezo wa kuleta mabadiliko makubwa ya kimfumo", "Una uwezo wa kuwa mshauri mkuu wa viongozi", "Una uwezo wa kuleta uaminifu usiotikisika", "Una uwezo wa kuwa na nidhamu ya hali ya juu sana", "Una uwezo wa kuleta ukombozi wa kiroho na kimaisha", "Una uwezo wa kuwa mlinzi wa siri kuu za mafanikio", "Una uwezo wa kuleta ustawi kupitia mipango madhubuti", "Una uwezo wa kuwa na nguvu ya ushawishi ya mwisho", "Una uwezo wa kuleta uwiano wa kilele", "Una uwezo wa kuwa mkweli daima hata katika magumu", "Una uwezo wa kuleta mwangaza katika nyakati za giza kuu", "Una uwezo wa kuwa mhimili wa familia na jamii", "Una uwezo wa kuleta ufanisi wa ajabu katika utendaji", "Una uwezo wa kuwa na akili ya kutatua mafumbo", "Una uwezo wa kuleta baraka za kudumu kwa vizazi", "Una uwezo wa kuwa na roho ya ushindi usioisha", "Una uwezo wa kuleta nidhamu ya kimaadili ya kilele", "Una uwezo wa kuwa na mng'ao wa neema ya mwisho", "Una uwezo wa kuleta usawa wa vitendo na maono", "Una uwezo wa kuwa mwalimu wa hekima ya kale na sasa", "Una uwezo wa kuleta ukombozi wa kudumu wa kifikra", "Una uwezo wa kuwa kiongozi mwenye maono ya milele", "Una uwezo wa kuleta amani ya roho na mwili", "Una uwezo wa kuleta ushindi mkuu wa kimaisha"],
     };
 
     let currentData = null;
@@ -917,7 +1432,9 @@
         card1.onclick = function() { toggleCard(this); }; container.appendChild(card1);
 
         // CARD 2: Afya (20 matatizo + 20 kuepuka)
-        const card2 = document.createElement('div'); card2.className = 'card';
+        const healthList = zodiac.health.length >= 20 ? zodiac.health : zodiac.health.concat(Array(20 - zodiac.health.length).fill("Tahadhari ya afya (50%)"));
+        const avoidList = zodiac.avoid.length >= 20 ? zodiac.avoid : zodiac.avoid.concat(Array(20 - zodiac.avoid.length).fill("Epuka mambo hatari"));
+        card2 = document.createElement('div'); card2.className = 'card';
         card2.innerHTML = `
             <div class="card-inner">
                 <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600')">
@@ -932,16 +1449,18 @@
                     <div class="card-body">
                         <h3>AFYA YAKO (${zodiac.name})</h3>
                         <p><strong>Uwezekano wa kupata:</strong></p>
-                        <ul>${zodiac.health.map(h=>`<li>${h}</li>`).join('')}</ul>
+                        <ul>${healthList.map(h=>`<li>${h}</li>`).join('')}</ul>
                         <p><strong>Epuka vitu hivi:</strong></p>
-                        <ul>${zodiac.avoid.map(a=>`<li>${a}</li>`).join('')}</ul>
+                        <ul>${avoidList.map(a=>`<li>${a}</li>`).join('')}</ul>
                     </div>
                 </div>
             </div>`;
         card2.onclick = function() { toggleCard(this); }; container.appendChild(card2);
 
         // CARD 3: Herufi ya jina (40 sifa + 5 watu wanaoweza kuendana nao)
-        const card3 = document.createElement('div'); card3.className = 'card';
+        const traits = letterTraits.slice(0,40);
+        const compatible = zodiac.compatible || ["Watu wenye herufi A", "Watu wenye herufi B", "Watu wenye herufi C", "Watu wenye herufi D", "Watu wenye herufi E"];
+        card3 = document.createElement('div'); card3.className = 'card';
         card3.innerHTML = `
             <div class="card-inner">
                 <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?auto=format&fit=crop&w=600')">
@@ -956,16 +1475,18 @@
                     <div class="card-body">
                         <h3>JINA LAKO (${letter})</h3>
                         <p><strong>Sifa zako za kipekee:</strong></p>
-                        <ul>${letterTraits.slice(0,40).map(t=>`<li>${t}</li>`).join('')}</ul>
+                        <ul>${traits.map(t=>`<li>${t}</li>`).join('')}</ul>
                         <p><strong>Watu unaoweza kuendana nao:</strong></p>
-                        <ul>${zodiac.compatible.map(c=>`<li>${c}</li>`).join('')}</ul>
+                        <ul>${compatible.map(c=>`<li>${c}</li>`).join('')}</ul>
                     </div>
                 </div>
             </div>`;
         card3.onclick = function() { toggleCard(this); }; container.appendChild(card3);
 
         // CARD 4: Kazi (7 anazostahili + 7 asizostahili)
-        const card4 = document.createElement('div'); card4.className = 'card';
+        const careers = zodiac.careers || ["Mwalimu", "Mkulima", "Mfanyabiashara", "Dereva", "Mhasibu", "Mwanasiasa", "Mchoraji"];
+        const avoidCareers = zodiac.avoid_careers || ["Mwanamichezo", "Msanii", "Mwandishi", "Mpishi", "Fundi", "Karani", "Mshonaji"];
+        card4 = document.createElement('div'); card4.className = 'card';
         card4.innerHTML = `
             <div class="card-inner">
                 <div class="card-back" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600')">
@@ -980,9 +1501,9 @@
                     <div class="card-body">
                         <h3>KAZI ZINAZOKUFA A (${zodiac.name})</h3>
                         <p><strong>Unastahili kufanya:</strong></p>
-                        <ul>${zodiac.careers.map(c=>`<li>${c}</li>`).join('')}</ul>
+                        <ul>${careers.slice(0,7).map(c=>`<li>${c}</li>`).join('')}</ul>
                         <p><strong>Usifanye kazi hizi:</strong></p>
-                        <ul>${zodiac.avoid_careers.map(c=>`<li>${c}</li>`).join('')}</ul>
+                        <ul>${avoidCareers.slice(0,7).map(c=>`<li>${c}</li>`).join('')}</ul>
                     </div>
                 </div>
             </div>`;
